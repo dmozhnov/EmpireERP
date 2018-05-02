@@ -1,0 +1,9 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Client.ClientListViewModel
+
+@{
+    ViewBag.Title = "Список клиентов";
+}
+
+<div id="messageClientList"></div>
+@Html.Partial("ClientGrid", Model.ClientGrid)
+

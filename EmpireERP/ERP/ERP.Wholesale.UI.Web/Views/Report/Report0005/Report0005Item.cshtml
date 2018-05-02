@@ -1,0 +1,151 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0005.Report0005ItemViewModel
+@using ERP.Wholesale.Domain.Entities;
+@using ERP.Utils;
+@{
+    Layout = null;
+}
+<div class="report0005_item">
+    <table class="report0005_table" >
+        <tr>
+            <td colspan="2" class="top">
+                <table style="width:100%">
+                    <tr>
+                        <td style="line-height: 1.4;" colspan="2"><span class="header">@Model.WaybillTypeName</span> @Model.WaybillName<br />
+                            <span class="header">Статус:</span> @Model.WaybillStateName
+                        </td>
+                        <td class="marked">
+                            @if (Model.IsUsedMoreThenOnce)
+                            {   <span style="color:Red;">*</span>  }
+                            @if (Model.WaybillType == WaybillType.MovementWaybill && Model.MarkedWaybill)
+                            {   <span style="color:Green;">&bull;&bull;&bull;</span>  }
+                        </td>
+                    </tr>
+                </table>
+            </td>
+        </tr>
+        <tr>
+            <td class="center">
+                <table style="text-align:right;">
+                    <tr>
+                        <td>Кол-во по накладной:</td>
+                        <td>@Model.Count</td>
+                    </tr>
+                    @if (Model.WaybillType.ContainsIn(WaybillType.ReceiptWaybill, WaybillType.MovementWaybill, WaybillType.ChangeOwnerWaybill,
+                                            WaybillType.ReturnFromClientWaybill))
+                    {
+                        <tr>
+                            <td>Отгружено:</td>
+                            <td>@Model.ShippedCount</td>
+                        </tr>
+                        <tr>
+                            <td>Зарезервировано:</td>
+                            <td>@Model.ReservedCount</td>
+                        </tr>
+                        <tr>
+                            <td>Остаток:</td>
+                            <td>@Model.RemainCount</td>
+                        </tr>
+                    }
+                    @if (Model.WaybillType == WaybillType.ExpenditureWaybill)
+                    {
+                        <tr>
+                            <td>Возвращено:</td>
+                            <td>@Model.ReturnedCount</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+            <td rowspan="2" class="right">
+                @if (Model.WaybillType == WaybillType.ReceiptWaybill)
+                {
+                    <p class="header">@(Model.IsCreatedFromProductionOrderBatch ? "Производитель" : "Поставщик"):</p>
+                    <p class="downElement">@Model.ContractorName</p>
+                }
+                else
+                {
+                    <span class="header">Партия: </span>@Model.BatchName
+                    <p class="downElement"></p>
+                }
+                @if (Model.WaybillType.ContainsIn(WaybillType.MovementWaybill, WaybillType.MovementWaybill, WaybillType.ChangeOwnerWaybill,
+                WaybillType.WriteoffWaybill, WaybillType.ExpenditureWaybill))
+                {
+                    <p class="header">Отправитель:</p>
+                    <p class="element">@Model.SenderStorageName</p>
+                    <p class="downElement">@Model.SenderName</p>
+                }
+                @if (Model.WaybillType.ContainsIn(WaybillType.ReceiptWaybill, WaybillType.MovementWaybill, WaybillType.ChangeOwnerWaybill,
+                WaybillType.ReturnFromClientWaybill))
+                {
+                    <p class="header">Получатель:</p>
+                    if (Model.WaybillType != WaybillType.ChangeOwnerWaybill)
+                    {
+                    <p class="element">@Model.RecipientStorageName</p>
+                    }
+                    <p class="element">@Model.RecipientName</p>
+                }
+                @if (Model.WaybillType.ContainsIn(WaybillType.ExpenditureWaybill, WaybillType.ReturnFromClientWaybill))
+                {
+                    <p class="header">Клиент:</p>
+                    <p class="element">@Model.ClientName</p>
+                }
+                @if (Model.WaybillType == WaybillType.WriteoffWaybill)
+                {
+                    <p class="header">Основание:</p>
+                    <p class="element">@Model.Reason</p>
+                }
+            </td>
+        </tr>
+        <tr>
+            <td valign="top">
+                <table style="text-align:right;">
+                    @if (Model.WaybillType == WaybillType.ReceiptWaybill)
+                    {
+                        <tr>
+                            <td>ЗЦ:</td>
+                            <td>@Model.PurchaseCost</td>
+                        </tr>
+                    }
+                    @if (Model.WaybillType == WaybillType.MovementWaybill)
+                    {
+                        <tr>
+                            <td>УЦ отгрузки:</td>
+                            <td>@Model.SenderAccountingPrice</td>
+                        </tr>
+                                            
+                    }
+                    @if (Model.WaybillType.ContainsIn(WaybillType.ChangeOwnerWaybill, WaybillType.WriteoffWaybill, WaybillType.ExpenditureWaybill))
+                    {
+                        <tr>
+                            <td>УЦ:</td>
+                            <td>@Model.SenderAccountingPrice</td>
+                        </tr>
+                                            
+                    }
+                    @if (Model.WaybillType == WaybillType.ReturnFromClientWaybill)
+                    {
+                        <tr>
+                            <td>ОЦ:</td>
+                            <td>@Model.SalePrice</td>
+                        </tr>
+                    }
+                    @if (Model.WaybillType.ContainsIn(WaybillType.ReceiptWaybill, WaybillType.MovementWaybill,
+                                             WaybillType.ReturnFromClientWaybill))
+                    {
+                        <tr>
+                            <td>УЦ приемки:</td>
+                            <td>@Model.RecipientAccountingPrice</td>
+                        </tr>
+                                            
+                    }
+                    @if (Model.WaybillType == WaybillType.ExpenditureWaybill)
+                    {
+                        <tr>
+                            <td>ОЦ:</td>
+                            <td>@Model.SalePrice</td>
+                        </tr>
+                    }
+                </table>
+            </td>
+        </tr>
+    </table>
+</div>

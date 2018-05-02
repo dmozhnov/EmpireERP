@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{28815537-7C0A-4E41-B560-1B9DA06A01CE}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.UI.LocalPresenters</RootNamespace>
+    <AssemblyName>ERP.Wholesale.UI.LocalPresenters</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EPPlus, Version=3.1.1.0, Culture=neutral, PublicKeyToken=ea159fdaa78159a1, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\Excel\EPPlus.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountingPriceListPresenter.cs" />
+    <Compile Include="AccountOrganizationPresenter.cs" />
+    <Compile Include="ArticleCertificatePresenter.cs" />
+    <Compile Include="ArticleGroupPresenter.cs" />
+    <Compile Include="ArticlePresenter.cs" />
+    <Compile Include="BankPresenter.cs" />
+    <Compile Include="BaseReportPresenter.cs" />
+    <Compile Include="BaseWaybillPresenter.cs" />
+    <Compile Include="ChangeOwnerWaybillPresenter.cs" />
+    <Compile Include="ClientOrganizationPresenter.cs" />
+    <Compile Include="ClientPresenter.cs" />
+    <Compile Include="ClientRegionPresenter.cs" />
+    <Compile Include="ClientServiceProgramPresenter.cs" />
+    <Compile Include="ClientTypePresenter.cs" />
+    <Compile Include="ContractorOrganizationPresenter.cs" />
+    <Compile Include="BaseDictionaryPresenter.cs" />
+    <Compile Include="ContractorPresenter.cs" />
+    <Compile Include="DealInitialBalanceCorrectionPresenter.cs" />
+    <Compile Include="ClientContractPresenter.cs" />
+    <Compile Include="DealPaymentDocumentPresenter.cs" />
+    <Compile Include="DealPaymentPresenter.cs" />
+    <Compile Include="ExportTo1CPresenter.cs" />
+    <Compile Include="LogItemPresenter.cs" />
+    <Compile Include="Mediators\ClientContractPresenterMediator.cs" />
+    <Compile Include="Mediators\DealPaymentDocumentPresenterMediator.cs" />
+    <Compile Include="Mediators\ProductionOrderPresenterMediator.cs" />
+    <Compile Include="Mediators\TaskPresenterMediator.cs" />
+    <Compile Include="Report0006Presenter.cs" />
+    <Compile Include="Report0007Presenter.cs" />
+    <Compile Include="Report0008Presenter.cs" />
+    <Compile Include="Report0009Presenter.cs" />
+    <Compile Include="Report0010Presenter.cs" />
+    <Compile Include="ReportPresenter.cs" />
+    <Compile Include="LegalFormPresenter.cs" />
+    <Compile Include="DealQuotaPresenter.cs" />
+    <Compile Include="OutgoingWaybillPresenter.cs" />
+    <Compile Include="OutgoingWaybillRowPresenter.cs" />
+    <Compile Include="ProductionOrderCustomsDeclarationPresenter.cs" />
+    <Compile Include="ProductionOrderExtraExpensesSheetPresenter.cs" />
+    <Compile Include="ProductionOrderTransportSheetPresenter.cs" />
+    <Compile Include="Report0001Presenter.cs" />
+    <Compile Include="Report0002Presenter.cs" />
+    <Compile Include="Report0003Presenter.cs" />
+    <Compile Include="CountryPresenter.cs" />
+    <Compile Include="CurrencyPresenter.cs" />
+    <Compile Include="EconomicAgentPresenter.cs" />
+    <Compile Include="ProductionOrderMaterialsPackagePresenter.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplatePresenter.cs" />
+    <Compile Include="ProductionOrderPaymentPresenter.cs" />
+    <Compile Include="ProviderTypePresenter.cs" />
+    <Compile Include="Report0004Presenter.cs" />
+    <Compile Include="Report0005Presenter.cs" />
+    <Compile Include="ReturnFromClientReasonPresenter.cs" />
+    <Compile Include="ReturnFromClientWaybillPresenter.cs" />
+    <Compile Include="ProductionOrderPresenter.cs" />
+    <Compile Include="ManufacturerPresenter.cs" />
+    <Compile Include="OrganizationPresenter.cs" />
+    <Compile Include="ProviderOrganizationPresenter.cs" />
+    <Compile Include="ProviderPresenter.cs" />
+    <Compile Include="SettingPresenter.cs" />
+    <Compile Include="StoragePresenter.cs" />
+    <Compile Include="DealPresenter.cs" />
+    <Compile Include="MovementWaybillPresenter.cs" />
+    <Compile Include="EmployeePostPresenter.cs" />
+    <Compile Include="ExpenditureWaybillPresenter.cs" />
+    <Compile Include="MeasureUnitPresenter.cs" />
+    <Compile Include="ProducerPresenter.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptWaybillPresenter.cs" />
+    <Compile Include="RolePresenter.cs" />
+    <Compile Include="TaskPresenter.cs" />
+    <Compile Include="TeamPresenter.cs" />
+    <Compile Include="TrademarkPresenter.cs" />
+    <Compile Include="UserPresenter.cs" />
+    <Compile Include="WriteoffReasonPresenter.cs" />
+    <Compile Include="WriteoffWaybillPresenter.cs" />
+    <Compile Include="ValueAddedTaxPresenter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.Security\ERP.Infrastructure.Security.csproj">
+      <Project>{A4B6BD97-0064-49B9-BC1C-118D5D04AFF7}</Project>
+      <Name>ERP.Infrastructure.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI\ERP.UI.csproj">
+      <Project>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</Project>
+      <Name>ERP.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils.Mvc\ERP.Utils.Mvc.csproj">
+      <Project>{FFF5CA82-3858-4A55-A777-525F0B0460CD}</Project>
+      <Name>ERP.Utils.Mvc</Name>
+      <Private>True</Private>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.AbstractApplicationServices\ERP.Wholesale.AbstractApplicationServices.csproj">
+      <Project>{F368CDA4-B31E-4F19-B38F-C1CE95530A67}</Project>
+      <Name>ERP.Wholesale.AbstractApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Settings\ERP.Wholesale.Settings.csproj">
+      <Project>{3E4BD22D-B4AC-4E09-9C8C-090AA5BD9C85}</Project>
+      <Name>ERP.Wholesale.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.UI.AbstractPresenters\ERP.Wholesale.UI.AbstractPresenters.csproj">
+      <Project>{A136C814-A005-477D-85E1-4D27C3A5D2D1}</Project>
+      <Name>ERP.Wholesale.UI.AbstractPresenters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.UI.ViewModels\ERP.Wholesale.UI.ViewModels.csproj">
+      <Project>{D0C1EA99-AA5E-47B5-A099-77B092472BA1}</Project>
+      <Name>ERP.Wholesale.UI.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PrintingFormTemplates\Torg12.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="PrintingFormTemplates\Invoice.xlsx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

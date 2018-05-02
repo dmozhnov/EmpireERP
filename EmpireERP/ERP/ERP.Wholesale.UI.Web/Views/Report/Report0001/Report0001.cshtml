@@ -1,0 +1,44 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0001.Report0001ViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Report0001</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body>
+    <div class="report_page">    
+        <table>
+            <tr>
+                <td class="report_title">Отчет о наличии товаров<br />по состоянию на @Model.Settings.Date </td>
+                <td class="report_info">
+                    Форма: Report0001.@(2-Int32.Parse(Model.Settings.StoragesInRows))<br />
+                    Автор: @Model.CreatedBy <br />
+                    Составлен: @DateTime.Now.ToString() 
+                </td>
+            </tr>
+        </table>
+        <br /><br />                
+        
+        @{                  
+            @*если места хранения по строкам *@
+            if (Model.Settings.StoragesInRows == "1")
+            {
+                Html.RenderPartial("~/Views/Report/Report0001/Report0001_1.cshtml", Model);
+            }
+            @*если места хранения по столбцам*@
+            else
+            {
+                Html.RenderPartial("~/Views/Report/Report0001/Report0001_2.cshtml", Model);
+            }
+        } 
+    </div>
+</body>
+</html>

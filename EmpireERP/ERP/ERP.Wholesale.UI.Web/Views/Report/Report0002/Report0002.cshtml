@@ -1,0 +1,43 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0002.Report0002ViewModel
+@using ERP.Utils;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report0002</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+</head>
+<body>
+    <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">Отчет о реализации товаров<br />
+                    за период с @Model.StartDate по @Model.EndDate </td>
+                <td class="report_info">Форма: Report0002.@(Model.AreStoragesInColumns ? "2" : "1")<br />
+                    Автор: @Model.CreatedBy
+                    <br />
+                    Составлен: @DateTime.Now.ToString()
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />
+        @{                  
+            @*если места хранения по строкам *@
+            if (!Model.AreStoragesInColumns)
+            {
+                Html.RenderPartial("~/Views/Report/Report0002/Report0002_1.cshtml", Model);
+            }
+            @*если места хранения по столбцам*@
+            else
+            {
+                Html.RenderPartial("~/Views/Report/Report0002/Report0002_2.cshtml", Model.DetailsTable);
+            }
+        }
+    </div>
+</body>
+</html>

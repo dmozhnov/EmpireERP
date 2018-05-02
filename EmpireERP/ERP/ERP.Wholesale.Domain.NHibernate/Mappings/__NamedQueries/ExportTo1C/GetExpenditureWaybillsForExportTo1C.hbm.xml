@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <sql-query name="GetExpenditureWaybillsForExportTo1C">
+    exec GetExpenditureWaybillsForExportTo1C @StartDate =:StartDate, @EndDate =:EndDate, @UserId =:UserId, @IdSenderAccountOrganizationList =:IdSenderAccountOrganizationList,
+    @AllSenderAccountOrganizations =:AllSenderAccountOrganizations, @IdRecipientAccountOrganizationList =:IdRecipientAccountOrganizationList,
+    @AllRecipientAccountOrganizations =:AllRecipientAccountOrganizations, @ShowTransferToCommission =:ShowTransferToCommission
+  </sql-query>
+</hibernate-mapping>

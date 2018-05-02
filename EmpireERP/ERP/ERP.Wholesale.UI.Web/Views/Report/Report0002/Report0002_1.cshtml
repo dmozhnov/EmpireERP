@@ -1,0 +1,67 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0002.Report0002ViewModel
+@using ERP.Utils;
+    
+@if (Model.ShowStorageSummaryTable)
+{
+    <div class="table_title">Сводная информация по выбранным МХ:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.StorageSummaryTable);
+    <br />
+    <br />
+}
+@if (Model.ShowAccountOrganizationSummaryTable)
+{
+    <div class="table_title">Сводная информация по собственным организациям:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.AccountOrganizationSummaryTable);
+    <br />
+    <br />
+}
+@if (Model.ShowClientSummaryTable)
+{
+    <div class="table_title">Сводная информация по клиентам:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.ClientSummaryTable);
+    <br />
+    <br />
+}
+@if (Model.ShowClientOrganizationSummaryTable)
+{
+    <div class="table_title">Сводная информация по организациям клиентов:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.ClientOrganizationSummaryTable);
+    <br />
+    <br />
+}
+
+@if (Model.ShowArticleGroupSummaryTable)
+{
+    <div class="table_title">Сводная информация по выбраным группам товаров:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.ArticleGroupSummaryTable);
+    <br />
+    <br />
+}
+@if (Model.ShowTeamSummaryTable)
+{
+    <div class="table_title">Сводная информация по командам:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.TeamSummaryTable);
+    <br />
+    <br />
+}
+@if (Model.ShowUserSummaryTable)
+{
+    <div class="table_title">Сводная информация по пользователям:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.UserSummaryTable);
+    <br />
+    <br />
+}
+@if (Model.ShowContractorSummaryTable)
+{
+    <div class="table_title">Сводная информация по поставщикам и производителям:</div>
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002SummaryTable.cshtml", Model.ContractorSummaryTable);
+    <br />
+    <br />
+}
+<br />
+<br />
+
+@if (Model.ShowDetailsTable)
+{
+    Html.RenderPartial("~/Views/Report/Report0002/Report0002DetailsTable.cshtml", Model.DetailsTable);
+}

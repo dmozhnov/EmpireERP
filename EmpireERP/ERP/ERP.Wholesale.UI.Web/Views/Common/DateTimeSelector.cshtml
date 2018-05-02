@@ -1,0 +1,37 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Common.DateTimeSelectViewModel
+@using ERP.UI.Web.HtmlHelpers
+
+<script src="/Scripts/DatePicker.min.js" type="text/javascript"></script>
+<script src="/Scripts/DatePicker.js" type="text/javascript"></script>
+
+<div class="modal_title">@Model.Title</div>
+<div class="h_delim"></div>
+ 
+ @using (Ajax.BeginForm("", "", new AjaxOptions(), new { id = "dateTimeSelectForm" }))
+ {
+    <div style="max-width: 305px; padding: 10px 10px 0;">
+        <div id="messageDateSelect"></div>    
+
+        <table class='editor_table'>
+            <tr>
+                <td class="row_title" style="width: 60px;">
+                    @Html.LabelFor(model => model.Date):
+                </td>
+                <td>
+                    @Html.DatePickerFor(model => model.Date)
+                    @Html.ValidationMessageFor(model => model.Date)
+                </td>
+                <td style="width: 110px;">
+                    @Html.TimePickerFor(model => model.Time)
+                    @Html.ValidationMessageFor(model => model.Time)
+                </td>
+
+            </tr>
+        </table>    
+
+        <div class="button_set">
+            @Html.SubmitButton("btnSelectDateTime", Model.OkButtonTitle)        
+            <input type="button" value="Закрыть" onclick="HideModal()" />
+        </div>    
+    </div>
+}

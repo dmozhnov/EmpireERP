@@ -1,0 +1,149 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A136C814-A005-477D-85E1-4D27C3A5D2D1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.UI.AbstractPresenters</RootNamespace>
+    <AssemblyName>ERP.Wholesale.UI.AbstractPresenters</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IBaseWaybillPresenter.cs" />
+    <Compile Include="IContractorPresenter.cs" />
+    <Compile Include="IDealInitialBalanceCorrectionPresenter.cs" />
+    <Compile Include="IClientContractPresenter.cs" />
+    <Compile Include="IDealPaymentDocumentPresenter.cs" />
+    <Compile Include="IDealPaymentPresenter.cs" />
+    <Compile Include="IExportTo1CPresenter.cs" />
+    <Compile Include="IReport0006Presenter.cs" />
+    <Compile Include="IReport0007Presenter.cs" />
+    <Compile Include="IReport0008Presenter.cs" />
+    <Compile Include="IReport0009Presenter.cs" />
+    <Compile Include="IReport0010Presenter.cs" />
+    <Compile Include="IReportPresenter.cs" />
+    <Compile Include="ILegalFormPresenter.cs" />
+    <Compile Include="IProviderTypePresenter.cs" />
+    <Compile Include="IBaseDictionaryPresenter.cs" />
+    <Compile Include="IArticleCertificatePresenter.cs" />
+    <Compile Include="IDealQuotaPresenter.cs" />
+    <Compile Include="IOutgoingWaybillRowPresenter.cs" />
+    <Compile Include="IProductionOrderExtraExpensesSheetPresenter.cs" />
+    <Compile Include="IProductionOrderCustomsDeclarationPresenter.cs" />
+    <Compile Include="IProductionOrderTransportSheetPresenter.cs" />
+    <Compile Include="IClientRegionPresenter.cs" />
+    <Compile Include="IReport0001Presenter.cs" />
+    <Compile Include="IReport0002Presenter.cs" />
+    <Compile Include="IReport0003Presenter.cs" />
+    <Compile Include="IClientPresenter.cs" />
+    <Compile Include="IClientServiceProgramPresenter.cs" />
+    <Compile Include="IClientTypePresenter.cs" />
+    <Compile Include="IContractorOrganizationPresenter.cs" />
+    <Compile Include="ICountryPresenter.cs" />
+    <Compile Include="ICurrencyPresenter.cs" />
+    <Compile Include="IEconomicAgentPresenter.cs" />
+    <Compile Include="IProductionOrderMaterialsPackagePresenter.cs" />
+    <Compile Include="IProductionOrderBatchLifeCycleTemplatePresenter.cs" />
+    <Compile Include="IProductionOrderPaymentPresenter.cs" />
+    <Compile Include="IReport0004Presenter.cs" />
+    <Compile Include="IReport0005Presenter.cs" />
+    <Compile Include="IReturnFromClientReasonPresenter.cs" />
+    <Compile Include="IReturnFromClientWaybillPresenter.cs" />
+    <Compile Include="IAccountOrganizationPresenter.cs" />
+    <Compile Include="IArticleGroupPresenter.cs" />
+    <Compile Include="IArticlePresenter.cs" />
+    <Compile Include="IClientOrganizationPresenter.cs" />
+    <Compile Include="IBankPresenter.cs" />
+    <Compile Include="IProductionOrderPresenter.cs" />
+    <Compile Include="IManufacturerPresenter.cs" />
+    <Compile Include="IOrganizationPresenter.cs" />
+    <Compile Include="IProviderOrganizationPresenter.cs" />
+    <Compile Include="IProviderPresenter.cs" />
+    <Compile Include="ISettingPresenter.cs" />
+    <Compile Include="IStoragePresenter.cs" />
+    <Compile Include="IChangeOwnerWaybillPresenter.cs" />
+    <Compile Include="IDealPresenter.cs" />
+    <Compile Include="IMovementWaybillPresenter.cs" />
+    <Compile Include="IAccountingPriceListPresenter.cs" />
+    <Compile Include="IEmployeePostPresenter.cs" />
+    <Compile Include="IExpenditureWaybillPresenter.cs" />
+    <Compile Include="IMeasureUnitPresenter.cs" />
+    <Compile Include="IProducerPresenter.cs" />
+    <Compile Include="IReceiptWaybillPresenter.cs" />
+    <Compile Include="IRolePresenter.cs" />
+    <Compile Include="ITaskPresenter.cs" />
+    <Compile Include="ITeamPresenter.cs" />
+    <Compile Include="ITrademarkPresenter.cs" />
+    <Compile Include="IUserPresenter.cs" />
+    <Compile Include="IWriteoffReasonPresenter.cs" />
+    <Compile Include="IWriteoffWaybillPresenter.cs" />
+    <Compile Include="ILogItemPresenter.cs" />
+    <Compile Include="Mediators\IClientContractPresenterMediator.cs" />
+    <Compile Include="Mediators\IDealPaymentDocumentPresenterMediator.cs" />
+    <Compile Include="Mediators\IProductionOrderPresenterMediator.cs" />
+    <Compile Include="Mediators\ITaskPresenterMediator.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="IValueAddedTaxPresenter.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.Security\ERP.Infrastructure.Security.csproj">
+      <Project>{A4B6BD97-0064-49B9-BC1C-118D5D04AFF7}</Project>
+      <Name>ERP.Infrastructure.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI\ERP.UI.csproj">
+      <Project>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</Project>
+      <Name>ERP.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.UI.ViewModels\ERP.Wholesale.UI.ViewModels.csproj">
+      <Project>{D0C1EA99-AA5E-47B5-A099-77B092472BA1}</Project>
+      <Name>ERP.Wholesale.UI.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

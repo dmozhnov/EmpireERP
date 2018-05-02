@@ -1,0 +1,12 @@
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\ERP.Infrastructure.Security.dll
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\ERP.Infrastructure.Security.pdb
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\ERP.Infrastructure.dll
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\ERP.Utils.dll
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\Iesi.Collections.dll
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\EPPlus.dll
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\ERP.Infrastructure.pdb
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\ERP.Utils.pdb
+D:\Projects\ERP\ERP.Infrastructure.Security\bin\Debug\EPPlus.xml
+D:\Projects\ERP\ERP.Infrastructure.Security\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.Infrastructure.Security\obj\Debug\ERP.Infrastructure.Security.dll
+D:\Projects\ERP\ERP.Infrastructure.Security\obj\Debug\ERP.Infrastructure.Security.pdb

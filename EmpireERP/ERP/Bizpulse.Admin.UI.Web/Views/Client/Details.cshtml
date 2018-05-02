@@ -1,0 +1,62 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Client.ClientDetailsViewModel
+@using ERP.UI.Web.HtmlHelpers;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Управление аккаунтом Bizpulse</title>
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <link href="../../Content/Style/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Style/Grid.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Style/ClientDetails.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../Scripts/jquery-1.7.2.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    
+    <script src="../../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../../Scripts/Grid.js" type="text/javascript"></script>
+</head>
+<body>
+    <div>
+        
+        <div id="client_details_wrapper">
+            <div id="client_details">
+                <img id="logo" src="/Content/Img/Logo.png" alt="Bizpulse" />
+        
+                <div id="title">Администрирование аккаунта</div>
+                <div id="client_name">@Model.DisplayName</div>
+
+                <div class="clear"></div>
+                
+                <a id="back_link" href="@Bizpulse.Admin.UI.Web.AppSettings.AppURL">Вернуться в Bizpulse</a>
+
+                <div class="button_set">
+                    @Html.Button("btnProlongConfiguration", "Продлить конфигурацию", false)
+                    @Html.Button("btnChangeConfiguration", "Изменить конфигурацию", false)
+                    @Html.Button("btnDelete", "Удалить аккаунт", false)
+                </div>
+                <br />
+
+                @Html.Partial("ClientMainDetails", Model.MainDetails)
+                <br />
+
+                <div id="messageInvoiceForPaymentList"></div>
+                @Html.Partial("InvoiceForPaymentGrid", Model.InvoiceForPaymentGrid)
+
+                <div id="messagePaymentList"></div>
+                @Html.Partial("PaymentGrid", Model.PaymentGrid)
+
+                <div id="messageCertificateOfCompletionList"></div>
+                @Html.Partial("CertificateOfCompletionGrid", Model.CertificateOfCompletionGrid)
+            </div>
+        </div>
+    </div>
+</body>
+</html>

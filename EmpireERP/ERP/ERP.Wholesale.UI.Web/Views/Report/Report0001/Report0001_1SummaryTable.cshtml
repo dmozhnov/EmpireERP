@@ -1,0 +1,65 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0001.Report0001_1SummaryTableViewModel
+@using ERP.Utils
+          
+@functions
+{
+    bool flag = true;
+
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "";
+    }
+}
+
+@{
+    int columns = 1;
+    if (Model.Settings.ShowPurchaseCosts == "1") {columns ++;}
+    if (Model.Settings.ShowAccountingPrices == "1") {columns ++;}
+}
+
+<div class="table_title">@Model.TableTitle:</div> 
+<table class="report_table">
+    <tr>
+        <th>@Model.FirstColumnName</th>
+        @if (Model.Settings.ShowPurchaseCosts == "1")
+        { <th>Сумма в ЗЦ</th> }
+        @if (Model.Settings.ShowAccountingPrices == "1")
+        { <th>Сумма ТМЦ</th> } 
+    </tr>
+    @if (Model.Items != null && Model.Items.Any())
+    {
+        foreach (var item in Model.Items)
+        { 
+            <tr class="@GetRowClass()">
+                <td> @item.Name </td>
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <td align="right" style="white-space:nowrap"> @item.PurchaseCostSum.ForDisplay(ValueDisplayType.Money) </td> } 
+                @if (Model.Settings.ShowAccountingPrices == "1")
+                { <td align="right" style="white-space:nowrap"> @item.AccountingPriceSum.ForDisplay(ValueDisplayType.Money) </td> }
+            </tr>                        
+        }
+    }
+    else
+    { 
+        <tr class="green_row">
+            <td colspan="@columns" style="text-align:center;">Нет данных</td>
+        </tr>
+    }
+    @if (Model.Settings.ShowPurchaseCosts == "1" || Model.Settings.ShowAccountingPrices == "1")
+    {
+    <tr>
+        <th align="right"  style="white-space:nowrap"> Итого:</th>
+        @if (Model.Settings.ShowPurchaseCosts == "1")
+        { <th align="right"  style="white-space:nowrap">  @Model.PurchaseCostTotalSum.ForDisplay(ValueDisplayType.Money) </th> }
+        @if (Model.Settings.ShowAccountingPrices == "1")
+        { <th align="right"  style="white-space:nowrap">  @Model.AvailableToReserveAccountingPriceTotalSum.ForDisplay(ValueDisplayType.Money) </th> }
+    </tr>
+    }
+</table>
+

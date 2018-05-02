@@ -1,0 +1,13 @@
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.UI.Web.dll
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.UI.Web.pdb
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.UI.dll
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.Utils.dll
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.Utils.Mvc.dll
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\EPPlus.dll
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.UI.pdb
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.Utils.Mvc.pdb
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\ERP.Utils.pdb
+D:\Projects\ERP\ERP.UI.Web\bin\Debug\EPPlus.xml
+D:\Projects\ERP\ERP.UI.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.UI.Web\obj\Debug\ERP.UI.Web.dll
+D:\Projects\ERP\ERP.UI.Web\obj\Debug\ERP.UI.Web.pdb

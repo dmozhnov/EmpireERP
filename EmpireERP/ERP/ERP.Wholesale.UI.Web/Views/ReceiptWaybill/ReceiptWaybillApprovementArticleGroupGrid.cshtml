@@ -1,0 +1,5 @@
+﻿@model ERP.UI.ViewModels.Grid.GridData
+@using ERP.UI.Web.HtmlHelpers
+
+@Html.GridHeader("Группы товаров", "gridApprovementArticleGroups")
+@Html.GridContent(Model, "/Receiptwaybill/ShowApprovementArticleGroupGrid/", false)

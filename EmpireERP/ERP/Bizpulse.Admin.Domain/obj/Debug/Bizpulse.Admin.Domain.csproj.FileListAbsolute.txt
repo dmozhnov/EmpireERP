@@ -1,0 +1,12 @@
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\Bizpulse.Admin.Domain.dll
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\Bizpulse.Admin.Domain.pdb
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\ERP.Infrastructure.dll
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\ERP.Utils.dll
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\Iesi.Collections.dll
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\EPPlus.dll
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\ERP.Infrastructure.pdb
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\ERP.Utils.pdb
+D:\Projects\ERP\Bizpulse.Admin.Domain\bin\Debug\EPPlus.xml
+D:\Projects\ERP\Bizpulse.Admin.Domain\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\Bizpulse.Admin.Domain\obj\Debug\Bizpulse.Admin.Domain.dll
+D:\Projects\ERP\Bizpulse.Admin.Domain\obj\Debug\Bizpulse.Admin.Domain.pdb

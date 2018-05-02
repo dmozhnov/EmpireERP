@@ -1,0 +1,84 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0010.Report0010ViewModel
+
+@{
+    Layout = "~/Views/Report/ReportLayout.cshtml";
+}
+@section Title {
+    Report0010
+}
+    
+<table>
+    <tr>
+        <td class="report_title">
+            <b style="text-decoration: underline">@Model.ReportName</b><br />            
+            за период с @Model.Settings.StartDate по @Model.Settings.EndDate</td>
+        <td class="report_info">Форма: Report0010<br />
+            Автор: @Model.CreatedBy
+            <br />
+            Составлен: @Model.CreationDate
+        </td>
+    </tr>
+</table>
+<br />
+<br />
+
+@* ---------- Собственные организации -----------------*@
+@if (Model.Settings.ShowAccountOrganizationSummary == "1")
+{
+    <div class="table_title">Сводная информация по собственным организациям:</div>
+    Html.RenderPartial("~/Views/Report/Report0010/Report0010SummaryTable.cshtml", Model.AccountOrganizationSummary);
+}
+
+@* ---------- Клиенты -----------------*@
+@if (Model.Settings.ShowClientSummary == "1")
+{
+    <div class="table_title">Сводная информация по клиентам:</div>
+    Html.RenderPartial("~/Views/Report/Report0010/Report0010SummaryTable.cshtml", Model.ClientSummary);
+}
+    
+@* ---------- Организации клиентов -----------------*@
+@if (Model.Settings.ShowClientOrganizationSummary == "1")
+{
+    <div class="table_title">Сводная информация по организациям клиентов:</div>
+    Html.RenderPartial("~/Views/Report/Report0010/Report0010SummaryTable.cshtml", Model.ClientOrganizationSummary);
+}
+    
+@* ---------- Договора с клиентами -----------------*@
+@if (Model.Settings.ShowClientContractSummary == "1")
+{
+    <div class="table_title">Сводная информация по договорам с клиентами:</div>
+    Html.RenderPartial("~/Views/Report/Report0010/Report0010SummaryTable.cshtml", Model.ClientContractSummary);
+}
+    
+@* ---------- Команды -----------------*@
+@if (Model.Settings.ShowTeamSummary == "1")
+{
+    <div class="table_title">Сводная информация по командам:</div>
+    Html.RenderPartial("~/Views/Report/Report0010/Report0010SummaryTable.cshtml", Model.TeamSummary);
+}
+
+@* ---------- Пользователи -----------------*@
+@if (Model.Settings.ShowUserSummary == "1")
+{
+    <div class="table_title">Сводная информация по пользователям:</div>
+    Html.RenderPartial("~/Views/Report/Report0010/Report0010SummaryTable.cshtml", Model.UserSummary);
+}
+
+
+@* ---------- Развернутые таблицы -----------------*@
+@if (Model.Settings.ShowDetailsTable == "1")
+{
+    if (Model.Settings.SeparateByDealPaymentForm == "1")
+    {
+        Html.RenderPartial("~/Views/Report/Report0010/Report0010DetailsTable.cshtml", Model.CashPaymentsDetailsTable);
+        Html.RenderPartial("~/Views/Report/Report0010/Report0010DetailsTable.cshtml", Model.CashlessPaymentsDetailsTable);
+        Html.RenderPartial("~/Views/Report/Report0010/Report0010DetailsTable.cshtml", Model.ThirdPartyCashlessPaymentsDetailsTable);
+    }
+    else
+    {
+        Html.RenderPartial("~/Views/Report/Report0010/Report0010DetailsTable.cshtml", Model.AllPaymentsDetailsTable);
+    }
+}
+
+<br />
+

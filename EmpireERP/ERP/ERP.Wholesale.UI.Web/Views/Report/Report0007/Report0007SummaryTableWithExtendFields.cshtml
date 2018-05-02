@@ -1,0 +1,55 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0007.Report0007SummaryTableWithExtendFieldsViewModel
+@using ERP.Utils;
+@functions{
+    bool flag = true;
+            
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass ()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "" ;
+    }
+}
+
+<div class="table_title">@Model.TableTitle:</div>
+<table class="report_table" style="min-width:790px">
+    <tr>
+        <th style="min-width:278px">@Model.FirstColumnName</th>
+        <th style="min-width:94px">@Html.LabelFor(model => model.Items.First().ReserveSum)</th>
+        <th style="min-width:94px">@Html.LabelFor(model => model.Items.First().DebtSum)</th>
+        <th style="min-width:94px">@Html.LabelFor(model => model.Items.First().DelayDebtSum)</th>
+        <th style="min-width:94px">@Html.LabelFor(model => model.Items.First().UndistributionPaymentSum)</th>
+        <th style="min-width:70px">@Html.LabelFor(model => model.Items.First().DelayPaymentDays)</th>
+    </tr>
+    @foreach (var row in Model.Items)
+    {
+        <tr class="@GetRowClass()">
+            <td>@row.Name</td>
+            <td align="right" style="white-space: nowrap">@row.ReserveSum.ForDisplay(ValueDisplayType.Money)</td>
+            <td align="right" style="white-space: nowrap">@row.DebtSum.ForDisplay(ValueDisplayType.Money)</td>
+            <td align="right" style="white-space: nowrap">@row.DelayDebtSum.ForDisplay(ValueDisplayType.Money)</td>
+            <td align="right" style="white-space: nowrap">@row.UndistributionPaymentSum.ForDisplay(ValueDisplayType.Money)</td>
+            <td align="right" style="white-space: nowrap">@row.DelayPaymentDays</td>
+        </tr>
+    }
+    @if (Model.Items.Count == 0)
+    {
+        <tr class="green_row">
+            <td colspan="6" style="text-align:center;">Нет данных</td>
+        </tr>
+    }
+    <tr>
+        <th align="right" style="white-space: nowrap">Итого:</th>
+        <th align="right" style="white-space: nowrap">@Model.ReserveSumTotal.ForDisplay(ValueDisplayType.Money)</th>
+        <th align="right" style="white-space: nowrap">@Model.DebtSumTotal.ForDisplay(ValueDisplayType.Money)</th>
+        <th align="right" style="white-space: nowrap">@Model.DelayDebtSumTotal.ForDisplay(ValueDisplayType.Money)</th>
+        <th align="right" style="white-space: nowrap">@Model.UndistributionPaymentSumTotal.ForDisplay(ValueDisplayType.Money)</th>
+        <th align="right" style="white-space: nowrap"></th>
+    </tr>
+</table>
+<br />
+<br />

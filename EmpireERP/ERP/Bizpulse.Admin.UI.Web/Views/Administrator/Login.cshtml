@@ -1,0 +1,81 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Administrator.AdministratorLoginViewModel
+
+@using ERP.UI.Web.HtmlHelpers
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Вход для администратора</title>
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <link href="../../Content/Style/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Style/Login.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    
+    <script src="../../Scripts/Common.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+           $("#Login").focus();
+        });
+
+       function OnBeginAdministratorLogin() {
+           StartButtonProgress($("#btnLogin"));
+       }
+
+        function OnSuccessAdministratorLogin() {
+            window.location = "/Administrator/Home";
+        }
+
+        function OnFailAdministratorLogin(ajaxContext) {
+            $("#messageAdministratorLogin").show().text(ajaxContext.responseText);
+            StopButtonProgress();
+        }
+    </script>
+</head>
+<body>
+    <div id="login_content">
+        <img id="logo" src="/Content/Img/Logo.png" alt="Bizpulse" />
+        
+        <div id="type_name">Электронный менеджер</div>
+        
+        <div id="field_container">
+            <h2>Вход для администратора</h2>
+            <h1>Bizpulse</h1>
+        
+            @using (Ajax.BeginForm("TryLogin", "Administrator", new AjaxOptions() { OnBegin="OnBeginAdministratorLogin", OnSuccess = "OnSuccessAdministratorLogin", OnFailure = "OnFailAdministratorLogin" }))
+            { 
+                <span class="label_wrapper">@Html.LabelFor(model => model.Login):</span>
+                @Html.TextBoxFor(model => model.Login, new { maxlength="30"})
+                @Html.ValidationMessageFor(model => model.Login)
+            
+                <span class="label_wrapper">@Html.LabelFor(model => model.Password):</span>
+                @Html.PasswordFor(model => model.Password, new { maxlength = "20" })
+                @Html.ValidationMessageFor(model => model.Password)
+            
+                <span id="remember_me">@Html.LabelFor(model => model.RememberMe):&nbsp;
+                @Html.YesNoToggleFor(model => model.RememberMe)</span>
+                
+                <span id="messageAdministratorLogin" class="field-validation-error" style="display: none"></span>
+                
+                <div id="login_button_wrapper">
+                    <input id="btnLogin" type="submit" value="Войти" />
+                </div>
+            } 
+        </div>
+        
+        <div id="login_footer">
+            &copy 2010-@DateTime.Now.Year.ToString(). Empiresoft.
+        </div>
+
+    </div>
+</body>
+</html>

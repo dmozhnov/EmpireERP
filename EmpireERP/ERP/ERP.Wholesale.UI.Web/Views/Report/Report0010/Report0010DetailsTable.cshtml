@@ -1,0 +1,167 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0010.Report0010DetailsTableViewModel
+
+@functions{
+    bool flag = true;
+
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "";
+    }    
+}
+
+@{
+    short maxColSpan = 9;
+    short groupColSpan = 3;
+    
+    if(!Model.ShowPaymentForm) 
+    {
+        maxColSpan--;
+        groupColSpan--;
+    }
+    
+    if(Model.Settings.ShowDistributedAndUndistributedSums != "1")
+    {
+        maxColSpan -= 2;
+    }
+
+    if (Model.Settings.ShowDistributionDetails != "1")
+    {
+        maxColSpan -= 3;
+    }
+}
+<br />
+<br />
+   
+<div class="table_title">@Model.Title:</div>
+<table class="report_table">
+    <tr>
+        <th style="width: 60px;">@Html.LabelFor(model => model.Rows.First().Date)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().PaymentDocument)</th>
+        
+        @if (Model.ShowPaymentForm)
+        {
+            <th>@Html.LabelFor(model => model.Rows.First().PaymentFormName)</th>
+        }
+        
+        <th>@Html.LabelFor(model => model.Rows.First().PaymentSumString)</th>
+        
+        @if (Model.Settings.ShowDistributedAndUndistributedSums == "1")
+        {
+            <th>@Html.LabelFor(model => model.Rows.First().DistributedSumString)</th>
+        }
+        
+        @if (Model.Settings.ShowDistributionDetails == "1")
+        {
+            <th>@Html.LabelFor(model => model.Rows.First().DistributedToSaleWaybillPaymentSumString)</th>
+            <th>@Html.LabelFor(model => model.Rows.First().DistributedToBalanceCorrectionPaymentSumString)</th>
+            <th>@Html.LabelFor(model => model.Rows.First().PaymentToClientSumString)</th>
+        }
+        
+        @if (Model.Settings.ShowDistributedAndUndistributedSums == "1")
+        {
+            <th>@Html.LabelFor(model => model.Rows.First().UndistributedSumString)</th>
+        }
+    </tr>
+    
+    @foreach (var row in Model.Rows)
+    {
+        if (row.IsGroup)
+        {
+            flag = true;
+            var paddingSize = System.Web.UI.WebControls.Unit.Pixel(row.GroupLevel * 15);  // определяем смещение заголовка
+                        
+            <tr class="blue_row">
+                <td colspan="@groupColSpan" style="padding-left: @paddingSize.ToString()">
+                    <b>@row.GroupTitle</b>
+                </td>
+
+                <td style="text-align: right; font-weight: bold; white-space: nowrap;">@row.PaymentSumString</td>
+
+                @if(Model.Settings.ShowDistributedAndUndistributedSums == "1")
+                {
+                    <td style="text-align: right; font-weight: bold; white-space: nowrap;">@row.DistributedSumString</td>
+                }
+                
+                @if (Model.Settings.ShowDistributionDetails == "1")
+                {
+                    <td style="text-align: right; font-weight: bold; white-space: nowrap;">@row.DistributedToSaleWaybillPaymentSumString</td>
+                    <td style="text-align: right; font-weight: bold; white-space: nowrap;">@row.DistributedToBalanceCorrectionPaymentSumString</td>
+                    <td style="text-align: right; font-weight: bold; white-space: nowrap;">@row.PaymentToClientSumString</td>
+                }
+                
+                @if (Model.Settings.ShowDistributedAndUndistributedSums == "1")
+                {
+                    <td style="text-align: right; font-weight: bold; white-space: nowrap;">@row.UndistributedSumString</td>
+                }
+            </tr>
+        }
+        else
+        {
+            <tr class="@GetRowClass()">                          
+                <td style="text-align: center">@row.Date</td>
+                <td>@row.PaymentDocument</td>
+                
+                @if (Model.ShowPaymentForm)
+                {
+                    <td>@row.PaymentFormName</td>
+                }
+                
+                <td style="text-align: right; white-space: nowrap;">@row.PaymentSumString</td>
+                
+                @if(Model.Settings.ShowDistributedAndUndistributedSums == "1")
+                {
+                    <td style="text-align: right; white-space: nowrap;">@row.DistributedSumString</td>
+                }
+                
+                @if (Model.Settings.ShowDistributionDetails == "1")
+                {
+                    <td style="text-align: right; white-space: nowrap;">@row.DistributedToSaleWaybillPaymentSumString</td>
+                    <td style="text-align: right; white-space: nowrap;">@row.DistributedToBalanceCorrectionPaymentSumString</td>
+                    <td style="text-align: right; white-space: nowrap;">@row.PaymentToClientSumString</td>
+                }
+                
+                @if (Model.Settings.ShowDistributedAndUndistributedSums == "1")
+                {
+                    <td style="text-align: right; white-space: nowrap;">@row.UndistributedSumString</td>
+                }
+            </tr>
+        }
+    }
+    
+    @if (!Model.Rows.Any())
+    {
+        <tr class="green_row">
+            <td colspan="@maxColSpan" style="text-align:center;">Нет данных</td>
+        </tr>
+    }
+    
+    <tr>
+        <th style="text-align: right" colspan="@groupColSpan">Итого:</th>
+                                    
+        <th style="text-align: right">@Model.TotalPaymentSumString</th>
+            
+        @if (Model.Settings.ShowDistributedAndUndistributedSums == "1")
+        {
+            <th style="text-align: right">@Model.TotalDistributedSumString</th>
+        }
+            
+        @if (Model.Settings.ShowDistributionDetails == "1")
+        {
+            <th style="text-align: right">@Model.TotalDistributedToSaleWaybillPaymentSumString</th>
+            <th style="text-align: right">@Model.TotalDistributedToBalanceCorrectionPaymentSumString</th>
+            <th style="text-align: right">@Model.TotalPaymentToClientSumString</th>
+        }
+            
+        @if (Model.Settings.ShowDistributedAndUndistributedSums == "1")
+        {
+            <th style="text-align: right">@Model.TotalUndistributedSumString</th>
+        }
+    </tr>
+    
+</table>

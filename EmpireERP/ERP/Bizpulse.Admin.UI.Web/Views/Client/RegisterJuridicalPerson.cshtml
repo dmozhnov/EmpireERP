@@ -1,0 +1,138 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Client.JuridicalPersonRegistrationViewModel
+
+<span class="label_wrapper">@Html.LabelFor(model => model.ShortName)*:</span>
+@Html.TextBoxFor(model => model.ShortName, new { maxlength = "100", style="width: 720px" })
+<div class="example">Например, ООО «Ромашка»</div>
+@Html.ValidationMessageFor(model => model.ShortName)
+
+<h4>Юридический адрес</h4>
+<span class="label_wrapper">@Html.LabelFor(model => model.JuridicalAddressRegionId)*:</span>
+<div style="margin-left: 15px; margin-top: 8px">
+    @Html.DropDownListFor(model => model.JuridicalAddressRegionId, (IEnumerable<SelectListItem>)ViewBag.RegionList, new { })    
+</div>
+@Html.ValidationMessageFor(model => model.JuridicalAddressRegionId)
+
+<div style="margin-left: 15px; margin-top: 8px; height: 42px; display: none">
+    @Html.DropDownListFor(model => model.JuridicalAddressCityId, new List<SelectListItem>(), new { })    
+</div>
+@Html.ValidationMessageFor(model => model.JuridicalAddressCityId)
+
+
+<table>
+    <tr>
+        <td>
+            <span class="label_wrapper">@Html.LabelFor(model => model.JuridicalAddressPostalIndex)*:</span>
+            @Html.TextBoxFor(model => model.JuridicalAddressPostalIndex, new { maxlength = "6", style="width: 184px;" })
+            <div class="example">Например, 715325</div>
+            @Html.ValidationMessageFor(model => model.JuridicalAddressPostalIndex)        
+        </td>
+        <td>
+            <span class="label_wrapper">@Html.LabelFor(model => model.JuridicalAddressLocalAddress)*:</span>
+            @Html.TextBoxFor(model => model.JuridicalAddressLocalAddress, new { maxlength = "100", style = "width: 510px;" })
+            <div class="example">Например, ул. Ленина, д. 26, офис 315</div>
+            @Html.ValidationMessageFor(model => model.JuridicalAddressLocalAddress)        
+        </td>
+    </tr>
+</table>
+
+<div style="margin-left: 30px; margin-top: 25px">
+    @Html.CheckBoxFor(model => model.PostalAddressEqualsJuridical, new { @checked = "checked" } )    
+    <span class="label_wrapper" style="display: inline; padding-left: 10px;">@Html.LabelFor(model => model.PostalAddressEqualsJuridical)</span>                                    
+</div>
+
+<div id="postalAddressContainer" style="display: none">
+
+    <h4>Почтовый адрес</h4>
+    <span class="label_wrapper">@Html.LabelFor(model => model.PostalAddressRegionId)*:</span>
+    <div style="margin-left: 15px; margin-top: 8px">
+        @Html.DropDownListFor(model => model.PostalAddressRegionId, (IEnumerable<SelectListItem>)ViewBag.RegionList, new { })
+    </div>
+    @Html.ValidationMessageFor(model => model.PostalAddressRegionId)
+
+    <div style="margin-left: 15px; margin-top: 8px; height: 42px;">
+        @Html.DropDownListFor(model => model.PostalAddressCityId, new List<SelectListItem>(), new { })
+    </div>    
+    @Html.ValidationMessageFor(model => model.PostalAddressCityId)
+
+    <table>
+        <tr>
+            <td>
+                <span class="label_wrapper">@Html.LabelFor(model => model.PostalAddressPostalIndex)*:</span>
+                @Html.TextBoxFor(model => model.PostalAddressPostalIndex, new { maxlength = "6", style = "width: 184px;" })
+                <div class="example">Например, 715325</div>
+                @Html.ValidationMessageFor(model => model.PostalAddressPostalIndex)
+            </td>
+            <td>
+                <span class="label_wrapper">@Html.LabelFor(model => model.PostalAddressLocalAddress)*:</span>
+                @Html.TextBoxFor(model => model.PostalAddressLocalAddress, new { maxlength = "100", style = "width: 510px;" })                                
+                <div class="example">Например, ул. Ленина, д. 26, офис 315</div>
+                @Html.ValidationMessageFor(model => model.PostalAddressLocalAddress)
+            </td>
+        </tr>
+    </table>
+
+</div>
+
+<h4>Регистрационные коды</h4>
+<table>
+    <tr>
+        <td>
+            <span class="label_wrapper">@Html.LabelFor(model => model.INN)*:</span>
+            @Html.TextBoxFor(model => model.INN, new { maxlength = "10", style = "width: 347px;" })
+            <div class="example">Например, 1234567890</div>
+            @Html.ValidationMessageFor(model => model.INN)
+        </td>
+        <td>
+            <span class="label_wrapper_optional">@Html.LabelFor(model => model.KPP):</span>
+            @Html.TextBoxFor(model => model.KPP, new { maxlength = "9", style = "width: 347px;" })
+            <div class="example">Например, 123401001</div>
+            @Html.ValidationMessageFor(model => model.KPP)
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="label_wrapper_optional">@Html.LabelFor(model => model.OGRN):</span>
+            @Html.TextBoxFor(model => model.OGRN, new { maxlength = "13", style = "width: 347px;" })
+            <div class="example">Например, 1234567890123</div>
+            @Html.ValidationMessageFor(model => model.OGRN)
+        </td>
+        <td>
+            <span class="label_wrapper_optional">@Html.LabelFor(model => model.OKPO):</span>
+            @Html.TextBoxFor(model => model.OKPO, new { maxlength = "10", style = "width: 347px;" })
+            <div class="example">Например, 12345678 или 1234567890</div>
+            @Html.ValidationMessageFor(model => model.OKPO)
+        </td>
+    </tr>
+</table>
+
+<h4>Контактная информация</h4>
+<table>
+    <tr>
+        <td>
+            <span class="label_wrapper">@Html.LabelFor(model => model.DirectorPost)*:</span>
+            @Html.TextBoxFor(model => model.DirectorPost, new { maxlength = "100", style = "width: 347px;" })
+            <div class="example">Например, Генеральный директор</div>
+            @Html.ValidationMessageFor(model => model.DirectorPost)
+        </td>
+        <td>
+            <span class="label_wrapper">@Html.LabelFor(model => model.DirectorName)*:</span>
+            @Html.TextBoxFor(model => model.DirectorName, new { maxlength = "100", style = "width: 347px;" })
+            <div class="example">Например, Потапов Александр Степанович</div>
+            @Html.ValidationMessageFor(model => model.DirectorName)
+        </td>
+    </tr>
+
+    <tr>
+        <td>
+            <span class="label_wrapper_optional">@Html.LabelFor(model => model.DirectorEmail):</span>
+            @Html.TextBoxFor(model => model.DirectorEmail, new { maxlength = "50", style = "width: 347px;" })
+            @Html.ValidationMessageFor(model => model.DirectorEmail)
+        </td>
+        <td>
+            <span class="label_wrapper_optional">@Html.LabelFor(model => model.Phone):</span>
+            @Html.TextBoxFor(model => model.Phone, new { maxlength = "20", style = "width: 347px;" })
+            <div class="example">Например, +7 (495) 765-12-84</div>
+            @Html.ValidationMessageFor(model => model.Phone)
+        </td>
+    </tr>
+</table>

@@ -1,0 +1,16 @@
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Wholesale.AbstractApplicationServices.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Wholesale.AbstractApplicationServices.pdb
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Infrastructure.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Utils.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Wholesale.Domain.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\EPPlus.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\Iesi.Collections.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Wholesale.Settings.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Infrastructure.pdb
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Utils.pdb
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Wholesale.Domain.pdb
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\EPPlus.xml
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\bin\Debug\ERP.Wholesale.Settings.pdb
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\obj\Debug\ERP.Wholesale.AbstractApplicationServices.dll
+D:\Projects\ERP\ERP.Wholesale.AbstractApplicationServices\obj\Debug\ERP.Wholesale.AbstractApplicationServices.pdb

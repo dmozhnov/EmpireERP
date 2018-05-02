@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{FF00E2B4-05D8-4102-A340-D49BC1D1E42C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Infrastructure.NHibernate</RootNamespace>
+    <AssemblyName>ERP.Infrastructure.NHibernate</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="INHibernateSingleDBInitializer.cs" />
+    <Compile Include="INHibernateInitializer.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\BaseRepository.cs" />
+    <Compile Include="Repositories\Criteria\BaseExpression.cs" />
+    <Compile Include="Repositories\Criteria\Criteria.cs" />
+    <Compile Include="Repositories\Criteria\Criterion.cs" />
+    <Compile Include="Repositories\Criteria\IExpression.cs" />
+    <Compile Include="Repositories\Criteria\ISubExpression.cs" />
+    <Compile Include="Repositories\Criteria\JoinConditionExpression.cs" />
+    <Compile Include="Repositories\Criteria\JoinExpression.cs" />
+    <Compile Include="Repositories\Criteria\LikeExpression.cs" />
+    <Compile Include="Repositories\Criteria\LikeOrExpression.cs" />
+    <Compile Include="Repositories\Criteria\MultiCriteria.cs" />
+    <Compile Include="Repositories\Criteria\OneOfExpression.cs" />
+    <Compile Include="Repositories\Criteria\OrderByExpression.cs" />
+    <Compile Include="Repositories\Criteria\OrExpression.cs" />
+    <Compile Include="Repositories\Criteria\RestrictionExpression.cs" />
+    <Compile Include="Repositories\Criteria\SubCriteria.cs" />
+    <Compile Include="Repositories\Criteria\SubCriterion.cs" />
+    <Compile Include="Repositories\Tree.cs" />
+    <Compile Include="Repositories\TreeNode.cs" />
+    <Compile Include="SessionManager\NHibernateSingleDBSessionManager.cs" />
+    <Compile Include="SessionManager\NHibernateSessionManager.cs" />
+    <Compile Include="UnitOfWork\NHibernateUnitOfWork.cs" />
+    <Compile Include="UnitOfWork\NHibernateUnitOfWorkFactory.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.IoC\ERP.Infrastructure.IoC.csproj">
+      <Project>{026EDA6D-FB5B-4E0E-A36B-93A252577997}</Project>
+      <Name>ERP.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

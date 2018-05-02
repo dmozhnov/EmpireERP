@@ -1,0 +1,247 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0006.Report0006ViewModel
+@using ERP.Utils;
+@using ERP.Wholesale.UI.ViewModels.Report.Report0006;
+@using ERP.Wholesale.Domain.Entities;
+@{
+    Layout = null;
+}
+
+@functions{
+            bool flag = true;
+
+            /// <summary>
+            /// Получение очередного класса css для строки таблицы
+            /// </summary>
+            /// <returns>Название класса css</returns>
+            string GetRowClass()
+            {
+                flag = !flag;
+
+                return flag ? "green_row" : "";
+            }
+        }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report0006</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body style="padding: 20px;">
+    <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">
+                    <b style="text-decoration: underline">@Model.ReportName</b><br />
+                    по состоянию на @Model.Date<br />
+                    за период с @Model.Settings.StartDate по @Model.Settings.EndDate</td>
+                <td class="report_info">Форма: Report0006<br />
+                    Автор: @Model.CreatedBy
+                    <br />
+                    Составлен: @Model.DateTime
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+
+@if (Model.Settings.ShowClientSummary == "1" || Model.Settings.ShowClientOrganizationSummary == "1")
+{
+
+    if (Model.Settings.ShowClientSummary == "1")
+    {
+        <div class="table_title">Сводная информация по клиентам:</div>
+        <table class="report_table">
+            <tr>
+                <th style="min-width:150px">Клиент</th>
+                <th style="min-width:40px">Нач.<br />сальдо</th>
+                <th style="min-width:40px">Дебет</th>
+                <th style="min-width:40px">Кредит</th>
+                <th style="min-width:40px">Кон.<br />сальдо</th>
+            </tr>
+            @foreach (var item in Model.ClientSummary)
+            {
+                <tr class="@GetRowClass()">
+                    <td>@item.Name</td>
+                    <td align="right" style="white-space: nowrap">@item.StartingBalance</td>
+                    <td align="right" style="white-space: nowrap">@item.Debit</td>
+                    <td align="right" style="white-space: nowrap">@item.Credit</td>
+                    <td align="right" style="white-space: nowrap">@item.EndingBalance</td>
+                </tr>
+            }
+            @if (Model.ClientSummary.Count == 0)
+            {
+                <tr class="green_row">
+                    <td colspan="5" align="center">нет данных</td>
+                </tr>
+            }
+        </table>
+    }
+    <br />
+    <br />
+
+    if (Model.Settings.ShowClientOrganizationSummary == "1")
+    {
+        
+        <div>
+            <div class="table_title">Сводная информация по организациям клиентов:</div>
+            <table class="report_table">
+                <tr>
+                    <th style="min-width:150px">Организация клиента</th>
+                    <th style="min-width:40px">Нач.<br />сальдо</th>
+                    <th style="min-width:40px">Дебет</th>
+                    <th style="min-width:40px">Кредит</th>
+                    <th style="min-width:40px">Кон.<br />сальдо</th>
+                </tr>
+                @foreach (var item in Model.ClientOrganizationSummary)
+                {
+                    <tr class="@GetRowClass()">
+                        <td>@item.Name</td>
+                        <td align="right" style="white-space: nowrap">@item.StartingBalance</td>
+                        <td align="right" style="white-space: nowrap">@item.Debit</td>
+                        <td align="right" style="white-space: nowrap">@item.Credit</td>
+                        <td align="right" style="white-space: nowrap">@item.EndingBalance</td>
+                    </tr>
+                }
+                @if (Model.ClientOrganizationSummary.Count == 0)
+                {
+                    <tr class="green_row">
+                        <td colspan="5" align="center">нет данных</td>
+                    </tr>
+                }
+            </table>
+        </div>
+    }
+    <br />
+    <br />
+}
+    
+@if (Model.Settings.ShowClientContractSummary == "1")
+{
+    <div class="table_title">Список открытых договоров в период:</div>
+    <table class="report_table">
+        <tr>
+            <th style="min-width:210px">Клиент</th>
+            <th style="min-width:180px">Договор</th>
+            <th style="min-width:230px">Одна сторона</th>
+            <th style="min-width:230px">Вторая сторона</th>
+        </tr>
+        @for (int i = 0; i < Model.ClientContractSummary.Count; i++)
+        {
+            var @item = Model.ClientContractSummary[i];
+            
+            <tr class="@GetRowClass()">
+                <td>@item.ClientName</td>
+                <td style="white-space: nowrap">@item.ClientContractFullName</td>
+                <td style="white-space: nowrap">@item.AccountOrganizationShortName</td>
+                <td style="white-space: nowrap">@item.ClientOrganizationShortName</td>
+            </tr>            
+        }        
+        @if (Model.ClientContractSummary.Count == 0)
+        {
+            <tr class="green_row">
+                <td colspan="4" align="center">нет данных</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+}
+    
+@if (Model.Settings.ShowBalanceDocumentSummary == "1")
+{
+    <div class="table_title">Общая информация по взаиморасчетам:</div>
+    <table class="report_table">
+        <tr>
+            <th>№<br />п/п</th>
+            <th style="min-width:250px">Наименование операции</th>
+            <th style="min-width:70px">Дебет</th>
+            <th style="min-width:70px">Кредит</th>
+        </tr>
+        @foreach (var item in Model.BalanceDocumentSummary)
+        {
+            var style = item.IsHeader || item.IsGroupHeader ? "font-weight: bold;" : "";
+            if (item.IsHeader) { style += "text-align: right;"; }
+            var nowrapStyle = style + "white-space: nowrap;";
+            var colspan = item.IsGroupHeader ? "4" : "1";
+            var classString = item.IsGroupHeader ? "blue_row" : item.IsHeader ? "orange_row" : GetRowClass();
+            <tr class="@classString">
+                @if (!item.IsGroupHeader)
+                {
+                    <td>@item.Number</td>
+                }
+                <td style="@nowrapStyle" colspan="@colspan">
+                    @for (int i = 1; i < item.GroupHeaderLevel; i++)
+                    {
+                        <span>&nbsp;&nbsp;</span>
+                    }
+                    @item.Name
+                </td>
+                @if (!item.IsGroupHeader)
+                {
+                    <td align="right" style="@nowrapStyle">@item.Debit</td>
+                    <td align="right" style="@nowrapStyle">@item.Credit</td>
+                }
+            </tr>
+        }
+        @if (Model.BalanceDocumentSummary.Count == 0)
+        {
+            <tr class="green_row">
+                <td colspan="4" align="center">нет данных</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+}
+    
+@if (Model.Settings.ShowBalanceDocumentFullInfo == "1")
+{
+    <div class="table_title">Развернутая информация по документам учета:</div>
+    <table class="report_table">
+        <tr>
+            <th>№<br />п/п</th>
+            <th style="min-width:250px">Наименование операции</th>
+            <th style="min-width:70px">Дебет</th>
+            <th style="min-width:70px">Кредит</th>
+        </tr>
+        @foreach (var item in Model.BalanceDocumentFullInfo)
+        {
+            var style = item.IsHeader || item.IsGroupHeader ? "font-weight: bold;" : "";
+            if (item.IsHeader) { style += "text-align: right;"; }
+            var nowrapStyle = style + "white-space: nowrap;";
+            var colspan = item.IsGroupHeader ? "4" : "1";
+            var classString = item.IsGroupHeader ? "blue_row" : item.IsHeader ? "orange_row" : GetRowClass();
+            <tr class="@classString">
+                @if (!item.IsGroupHeader)
+                {
+                    <td>@item.Number</td>
+                }
+                <td style="@style" colspan="@colspan">
+                    @for (int i = 1; i < item.GroupHeaderLevel; i++)
+                    {
+                        <span>&nbsp;&nbsp;</span>
+                    }
+                    @item.Name
+                </td>
+                @if (!item.IsGroupHeader)
+                {
+                    <td align="right" style="@nowrapStyle">@item.Debit</td>
+                    <td align="right" style="@nowrapStyle">@item.Credit</td>
+                }
+            </tr>
+        }
+        @if (Model.BalanceDocumentFullInfo.Count == 0)
+        {
+            <tr class="green_row">
+                <td colspan="4" align="center">нет данных</td>
+            </tr>
+        }
+    </table>
+    <br />
+    <br />
+}
+
+</body>
+</html>

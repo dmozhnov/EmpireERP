@@ -1,0 +1,174 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0002.Report0002_SummaryTableViewModel
+@using ERP.Utils;
+
+@functions
+{
+    bool flag = true;
+
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "";
+    }
+}
+
+@{int count = 0; int columns = 2;
+  
+  if (Model.InPurchaseCost) { count++; }
+  if (Model.InAccountingPrice) { count++; }
+  if (Model.InSalePrice) { count++; }
+  if (Model.UseReturns) { columns += count * 3; } else { columns += count; }
+  if (Model.CalculateMarkup) { columns += 2; }
+}
+
+<table class="report_table">
+    <tr>
+        <th rowspan ="2">@Model.Name</th>
+        @if (Model.ShowSoldArticleCount)
+        { 
+            <th rowspan ="2">Количество</th>
+        }
+        
+        @if (Model.InPurchaseCost || Model.InAccountingPrice || Model.InSalePrice)
+        {
+            if (Model.UseReturns)
+            {
+                <th colspan ='@count'>Сумма реализаций</th>
+                <th colspan ='@count'>Сумма возвратов</th>
+                <th colspan ='@count'>Cумма реализаций с учетом возвратов</th>
+            }
+            else
+            { 
+                <th colspan ='@count'>Cумма реализаций</th>
+            }
+        }
+        @if (Model.CalculateMarkup)
+        { 
+            <th colspan ="2">Наценка</th>
+        }
+    </tr>
+    <tr>
+        @if (Model.UseReturns)
+        {
+            if (Model.InPurchaseCost)
+            { <th>ЗЦ</th> }
+            if (Model.InAccountingPrice)
+            { <th>УЦ</th> }
+            if (Model.InSalePrice)
+            { <th>ОЦ</th> }
+            if (Model.InPurchaseCost)
+            { <th>ЗЦ</th> }
+            if (Model.InAccountingPrice)
+            { <th>УЦ</th> }
+            if (Model.InSalePrice)
+            { <th>ОЦ</th> }
+        }
+        
+        @if (Model.InPurchaseCost)
+        { <th>ЗЦ</th> }
+        @if (Model.InAccountingPrice)
+        { <th>УЦ </th> }
+        @if (Model.InSalePrice)
+        { <th>ОЦ </th> }
+        
+        @if (Model.CalculateMarkup)
+        {  
+            <th>%</th> 
+            <th>Сумма</th> 
+        }
+    </tr>
+
+    @if (Model.Items != null && Model.Items.Any())
+    {
+        foreach (var item in Model.Items)
+        { 
+            <tr class="@GetRowClass()">
+                <td>@item.Name</td>
+
+                @if (Model.ShowSoldArticleCount)
+                { 
+                    <td align="right" style="white-space: nowrap">@item.SoldArticleCount</td>
+                }
+
+                @if (Model.UseReturns)
+                {
+                    if (Model.InPurchaseCost)
+                    { <td align="right" style="white-space: nowrap">@item.ExpenditurePurchasePriceSum</td> }
+                    if (Model.InAccountingPrice)
+                    { <td align="right" style="white-space: nowrap">@item.ExpenditureAccountingPriceSum</td> }
+                    if (Model.InSalePrice)
+                    { <td align="right" style="white-space: nowrap">@item.ExpenditureSalePriceSum</td> }
+                    if (Model.InPurchaseCost)
+                    { <td align="right" style="white-space: nowrap">@item.ReturnsPurchaseCostSum</td> }
+                    if (Model.InAccountingPrice)
+                    { <td align="right" style="white-space: nowrap">@item.ReturnsAccountingPriceSum</td> }
+                    if (Model.InSalePrice)
+                    { <td align="right" style="white-space: nowrap">@item.ReturnsSalePriceSum</td> }
+                }
+                @if (Model.InPurchaseCost)
+                { <td align="right" style="white-space: nowrap">@item.ResultPurchasePriceSum</td> }
+                @if (Model.InAccountingPrice)
+                { <td align="right" style="white-space: nowrap">@item.ResultAccountingPriceSum</td> }
+                @if (Model.InSalePrice)
+                { <td align="right" style="white-space: nowrap">@item.ResultSalePriceSum</td> }
+                @if (Model.CalculateMarkup)
+                {
+                    <td align="right" style="white-space: nowrap">@item.MarkupPercentage</td>
+                    <td align="right" style="white-space: nowrap">@item.MarkupSum</td>
+                }
+            </tr>
+        }
+    }
+    else
+    {
+        <tr class="green_row">
+            <td colspan="@columns" style="text-align:center;">Нет данных</td>
+        </tr> 
+    }
+
+    @if (Model.InPurchaseCost || Model.InAccountingPrice || Model.InSalePrice || Model.ShowSoldArticleCount )
+    {
+        <tr>
+            <th align="right" style="white-space: nowrap"> Итого:</th>
+
+             @if (Model.ShowSoldArticleCount)
+             { 
+                <th align="right" style="white-space: nowrap">@Model.SoldArticleCount</th>
+             }
+
+            @if (Model.UseReturns)
+            {
+                if (Model.InPurchaseCost)
+                { <th align="right" style="white-space: nowrap">@Model.ExpenditureTotalSumInPurchasePrice</th> }
+                if (Model.InAccountingPrice)
+                { <th align="right" style="white-space: nowrap">@Model.ExpenditureTotalSumInAccountPrice</th> }
+                if (Model.InSalePrice)
+                { <th align="right" style="white-space: nowrap">@Model.ExpenditureTotalSumInSalePrice</th> }
+                if (Model.InPurchaseCost)
+                { <th align="right" style="white-space: nowrap">@Model.ReturnsTotalSumInPurchasePrice</th> }
+                if (Model.InAccountingPrice)
+                { <th align="right" style="white-space: nowrap">@Model.ReturnsTotalSumInAccountPrice</th> }
+                if (Model.InSalePrice)
+                { <th align="right" style="white-space: nowrap">@Model.ReturnsTotalSumInSalePrice</th> }
+            }
+            
+            @if (Model.InPurchaseCost)
+            { <th align="right" style="white-space: nowrap">@Model.ResultTotalSumInPurchasePrice</th> }
+            @if (Model.InAccountingPrice)
+            { <th align="right" style="white-space: nowrap">@Model.ResultTotalSumInAccountPrice</th> }
+            @if (Model.InSalePrice)
+            { <th align="right" style="white-space: nowrap">@Model.ResultTotalSumInSalePrice</th> }
+
+            @if (Model.CalculateMarkup)
+            {
+                <th align="right" style="white-space: nowrap"></th>
+                <th align="right" style="white-space: nowrap">@Model.MarkupTotal</th>
+            }
+        </tr>
+        }
+</table>

@@ -1,0 +1,86 @@
+﻿@using ERP.UI.Web.HtmlHelpers
+@using Bizpulse.Admin.UI.Web.Infrastructure;
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>    
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+    <link href="../../Content/Style/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Style/Grid.css" rel="stylesheet" type="text/css" />
+    
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    
+    <script src="../../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../../Scripts/Grid.js" type="text/javascript"></script>
+</head>
+
+<body>
+    <div class="page">
+        <div id="header">
+            <div id="status_bar">
+                <div id="status_bar_links">
+                    @*<a href="#" onclick="return false;">Настройки</a>*@
+                </div>
+                <div id="login_info">
+                    Администратор:
+                    <a id="user_name" href="#">
+                        @if(UserSession.CurrentAdministratorInfo != null) { 
+                            @UserSession.CurrentAdministratorInfo.DisplayName
+                        }
+                    </a>
+                    @Html.ActionLink("Выйти", "Logout", "Administrator")
+                </div>
+                <div class="clear"></div>
+            </div>
+            <a href="/Administrator/Home"><img id="logo" src="/Content/Img/Logo_truncated.png" alt="" /></a>
+            
+            @{ string path = Context.Request.Path; }
+
+            <div id="menu_container">
+                <div id="menu">
+
+                    <a href="/Administrator/Home" class="selected" >Главное меню</a>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="main">
+            <div id="main_content_box">
+                
+                <div id="sub_menu_wrapper">
+                    <div id="sub_menu_content">
+
+                        <div class="submenu" style="display: block">
+                            <a href="/Client/List" @if(path.Contains("/Client")) { <text>class="selected"</text>} >Клиенты</a>
+                        </div>
+                    </div>
+                    <div id="sub_menu_content_line"></div>
+                </div>
+
+                <div id="height_div"></div>
+                <div id="main_content_wrapper">
+                    <input id="currentUrl" type="hidden" value="" />
+
+                    @RenderBody()
+
+                </div>
+                <div class="clear"></div>
+
+            </div>
+            
+            <div id="footer_line">&nbsp;</div>
+            <div id="footer">
+                &copy 2010-@DateTime.Now.Year.ToString(). Empiresoft. Все права защищены.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>

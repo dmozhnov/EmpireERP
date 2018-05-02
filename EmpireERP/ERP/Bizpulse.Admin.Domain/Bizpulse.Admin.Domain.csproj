@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{2E6698E8-4DB3-4CBE-A935-8DB833720A53}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bizpulse.Admin.Domain</RootNamespace>
+    <AssemblyName>Bizpulse.Admin.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractServices\IAdministratorService.cs" />
+    <Compile Include="AbstractServices\IClientService.cs" />
+    <Compile Include="AbstractServices\IClientUserService.cs" />
+    <Compile Include="Entities\Administrator.cs" />
+    <Compile Include="Entities\City.cs" />
+    <Compile Include="Entities\Client.cs" />
+    <Compile Include="Entities\ClientType.cs" />
+    <Compile Include="Entities\PhysicalPerson.cs" />
+    <Compile Include="Entities\JuridicalPerson.cs" />
+    <Compile Include="Entities\ClientUser.cs" />
+    <Compile Include="Entities\Rate.cs" />
+    <Compile Include="Entities\Region.cs" />
+    <Compile Include="Entities\Service.cs" />
+    <Compile Include="Entities\ServiceSet.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ICityRepository.cs" />
+    <Compile Include="Repositories\IClientUserRepository.cs" />
+    <Compile Include="Repositories\IClientRepository.cs" />
+    <Compile Include="Repositories\IAdministratorRepository.cs" />
+    <Compile Include="Repositories\IRateRepository.cs" />
+    <Compile Include="Repositories\IRegionRepository.cs" />
+    <Compile Include="Services\AdministratorService.cs" />
+    <Compile Include="Services\ClientService.cs" />
+    <Compile Include="Services\ClientUserService.cs" />
+    <Compile Include="ValueObjects\Address.cs" />
+    <Compile Include="ValueObjects\ServiceSetConfiguration.cs" />
+  </ItemGroup>
+  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

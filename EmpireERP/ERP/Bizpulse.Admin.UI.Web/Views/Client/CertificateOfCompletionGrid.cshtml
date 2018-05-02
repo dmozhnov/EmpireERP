@@ -1,0 +1,6 @@
+﻿@using ERP.UI.Web.HtmlHelpers
+
+@model ERP.UI.ViewModels.Grid.GridData
+
+@Html.GridHeader("Акты выполненных работ", "gridCertificateOfCompletions")
+@Html.GridContent(Model, "/Client/ShowCertificateOfCompletionGrid/")

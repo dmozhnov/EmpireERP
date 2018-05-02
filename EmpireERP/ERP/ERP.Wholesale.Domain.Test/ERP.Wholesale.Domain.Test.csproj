@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A0DA4E30-FFD9-454C-85CF-3FF36EA31D59}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.Domain.Test</RootNamespace>
+    <AssemblyName>ERP.Wholesale.Domain.Test</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Moq">
+      <HintPath>..\lib\Moq\NET40\Moq.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data" />
+  </ItemGroup>
+  <ItemGroup>
+    <CodeAnalysisDependentAssemblyPaths Condition=" '$(VS100COMNTOOLS)' != '' " Include="$(VS100COMNTOOLS)..\IDE\PrivateAssemblies">
+      <Visible>False</Visible>
+    </CodeAnalysisDependentAssemblyPaths>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountingPriceListTest\AccountingPriceCalcRuleTest\AccountingPriceCalcByCurrentAccountingPriceTest\AccountingPriceCalcByCurrentAccountingPriceTest.cs" />
+    <Compile Include="AccountingPriceListTest\AccountingPriceCalcRuleTest\AccountingPriceCalcByCurrentAccountingPriceTest\AccountingPriceDeterminationRuleTest.cs" />
+    <Compile Include="AccountingPriceListTest\AccountingPriceCalcRuleTest\AccountingPriceCalcByPurchaseCostTest\AccountingPriceCalcByPurchaseCostTest.cs" />
+    <Compile Include="AccountingPriceListTest\AccountingPriceCalcRuleTest\AccountingPriceCalcByPurchaseCostTest\MarkupPercentDeterminationRuleTest.cs" />
+    <Compile Include="AccountingPriceListTest\AccountingPriceCalcRuleTest\AccountingPriceCalcRuleTest.cs" />
+    <Compile Include="AccountingPriceListTest\AccountingPriceListTest.cs" />
+    <Compile Include="AccountOrganizationDocumentNumbersTest.cs" />
+    <Compile Include="AccountOrganizationTest.cs" />
+    <Compile Include="ArticleAccountingPriceTest.cs" />
+    <Compile Include="ArticleGroupTest.cs" />
+    <Compile Include="ClientTest.cs" />
+    <Compile Include="ContractTest.cs" />
+    <Compile Include="DealQuotaTest.cs" />
+    <Compile Include="DealTest.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Deal\DealPaymentDocument\DealPaymentDocumentDistributionTest.cs" />
+    <Compile Include="Deal\DealPaymentDocument\DealPaymentDocumentTest.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchTest.cs" />
+    <Compile Include="Indicator\SaleIndicatorTest.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderTest.cs" />
+    <Compile Include="Services\AccountingPriceCalcServiceTest.cs" />
+    <Compile Include="Services\ArticleAvailabilityIndicatorServiceTest.cs" />
+    <Compile Include="Services\ArticleAvailabilityServiceTest.cs" />
+    <Compile Include="Services\ArticleMovementServiceTest.cs" />
+    <Compile Include="Services\ArticleRevaluationServiceTest.cs" />
+    <Compile Include="Services\BaseArticleRevaluationIndicatorServiceTest.cs" />
+    <Compile Include="Services\BlockingServiceTest.cs" />
+    <Compile Include="Services\DealPaymentDocumentDistributionServiceTest.cs" />
+    <Compile Include="StorageTest.cs" />
+    <Compile Include="Services\TaskExecutionItemServiceTest.cs" />
+    <Compile Include="Task\TaskExecutionItemTest.cs" />
+    <Compile Include="Services\TaskServiceTest.cs" />
+    <Compile Include="Task\TaskTest.cs" />
+    <Compile Include="Waybill\ChangeOwnerWaybillTest.cs" />
+    <Compile Include="Waybill\ExpenditureWaybillTest.cs" />
+    <Compile Include="Waybill\MovementWaybillTest.cs" />
+    <Compile Include="Waybill\ReceiptWaybillTest.cs" />
+    <Compile Include="Waybill\ReturnFromClientWaybill\ReturnFromClientWaybillTest.cs" />
+    <Compile Include="Waybill\WriteoffWaybillTest.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.IoC\ERP.Infrastructure.IoC.csproj">
+      <Project>{026EDA6D-FB5B-4E0E-A36B-93A252577997}</Project>
+      <Name>ERP.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Test.Infrastructure\ERP.Test.Infrastructure.csproj">
+      <Project>{9487F06D-A521-4D6F-BA4F-5D99DA593D00}</Project>
+      <Name>ERP.Test.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.AbstractApplicationServices\ERP.Wholesale.AbstractApplicationServices.csproj">
+      <Project>{F368CDA4-B31E-4F19-B38F-C1CE95530A67}</Project>
+      <Name>ERP.Wholesale.AbstractApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.ApplicationServices\ERP.Wholesale.ApplicationServices.csproj">
+      <Project>{E5A612EA-1814-4EA1-BD7F-5D825BE6084C}</Project>
+      <Name>ERP.Wholesale.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain.NHibernate\ERP.Wholesale.Domain.NHibernate.csproj">
+      <Project>{D3BBFCC8-531C-44CA-B14D-367AB6A0B4AC}</Project>
+      <Name>ERP.Wholesale.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\ERP.Wholesale.Domain.accessor" />
+  </ItemGroup>
+  <ItemGroup>
+    <Shadow Include="Test References\ERP.Infrastructure.accessor" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

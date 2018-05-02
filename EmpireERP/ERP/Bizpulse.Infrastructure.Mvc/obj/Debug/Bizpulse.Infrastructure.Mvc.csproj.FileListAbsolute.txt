@@ -1,0 +1,7 @@
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\bin\Debug\Bizpulse.Infrastructure.Mvc.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\bin\Debug\Bizpulse.Infrastructure.Mvc.pdb
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\bin\Debug\LinFu.Core.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\bin\Debug\LinFu.Core.xml
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\obj\Debug\Bizpulse.Infrastructure.Mvc.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.Mvc\obj\Debug\Bizpulse.Infrastructure.Mvc.pdb

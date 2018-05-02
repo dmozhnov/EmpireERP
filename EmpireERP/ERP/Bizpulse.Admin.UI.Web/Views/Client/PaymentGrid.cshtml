@@ -1,0 +1,6 @@
+﻿@using ERP.UI.Web.HtmlHelpers
+
+@model ERP.UI.ViewModels.Grid.GridData
+
+@Html.GridHeader("Принятые оплаты", "gridPayments")
+@Html.GridContent(Model, "/Client/ShowPaymentGrid/")

@@ -1,0 +1,61 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0008.Report0008ViewModel
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Реестр накладных</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body>
+    <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">
+                    <b style="text-decoration: underline">@Model.ReportName</b><br />
+                    за период с @Model.StartDate по @Model.EndDate</td>
+                <td class="report_info">Форма: Report0008<br />
+                    Автор: @Model.CreatedBy
+                    <br />
+                    Составлен: @Model.CreationDate
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="report_info" style="padding-top: 15px;">
+                    В диапазон попадает: <b>@Model.DateTypeName</b>.
+                    Тип накладных: <b>@Model.WaybillTypeName</b>.
+                    Статусы накладных: <b>@Model.ShownStates</b>  
+                    @if (Model.PriorToDateString != null)
+                    {
+                        <text> до даты </text>  <b>@Model.PriorToDateString</b>
+                    }. 
+                    Отсортировано по: <b>@Model.SortDateTypeName</b>
+                </td>
+            </tr>
+        </table>
+        <br />
+        @switch (Model.WaybillType)
+        {
+            case 1:
+                Html.RenderPartial("~/Views/Report/Report0008/Report0008_ReceiptWaybill.cshtml", Model.ReceiptWaybillModel);
+                break;
+            case 2:
+                Html.RenderPartial("~/Views/Report/Report0008/Report0008_MovementWaybill.cshtml", Model.MovementWaybillModel);
+                break;
+            case 3:
+                Html.RenderPartial("~/Views/Report/Report0008/Report0008_WriteoffWaybill.cshtml", Model.WriteoffWaybillModel);                
+                break;
+            case 4:
+                Html.RenderPartial("~/Views/Report/Report0008/Report0008_ExpenditureWaybill.cshtml", Model.ExpenditureWaybillModel);
+                break;
+            case 5:
+                Html.RenderPartial("~/Views/Report/Report0008/Report0008_ChangeOwnerWaybill.cshtml", Model.ChangeOwnerWaybillModel);
+                break;
+            case 6:
+                Html.RenderPartial("~/Views/Report/Report0008/Report0008_ReturnFromClientWaybill.cshtml", Model.ReturnFromClientWaybillModel);
+                break;
+        }        
+    </div>
+</body>
+</html>

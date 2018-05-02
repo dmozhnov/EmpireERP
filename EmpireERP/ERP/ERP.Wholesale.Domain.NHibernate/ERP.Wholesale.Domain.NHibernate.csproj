@@ -1,0 +1,339 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D3BBFCC8-531C-44CA-B14D-367AB6A0B4AC}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.Domain.NHibernate</RootNamespace>
+    <AssemblyName>ERP.Wholesale.Domain.NHibernate</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Castle.Core, Version=1.1.0.0, Culture=neutral, PublicKeyToken=407dd0808d44fbdc, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Castle.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\lib\FluentNHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="Iesi.Collections, Version=1.0.1.0, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.Core">
+      <HintPath>..\lib\LinFu\LinFu.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate">
+      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Mappings\AccountingPriceCalcRule\AccountingPriceCalcByPurchaseCost\AccountingPriceCalcByPurchaseCostMap.cs" />
+    <Compile Include="Mappings\AccountingPriceCalcRule\AccountingPriceCalcByPurchaseCost\MarkupPercentDeterminationRuleMap.cs" />
+    <Compile Include="Mappings\AccountingPriceCalcRule\AccountingPriceCalcRuleByCurrentAccountingPrice\AccountingPriceCalcRuleByCurrentAccountingPriceMap.cs" />
+    <Compile Include="Mappings\AccountingPriceCalcRule\AccountingPriceCalcRuleByCurrentAccountingPrice\AccountingPriceDeterminationRuleMap.cs" />
+    <Compile Include="Mappings\AccountingPriceCalcRule\AccountingPriceCalcRuleMap.cs" />
+    <Compile Include="Mappings\AccountingPriceListMap.cs" />
+    <Compile Include="Mappings\AccountingPriceListWaybillTakingMap.cs" />
+    <Compile Include="Mappings\AccountOrganizationDocumentNumbersMap.cs" />
+    <Compile Include="Mappings\AccountOrganizationMap.cs" />
+    <Compile Include="Mappings\ArticleAccountingPriceMap.cs" />
+    <Compile Include="Mappings\ArticleCertificateMap.cs" />
+    <Compile Include="Mappings\ArticleGroupMap.cs" />
+    <Compile Include="Mappings\ArticleMap.cs" />
+    <Compile Include="Mappings\Bank\BankMap.cs" />
+    <Compile Include="Mappings\Bank\ForeignBankMap.cs" />
+    <Compile Include="Mappings\Bank\RussianBankMap.cs" />
+    <Compile Include="Mappings\BaseBankAccount\BankAccountMap.cs" />
+    <Compile Include="Mappings\BaseBankAccount\BaseBankAccountMap.cs" />
+    <Compile Include="Mappings\BaseBankAccount\ForeignBankAccountMap.cs" />
+    <Compile Include="Mappings\ClientMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\ClientRegionMap.cs" />
+    <Compile Include="Mappings\ClientServiceProgramMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\ClientTypeMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\ContractMap.cs" />
+    <Compile Include="Mappings\ContractorMap.cs" />
+    <Compile Include="Mappings\ContractorOrganizationMap.cs" />
+    <Compile Include="Mappings\ClientContractMap.cs" />
+    <Compile Include="Mappings\ClientOrganizationMap.cs" />
+    <Compile Include="Mappings\CurrencyRateMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealCreditInitialBalanceCorrectionMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealDebitInitialBalanceCorrectionMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealInitialBalanceCorrectionMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentDocumentDistributionMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentDocumentDistributionToDealPaymentDocumentMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentDocumentDistributionToReturnFromClientWaybillMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentDocumentDistributionToSaleWaybillMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentDocumentMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentFromClientMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentMap.cs" />
+    <Compile Include="Mappings\Deal\DealPaymentDocument\DealPaymentToClientMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromIncomingAcceptedArticleAvailabilityIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromExactArticleAvailabilityIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleAvailabilityIndicators\IncomingAcceptedArticleAvailabilityIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleAvailabilityIndicators\ExactArticleAvailabilityIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleMovementFinancialIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleMovementOperationCountIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleRevaluationIndicators\AcceptedArticleRevaluationIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleRevaluationIndicators\ExactArticleRevaluationIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\PurchaseIndicators\AcceptedPurchaseIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\PurchaseIndicators\ApprovedPurchaseIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ReturnFromClientIndicators\AcceptedReturnFromClientIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleShippingDateIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleAcceptanceDateIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\ReturnFromClientIndicators\ReceiptedReturnFromClientIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\SaleIndicators\AcceptedSaleIndicatorMap.cs" />
+    <Compile Include="Mappings\Indicators\SaleIndicators\ShippedSaleIndicatorMap.cs" />
+    <Compile Include="Mappings\LogItemMap.cs" />
+    <Compile Include="Mappings\ProducerContractMap.cs" />
+    <Compile Include="Mappings\ProducerOrganizationMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\DefaultProductionOrderBatchStageMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderBatchLifeCycleTemplateMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderBatchLifeCycleTemplateStageMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderBatchMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderBatchRowMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderBatchStageMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderCustomsDeclarationMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderCustomsDeclarationPaymentMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderExtraExpensesSheetMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderExtraExpensesSheetPaymentMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderMaterialDocumentMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderMaterialsPackageMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderPaymentMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderPlannedPaymentMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderTransportSheetMap.cs" />
+    <Compile Include="Mappings\ProductionOrder\ProductionOrderTransportSheetPaymentMap.cs" />
+    <Compile Include="Mappings\SettingMap.cs" />
+    <Compile Include="Mappings\Task\BaseTaskHistoryItemMap.cs" />
+    <Compile Include="Mappings\Task\TaskExecutionHistoryItemMap.cs" />
+    <Compile Include="Mappings\Task\TaskExecutionItemMap.cs" />
+    <Compile Include="Mappings\Task\TaskExecutionStateMap.cs" />
+    <Compile Include="Mappings\Task\TaskHistoryItemMap.cs" />
+    <Compile Include="Mappings\Task\TaskMap.cs" />
+    <Compile Include="Mappings\Task\TaskPriorityMap.cs" />
+    <Compile Include="Mappings\Task\TaskTypeMap.cs" />
+    <Compile Include="Mappings\Waybill\MovementWaybill\MovementWaybillMap.cs" />
+    <Compile Include="Mappings\Waybill\MovementWaybill\MovementWaybillRowMap.cs" />
+    <Compile Include="Mappings\Waybill\ReceiptWaybill\ReceiptWaybillMap.cs" />
+    <Compile Include="Mappings\Waybill\ReceiptWaybill\ReceiptWaybillRowMap.cs" />
+    <Compile Include="Mappings\Waybill\ReturnFromClientWaybill\ReturnFromClientWaybillMap.cs" />
+    <Compile Include="Mappings\Waybill\ReturnFromClientWaybill\ReturnFromClientReasonMap.cs" />
+    <Compile Include="Mappings\CountryMap.cs" />
+    <Compile Include="Mappings\CurrencyMap.cs" />
+    <Compile Include="Mappings\DealMap.cs" />
+    <Compile Include="Mappings\DealQuotaMap.cs" />
+    <Compile Include="Mappings\DealStageHistoryMap.cs" />
+    <Compile Include="Mappings\EconomicAgentMap.cs" />
+    <Compile Include="Mappings\Indicators\ArticleAccountingPriceIndicatorMap.cs" />
+    <Compile Include="Mappings\LastDigitCalcRule\LastDigitCalcRuleMap.cs" />
+    <Compile Include="Mappings\LegalFormMap.cs" />
+    <Compile Include="Mappings\ManufacturerMap.cs" />
+    <Compile Include="Mappings\MeasureUnitMap.cs" />
+    <Compile Include="Mappings\JuridicalPersonMap.cs" />
+    <Compile Include="Mappings\OrganizationMap.cs" />
+    <Compile Include="Mappings\PassportInfoMap.cs" />
+    <Compile Include="Mappings\ProducerMap.cs" />
+    <Compile Include="Mappings\Security\EmployeeMap.cs" />
+    <Compile Include="Mappings\Security\EmployeePostMap.cs" />
+    <Compile Include="Mappings\Security\TeamMap.cs" />
+    <Compile Include="Mappings\Security\UserMap.cs" />
+    <Compile Include="Mappings\Security\RoleMap.cs" />
+    <Compile Include="Mappings\Security\PermissionDistributionMap.cs" />
+    <Compile Include="Mappings\PhysicalPersonMap.cs" />
+    <Compile Include="Mappings\ProviderContractMap.cs" />
+    <Compile Include="Mappings\ProviderMap.cs" />
+    <Compile Include="Mappings\ProviderOrganizationMap.cs" />
+    <Compile Include="Mappings\ProviderTypeMap.cs" />
+    <Compile Include="Mappings\StorageMap.cs" />
+    <Compile Include="Mappings\StorageSectionMap.cs" />
+    <Compile Include="Mappings\TrademarkMap.cs" />
+    <Compile Include="Mappings\ValueAddedTaxMap.cs" />
+    <Compile Include="Mappings\WaybillRowArticleMovementMap.cs" />
+    <Compile Include="Mappings\Waybill\ChangeOwnerWaybill\ChangeOwnerWaybillMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\Waybill\ChangeOwnerWaybill\ChangeOwnerWaybillRowMap.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Mappings\Waybill\ReturnFromClientWaybill\ReturnFromClientWaybillRowMap.cs" />
+    <Compile Include="Mappings\Waybill\SaleWaybill\ExpenditureWaybill\ExpenditureWaybillMap.cs" />
+    <Compile Include="Mappings\Waybill\SaleWaybill\ExpenditureWaybill\ExpenditureWaybillRowMap.cs" />
+    <Compile Include="Mappings\Waybill\SaleWaybill\SaleWaybillMap.cs" />
+    <Compile Include="Mappings\Waybill\SaleWaybill\SaleWaybillRowMap.cs" />
+    <Compile Include="Mappings\Waybill\WriteoffWaybill\WriteoffReasonMap.cs" />
+    <Compile Include="Mappings\Waybill\WriteoffWaybill\WriteoffWaybillMap.cs" />
+    <Compile Include="Mappings\Waybill\WriteoffWaybill\WriteoffWaybillRowMap.cs" />
+    <Compile Include="Repositories\AccountingPriceListWaybillTakingRepository.cs" />
+    <Compile Include="Repositories\ArticleCertificateRepository.cs" />
+    <Compile Include="Repositories\BaseNHRepository.cs" />
+    <Compile Include="Repositories\ChangeOwnerWaybillRepository.cs" />
+    <Compile Include="Repositories\BaseDictionaryRepository.cs" />
+    <Compile Include="Repositories\ContractorRepository.cs" />
+    <Compile Include="Repositories\ClientContractRepository.cs" />
+    <Compile Include="Repositories\ContractRepository.cs" />
+    <Compile Include="Repositories\CurrencyRateRepository.cs" />
+    <Compile Include="Repositories\EconomicAgentRepository.cs" />
+    <Compile Include="Repositories\LogItemRepository.cs" />
+    <Compile Include="Repositories\Report\Report0002Repository.cs" />
+    <Compile Include="Repositories\SettingRepository.cs" />
+    <Compile Include="Repositories\DealQuotaRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealInitialBalanceCorrectionRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealPaymentRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealCreditInitialBalanceCorrectionRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealDebitInitialBalanceCorrectionRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealPaymentDocumentRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealPaymentFromClientRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\DealPaymentToClientRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromIncomingAcceptedArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromExactArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\IncomingAcceptedArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\ExactArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleRevaluationIndicators\AcceptedArticleRevaluationIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleRevaluationIndicators\BaseArticleRevaluationIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleRevaluationIndicators\ExactArticleRevaluationIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\BaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\PurchaseIndicators\AcceptedPurchaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\PurchaseIndicators\ApprovedPurchaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\PurchaseIndicators\BasePurchaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\AcceptedReturnFromClientIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleShippingDateIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleAcceptanceDateIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\ReceiptedReturnFromClientIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\BaseReturnFromClientIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\SaleIndicators\AcceptedSaleIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\SaleIndicators\BaseSaleIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\SaleIndicators\ShippedSaleIndicatorRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderExtraExpensesSheetRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderCustomsDeclarationRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderPlannedPaymentRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderTransportSheetRepository.cs" />
+    <Compile Include="Repositories\ForeignBankRepository.cs" />
+    <Compile Include="Repositories\DefaultProductionOrderStageMapRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleMovementFactualFinancialIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleMovementOperationCountIndicatorRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderMaterialsPackageRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderBatchLifeCycleTemplateRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderBatchRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderPaymentRepository.cs" />
+    <Compile Include="Repositories\ProductionOrderRepository.cs" />
+    <Compile Include="Repositories\ReturnFromClientWaybillRepository.cs" />
+    <Compile Include="Repositories\CurrencyRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAccountingPriceIndicatorRepository.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\AccountingPriceListRepository.cs" />
+    <Compile Include="Repositories\AccountOrganizationRepository.cs" />
+    <Compile Include="Repositories\ArticleGroupRepository.cs" />
+    <Compile Include="Repositories\ArticleRepository.cs" />
+    <Compile Include="Repositories\ClientRepository.cs" />
+    <Compile Include="Repositories\ClientOrganizationRepository.cs" />
+    <Compile Include="Repositories\ContractorOrganizationRepository.cs" />
+    <Compile Include="Repositories\ExpenditureWaybillRepository.cs" />
+    <Compile Include="Repositories\DealRepository.cs" />
+    <Compile Include="Repositories\ProducerRepository.cs" />
+    <Compile Include="Repositories\ProviderContractRepository.cs" />
+    <Compile Include="Repositories\MovementWaybillRepository.cs" />
+    <Compile Include="Repositories\OrganizationRepository.cs" />
+    <Compile Include="Repositories\ProviderOrganizationRepository.cs" />
+    <Compile Include="Repositories\ProviderRepository.cs" />
+    <Compile Include="Repositories\ReceiptWaybillRepository.cs" />
+    <Compile Include="Repositories\MeasureUnitRepository.cs" />
+    <Compile Include="Repositories\RussianBankRepository.cs" />
+    <Compile Include="Repositories\Security\UserRepository.cs" />
+    <Compile Include="Repositories\Security\RoleRepository.cs" />
+    <Compile Include="Repositories\Security\TeamRepository.cs" />
+    <Compile Include="Repositories\StorageRepository.cs" />
+    <Compile Include="Repositories\Task\TaskExecutionItemRepository.cs" />
+    <Compile Include="Repositories\Task\TaskPriorityRepository.cs" />
+    <Compile Include="Repositories\Task\TaskRepository.cs" />
+    <Compile Include="Repositories\Task\TaskTypeRepository.cs" />
+    <Compile Include="Repositories\WaybillRowArticleMovementRepository.cs" />
+    <Compile Include="Repositories\Waybill\BaseWaybillRepository.cs" />
+    <Compile Include="Repositories\Waybill\SaleWaybill\SaleWaybillRepository.cs" />
+    <Compile Include="Repositories\WriteoffWaybillRepository.cs" />
+    <Compile Include="Repositories\ExportTo1CRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.NHibernate\ERP.Infrastructure.NHibernate.csproj">
+      <Project>{FF00E2B4-05D8-4102-A340-D49BC1D1E42C}</Project>
+      <Name>ERP.Infrastructure.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\__NamedQueries\ExportTo1C\GetExpenditureWaybillsForExportTo1C.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\__NamedQueries\ExportTo1C\GetMovementWaybillsForExportTo1C.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\__NamedQueries\ExportTo1C\GetReturnFromClientWaybillsForExportTo1C.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\__NamedQueries\ExportTo1C\GetIncomingWaybillsForExportTo1C.hbm.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Mappings\NamedQueries\Report\Report0002.hbm.xml">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

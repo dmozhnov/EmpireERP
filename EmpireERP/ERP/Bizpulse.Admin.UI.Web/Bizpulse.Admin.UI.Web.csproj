@@ -1,0 +1,285 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3F6552AE-632D-40D1-ABDE-C5157F744468}</ProjectGuid>
+    <ProjectTypeGuids>{E53F8FEA-EAE0-44A6-8774-FFD645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Bizpulse.Admin.UI.Web</RootNamespace>
+    <AssemblyName>Bizpulse.Admin.UI.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="FluentNHibernate">
+      <HintPath>..\lib\FluentNHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0">
+      <HintPath>..\lib\HibernatingRhinos\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.Core, Version=2.2.0.19938, Culture=neutral, PublicKeyToken=a4c63a184389506f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\LinFu\LinFu.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle, Version=3.1.0.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AppSettings.cs" />
+    <Compile Include="Controllers\AdministratorController.cs" />
+    <Compile Include="Controllers\BaseAdminController.cs" />
+    <Compile Include="Controllers\CityController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ClientUserController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\RegionController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Infrastructure\NeedClientAdministratorAuthorizationAttribute.cs" />
+    <Compile Include="Infrastructure\FluentInitializer.cs" />
+    <Compile Include="Infrastructure\NeedAdministratorAuthorizationAttribute.cs" />
+    <Compile Include="Infrastructure\UserSession.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Img\Back.png" />
+    <Content Include="Content\Img\blue_line.jpg" />
+    <Content Include="Content\Img\checkbox.png" />
+    <Content Include="Content\Img\e-mail.png" />
+    <Content Include="Content\Img\gradient_header_grid.png" />
+    <Content Include="Content\Img\phone.png" />
+    <Content Include="Content\Img\skype.png" />
+    <Content Include="Content\Style\RegisterEasy.css" />
+    <Content Include="Content\Style\Grid.css" />
+    <Content Include="Content\Img\button_loading.gif" />
+    <Content Include="Content\Img\favicon.ico" />
+    <Content Include="Content\Img\link_loading.gif" />
+    <Content Include="Content\Img\Logo.png" />
+    <Content Include="Content\Img\Logo_truncated.png" />
+    <Content Include="Content\Img\menu_tabs.png" />
+    <Content Include="Content\Img\top_gradient.png" />
+    <Content Include="Content\Style\ClientDetails.css" />
+    <Content Include="Content\Style\Login.css" />
+    <Content Include="Content\Style\Register.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Style\Site.css" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\RegisterEasy.js" />
+    <Content Include="Scripts\Grid.js" />
+    <Content Include="Scripts\jquery-1.7.2.js" />
+    <Content Include="Scripts\jquery-1.7.2.min.js" />
+    <Content Include="Scripts\Register.js" />
+    <Content Include="Templates\Email\RegistrationLetter.html" />
+    <Content Include="Views\Client\RegisterJuridicalPerson.cshtml">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-ui.js" />
+    <Content Include="Scripts\jquery-ui.min.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\Agreement_Bizpulse.pdf" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bizpulse.Admin.Domain.NHibernate\Bizpulse.Admin.Domain.NHibernate.csproj">
+      <Project>{38F57361-EF58-4197-857D-63D0956A67A0}</Project>
+      <Name>Bizpulse.Admin.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bizpulse.Admin.Domain\Bizpulse.Admin.Domain.csproj">
+      <Project>{2E6698E8-4DB3-4CBE-A935-8DB833720A53}</Project>
+      <Name>Bizpulse.Admin.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bizpulse.Admin.UI.ViewModels\Bizpulse.Admin.UI.ViewModels.csproj">
+      <Project>{65B851A1-3059-48A6-9925-F33D874C9C4D}</Project>
+      <Name>Bizpulse.Admin.UI.ViewModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bizpulse.Infrastructure.FluentNHibernate\Bizpulse.Infrastructure.FluentNHibernate.csproj">
+      <Project>{41591E79-7DDA-4E4E-B274-445917CE78A7}</Project>
+      <Name>Bizpulse.Infrastructure.FluentNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bizpulse.Infrastructure.Mvc\Bizpulse.Infrastructure.Mvc.csproj">
+      <Project>{E31C84A0-EE4E-4B33-B017-C0C55C54DC96}</Project>
+      <Name>Bizpulse.Infrastructure.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.IoC\ERP.Infrastructure.IoC.csproj">
+      <Project>{026EDA6D-FB5B-4E0E-A36B-93A252577997}</Project>
+      <Name>ERP.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.NHibernate\ERP.Infrastructure.NHibernate.csproj">
+      <Project>{FF00E2B4-05D8-4102-A340-D49BC1D1E42C}</Project>
+      <Name>ERP.Infrastructure.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.Security\ERP.Infrastructure.Security.csproj">
+      <Project>{A4B6BD97-0064-49B9-BC1C-118D5D04AFF7}</Project>
+      <Name>ERP.Infrastructure.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI.Web\ERP.UI.Web.csproj">
+      <Project>{C1F3EBA7-9F63-42F0-9848-FB9C8ED4FFB4}</Project>
+      <Name>ERP.UI.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI\ERP.UI.csproj">
+      <Project>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</Project>
+      <Name>ERP.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils.Mvc\ERP.Utils.Mvc.csproj">
+      <Project>{FFF5CA82-3858-4A55-A777-525F0B0460CD}</Project>
+      <Name>ERP.Utils.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Administrator\Login.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Administrator\Home.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\Register.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Http404.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Error.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\RegisterPhysicalPerson.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\Details.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\ClientMainDetails.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\InvoiceForPaymentGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\PaymentGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\CertificateOfCompletionGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\ClientGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\List.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Client\RegisterEasy.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\RegistrationHeader.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>3000</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

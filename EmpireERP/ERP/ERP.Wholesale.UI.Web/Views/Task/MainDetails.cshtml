@@ -1,0 +1,170 @@
+﻿@using ERP.Wholesale.UI.Web.HtmlHelpers;
+
+@model ERP.Wholesale.UI.ViewModels.TaskMainDetailsViewModel
+
+<script type="text/javascript">
+    Task_MainDetails.Init();
+</script>
+
+@Html.HiddenFor(model => model.Id)
+
+@Html.Raw(Html.PageBoxTop(""))
+    <div style="background: #fff; padding: 5px 0;">
+        <div style="font-size: 16px; margin: 5px 15px;">@Model.Topic</div>
+
+        <table class='editor_table'>
+            <tr>
+                <td class='row_title' style="min-width: 110px">
+                    @Html.LabelFor(model => model.CreatedByName):
+                </td>
+                <td style="width: 50%">
+                    @if (Model.AllowToViewCreatedByDetails)
+                    {
+                        <a id="CreatedBy">@Model.CreatedByName</a>
+                        @Html.HiddenFor(model=>model.CreatedById)
+                    }
+                    else
+                    {
+                        @Model.CreatedByName
+                    }       
+                </td>                        
+                <td class='row_title' style="min-width: 110px">
+                    @Html.LabelFor(model => model.ExecutedByName):
+                </td>
+                <td style="width: 50%">
+                    @if (Model.AllowToViewExecitionByDetails)
+                     {
+                        <a id="ExecutedBy">@Model.ExecutedByName</a>
+                        @Html.HiddenFor(model => model.ExecutedById)
+                     }
+                    else
+                    {
+                        @Model.ExecutedByName
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td class='row_title'>
+                    @Html.LabelFor(model => model.TaskTypeName):
+                </td>
+                <td>
+                    @Model.TaskTypeName
+                </td>
+                <td class='row_title'>
+                    @Html.LabelFor(model => model.StartDate):
+                </td>
+                <td>
+                    <span id="StartDate">@Model.StartDate</span>
+                </td>
+            </tr>
+            <tr>
+                <td class='row_title'>
+                    @Html.LabelFor(model => model.TaskPriorityName):
+                </td>
+                <td>
+                    @Model.TaskPriorityName
+                </td>
+                <td class='row_title'>
+                    @Html.LabelFor(model => model.DeadLine):
+                </td>
+                <td>
+                    @Model.DeadLine
+                </td>
+            </tr>
+        </table>
+        <div class="h_delim"></div>
+        <br />
+
+        <table class='editor_table'>
+            <tr>
+                <td class='row_title' style="min-width: 110px">
+                    @Html.LabelFor(model=>model.TaskExecutionStateName):
+                </td>
+                <td style="width: 50%">
+                    <span id="TaskExecutionStateName">@Model.TaskExecutionStateName</span>
+                </td>                        
+                <td class='row_title' style="min-width: 110px">
+                    @Html.LabelFor(model=>model.FactualCompletionDate):
+                </td>
+                <td style="width: 50%">
+                    <span id="FactualCompletionDate">@Model.FactualCompletionDate</span>
+                </td>
+            </tr>
+            <tr>
+                <td class='row_title'>
+                    @Html.LabelFor(model=>model.CompletionPercentage):
+                </td>
+                <td>
+                    <span id="CompletionPercentage">@Model.CompletionPercentage</span>%
+                </td>
+                <td class='row_title'>
+                    @Html.LabelFor(model=>model.FactualSpentTime):
+                </td>
+                <td>
+                    <span id="FactualSpentTime">@Model.FactualSpentTime</span>
+                </td>
+            </tr>
+        </table>
+        <div class="h_delim"></div>
+        <br />
+
+        <table class='editor_table'>
+            <tr>
+                <td class='row_title' style="min-width: 110px">
+                    @Html.LabelFor(model=>model.ContractorName):
+                </td>
+                <td style="width: 50%">
+                    @if (Model.AllowToViewContractorDetails)
+                     {
+                        <a id="Contractor">@Model.ContractorName</a>
+                        @Html.HiddenFor(model => model.ContractorId)
+                        @Html.HiddenFor(model => model.ContractorType)
+                     }
+                     else
+                     {
+                        @Model.ContractorName
+                     }
+                </td>                        
+                <td class='row_title' style="min-width: 110px">
+                    @Html.LabelFor(model=>model.DealName):
+                </td>
+                <td style="width: 50%">
+                    @if (Model.AllowToViewDealDetails)
+                     {
+                        <a id="Deal">@Model.DealName</a>
+                        @Html.HiddenFor(model => model.DealId)
+                     }
+                     else
+                     {
+                        @Model.DealName
+                     }
+                </td>
+            </tr>
+            <tr>
+                <td class='row_title'></td>
+                <td></td>
+                <td class='row_title'>
+                    @Html.LabelFor(model=>model.ProductionOrderName):
+                </td>
+                <td>
+                    @if (Model.AllowToViewProductionOrderDetails)
+                     {
+                        <a id="ProductionOrder">@Model.ProductionOrderName</a>
+                        @Html.HiddenFor(model => model.ProductionOrderId)
+                     } 
+                     else 
+                     {
+                        @Model.ProductionOrderName
+                     }
+                </td>
+            </tr>
+        </table>
+        <div class="h_delim"></div>
+        <br />
+
+        <div style="font-size: 14px; padding: 5px 35px;"><b>@Html.LabelFor(model => model.Description)</b></div>
+        <div id="Description" style="padding: 3px 30px; line-height: 1.4;">
+            @Html.Raw(Model.Description)
+        </div>
+    </div>
+@Html.Raw(Html.PageBoxBottom())

@@ -1,0 +1,9 @@
+D:\Projects\ERP\ERP.FrontSite.UI.Web\bin\ERP.FrontSite.UI.Web.dll
+D:\Projects\ERP\ERP.FrontSite.UI.Web\bin\ERP.FrontSite.UI.Web.pdb
+D:\Projects\ERP\ERP.FrontSite.UI.Web\bin\ERP.Utils.dll
+D:\Projects\ERP\ERP.FrontSite.UI.Web\bin\EPPlus.dll
+D:\Projects\ERP\ERP.FrontSite.UI.Web\bin\ERP.Utils.pdb
+D:\Projects\ERP\ERP.FrontSite.UI.Web\bin\EPPlus.xml
+D:\Projects\ERP\ERP.FrontSite.UI.Web\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.FrontSite.UI.Web\obj\Debug\ERP.FrontSite.UI.Web.dll
+D:\Projects\ERP\ERP.FrontSite.UI.Web\obj\Debug\ERP.FrontSite.UI.Web.pdb

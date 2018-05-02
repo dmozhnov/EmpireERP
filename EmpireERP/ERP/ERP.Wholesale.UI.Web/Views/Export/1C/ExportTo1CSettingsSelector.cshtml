@@ -1,0 +1,7 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Export._1C.ExportTo1CSettingsSelectorViewModel
+@using ERP.UI.Web.HtmlHelpers;
+
+<div class="group_title">@Model.Name:</div>
+<div class="h_delim"></div>
+<br />
+@Html.MultipleSelector("multipleSelector" + Model.Id, Model.AccountOrganizationList, "Список всех организаций", "Список выбранных организаций")

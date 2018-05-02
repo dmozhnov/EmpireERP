@@ -1,0 +1,86 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0008.Report0008_ChangeOwnerWaybillTableViewModel
+
+<style type="text/css">
+    ul{
+        padding-left:11px;
+    }
+</style>
+
+<table class="report_table">
+    <tr>
+        <th style="min-width: 100px;">@Html.LabelFor(model => model.Rows.First().Number)</th>
+        <th style="min-width: 40px; width: 40px;">@Html.LabelFor(model => model.Rows.First().Date)</th>
+        <th style="min-width: 50px;">@Html.LabelFor(model => model.Rows.First().StateName)</th>
+        <th style="min-width: 80px;">@Html.LabelFor(model => model.Rows.First().StorageName)</th>
+        <th style="min-width: 80px;">@Html.LabelFor(model => model.Rows.First().SenderAccountOrganizationName)</th>
+        <th style="min-width: 80px;">@Html.LabelFor(model => model.Rows.First().RecipientAccountOrganizationName)</th>
+        <th style="min-width: 80px; width: 80px;">@Html.LabelFor(model => model.Rows.First().PurchaseCostSumString)</th>
+        <th style="min-width: 80px; width: 80px;">@Html.LabelFor(model => model.Rows.First().AccountingPriceSumString)</th>
+        @if (Model.ShowAdditionInfo)
+        {
+            <th style="min-width: 50px;">@Html.LabelFor(model => model.Rows.First().WaybillStateHistory)</th>
+        }
+        <th style="min-width: 80px;">@Html.LabelFor(model => model.Rows.First().Comment)</th>
+    </tr>
+   @for (int i = 0; i < Model.Rows.Count; i++)
+   {
+       var row = Model.Rows[i];
+
+       if (row.IsGroup)
+       {
+           var paddingSize = System.Web.UI.WebControls.Unit.Pixel(row.GroupLevel * 15);  // определяем смещение заголовка
+                        
+            <tr class="blue_row">
+                <td colspan="6"  style="padding-left: @paddingSize.ToString()">
+                    <b>@row.GroupTitle</b>
+                </td>
+                <td style="text-align: right;"><b>@row.PurchaseCostSumString</b></td>
+                <td style="text-align: right;"><b>@row.AccountingPriceSumString</b></td>
+                @if (Model.ShowAdditionInfo)
+                {
+                    <td></td>
+                }
+                <td></td>
+            </tr>
+       }
+       else
+       {
+            <tr @if (i % 2 == 0)
+                { <text>class="green_row"</text> }>
+                <td>@row.Number</td>
+                <td style="text-align: center;">@row.Date</td>
+                <td>@row.StateName</td>
+                <td>@row.StorageName</td>
+                <td>@row.SenderAccountOrganizationName</td>
+                <td>@row.RecipientAccountOrganizationName</td>
+                <td style="text-align: right;">@row.PurchaseCostSumString</td>
+                <td style="text-align: right;">@row.AccountingPriceSumString</td>
+                @if (Model.ShowAdditionInfo)
+                {
+                    <td>@row.WaybillStateHistory</td>
+                }
+                <td>@Html.Raw(row.Comment)</td>
+            </tr>
+       }
+   }
+
+    @if (Model.Rows.Count == 0)
+    {
+        <tr class="green_row">
+            @{var colCount = Model.ShowAdditionInfo ? 10 : 9;}
+            <td colspan="@colCount" style="text-align: center;">Нет данных</td>
+        </tr>
+    }
+    <tr>
+        <th colspan="6" style="text-align: right;">Итого по столбцу:</th>
+        <th style="text-align: right;">@Model.PurchaseCostSumTotal</th>
+        <th style="text-align: right;">@Model.AccountingPriceSumTotal</th>
+        @if (Model.ShowAdditionInfo)
+        {
+            <th></th>
+        }
+        <th></th>
+    </tr>
+</table>
+<br />
+<b class="report_info">Итого: @Model.RowCountString шт.</b>

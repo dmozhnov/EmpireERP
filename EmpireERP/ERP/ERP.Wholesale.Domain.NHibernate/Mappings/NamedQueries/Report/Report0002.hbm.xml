@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <sql-query name="Report0002">
+    exec Report0002 @StartDate =:StartDate,@EndDate =:EndDate,@IsShippedExpenditureWaybills =:OnlyShippedWaybills,@DevideByBatch =:DevideByBatch,
+    @GetArticleAvailability =:GetArticleAvailability, @InAccountingPrice =:InAccountingPrice, @ConsiderReturnFromClient= :ConsiderReturnFromClient,
+    @ConsiderReturnFromClientByDate =:ConsiderReturnFromClientByDate, @StorageIdList =:StorageIdList, @AllStorages =:AllStorages,
+    @ArticleGroupIdList =:ArticleGroupIdList,@AllArticleGroups =:AllArticleGroups,@ClientIdList =:ClientIdList, @AllClients =:AllClients,
+    @UserIdList =:UserIdList,@AllUsers =:AllUsers,@AccountOrganizationIdList =:AccountOrganizationIdList,@AllAccountOrganizations =:AllAccountOrganizations,
+    @UserId =:UserId, @TakeArticlesFromArticleGroup =:TakeArticlesFromArticleGroup,@ArticleIdList =:ArticleIdList
+  </sql-query>
+</hibernate-mapping>

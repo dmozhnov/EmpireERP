@@ -1,0 +1,29 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0004.Report0004QuantityTableViewModel
+@using ERP.Utils;
+
+<table class="report_table">
+    <tr>
+        <th style="width:100%;text-align:left">@Model.FirstColumnName</th>
+        <th style="white-space: nowrap">Кол-во</th>
+    </tr>
+    @if (Model.Items.Any())
+    {
+        foreach (var item in Model.Items)
+        {
+            <tr class="green_row">
+                <td> @item.IndicatorName </td>
+                <td align="right" style="white-space:nowrap"> @item.Quantity.ForDisplay()</td>
+            </tr>
+        }
+    }
+    else
+    {
+        <tr class = "green_row">
+            <td colspan="2" style="text-align:center">нет данных</td>
+        </tr>
+    }
+    <tr>
+        <th align="right"  style="white-space:nowrap">Итого:</th>                    
+        <th align="right" style="white-space: nowrap">@Model.TotalQuantity.ForDisplay()</th>
+    </tr>
+</table>

@@ -1,0 +1,34 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Client.ClientMainDetailsViewModel
+           
+
+<table class='main_details_table'>
+    <tr>
+        <td class='row_title' style='min-width: 160px'>
+            @Html.LabelFor(model => model.ConfigurationName):
+        </td>
+        <td style='width: 60%'>
+            <span id="ConfigurationName">@Model.ConfigurationName</span>
+        </td>
+        <td class='row_title'>
+            @Html.LabelFor(model => model.PaidPeriodEnd):
+        </td>
+        <td style='width: 40%'>
+            <span id="PaidPeriodEnd">@Model.PaidPeriodEnd</span>
+        </td>
+    </tr>
+    <tr>
+        <td class='row_title'>
+            @Html.LabelFor(model => model.CreationDate):
+        </td>
+        <td>
+            <span id="CreationDate">@Model.CreationDate</span>
+        </td>
+        <td class='row_title'>
+           @Html.LabelFor(model => model.PrepaymentSum):
+        </td>
+        <td>
+           <span id="PrepaymentSum">@Model.PrepaymentSum</span>
+        </td>
+    </tr>
+</table>
+

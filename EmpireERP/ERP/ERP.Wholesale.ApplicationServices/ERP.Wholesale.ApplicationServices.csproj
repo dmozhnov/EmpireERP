@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{E5A612EA-1814-4EA1-BD7F-5D825BE6084C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.ApplicationServices</RootNamespace>
+    <AssemblyName>ERP.Wholesale.ApplicationServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountingPriceListService.cs" />
+    <Compile Include="ArticleCertificateService.cs" />
+    <Compile Include="ArticleGroupService.cs" />
+    <Compile Include="ArticleService.cs" />
+    <Compile Include="BaseApplicationService.cs" />
+    <Compile Include="BaseOutgoingWaybillService.cs" />
+    <Compile Include="BaseWaybillService.cs" />
+    <Compile Include="ChangeOwnerWaybillService.cs" />
+    <Compile Include="ClientOrganizationService.cs" />
+    <Compile Include="ClientRegionService.cs" />
+    <Compile Include="ClientService.cs" />
+    <Compile Include="AccountOrganizationService.cs" />
+    <Compile Include="ClientServiceProgramService.cs" />
+    <Compile Include="ContractorOrganizationService.cs" />
+    <Compile Include="ContractorService.cs" />
+    <Compile Include="ClientContractService.cs" />
+    <Compile Include="CurrencyRateService.cs" />
+    <Compile Include="DealPaymentDocumentService.cs" />
+    <Compile Include="Dictionary\BaseDictionaryService.cs" />
+    <Compile Include="DealQuotaService.cs" />
+    <Compile Include="MainIndicators\AccountingPriceListMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\ChangeOwnerWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\MovementWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\ReceiptWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\ReturnFromClientWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\WriteoffWaybillMainIndicatorService.cs" />
+    <Compile Include="ProductionOrderCustomsDeclarationService.cs" />
+    <Compile Include="ProductionOrderExtraExpensesSheetService.cs" />
+    <Compile Include="ProductionOrderPlannedPaymentService.cs" />
+    <Compile Include="ProductionOrderTransportSheetService.cs" />
+    <Compile Include="ProductionOrderMaterialsPackageService.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplateService.cs" />
+    <Compile Include="ProductionOrderPaymentService.cs" />
+    <Compile Include="Service References\CurrencyRateImportService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="SettingService.cs" />
+    <Compile Include="Task\TaskExecutionItemService.cs" />
+    <Compile Include="Task\TaskPriorityService.cs" />
+    <Compile Include="Task\TaskService.cs" />
+    <Compile Include="Task\TaskTypeService.cs" />
+    <Compile Include="WriteoffReasonService.cs" />
+    <Compile Include="WriteoffWaybillService.cs" />
+    <Compile Include="ProviderOrganizationService.cs" />
+    <Compile Include="ClientTypeService.cs" />
+    <Compile Include="ForeignBankService.cs" />
+    <Compile Include="ProductionOrderService.cs" />
+    <Compile Include="ProviderTypeService.cs" />
+    <Compile Include="RussianBankService.cs" />
+    <Compile Include="TrademarkService.cs" />
+    <Compile Include="CurrencyService.cs" />
+    <Compile Include="LegalFormService.cs" />
+    <Compile Include="ManufacturerService.cs" />
+    <Compile Include="CountryService.cs" />
+    <Compile Include="ProducerService.cs" />
+    <Compile Include="ProviderContractService.cs" />
+    <Compile Include="ProviderService.cs" />
+    <Compile Include="DealService.cs" />
+    <Compile Include="EmployeePostService.cs" />
+    <Compile Include="ExpenditureWaybillService.cs" />
+    <Compile Include="MeasureUnitService.cs" />
+    <Compile Include="MovementWaybillService.cs" />
+    <Compile Include="OrganizationService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReceiptWaybillService.cs" />
+    <Compile Include="ReturnFromClientReasonService.cs" />
+    <Compile Include="ReturnFromClientWaybillService.cs" />
+    <Compile Include="RoleService.cs" />
+    <Compile Include="SaleWaybillService.cs" />
+    <Compile Include="StorageService.cs" />
+    <Compile Include="TeamService.cs" />
+    <Compile Include="UserService.cs" />
+    <Compile Include="ValueAddedTaxService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.IoC\ERP.Infrastructure.IoC.csproj">
+      <Project>{026EDA6D-FB5B-4E0E-A36B-93A252577997}</Project>
+      <Name>ERP.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.Security\ERP.Infrastructure.Security.csproj">
+      <Project>{A4B6BD97-0064-49B9-BC1C-118D5D04AFF7}</Project>
+      <Name>ERP.Infrastructure.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.AbstractApplicationServices\ERP.Wholesale.AbstractApplicationServices.csproj">
+      <Project>{F368CDA4-B31E-4F19-B38F-C1CE95530A67}</Project>
+      <Name>ERP.Wholesale.AbstractApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Settings\ERP.Wholesale.Settings.csproj">
+      <Project>{3E4BD22D-B4AC-4E09-9C8C-090AA5BD9C85}</Project>
+      <Name>ERP.Wholesale.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="Properties\DataSources\System.Data.DataSet.datasource" />
+    <None Include="Properties\DataSources\System.Xml.XmlNode.datasource" />
+    <None Include="Service References\CurrencyRateImportService\DailyInfo.wsdl" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Service References\CurrencyRateImportService\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CurrencyRateImportService\DailyInfo.disco" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CurrencyRateImportService\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CurrencyRateImportService\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Service References\CurrencyRateImportService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,186 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Client.FreeClientRegistrationViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Регистрация в Bizpulse</title>
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <link href="/Content/Style/Site.css" rel="stylesheet" type="text/css" />
+    <link href="/Content/Style/RegisterEasy.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    
+    <script src="/Scripts/Common.js" type="text/javascript"></script>
+    <script src="/Scripts/RegisterEasy.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        RegisterEasy.Init();
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30866066-1']);
+        _gaq.push(['_setDomainName', '.bizpulse.ru']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    
+    </script>
+</head>
+<body>
+    <div style="display: none">
+        <!--LiveInternet counter--><script type="text/javascript"><!--
+                                       document.write("<a href='http://www.liveinternet.ru/click' " +
+        "target=_blank><img src='//counter.yadro.ru/hit?t44.1;r" +
+        escape(document.referrer) + ((typeof (screen) == "undefined") ? "" :
+        ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+        screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+        ";" + Math.random() +
+        "' alt='' title='LiveInternet' " +
+        "border='0' width='31' height='31'><\/a>")
+        //--></script><!--/LiveInternet-->
+    </div>
+    
+    <div id="register_content">
+        @Html.Partial("RegistrationHeader")
+
+        <div id="main_content_wrapper">
+            <div id="register_content_info">
+                <h1>Управляйте Вашей компанией, где бы Вы не находились!</h1>
+                <h2>Электронный менеджер Bizpulse предоставляется в виде интернет-сервиса - для его использования достаточно только зарегистрироваться и работать.</h2>
+                <h1>Вы сможете с помощью Bizpulse:</h1>
+
+                <ul>
+                    <li>Управлять производством, товародвижением, продажами, сократив затраты на рутинные и ресурсоемкие работы.</li>
+                    <li>Быстро получать любую интересующую Вас информацию о текущих делах Вашего бизнеса.</li>
+                    <li>Гибко настраивать права доступа к информации для каждого сотрудника Вашей компании.</li>
+                </ul>
+
+                <a href="/Client/Register">Полная регистрация в Bizpulse</a>
+            </div>
+            
+            <div id="register_content_registration_bar_container">                
+                <h1>Быстрая регистрация</h1>
+                <h2>на пробный период работы</h2>
+
+                @using (Ajax.BeginForm("RegisterEasy", "Client", new AjaxOptions() { OnBegin = "RegisterEasy.OnBeginUserRegistration", 
+                    OnSuccess = "RegisterEasy.OnSuccessUserRegistration", OnFailure = "RegisterEasy.OnFailUserRegistration" }, 
+                    new { id = "free_registration_form" })) 
+                {
+                    <table>                    
+                        <tr>
+                            <td>
+                                <span class="label_wrapper">@Html.LabelFor(model => model.AdminLastName)*:</span>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.AdminLastName, new { maxlength = "100" })
+                                @Html.ValidationMessageFor(model => model.AdminLastName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label_wrapper">@Html.LabelFor(model => model.AdminFirstName)*:</span>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.AdminFirstName, new { maxlength = "100" })
+                                @Html.ValidationMessageFor(model => model.AdminFirstName)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label_wrapper">@Html.LabelFor(model => model.AdminEmail)*:</span>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.AdminEmail, new { maxlength = "50" })
+                                @Html.ValidationMessageFor(model => model.AdminEmail)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label_wrapper">@Html.LabelFor(model => model.Phone):</span>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.Phone, new { maxlength = "20" })
+                                @Html.ValidationMessageFor(model => model.Phone)
+                            </td>
+                        </tr>                        
+                        <tr>
+                            <td>
+                                <span class="label_wrapper">@Html.LabelFor(model => model.AdminLogin)*:</span>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.AdminLogin, new { maxlength="30"})
+                                @Html.ValidationMessageFor(model => model.AdminLogin)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label_wrapper">@Html.LabelFor(model => model.AdminPassword)*:</span>
+                            </td>
+                            <td>
+                                @Html.PasswordFor(model => model.AdminPassword, new { maxlength="20"})
+                                @Html.ValidationMessageFor(model => model.AdminPassword)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <span class="label_wrapper_optional">@Html.LabelFor(model => model.PromoCode):</span>
+                            </td>
+                            <td>
+                                @Html.TextBoxFor(model => model.PromoCode, new { maxlength = "10" })
+                                @Html.ValidationMessageFor(model => model.PromoCode)
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                            </td>
+                            <td>
+                                <p>
+                                    Нажимая кнопку <b>«Зарегистрироваться»</b>, Вы принимаете условия <a target="_blank" href="/Content/Agreement_Bizpulse.pdf">Договора-оферты</a>,
+                                    а в случае регистрации аккаунта третьего лица подтверждаете, что это лицо ознакомлено с
+                                    <a target="_blank" href="/Content/Agreement_Bizpulse.pdf">Договором-офертой</a> и принимает его условия.
+                                </p>
+                                
+                                <div style="text-align: center; margin: 0 15px; width: 305px;">
+                                    <span id="messageUserRegistration" class="field-validation-error" style="display: none"></span>
+                                </div>
+
+                                <div id="registration_button_wrapper">
+                                    <input id="btnRegister" type="submit" value="Зарегистрироваться" />
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                }
+
+                 @* Форма для автоматического залогинивания *@
+                <form action="@Bizpulse.Admin.UI.Web.AppSettings.AppURL/User/TryLogin?mode=welcome" method="post" id="loginForm" autocomplete="off">
+                    <input id="AccountNumber" name="AccountNumber" type="hidden" value="" />
+                    <input id="Login" name="Login" type="hidden" value="" />
+                    <input id="Password" name="Password" type="hidden" value="" />
+                </form>
+            </div>
+
+            <div class="clear"></div>
+        </div>
+
+        <div id="login_footer">
+            &copy 2010-@DateTime.Now.Year.ToString(). Empiresoft.
+        </div>
+    </div>
+</body>
+</html>

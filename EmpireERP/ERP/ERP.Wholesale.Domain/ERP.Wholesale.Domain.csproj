@@ -1,0 +1,546 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.Domain</RootNamespace>
+    <AssemblyName>ERP.Wholesale.Domain</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Iesi.Collections">
+      <HintPath>..\lib\NHibernate\Iesi.Collections.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AbstractServices\IClientContractIndicatorService.cs" />
+    <Compile Include="AbstractServices\IArticleMovementOperationCountService.cs" />
+    <Compile Include="AbstractServices\IArticleRevaluationService.cs" />
+    <Compile Include="AbstractServices\IArticlePurchaseService.cs" />
+    <Compile Include="AbstractServices\IArticleSaleService.cs" />
+    <Compile Include="AbstractServices\IDealPaymentDocumentDistributionService.cs" />
+    <Compile Include="AbstractServices\IAccountingPriceCalcRuleService.cs" />
+    <Compile Include="AbstractServices\IAccountingPriceCalcService.cs" />
+    <Compile Include="AbstractServices\IArticleAvailabilityService.cs" />
+    <Compile Include="AbstractServices\IArticleMovementService.cs" />
+    <Compile Include="AbstractServices\IArticlePriceService.cs" />
+    <Compile Include="AbstractServices\IBlockingService.cs" />
+    <Compile Include="AbstractServices\IDealIndicatorService.cs" />
+    <Compile Include="AbstractServices\IExpenditureWaybillIndicatorService.cs" />
+    <Compile Include="AbstractServices\IFactualFinancialArticleMovementService.cs" />
+    <Compile Include="AbstractServices\IIncomingWaybillRowService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleAvailabilityIndicators\IOutgoingAcceptedFromIncomingAcceptedArticleAvailabilityIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleAvailabilityIndicators\IOutgoingAcceptedFromExactArticleAvailabilityIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleAvailabilityIndicators\IIncomingAcceptedArticleAvailabilityIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleAvailabilityIndicators\IArticleAvailabilityIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleAvailabilityIndicators\IExactArticleAvailabilityIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleRevaluationIndicators\IBaseArticleRevaluationIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleRevaluationIndicators\IExactArticleRevaluationIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ArticleRevaluationIndicators\IAcceptedArticleRevaluationIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\IArticleAccountingPriceIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\IArticleMovementFactualFinancialIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\IArticleMovementOperationCountIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ReturnFromClientIndicators\IBaseReturnFromClientIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ReturnFromClientIndicators\IReturnFromClientBySaleShippingDateIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ReturnFromClientIndicators\IReturnFromClientBySaleAcceptanceDateIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\PurchaseIndicators\IAcceptedPurchaseIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\PurchaseIndicators\IApprovedPurchaseIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ReturnFromClientIndicators\IReceiptedReturnFromClientIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\ReturnFromClientIndicators\IAcceptedReturnFromClientIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\SaleIndicators\IBaseSaleIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\SaleIndicators\IShippedSaleIndicatorService.cs" />
+    <Compile Include="AbstractServices\Indicators\SaleIndicators\IAcceptedSaleIndicatorService.cs" />
+    <Compile Include="AbstractServices\IOutgoingWaybillRowService.cs" />
+    <Compile Include="AbstractServices\IPermissionDistributionService.cs" />
+    <Compile Include="AbstractServices\IReturnFromClientService.cs" />
+    <Compile Include="AbstractServices\ISaleWaybillIndicatorService.cs" />
+    <Compile Include="DomainEvents.cs" />
+    <Compile Include="DomainEventsHandler.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Entities\AccountingPriceListWaybillTaking\AccountingPriceListWaybillTaking.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByCurrentAccountingPrice\AccountingPriceCalcByCurrentAccountingPrice.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByPurchaseCost\AccountingPriceCalcByPurchaseCost.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcRule.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcRuleType.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByCurrentAccountingPrice\AccountingPriceDeterminationRuleType.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByCurrentAccountingPrice\AccountingPriceDeterminationRule.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByPurchaseCost\MarkupPercentDeterminationRule.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByPurchaseCost\MarkupPercentDeterminationRuleType.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceCalcRule\AccountingPriceCalcByPurchaseCost\PurchaseCostDeterminationRuleType.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceList.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceListDistribution.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceListReason.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceListState.cs" />
+    <Compile Include="Entities\AccountingPriceList\AccountingPriceListStorageTypeGroup.cs" />
+    <Compile Include="Entities\AccountingPriceList\ArticleAccountingPrice.cs" />
+    <Compile Include="Entities\AccountingPriceList\LastDigitCalcRule\LastDigitCalcRule.cs" />
+    <Compile Include="Entities\AccountingPriceList\LastDigitCalcRule\LastDigitCalcRuleType.cs" />
+    <Compile Include="Entities\AccountOrganization.cs" />
+    <Compile Include="Entities\AccountOrganizationDocumentNumbers.cs" />
+    <Compile Include="Entities\ArticleCertificate.cs" />
+    <Compile Include="Entities\ArticleGroup.cs" />
+    <Compile Include="Entities\Article.cs" />
+    <Compile Include="Entities\BankAccount\BankAccountType.cs" />
+    <Compile Include="Entities\BankAccount\ForeignBankAccount.cs" />
+    <Compile Include="Entities\BankAccount\RussianBankAccount.cs" />
+    <Compile Include="Entities\Bank\Bank.cs" />
+    <Compile Include="Entities\BankAccount\BankAccount.cs" />
+    <Compile Include="Entities\Bank\BankType.cs" />
+    <Compile Include="Entities\Bank\ClearingCodeType.cs" />
+    <Compile Include="Entities\Bank\ForeignBank.cs" />
+    <Compile Include="Entities\Bank\RussianBank.cs" />
+    <Compile Include="Entities\Client\Client.cs" />
+    <Compile Include="Entities\Client\ClientContract.cs" />
+    <Compile Include="Entities\Client\ClientLoyalty.cs" />
+    <Compile Include="Entities\Client\ClientServiceProgram.cs" />
+    <Compile Include="Entities\Client\ClientType.cs" />
+    <Compile Include="Entities\Client\Deal\Deal.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealCreditInitialBalanceCorrection.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealDebitInitialBalanceCorrection.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPayment.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentDocumentDistributionToDealPaymentDocument.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentDocumentDistributionToReturnFromClientWaybill.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentDocumentDistributionToSaleWaybill.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentDocument.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentDocumentDistribution.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentDocumentType.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentForm.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentFromClient.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealPaymentToClient.cs" />
+    <Compile Include="Entities\Client\Deal\DealQuota.cs" />
+    <Compile Include="Entities\Client\Deal\DealStage.cs" />
+    <Compile Include="Entities\Client\ClientOrganization.cs" />
+    <Compile Include="Entities\Client\Deal\DealStageHistory.cs" />
+    <Compile Include="Entities\Client\ClientRegion.cs" />
+    <Compile Include="Entities\Contract.cs" />
+    <Compile Include="Entities\Contractor.cs" />
+    <Compile Include="Entities\ContractorOrganization.cs" />
+    <Compile Include="Entities\ContractorType.cs" />
+    <Compile Include="Entities\Country.cs" />
+    <Compile Include="Entities\Currency.cs" />
+    <Compile Include="Entities\CurrencyRate.cs" />
+    <Compile Include="Entities\Dictionary\BaseDictionary.cs" />
+    <Compile Include="Entities\EconomicAgent\EconomicAgent.cs" />
+    <Compile Include="Entities\EconomicAgent\EconomicAgentType.cs" />
+    <Compile Include="Entities\EconomicAgent\JuridicalPerson.cs" />
+    <Compile Include="Entities\EconomicAgent\LegalForm.cs" />
+    <Compile Include="Entities\EconomicAgent\PhysicalPerson.cs" />
+    <Compile Include="Entities\Employee\Employee.cs" />
+    <Compile Include="Entities\Employee\EmployeePost.cs" />
+    <Compile Include="Entities\LogItem.cs" />
+    <Compile Include="Entities\Manufacturer.cs" />
+    <Compile Include="Entities\MaterialsPackage\ProductionOrderMaterialsPackage.cs" />
+    <Compile Include="Entities\MaterialsPackage\ProductionOrderMaterialsPackageDocument.cs" />
+    <Compile Include="Entities\MeasureUnit.cs" />
+    <Compile Include="Entities\Operation.cs" />
+    <Compile Include="Entities\OperationType.cs" />
+    <Compile Include="Entities\Organization\Organization.cs" />
+    <Compile Include="Entities\Organization\OrganizationType.cs" />
+    <Compile Include="Entities\Producer.cs" />
+    <Compile Include="Entities\ProducerContract.cs" />
+    <Compile Include="Entities\ProducerOrganization.cs" />
+    <Compile Include="Entities\ProductionOrder\DefaultProductionOrderBatchStage.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrder.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderApprovementActor.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatch.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchLifeCycleTemplate.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchLifeCycleTemplateStage.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchRow.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchStage.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchStageType.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderBatchState.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderCurrencyDeterminationType.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderCustomsDeclaration.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderCustomsDeclarationPayment.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderExtraExpensesSheet.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderExtraExpensesSheetPayment.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderPayment.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderPaymentForm.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderPaymentType.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderPlannedPayment.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderTransportSheet.cs" />
+    <Compile Include="Entities\ProductionOrder\ProductionOrderTransportSheetPayment.cs" />
+    <Compile Include="Entities\Provider\Provider.cs" />
+    <Compile Include="Entities\Provider\ProviderContract.cs" />
+    <Compile Include="Entities\Provider\ProviderOrganization.cs" />
+    <Compile Include="Entities\Provider\ProviderReliability.cs" />
+    <Compile Include="Entities\Provider\ProviderType.cs" />
+    <Compile Include="Entities\Security\Permission.cs" />
+    <Compile Include="Entities\Security\PermissionDetails.cs" />
+    <Compile Include="Entities\Security\PermissionDetailsSet.cs" />
+    <Compile Include="Entities\Security\PermissionDistribution.cs" />
+    <Compile Include="Entities\Security\PermissionDistributionType.cs" />
+    <Compile Include="Entities\Security\Role.cs" />
+    <Compile Include="Entities\Security\Team.cs" />
+    <Compile Include="Entities\Security\User.cs" />
+    <Compile Include="Entities\Setting.cs" />
+    <Compile Include="Entities\Storage\Storage.cs" />
+    <Compile Include="Entities\Storage\StorageSection.cs" />
+    <Compile Include="Entities\Storage\StorageType.cs" />
+    <Compile Include="Entities\Task\BaseTaskHistoryItem.cs" />
+    <Compile Include="Entities\Task\Task.cs" />
+    <Compile Include="Entities\Task\TaskExecutionHistoryItem.cs" />
+    <Compile Include="Entities\Task\TaskExecutionItem.cs" />
+    <Compile Include="Entities\Task\TaskExecutionState.cs" />
+    <Compile Include="Entities\Task\TaskExecutionStateType.cs" />
+    <Compile Include="Entities\Task\TaskHistoryItem.cs" />
+    <Compile Include="Entities\Task\TaskHistoryItemType.cs" />
+    <Compile Include="Entities\Task\TaskPriority.cs" />
+    <Compile Include="Entities\Task\TaskType.cs" />
+    <Compile Include="Entities\Trademark.cs" />
+    <Compile Include="Entities\ValueAddedTax.cs" />
+    <Compile Include="Entities\Waybill\ArticleMovementOperationType.cs" />
+    <Compile Include="Entities\Waybill\BaseIncomingAndOutgoingWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\BaseIncomingWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\BaseOutgoingWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\BaseWaybill.cs" />
+    <Compile Include="Entities\Waybill\BaseWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\ChangeOwnerWaybill\ChangeOwnerWaybill.cs" />
+    <Compile Include="Entities\Waybill\ChangeOwnerWaybill\ChangeOwnerWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\ChangeOwnerWaybill\ChangeOwnerWaybillState.cs" />
+    <Compile Include="Entities\Waybill\IncomingWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\IncomingWaybillType.cs" />
+    <Compile Include="Entities\Waybill\MovementWaybill\MovementWaybill.cs" />
+    <Compile Include="Entities\Waybill\MovementWaybill\MovementWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\MovementWaybill\MovementWaybillState.cs" />
+    <Compile Include="Entities\Waybill\OutgoingWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\OutgoingWaybillRowState.cs" />
+    <Compile Include="Entities\Waybill\ReceiptWaybill\ReceiptWaybill.cs" />
+    <Compile Include="Entities\Waybill\ReceiptWaybill\ReceiptWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\ReceiptWaybill\ReceiptWaybillState.cs" />
+    <Compile Include="Entities\Waybill\ReturnFromClientWaybill\ReturnFromClientReason.cs" />
+    <Compile Include="Entities\Waybill\ReturnFromClientWaybill\ReturnFromClientWaybill.cs" />
+    <Compile Include="Entities\Waybill\ReturnFromClientWaybill\ReturnFromClientWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\ReturnFromClientWaybill\ReturnFromClientWaybillState.cs" />
+    <Compile Include="Entities\Waybill\SaleWaybill\ExpenditureWaybill\DeliveryAddressType.cs" />
+    <Compile Include="Entities\Waybill\SaleWaybill\ExpenditureWaybill\ExpenditureWaybill.cs" />
+    <Compile Include="Entities\Waybill\SaleWaybill\ExpenditureWaybill\ExpenditureWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\SaleWaybill\ExpenditureWaybill\ExpenditureWaybillState.cs" />
+    <Compile Include="Entities\Client\Deal\DealPaymentDocument\DealInitialBalanceCorrection.cs" />
+    <Compile Include="Entities\Waybill\SaleWaybill\SaleWaybill.cs" />
+    <Compile Include="Entities\Waybill\SaleWaybill\SaleWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\WaybillRowArticleMovement.cs" />
+    <Compile Include="Entities\Waybill\WaybillType.cs" />
+    <Compile Include="Entities\Waybill\WriteoffWaybill\WriteoffReason.cs" />
+    <Compile Include="Entities\Waybill\WriteoffWaybill\WriteoffWaybill.cs" />
+    <Compile Include="Entities\Waybill\WriteoffWaybill\WriteoffWaybillRow.cs" />
+    <Compile Include="Entities\Waybill\WriteoffWaybill\WriteoffWaybillState.cs" />
+    <Compile Include="AbstractServices\IAccountingPriceListWaybillTakingService.cs" />
+    <Compile Include="IDomainEventsHandler.cs" />
+    <Compile Include="Indicators\ArticleRevaluationIndicators\AcceptedArticleRevaluationIndicator.cs" />
+    <Compile Include="Indicators\ArticleRevaluationIndicators\BaseArticleRevaluationIndicator.cs" />
+    <Compile Include="Indicators\ArticleAccountingPriceIndicator.cs" />
+    <Compile Include="Indicators\ArticleAvailabilityIndicators\ArticleAvailabilityIndicator.cs" />
+    <Compile Include="Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromIncomingAcceptedArticleAvailabilityIndicator.cs" />
+    <Compile Include="Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromExactArticleAvailabilityIndicator.cs" />
+    <Compile Include="Indicators\ArticleAvailabilityIndicators\ExactArticleAvailabilityIndicator.cs" />
+    <Compile Include="Indicators\ArticleAvailabilityIndicators\IncomingAcceptedArticleAvailabilityIndicator.cs" />
+    <Compile Include="Indicators\ArticleMovementFactualFinancialIndicator.cs" />
+    <Compile Include="Indicators\ArticleMovementOperationCountIndicator.cs" />
+    <Compile Include="Indicators\PurchaseIndicators\AcceptedPurchaseIndicator.cs" />
+    <Compile Include="Indicators\PurchaseIndicators\ApprovedPurchaseIndicator.cs" />
+    <Compile Include="Indicators\PurchaseIndicators\BasePurchaseIndicator.cs" />
+    <Compile Include="Indicators\ArticleRevaluationIndicators\ExactArticleRevaluationIndicator.cs" />
+    <Compile Include="Indicators\ReturnFromClientIndicators\AcceptedReturnFromClientIndicator.cs" />
+    <Compile Include="Indicators\ReturnFromClientIndicators\BaseReturnFromClientIndicator.cs" />
+    <Compile Include="Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleShippingDateIndicator.cs" />
+    <Compile Include="Indicators\ReturnFromClientIndicators\ReceiptedReturnFromClientIndicator.cs" />
+    <Compile Include="Indicators\BaseIndicator.cs" />
+    <Compile Include="Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleAcceptanceDateIndicator.cs" />
+    <Compile Include="Indicators\SaleIndicators\AcceptedSaleIndicator.cs" />
+    <Compile Include="Indicators\SaleIndicators\BaseSaleIndicator.cs" />
+    <Compile Include="Indicators\SaleIndicators\ShippedSaleIndicator.cs" />
+    <Compile Include="Misc\ArticleAvailabilityInfo.cs" />
+    <Compile Include="Misc\ArticleBatchAvailabilityExtendedInfo.cs" />
+    <Compile Include="Misc\ArticleBatchAvailabilityShortInfo.cs" />
+    <Compile Include="Misc\ArticleSaleAvailability.cs" />
+    <Compile Include="Misc\ChangeOwnerWaybillLogicState.cs" />
+    <Compile Include="Misc\DealBalanceInfoByPeriod.cs" />
+    <Compile Include="Misc\DealPaymentDocumentDistributionInfo.cs" />
+    <Compile Include="Misc\DealPaymentDocumentDistributionType.cs" />
+    <Compile Include="Misc\DealPaymentUndistributedPartInfo.cs" />
+    <Compile Include="Misc\ExpenditureWaybillLogicState.cs" />
+    <Compile Include="Misc\ExportTo1CDataModels\ExpenditureWaybillExportTo1CDataModel.cs" />
+    <Compile Include="Misc\ExportTo1CDataModels\IncomingWaybillExportTo1CDataModel.cs" />
+    <Compile Include="Misc\ExportTo1CDataModels\MovementWaybillExportTo1CDataModel.cs" />
+    <Compile Include="Misc\ExportTo1CDataModels\ReturnFromClientWaybillExportTo1CDataModel.cs" />
+    <Compile Include="Misc\InitialBalanceInfo.cs" />
+    <Compile Include="Misc\MainIndicators\AccountingPriceListMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\ChangeOwnerWaybillMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\ChangeOwnerWaybillRowMainIndicators.cs" />
+    <Compile Include="Misc\MovementWaybillLogicState.cs" />
+    <Compile Include="Misc\MainIndicators\ReturnFromClientWaybillMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\ExpenditureWaybillMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\ExpenditureWaybillRowMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\WriteoffWaybillMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\WriteoffWaybillRowMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\MovementWaybillMainIndicators.cs" />
+    <Compile Include="Misc\MainIndicators\MovementWaybillRowMainIndicators.cs" />
+    <Compile Include="Misc\OutgoingWaybillRowSourceReservationInfo.cs" />
+    <Compile Include="Misc\DealMainIndicators.cs" />
+    <Compile Include="Misc\ProductionOrderArticlePrimeCostCalculationType.cs" />
+    <Compile Include="Misc\ProductionOrderArticleTransportingPrimeCostCalculationType.cs" />
+    <Compile Include="Misc\ProductionOrderBatchArticlePrimeCost.cs" />
+    <Compile Include="Misc\ProductionOrderBatchArticlePrimeCostValue.cs" />
+    <Compile Include="Misc\ProductionOrderBatchRowArticlePrimeCost.cs" />
+    <Compile Include="Misc\ProductionOrderBatchRowInfo.cs" />
+    <Compile Include="Misc\ProductionOrderCurrencyDocumentType.cs" />
+    <Compile Include="Misc\ProductionOrderMainIndicators.cs" />
+    <Compile Include="Misc\ReceiptWaybillLogicState.cs" />
+    <Compile Include="Misc\ReceiptWaybillRowInfo.cs" />
+    <Compile Include="Misc\Report0009RowType.cs" />
+    <Compile Include="Misc\Report\Report0002\Report0002RowDataModel.cs" />
+    <Compile Include="Misc\ReturnFromClientWaybillLogicState.cs" />
+    <Compile Include="Misc\StartEndAvailabilityItem.cs" />
+    <Compile Include="Misc\WaybillDateType.cs" />
+    <Compile Include="Misc\WaybillRowManualSource.cs" />
+    <Compile Include="Misc\WriteoffWaybillLogicState.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\IAccountingPriceListWaybillTakingRepository.cs" />
+    <Compile Include="Repositories\IContractRepository.cs" />
+    <Compile Include="Repositories\ICurrencyRateRepository.cs" />
+    <Compile Include="Repositories\IEconomicAgentRepository.cs" />
+    <Compile Include="Repositories\IExportTo1CRepository.cs" />
+    <Compile Include="Repositories\ILogItemRepository.cs" />
+    <Compile Include="Repositories\ISettingRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealInitialBalanceCorrectionRepository.cs" />
+    <Compile Include="Repositories\IClientContractRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealPaymentRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealCreditInitialBalanceCorrectionRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealDebitInitialBalanceCorrectionRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealPaymentDocumentRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealPaymentFromClientRepository.cs" />
+    <Compile Include="Repositories\Deal\DealPaymentDocument\IDealPaymentToClientRepository.cs" />
+    <Compile Include="Repositories\IArticleCertificateRepository.cs" />
+    <Compile Include="Repositories\IBaseDictionaryRepository.cs" />
+    <Compile Include="Repositories\IContractorRepository.cs" />
+    <Compile Include="Repositories\ICurrencyRepository.cs" />
+    <Compile Include="Repositories\IDealQuotaRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\IOutgoingAcceptedFromExactArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\IIncomingAcceptedArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\IExactArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleAvailabilityIndicators\IOutgoingAcceptedFromIncomingAcceptedArticleAvailabilityIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleRevaluationIndicators\IBaseArticleRevaluationIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleRevaluationIndicators\IExactArticleRevaluationIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ArticleRevaluationIndicators\IAcceptedArticleRevaluationIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\IArticleAccountingPriceIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\IArticleMovementFactualFinancialIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\IArticleMovementOperationCountIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\IReturnFromClientBySaleShippingDateIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\IReturnFromClientBySaleAcceptanceDateIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\PurchaseIndicators\IAcceptedPurchaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\PurchaseIndicators\IApprovedPurchaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\PurchaseIndicators\IBasePurchaseIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\IBaseReturnFromClientIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\IReceiptedReturnFromClientIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\ReturnFromClientIndicators\IAcceptedReturnFromClientIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\SaleIndicators\IShippedSaleIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\SaleIndicators\IAcceptedSaleIndicatorRepository.cs" />
+    <Compile Include="Repositories\Indicators\SaleIndicators\IBaseSaleIndicatorRepository.cs" />
+    <Compile Include="Repositories\IProducerRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderExtraExpensesSheetRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderCustomsDeclarationRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderPlannedPaymentRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderTransportSheetRepository.cs" />
+    <Compile Include="Repositories\IForeignBankAccountRepository.cs" />
+    <Compile Include="Repositories\IDefaultProductionOrderStageRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderMaterialsPackageRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderBatchLifeCycleTemplateRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderBatchRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderPaymentRepository.cs" />
+    <Compile Include="Repositories\IProductionOrderRepository.cs" />
+    <Compile Include="Repositories\IAccountingPriceListRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IAccountOrganizationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IArticleGroupRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IArticleRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IChangeOwnerWaybillRepository.cs" />
+    <Compile Include="Repositories\IClientOrganizationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IClientRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IContractorOrganizationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IDealRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IExpenditureWaybillRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IMeasureUnitRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IMovementWaybillRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IOrganizationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IProviderContractRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IProviderOrganizationRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IProviderRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IReceiptWaybillRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IReturnFromClientWaybillRepository.cs" />
+    <Compile Include="Repositories\IRoleRepository.cs" />
+    <Compile Include="Repositories\IRussianBankRepository.cs" />
+    <Compile Include="Repositories\IStorageRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\ITeamRepository.cs" />
+    <Compile Include="Repositories\IUserRepository.cs" />
+    <Compile Include="Repositories\IWaybillRowArticleMovementRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Repositories\IWriteoffWaybillRepository.cs" />
+    <Compile Include="Repositories\Report\IReport0002Repository.cs" />
+    <Compile Include="Repositories\Task\ITaskRepository.cs" />
+    <Compile Include="Repositories\Task\ITaskExecutionItemRepository.cs" />
+    <Compile Include="Repositories\Task\ITaskPriorityRepository.cs" />
+    <Compile Include="Repositories\Task\ITaskTypeRepository.cs" />
+    <Compile Include="Repositories\Waybill\SaleWaybill\ISaleWaybillRepository.cs" />
+    <Compile Include="Services\AccountingPriceCalcRuleService.cs" />
+    <Compile Include="Services\AccountingPriceCalcService.cs" />
+    <Compile Include="Services\AccountingPriceListWaybillTakingService.cs" />
+    <Compile Include="Services\ArticleAvailabilityService.cs" />
+    <Compile Include="Services\ArticleMovementOperationCountService.cs" />
+    <Compile Include="Services\ArticleMovementService.cs" />
+    <Compile Include="Services\ArticlePriceService.cs" />
+    <Compile Include="Services\ArticleRevaluationService.cs" />
+    <Compile Include="Services\ArticlePurchaseService.cs" />
+    <Compile Include="Services\ArticleSaleService.cs" />
+    <Compile Include="Services\BlockingService.cs" />
+    <Compile Include="Services\ClientContractIndicatorService.cs" />
+    <Compile Include="Services\DealPaymentDocumentDistributionService.cs" />
+    <Compile Include="Services\DealIndicatorService.cs" />
+    <Compile Include="Services\ExpenditureWaybillIndicatorService.cs" />
+    <Compile Include="Services\FactualFinancialArticleMovementService.cs" />
+    <Compile Include="Services\IncomingWaybillRowService.cs" />
+    <Compile Include="Services\Indicators\ArticleAccountingPriceIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleAvailabilityIndicators\BaseArticleAvailabilityIndicatorService.cs" />
+    <Compile Include="Services\Indicators\ArticleAvailabilityIndicators\ExactArticleAvailabilityIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleAvailabilityIndicators\IncomingAcceptedArticleAvailabilityIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromExactArticleAvailabilityIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleAvailabilityIndicators\OutgoingAcceptedFromIncomingAcceptedArticleAvailabilityIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleMovementFactualFinancialIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleMovementOperationCountIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ArticleRevaluationIndicators\AcceptedArticleRevaluationIndicatorService.cs" />
+    <Compile Include="Services\Indicators\ArticleRevaluationIndicators\BaseArticleRevaluationIndicatorService.cs" />
+    <Compile Include="Services\Indicators\ArticleRevaluationIndicators\ExactArticleRevaluationIndicatorService.cs" />
+    <Compile Include="Services\Indicators\ReturnFromClientIndicators\AcceptedReturnFromClientIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ReturnFromClientIndicators\BaseReturnFromClientIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleShippingDateIndicatorService.cs" />
+    <Compile Include="Services\Indicators\ReturnFromClientIndicators\ReturnFromClientBySaleAcceptanceDateIndicatorService.cs" />
+    <Compile Include="Services\Indicators\ReturnFromClientIndicators\ReceiptedReturnFromClientIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\SaleIndicators\AcceptedSaleIndicatorService.cs" />
+    <Compile Include="Services\Indicators\SaleIndicators\BaseSaleIndicatorService.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Services\Indicators\SaleIndicators\ShippedSaleIndicatorService.cs" />
+    <Compile Include="Services\Indicators\PurchaseIndicators\AcceptedPurchaseIndicatorService.cs" />
+    <Compile Include="Services\Indicators\PurchaseIndicators\ApprovedPurchaseIndicatorService.cs" />
+    <Compile Include="Services\Indicators\PurchaseIndicators\BasePurchaseIndicatorService.cs" />
+    <Compile Include="Services\OutgoingWaybillRowService.cs" />
+    <Compile Include="Services\PermissionDistributionService.cs" />
+    <Compile Include="Services\ReturnFromClientService.cs" />
+    <Compile Include="Services\SaleWaybillIndicatorService.cs" />
+    <Compile Include="ValueObjects\PassportInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure.IoC\ERP.Infrastructure.IoC.csproj">
+      <Project>{026EDA6D-FB5B-4E0E-A36B-93A252577997}</Project>
+      <Name>ERP.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Settings\ERP.Wholesale.Settings.csproj">
+      <Project>{3E4BD22D-B4AC-4E09-9C8C-090AA5BD9C85}</Project>
+      <Name>ERP.Wholesale.Settings</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

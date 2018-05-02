@@ -1,0 +1,88 @@
+﻿body {
+    background: #fff;
+}
+#login_content {
+    width: 530px;
+    margin: 0 auto;
+}
+#login_content #logo {
+    position: relative; left: 174px;
+    margin-top: 20px;
+    height: 84px;
+    width: 184px;
+}
+#login_content #type_name {
+    margin-top: 28px;
+    color: #4D7285;    
+    font-size: 32px;
+    text-align: center;
+}
+#login_content #field_container {
+    margin-top: 15px; padding-bottom: 20px;
+    background: #f4f4f4;
+    border: 1px solid #d6d6d6;
+    width: 528px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;    
+}
+#login_content #field_container h2 {
+    margin: 13px 0;
+    font-weight: normal;
+    font-size: 18px;
+    text-align: center;
+}
+#login_content #field_container h1 {
+    margin: 10px 0;
+    text-align: center;
+    font-size: 32px;
+    color: #4D7285;
+}
+#login_content #field_container .label_wrapper {    
+    margin-top: 25px;
+    padding-left: 70px;
+    display: block;
+    font-weight: bold;
+    font-size: 16px;
+}
+#login_content #field_container input[type="text"], #login_content #field_container input[type="password"] {
+    width: 410px; height: 42px;
+    margin-top: 8px; margin-left: 55px;
+    border: 2px solid #A0B3BA;
+    display: block;
+    background: #fff;
+    font-size: 28px;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px; 
+}
+#login_content #field_container .field-validation-error {
+    padding-left: 70px;
+    display: block;
+    font-size: 14px;
+}
+#login_content #field_container #remember_me {
+    padding-left: 70px; margin-top: 20px;
+    display: block;
+    font-size: 14px;
+}
+#login_content #field_container #login_button_wrapper {
+    padding: 30px 200px 0;
+    height: 30px; overflow: hidden;
+}
+#login_content #field_container #messageAdministratorLogin {
+    padding-top: 18px; padding-left: 0;
+    text-align: center;
+}
+#login_content #field_container input[type="submit"] {
+    width: 136px; height: 30px;
+    font-size: 22px;
+}
+#login_footer {
+    padding-top: 15px; padding-left: 30px; padding-bottom: 10px;
+    font-size: 14px;
+}
+    
+    
+    
+    

@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F368CDA4-B31E-4F19-B38F-C1CE95530A67}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.AbstractApplicationServices</RootNamespace>
+    <AssemblyName>ERP.Wholesale.AbstractApplicationServices</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IBaseWaybillService.cs" />
+    <Compile Include="IClientContractService.cs" />
+    <Compile Include="Dictionary\IBaseDictionaryService.cs" />
+    <Compile Include="IArticleCertificateService.cs" />
+    <Compile Include="IContractorService.cs" />
+    <Compile Include="ICurrencyRateService.cs" />
+    <Compile Include="IDealPaymentDocumentService.cs" />
+    <Compile Include="IDealQuotaService.cs" />
+    <Compile Include="IProductionOrderCustomsDeclarationService.cs" />
+    <Compile Include="IProductionOrderExtraExpensesSheetService.cs" />
+    <Compile Include="IProductionOrderPlannedPaymentService.cs" />
+    <Compile Include="IProductionOrderTransportSheetService.cs" />
+    <Compile Include="IClientRegionService.cs" />
+    <Compile Include="IClientServiceProgramService.cs" />
+    <Compile Include="IClientTypeService.cs" />
+    <Compile Include="IContractorOrganizationService.cs" />
+    <Compile Include="IProductionOrderMaterialsPackageService.cs" />
+    <Compile Include="IProductionOrderBatchLifeCycleTemplateService.cs" />
+    <Compile Include="IProductionOrderPaymentService.cs" />
+    <Compile Include="IWriteoffReasonService.cs" />
+    <Compile Include="IWriteoffWaybillService.cs" />
+    <Compile Include="IProviderOrganizationService.cs" />
+    <Compile Include="IForeignBankService.cs" />
+    <Compile Include="IProductionOrderService.cs" />
+    <Compile Include="IProviderTypeService.cs" />
+    <Compile Include="IRussianBankService.cs" />
+    <Compile Include="ITrademarkService.cs" />
+    <Compile Include="ILegalFormService.cs" />
+    <Compile Include="IArticleGroupService.cs" />
+    <Compile Include="IChangeOwnerWaybillService.cs" />
+    <Compile Include="ICurrencyService.cs" />
+    <Compile Include="IManufacturerService.cs" />
+    <Compile Include="IAccountOrganizationService.cs" />
+    <Compile Include="ICountryService.cs" />
+    <Compile Include="IProducerService.cs" />
+    <Compile Include="IProviderContractService.cs" />
+    <Compile Include="IProviderService.cs" />
+    <Compile Include="IArticleService.cs" />
+    <Compile Include="IAccountingPriceListService.cs" />
+    <Compile Include="IClientOrganizationService.cs" />
+    <Compile Include="IClientService.cs" />
+    <Compile Include="IDealService.cs" />
+    <Compile Include="IEmployeePostService.cs" />
+    <Compile Include="IExpenditureWaybillService.cs" />
+    <Compile Include="IMeasureUnitService.cs" />
+    <Compile Include="IMovementWaybillService.cs" />
+    <Compile Include="IOrganizationService.cs" />
+    <Compile Include="IReceiptWaybillService.cs" />
+    <Compile Include="IReturnFromClientReasonService.cs" />
+    <Compile Include="IReturnFromClientWaybillService.cs" />
+    <Compile Include="IRoleService.cs" />
+    <Compile Include="ISaleWaybillService.cs" />
+    <Compile Include="IStorageService.cs" />
+    <Compile Include="ITeamService.cs" />
+    <Compile Include="IUserService.cs" />
+    <Compile Include="IValueAddedTaxService.cs" />
+    <Compile Include="MainIndicators\IAccountingPriceListMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\IChangeOwnerWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\IMovementWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\IReceiptWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\IReturnFromClientWaybillMainIndicatorService.cs" />
+    <Compile Include="MainIndicators\IWriteoffWaybillMainIndicatorService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Task\ITaskExecutionItemService.cs" />
+    <Compile Include="Task\ITaskPriorityService.cs" />
+    <Compile Include="Task\ITaskService.cs" />
+    <Compile Include="Task\ITaskTypeService.cs" />
+    <Compile Include="ISettingService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{C1F3EBA7-9F63-42F0-9848-FB9C8ED4FFB4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.UI.Web</RootNamespace>
+    <AssemblyName>ERP.UI.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="HtmlHelpers\ButtonHelper.cs" />
+    <Compile Include="HtmlHelpers\CommentHelper.cs" />
+    <Compile Include="HtmlHelpers\HelpHelper.cs" />
+    <Compile Include="HtmlHelpers\HelpLabelHelper.cs" />
+    <Compile Include="HtmlHelpers\WaybillTabPanelWithGridsHelper.cs" />
+    <Compile Include="HtmlHelpers\TimePickerHelper.cs" />
+    <Compile Include="HtmlHelpers\DatePickerHelper.cs" />
+    <Compile Include="HtmlHelpers\DisablingHelper.cs" />
+    <Compile Include="HtmlHelpers\FilterHelper.cs" />
+    <Compile Include="HtmlHelpers\GridHelper.cs" />
+    <Compile Include="HtmlHelpers\MultipleSelectorHelper.cs" />
+    <Compile Include="HtmlHelpers\ParamDropDownListHelper.cs" />
+    <Compile Include="HtmlHelpers\TreeHelper.cs" />
+    <Compile Include="HtmlHelpers\YesNoToggleHelper.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.UI\ERP.UI.csproj">
+      <Project>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</Project>
+      <Name>ERP.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils.Mvc\ERP.Utils.Mvc.csproj">
+      <Project>{FFF5CA82-3858-4A55-A777-525F0B0460CD}</Project>
+      <Name>ERP.Utils.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

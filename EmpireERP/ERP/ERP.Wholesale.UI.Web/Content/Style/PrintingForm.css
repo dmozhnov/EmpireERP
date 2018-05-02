@@ -1,0 +1,235 @@
+﻿html, body, div, span, h1, h2, h3, h4, h5, h6, p, a, em, img, strong, b, u, i, dl, dt, dd, 
+ol, ul, li, form, label, table, tbody, tfoot, thead, tr, th, td {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: none;
+	background: transparent;	
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+table.MainTable
+{
+    border: 1pt solid black;
+    border-spacing: 0pt;
+    border-collapse: collapse;
+    background: white;
+    font-size: 8pt;
+    font-family: "Times New Roman";
+    width: 99,9%;
+}
+table.MainTable th
+{
+    font-size: 7pt;
+    border: 1pt solid black;
+    background: white;
+    padding: 1pt;
+}
+table.MainTable td
+{
+    border: 1pt solid black;
+    background: white;
+    padding: 2pt;
+    line-height: 1;
+    height: auto;
+}
+table.NoBorders{
+    border: 0 none;
+}
+table.NoBorders th{
+    border: 0 none;
+}
+table.NoBorders td{
+    border: 0 none;
+}
+table.BoldBorders {
+    border: 3px solid black;
+}
+table.BoldBorders th
+{
+    border: 3px solid black;
+}
+table.BoldBorders td
+{
+    border: 3px solid black;
+}
+
+thead
+{
+    display: table-header-group;
+}
+tbody
+{
+    display: table-row-group;
+}
+
+.page {
+    height: 545pt;
+    width: 820pt;
+    margin: 0; padding: 0;
+}
+.page_Opera {
+    height: 500pt;
+    width: 820pt;
+    margin: 0;
+    padding: 0;
+}
+td div {
+    margin-bottom: -1px;
+}
+
+@media print {
+    .pageBreak{
+        page-break-after: always;
+    }
+}
+
+/* table borders
+----------------------------------------------------------*/
+tr td.noAllBorder{
+    border-left-style: none;
+    border-top-style: none;
+    border-right-style: none;
+    border-bottom-style: none;
+}
+tr td.noLeftBorder{
+    border-left-style: none;
+}
+tr td.noTopBorder{
+    border-top-style: none;
+}
+tr td.noRightBorder{
+    border-right-style: none;
+}
+tr td.noBottomBorder{
+    border-bottom-style: none;
+}
+tr td.allBorder{
+    border: 1px solid black;
+}
+tr td.leftBorder{
+    border-left: 1px solid black;
+}
+tr td.topBorder{
+    border-top: 1px solid black;
+}
+tr td.rightBorder{
+    border-right: 1px solid black;
+}
+tr td.bottomBorder{
+    border-bottom: 1px solid black;
+}
+tr td.allBoldBorder{
+    border: 3px solid black;
+}
+tr td.leftBoldBorder, tr th.leftBoldBorder{
+    border-left: 3px solid black;
+}
+tr td.topBoldBorder, tr th.topBoldBorder{
+    border-top: 3px solid black;
+}
+tr td.rightBoldBorder, tr th.rightBoldBorder{
+    border-right: 3px solid black;
+}
+tr td.bottomBoldBorder, tr th.bottomBoldBorder{
+    border-bottom: 3px solid black;
+}
+tr td.allDoubleBorder{
+    border: double black !important;
+}
+tr td.leftDoubleBorder, tr th.leftDoubleBorder{
+    border-left: double black;
+}
+tr td.topDoubleBorder,tr th.topDoubleBorder{
+    border-top: double black;
+}
+tr td.rightDoubleBorder,tr th.rightDoubleBorder{
+    border-right: double black;
+}
+tr td.bottomDoubleBorder, tr th.bottomDoubleBorder{
+    border-bottom: double black;
+}
+/* end borders
+---------------------------------------------------------------------*/
+
+.font6pt
+{
+    font-size: 6pt !important;
+}
+
+.font7pt
+{
+    font-size: 7pt;
+}
+
+.font8pt
+{
+    font-size: 8pt;
+}
+
+.font9pt
+{
+    font-size: 9pt;
+}
+
+.font10pt
+{
+    font-size: 10pt;
+}
+
+.font11pt
+{
+    font-size: 11pt !important;
+}
+
+.font12pt
+{
+    font-size: 12pt;
+}
+
+.font14pt
+{
+    font-size: 14pt;
+}
+
+.hr
+{
+    border-bottom: 2px solid black;
+    padding: 5px;
+    margin: 7px 0px;
+    width: 100%;
+}
+
+tr td.underline, div.underline
+{
+    border-bottom: 1px solid black;
+}
+
+.floatingDivPortraitDefault
+{
+    width: 790px;
+}
+
+.floatingDivLandscapeDefault
+{
+    width: 1100px;
+}
+
+@media print
+{
+    .floatingDivPortraitDefault
+    {
+        width: auto;
+    }
+    .floatingDivLandscapeDefault
+    {
+        width: auto;
+    }
+}
+
+.nobr {    
+    white-space: nowrap;
+}
+

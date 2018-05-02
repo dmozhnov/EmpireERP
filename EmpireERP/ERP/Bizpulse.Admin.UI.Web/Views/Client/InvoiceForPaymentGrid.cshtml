@@ -1,0 +1,9 @@
+﻿@using ERP.UI.Web.HtmlHelpers
+
+@model ERP.UI.ViewModels.Grid.GridData
+
+@Html.GridHeader("Счета на оплату", "gridInvoiceForPayments")
+    <div class="grid_buttons">
+        @Html.Button("btnCreateInvoiceForPayment", "Запросить счет", false)
+    </div>
+@Html.GridContent(Model, "/Client/ShowInvoiceForPaymentGrid/")

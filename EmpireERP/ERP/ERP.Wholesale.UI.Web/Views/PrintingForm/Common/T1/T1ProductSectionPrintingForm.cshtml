@@ -1,0 +1,549 @@
+﻿@model ERP.Wholesale.UI.ViewModels.PrintingForm.Common.Т1.T1ProductSectionPrintingFormViewModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <link href="../../Content/Style/PrintingForm.css" rel="stylesheet" type="text/css" />
+    <title>Товарно-транспортная накладная</title>
+
+    <script src="/Scripts/jquery-1.5.2.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="/Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    <script src="/Scripts/modules.min.js" type="text/javascript"></script>
+    <script src="/Scripts/Common.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        PrintingForm_T1PrintingForm.Init();
+    </script>
+</head>
+<body>
+    @Html.HiddenFor(model=>model.CountScale)
+    @Html.HiddenFor(model=>model.RowsContentURL)
+    @Html.HiddenFor(model=>model.WaybillId)
+    @Html.HiddenFor(model=>model.PriceTypeId)
+
+    <div style='display: none;'>
+        <div id="PageHeader">
+            @*Шапка в верхнем правом углу формы*@
+            <table class='font9pt' style='width:100%; line-height:1;'>
+                <col />
+                <col style='width: 260px' />
+                <tr>
+                    <td rowspan='3'><div style='width:100%'>&nbsp;</div></td>
+                    <td><div>Типовая межотраслевая форма № 1-Т</div></td>
+                </tr>
+                <tr>
+                    <td><div>Утверждена Постановлением Госкомстата России</div></td>
+                </tr>
+                <tr>
+                    <td><div>от 28.11.97 № 78<div></td>
+                </tr>
+            </table>
+            @* шапка формы *@
+            <table style='width:99.9%;line-height: 1.1;'>
+                <col style='min-width:104px;width:104px' />
+                <col />
+                <col style='min-width:125px;width:125px' />
+                <col style='min-width:39px;width:39px' />
+                <col style='min-width:47px;width:47px' />
+                <col style='min-width:39px;width:39px' />
+                <col style='min-width:19px;width:19px' />
+                <col style='min-width:32px;width:32px' />
+                <col style='min-width:32px;width:32px' />
+                <col style='min-width:32px;width:32px' />
+                <tr>    @* Таким образом фиксим баг Opera по игнорированию при colspan ширины столбцов *@
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td colspan='7'></td>
+                    <td style='text-align:center' class='font10pt allBorder' colspan='3'><div>Коды</div></td>
+                </tr>
+                <tr>
+                    <td colspan='4'></td>
+                    <td style='text-align:right; padding-right: 2px;' class='font10pt' colspan='3'><div>Форма по ОКУД</div></td>
+                    <td style='text-align:center' class='font10pt leftBoldBorder topBoldBorder rightBoldBorder bottomBorder' colspan='3'><div>0345009</div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style='text-align:right; padding-right: 20px;' class='font16pt'><div style='width:100%'><b>ТОВАРНО-ТРАНСПОРТНАЯ НАКЛАДНАЯ</b></div></td>
+                    <td class='font9pt' colspan='4'><div style='text-align:center' class='underline'>&nbsp;</div></td>
+                    <td style='text-align:right; padding-right: 2px;' class='font10pt'><div>№</div></td>
+                    <td class='font10pt leftBoldBorder rightBoldBorder bottomBorder' colspan='3'><div style='text-align:center'>@Model.Number</div></td>
+                </tr>
+                <tr>
+                    <td colspan='3'></td>
+                    <td class='font6pt'><div>(серия)</div></td>
+                    <td colspan='3'></td>
+                    <td class='leftBoldBorder rightBorder'></td>
+                    <td></td>
+                    <td class='leftBorder rightBoldBorder'></td>
+                </tr>
+                <tr>
+                    <td colspan='4'></td>
+                    <td colspan='3'><div style='text-align:right;padding-right: 2px;' class='font10pt'>Дата составления</div></td>
+                    <td class='font10pt leftBoldBorder rightBorder'><div style='text-align:center'>@Model.CreationDay</div></td>
+                    <td class='font10pt'><div style='text-align:center'>@Model.CreationMonth</div></td>
+                    <td class='font10pt leftBorder rightBoldBorder'><div style='text-align:center'>@Model.CreationYear</div></td>
+                </tr>
+                <tr>
+                    <td colspan='7' class='font6pt'>&nbsp;</td>
+                    <td class='leftBoldBorder topBorder rightBoldBorder bottomBorder' colspan='3' rowspan='2'></td>
+                </tr>
+                <tr>
+                    <td class='font10pt'><div>Грузоотправитель</div></td>
+                    <td class='font9pt' colspan='4'><div class='underline'>@Model.Sender</div></td>
+                    <td style='text-align:right; padding-right: 2px;' class='font10pt' colspan='2'><div>по ОКПО</div></td>
+                </tr>
+                    <tr>
+                    <td></td>
+                    <td style='text-align:center' class='font6pt' colspan='4'><div>(полное наименование организации, адрес, номер телефона)</div></td>
+                    <td colspan='2'></td>
+                    <td class='leftBoldBorder topBorder rightBoldBorder bottomBorder' colspan='3' rowspan='2'></td>
+                </tr>
+                <tr>
+                    <td class='font10pt'><div>Грузополучатель</div></td>
+                    <td class='font9pt' colspan='4'><div class='underline'>@Model.Recipient</div></td>
+                    <td style='text-align:right; padding-right: 2px;' class='font10pt' colspan='2'><div>по ОКПО</div></td>                
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style='text-align:center' class='font6pt' colspan='4'><div>(полное наименование организации, адрес, номер телефона)</div></td>
+                    <td colspan='2'></td>
+                    <td class='leftBoldBorder topBorder rightBoldBorder bottomBoldBorder' colspan='3' rowspan='2'></td>
+                </tr>
+                <tr>
+                    <td class='font10pt'>Плательщик</td>
+                    <td class='font9pt' colspan='4'><div class='underline'>@Model.Payer</div></td>
+                    <td style='text-align:right; padding-right: 2px;' class='font10pt' colspan='2'><div>по ОКПО</div></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td style='text-align:center' class='font6pt' colspan='4'><div>(полное наименование организации, адрес, банковские реквизиты)</div></td>
+                    <td colspan='2'></td>
+                    <td colspan='3'></td>
+                </tr>
+            </table>
+            <div style="text-align:center" class='font16pt'>1. ТОВАРНЫЙ РАЗДЕЛ</div>
+        </div>
+        
+        @* ТОВАРНЫЙ РАЗДЕЛ *@
+        <div id="MainTable">
+            @* Шапка главной таблицы *@
+            <table class='mainTableHeader MainTable' style='width:100%; border:0 none;'>
+                <thead>
+                    <tr>
+                        <th style="width:53px;min-width:53px;" class='topDoubleBorder leftDoubleBorder rightDoubleBorder'><div>Код продукции (номенкла-<br />турный номер)</div></th>
+                        <th style="width:100px;min-width:100px;" class='topDoubleBorder rightDoubleBorder'><div>Номер<br />прейскуранта и<br />дополнения к нему</div></th>
+                        <th style="width:65px;min-width:65px;" class='topDoubleBorder rightDoubleBorder'><div>Артикул<br />или<br />номер по<br />прейскуранту</div></th>
+                        <th style="width:60px;min-width:60px;" class='topDoubleBorder rightDoubleBorder'><div>Количество</div></th>
+                        <th style="width:80px;min-width:80px;" class='topDoubleBorder'><div>Цена,<br />руб. коп.</div></th>    
+                        <th class='topDoubleBorder'><div style="width:100%;">Наименование<br />продукции, товара (груза),<br />ТУ, марка, размер, сорт</div></th>
+                        <th style="width:56px;min-width:56px;" class='topDoubleBorder'><div>Единица<br />измерения</div></th>
+                        <th style="width:56px;min-width:56px;" class='topDoubleBorder'><div>Вид<br />упаковки</div></th>
+                        <th style="width:54px;min-width:54px;" class='topDoubleBorder'><div>Количест-<br />во мест</div></th>
+                        <th style="width:75px;min-width:75px;" class='topDoubleBorder leftDoubleBorder'><div>Масса,<br />т.</div></th>
+                        <th style="width:56px;min-width:80px;" class='topDoubleBorder'><div>Сумма,<br />руб. коп.</div></th>
+                        <th style="width:88px;min-width:88px;" class='topDoubleBorder rightDoubleBorder'><div>Порядковый<br />номер<br />записи по склад-<br />ской картотеке<br />(грузоотправителю,<br />грузополучателю)</div></th>
+                    </tr>
+                    <tr style="text-align:center;">
+                        <th class='leftDoubleBorder rightDoubleBorder bottomBoldBorder'><div>1</div></th>
+                        <th class='rightDoubleBorder bottomDoubleBorder'><div>2</div></th>
+                        <th class='rightDoubleBorder bottomDoubleBorder'><div>3</div></th>
+                        <th class='rightDoubleBorder bottomBoldBorder'><div>4</div></th>
+                        <th class='bottomBoldBorder'><div>5</div></th>
+                        <th class='bottomDoubleBorder'><div>6</div></th>
+                        <th class='bottomDoubleBorder'><div>7</div></th>
+                        <th class='bottomDoubleBorder'><div>8</div></th>
+                        <th class='rightDoubleBorder bottomBoldBorder'><div>9</div></th>
+                        <th class='bottomBoldBorder'><div>10</div></th>
+                        <th class='bottomBoldBorder'><div>11</div></th>
+                        <th class='rightDoubleBorder bottomDoubleBorder'><div>12</div></th>
+                    </tr>
+                </thead>
+            </table>
+            @*--------------------------------------------------------------------------------------------------------*@
+            @* Строка таблицы *@
+            <table class='mainTableRow'>
+                <tr>
+                    <td style='text-align: center;' class='leftBoldBorder rightBoldBorder'><div class='ItemNumber'></div></td>
+                    <td style='text-align: center;' class='rightDoubleBorder'><div class='ListPriseNumber'></div></td>
+                    <td style='text-align: center;'><div class='Number'></div></td>
+                    <td style='text-align: right;' class='leftBoldBorder rightDoubleBorder'><div class='Count'></div></td>
+                    <td style='text-align: right;'class='rightBoldBorder'><div class='Price'></div></td>
+                    <td><div class='Name'></div></td>
+                    <td style='text-align: center;'><div class='MeasureUnit'></div></td>
+                    <td><div class='PackType'></div></td>
+                    <td style='text-align: right;' class='leftBoldBorder rightDoubleBorder'><div class='PackCount'></div></td>
+                    <td style='text-align: right;'><div class='Weight'></div></td>
+                    <td style='text-align: right;'><div class='Sum'></div></td>
+                    <td style='text-align: center;' class='leftBoldBorder rightDoubleBorder'><div class='SerialNumber'></div></td>
+                </tr>
+            </table>
+            @*--------------------------------------------------------------------------------------------------------*@
+            @* Строка "Всего по странице документа" *@
+            <table class='mainTablePageSummary'>
+                <tr class='SummaryForPage'>
+                    <td class='noAllBorder topBoldBorder font10pt'></td>
+                    <td class='noAllBorder topDoubleBorder font10pt' colspan='2'><div  style='text-align: right;'>Итого</div></td>
+                    <td class='leftBoldBorder topDoubleBorder rightDoubleBorder bottomBoldBorder'><div style='text-align: right;' class='CountOnPage'></div></td>
+                    <td class='topDoubleBorder rightBoldBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'></td>
+                    <td class='leftBoldBorder  topDoubleBorder rightDoubleBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'><div style='text-align:right' class='WeightOnPage'></div></td>
+                    <td class='topDoubleBorder rightBoldBorder bottomBoldBorder'><div style='text-align:right' class='SumOnPage'></div></td>
+                    <td class='topDoubleBorder rightDoubleBorder bottomBoldBorder'></td>
+                </tr>
+            </table>
+            @*--------------------------------------------------------------------------------------------------------*@
+            <table class='mainTableEnding'>
+                @* Окончание таблицы *@
+                 <tr class='SummaryForDocument SummaryForDocumentWithoutPageSummary'>    @* Строка "Всего по документу" для таблицы без строки "Всего по странице" *@
+                    <td class='noAllBorder topBoldBorder font10pt'></td>
+                    <td class='noAllBorder topDoubleBorder font10pt' colspan='2'><div  style='text-align: right;'>Всего по накладной</div></td>
+                    <td class='leftBoldBorder topDoubleBorder rightDoubleBorder bottomBoldBorder'><div style='text-align: right;' class='documentCount'>@Model.TotalCount</div></td>
+                    <td class='topDoubleBorder rightBoldBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'></td>
+                    <td class='leftBoldBorder  topDoubleBorder rightDoubleBorder bottomBoldBorder'></td>
+                    <td class='topDoubleBorder bottomBoldBorder'><div style='text-align:right' class='WeightOnPage'>@Model.TotalWeight</div></td>
+                    <td class='topDoubleBorder rightBoldBorder bottomBoldBorder'><div style='text-align:right' class='documentSum'>@Model.TotalSum</div></td>
+                    <td class='topDoubleBorder rightDoubleBorder bottomBoldBorder'></td>
+                </tr>
+                <tr class='SummaryForDocument SummaryForDocumentWithPageSummary'>    @* Строка "Всего по документу" для таблицы, содержащей строку "Всего по странице" *@
+                    <td class='noAllBorder font10pt' colspan='3'><div  style='text-align: right;'>Всего по накладной</div></td>
+                    <td class='bottomBoldBorder leftBoldBorder rightDoubleBorder'><div style='text-align: right;' class='documentCount'>@Model.TotalCount</div></td>
+                    <td class='bottomBoldBorder rightBoldBorder'></td>
+                    <td class='bottomBoldBorder'></td>
+                    <td class='bottomBoldBorder'></td>
+                    <td class='bottomBoldBorder'></td>
+                    <td class='bottomBoldBorder leftBoldBorder rightDoubleBorder'></td>
+                    <td class='bottomBoldBorder'><div style='text-align:right' class='WeightOnPage'>@Model.TotalWeight</div></td>
+                    <td class='bottomBoldBorder rightBoldBorder'><div style='text-align:right' class='documentSum'>@Model.TotalSum</div></td>
+                    <td class='bottomBoldBorder rightBoldBorder'></td>
+                </tr>
+                <tr style='max-height:0;' class='SummaryForDocument'>
+                    <td class='noAllBorder' colspan='3'></td>
+                    <td class='noAllBorder' colspan='6'></td>
+                    <td class='leftDoubleBorder noTopBorder noBottomBorder'></td>
+                    <td class='rightDoubleBorder noTopBorder noBottomBorder'></td>
+                    <td class='noRightBorder noBottomBorder noTopBorder'></td>
+                </tr>
+                <tr class='SummaryForDocument'>
+                    <td class='noAllBorder' colspan='9' rowspan='4'>
+                        <table class="NoBorders" style="width:100%">
+                            <col style='width: 60px;min-width: 60px' />
+                            <col style='width: 47px;min-width: 47px' />
+                            <col style='width: 110px;min-width: 110px'/>
+                            <col style='width: 160px; min-width:160px'/>
+                            <col style='width: 110px;min-width: 110px'/>
+                            <col style='width: 30px;min-width: 30px' />
+                            <col style='width: 140px;min-width: 140px'/>
+                            <col style='width: 100px;min-width: 100px'/>
+                            <tr>    @* Таким образом фиксим баг Opera по игнорированию при colspan ширины столбцов *@
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td colspan='3'><div>Товарная накладная имеет продолжение на</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td colspan='2'><div>листах, на бланках за №</div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td><div>и содержит</div></td>
+                                <td class='font10pt' colspan='3'><div style='text-align:center' class='underline'>@Model.RowCountString</div></td>
+                                <td colspan='4'><div>порядковых номеров записей</div></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style='text-align:center' class='font6pt' colspan='3'><div>(прописью)</div></td>
+                                <td colspan='3'></td>
+                                <td rowspan='4'>
+                                    <table style='width:100%'>
+                                        <tr>
+                                            <td class='leftBoldBorder topBoldBorder rightBoldBorder bottomBorder'>
+                                                <div style='text-align:center' class='font11pt'>&nbsp;</div>
+                                            </td>
+                                            <td style='width: 10px'><div>т</div></td>
+                                        </tr>
+                                        <tr>
+                                            <td class='leftBoldBorder rightBoldBorder bottomBoldBorder'>
+                                                <div style='text-align:center' class='font11pt'>@Model.GrousWeightValue</div>
+                                            </td>
+                                            <td><div>т</div></td>
+                                        </tr>
+                                    </table>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan='2'><div>Всего наименований</div></td>
+                                <td class='font10pt' colspan='2'><div style='text-align:center' class='underline'>@Model.ArticleCountString</div></td>
+                                <td><div>Масса груза (нетто)</div></td>
+                                <td class='font10pt' colspan='2'><div style='text-align:center' class='underline'>&nbsp;</div></td>
+                            
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td style='text-align:center' class='font6pt' colspan='2'><div>(прописью)</div></td>
+                                <td></td>
+                                <td style='text-align:center' class='font6pt' colspan='2'><div>(прописью)</div></td>
+                            
+                            </tr>
+                            <tr>
+                                <td><div>Всего мест</div></td>
+                                <td class='font10pt' colspan='3'><div style='text-align:center' class='underline'>&nbsp;</div></td>
+                                <td><div>Масса груза (брутто)</div></td>
+                                <td class='font10pt' colspan='2'><div style='text-align:center' class='underline'>@Model.GrousWeightString</div></td>
+                            
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style='text-align:center' class='font6pt' colspan='3'><div>(прописью)</div></td>
+                                <td></td>
+                                <td style='text-align:center' class='font6pt' colspan='2'><div>(прописью)</div></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td class='leftDoubleBorder noTopBorder'><div style='text-align:center'>Наценка, %</div></td>
+                    <td class='rightDoubleBorder noTopBorder'><div style='text-align:right'>&nbsp;</div></td>
+                    <td class='noRightBorder noBottomBorder noTopBorder'></td>
+                </tr>
+                <tr class='SummaryForDocument'>
+                    <td class="leftDoubleBorder"><div style='text-align:center'>Складские или транспортные расходы</div></td>
+                    <td class="rightDoubleBorder"></td>
+                </tr>
+                <tr class='SummaryForDocument'>
+                    <td class="leftDoubleBorder"><div style='text-align:center'>В т.ч. НДС @(Model.ValueAddedTaxPercentage.Length>0? "(" + Model.ValueAddedTaxPercentage + "%)" : "")</div></td>
+                    <td class="rightDoubleBorder"><div style='text-align:right'>@Model.ValueAddedTaxSum</div></td>
+                </tr>
+                <tr class='SummaryForDocument'>
+                    <td class="leftDoubleBorder bottomDoubleBorder font7pt"><div style='text-align:center'>Всего к оплате</div></td>
+                    <td class="rightDoubleBorder bottomDoubleBorder"><div style='text-align:right'>@Model.TotalSumValue</div></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="PageFooter">
+            @* Футер с подписями *@
+            <table style='width:100%;' class='font8pt'>
+                <tr>
+                    @* Левая чать *@
+                    <td style='width:60%; padding-right: 5px;' class='rightBorder'>
+                        <table style='width:100%;'>
+                            <col  style='min-width:135px; width: 135px'/>
+                            <col  style='min-width:110px; width: 110px'/>
+                            <col />
+                            <col  style='min-width:37px; width: 37px'/>
+                            <col  style='min-width:45px; width:45px'/>
+                            <col  style='min-width:46px; width:46px'/>
+                            <tr>
+                                <td colspan='2'><div>Приложение (паспорта, сертификаты и т.п.) на</div></td>
+                                <td class='font10pt'><div style='width:100%' class='underline'>&nbsp;</div></td>
+                                <td><div>листах</div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td></td>
+                                <td style='text-align: center' class='font6pt'><div>(прописью)</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><div>Всего отпущено на сумму</div></td>
+                                <td class='font10pt' colspan='2'><div style='text-align:center' class='underline'>@Model.TotalSumSeniorString</div></td>
+                                <td><div>руб.</div></td>
+                                <td class='font10pt'><div style='text-align:center' class='underline'>@Model.TotalSumJuniorString</div></td>
+                                <td><div>коп.</div></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td style='text-align: center' class='font6pt' colspan='2'><div>(прописью)</div></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+                        <table style='width:100%;border-collapse:separate; border-spacing:5px 0;'>
+                            <col style='min-width:135px; width:135px'/>
+                            <col style='min-width:40px; width:40px'/>
+                            <col />
+                            <col style='min-width:78px; width: 78px'/>
+                            <col style='min-width:50px; width:50px'/>
+                            <col />
+                            <tr>
+                                <td><div><b>Отпуск разрешил</b></div></td>
+                                <td></td>
+                                <td></td>
+                                <td colspan='2'><div><b>Главный (старший)</b></div></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div style='text-align:center' class='underline'>&nbsp;</div></td>
+                                <td><div><b>бухгалтер</b></div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                                <tr class='font6pt'>
+                                <td style='text-align: center'><div>(должность)</div></td>
+                                <td style='text-align: center'><div>(подпись)</div></td>
+                                <td style='text-align: center'><div style='width:100%'>(расшифровка подписи)</div></td>
+                                <td></td>
+                                <td style='text-align: center'><div>(подпись)</div></td>
+                                <td style='text-align: center'><div style='width:100%'>(расшифровка подписи)</div></td>
+                            </tr>
+                            <tr>
+                                <td><div><b>Отпуск груза произвел</b></div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr class='font6pt'>
+                                <td></td>
+                                <td style='text-align: center' colspan='2'><div>(должность)</div></td>
+                                <td style='text-align: center'><div>(подпись)</div></td>
+                                <td style='text-align: center' colspan='2'><div>(расшифровка подписи)</div></td>
+                            </tr>
+                        </table>
+                        <table style='width:100%;border-collapse:separate; border-spacing:5px 0;'>
+                            <col />
+                            <col style='width:34pt'/>
+                            <col style='width:5pt'/>
+                            <col style='width:23pt' />
+                            <col style='width:5pt'/>
+                            <col style='width:71pt' />
+                            <col style='width:28pt' />
+                            <col style='width:8pt'/>
+                            <tr>
+                                <td><div>&nbsp;</div></td>
+                                <td><div>М.П.</div></td>
+                                <td><div>«</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td><div>»</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td>г.</td>
+                            </tr>
+                        </table>
+                    </td>
+                    @* Правая часть *@
+                    <td style='width:40%; padding-left: 5px'>
+                        <table style='width:100%;border-collapse:separate; border-spacing:5px 0;'>
+                            <col style='width:45pt'/>
+                            <col style='width:33pt'/>
+                            <col style='width:33pt'/>
+                            <col />
+                            <col style='width:15pt'/>
+                            <col style='width:23pt'/>
+                            <col style='width:5pt'/>
+                            <col style='width:36pt'/>
+                            <col style='width:19pt'/>
+                            <col style='width:34pt'/>
+                            <col style='width:9pt'/>
+                            <tr>    @* Таким образом фиксим баг Opera по игнорированию при colspan ширины столбцов *@
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td style='max-width:130px' colspan='2'><div>По доверенности №</div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                                <td><div>от «</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td><div>»</div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td>г.</td>
+                            </tr>
+                            <tr>
+                                <td style='max-width:50px'><div>выданной</div></td>
+                                <td class='font10pt' colspan='10'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td colspan='11' class='font6pt'></td>
+                            </tr>
+                            <tr>
+                                <td style='max-width:130px' colspan='3'><div>Груз к перевозке принял</div></td>
+                                <td class='font10pt' colspan='3'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt' colspan='2'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt' colspan='3'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr class='font6pt' style='text-align:center'>
+                                <td colspan='3'></td>
+                                <td colspan='3'><div>(должность)</div></td>
+                                <td colspan='2'><div>(подпись)</div></td>
+                                <td colspan='3'><div>(расшифровка подписи)</div></td>
+                            </tr>
+                        </table>
+                    
+                        <table style='width: 100%; border-collapse:separate; border-spacing:5px 0;'>
+                            <col style='width:150px'/>
+                            <col style='width:75px' />
+                            <col style='width:60px' />
+                            <col />
+                            <tr>
+                                <td colspan='4'><div>(При личном приеме товара по количеству и ассортименту)</div></td>
+                            </tr>
+                            <tr>
+                                <td colspan='4' class='font6pt'><div>&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td class='font10pt' colspan='4'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr>
+                                <td><div>Груз получил грузополучатель</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                                <td class='font10pt'><div class='underline'>&nbsp;</div></td>
+                            </tr>
+                            <tr style='text-align:center' class='font6pt'>
+                                <td></td>
+                                <td><div>(должность)</div></td>
+                                <td><div>(подпись)</div></td>
+                                <td><div>(расшифровка подписи)</div></td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div id="mainContentPrintingForm"></div>
+</body>
+</html>

@@ -1,0 +1,7 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <sql-query name="GetMovementWaybillsForExportTo1C">
+    exec GetMovementWaybillsForExportTo1C @StartDate =:StartDate, @EndDate =:EndDate, @UserId =:UserId , @IdSenderAccountOrganizationList =:IdSenderAccountOrganizationList ,
+    @AllSenderAccountOrganizations =:AllSenderAccountOrganizations
+  </sql-query>
+</hibernate-mapping>

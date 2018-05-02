@@ -1,0 +1,168 @@
+﻿.grid {
+    position: relative; top: -8px;
+    background-color: #E5ECEB;
+    padding: 5px 5px 4px;
+    margin-bottom: 1px;
+    width: auto;     
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+.top_line {
+    background: #4D7285;     
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px; 
+    height: 10px; width: 100%;
+}
+
+/*--------Выделение строки грида---*/
+.grid_table .selectedNormal {
+    background-color: #B5E1EE;
+}
+.grid_table .gridNormalRow:hover {
+    background-color: #DCF7F2;
+}
+
+.grid_table .selectedWarning {
+    background-color: #FCC471;
+}
+.grid_table .gridWarningRow {
+    background-color: #FEE7C5;
+}
+.grid_table .gridWarningRow:hover {
+    background-color: #FED7A0;
+}
+
+.grid_table .selectedError {
+    background-color: #EC9BA4;
+}
+.grid_table .gridErrorRow {
+    background-color: #F6D2D6;    
+}
+.grid_table .gridErrorRow:hover {
+    background-color: #F2BBC1;
+}
+
+.grid_table .selectedSuccess {
+    background-color: #A9D371;
+}
+.grid_table .gridSuccessRow {
+    background-color: #DCECC5;
+}
+.grid_table .gridSuccessRow:hover {
+    background-color: #C4E19F;
+}
+/*-------------------------------------------*/
+.grid_table {
+    width: 100%;
+}
+.grid_table td {
+    border: solid 1px #E1E1E1;
+    font-size: 11px;
+}
+.grid_table {
+    border: solid 1px #E1E1E1;
+    background-color: White;
+}
+.grid_table .header_row {
+    background: url('/Content/Img/gradient_header_grid.png') repeat-x;
+    height: 20px;
+    font-weight: bold;
+    font-size: 11px;
+    padding: 3px 6px 2px 6px;
+}
+.grid_table .grid_cell {
+    height: 18px;
+    padding: 2px 6px 2px 6px;
+    /*white-space: nowrap;*/
+}
+.grid_table tr .no_data_row {
+    text-align: center; 
+    padding: 6px 0 5px;
+    font-size: 11px;
+    color: #4D7285;    
+}
+.grid .link_none_decoration {
+    color: #4A7385;
+    cursor: pointer;
+}
+.grid .title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 2px 15px 7px 14px;
+    margin-top: -2px;
+}
+.grid .paging_table {
+    margin-top: 5px;
+    font-size: 11px;
+    width: 100%;
+}
+.paging_table td {
+    padding: 0px 4px;
+    text-align: left;
+}
+.paging_table input, .paging_table select {
+    background: white;
+}
+.grid .current_page {
+    background-color: #B7B9B8;
+}
+.paging_table .go_to_page {
+    width: 40px;
+}
+.grid .hidden_column {
+    display: none;
+}
+.paging_info {
+    width: auto;
+    text-align: right !important;
+}
+.grid .text_edit {
+    width: 94%;
+    padding: 2px;
+    background: White !important;
+}
+
+
+/*----------------Filter----------------------*/
+.grid_filter {
+}
+
+.filter_title {
+    font-size: 14px;
+    font-weight: bold;
+    padding: 0px 15px 3px 14px;
+}
+.filter_table {
+    font-size: 12px;    
+    width: 100%;
+    border: solid 1px #E1E1E1;
+    background-color: White;
+}
+.filter_table tr {
+    border: solid 1px #E1E1E1;
+}
+.filter_table td {
+    padding: 5px;
+}
+.row_label {
+    min-width: 140px;
+    color: #7C7F7C;
+    text-align: right;
+    font-size: 12px;
+    white-space: nowrap;
+}
+.row_input {
+    width: 50%;
+}
+.filter_buttons { 
+    width: 100%;
+    text-align: center;
+    margin: 4px 0 2px;
+}
+.filter_buttons input[type="button"], .filter_buttons input[type="hidden"] {
+    margin: 0 5px;
+    height: 19px;
+}
+

@@ -1,0 +1,154 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0009.Report0009DetailTableViewModel
+
+@functions{
+    bool flag = true;
+
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "";
+    }
+}
+
+@{flag = true;}
+
+<br />
+<br />
+   
+<div class="table_title">@Model.Title:</div>
+<table class="report_table" style="min-width:790px">
+    <tr>
+        <th colspan="3" style="min-width:60px">Товар</th>
+        <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().ArticleCount)</th>
+                    
+        @if (Model.Settings.ShowBatch == "1")
+        {
+            <th rowspan="2" style="min-width:120px">@Html.LabelFor(model => model.Rows.First().BatchName)</th>
+        }
+
+        @if (Model.Settings.ShowCountArticleInPack == "1")
+        {
+            <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().CountArticleInPack)</th>
+        }
+
+        @if (Model.Settings.InPurchaseCost == "1")
+        {
+            <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().PurchaseCost)</th>
+        }
+                    
+        @if (Model.Settings.InRecipientWaybillAccountingPrice == "1")
+        {
+            <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().RecipientWaybillAccountingPrice)</th>
+        }
+                    
+        @if (Model.Settings.InCurrentAccountingPrice == "1")
+        {
+            <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().CurrentAccountingPrice)</th>
+        }
+                    
+        @if (Model.Settings.CalculateMarkup == "1")
+        {
+            <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().Markup)</th>
+        }
+                    
+        @if (Model.Settings.ShowManufacturer == "1")
+        {
+            <th rowspan="2" style="min-width:120px">@Html.LabelFor(model => model.Rows.First().Manufacturer)</th>
+        }
+                    
+        @if (Model.Settings.ShowCountryOfProduction == "1")
+        {
+            <th rowspan="2" style="min-width:120px">@Html.LabelFor(model => model.Rows.First().CountryOfProduction)</th>
+        }
+                    
+        @if (Model.Settings.ShowCustomsDeclarationNumber == "1")
+        {
+            <th rowspan="2" style="min-width:60px">@Html.LabelFor(model => model.Rows.First().CustomsDeclarationNumber)</th>
+        }
+    </tr>
+    <tr>
+        <th style="min-width:60px">@Html.LabelFor(model => model.Rows.First().ArticleId)</th>
+        <th style="min-width:60px">@Html.LabelFor(model => model.Rows.First().ArticleNumber)</th>
+        <th style="min-width:150px">@Html.LabelFor(model => model.Rows.First().ArticleName)</th>
+    </tr>
+
+    @foreach (var row in Model.Rows)
+    {
+        if (row.IsGroup)
+        {
+            flag = true;
+            var paddingSize = System.Web.UI.WebControls.Unit.Pixel(row.GroupLevel * 15);  // определяем смещение заголовка
+                        
+            <tr class="blue_row">
+                <td colspan="13"  style="padding-left: @paddingSize.ToString()">
+                    <b>@row.GroupTitle</b>
+                </td>
+            </tr>
+        }
+        else
+        {
+            <tr class="@GetRowClass()">                          
+                <td>@row.ArticleId</td>
+                <td>@row.ArticleNumber</td>
+                <td>@row.ArticleName</td>
+                <td align="right">@row.ArticleCount</td>
+                    
+                @if (Model.Settings.ShowBatch == "1")
+                {
+                    <td>@row.BatchName</td>
+                }
+                            
+                @if (Model.Settings.ShowCountArticleInPack == "1")
+                {
+                    <td align="right">@row.CountArticleInPack</td>
+                }
+
+                @if (Model.Settings.InPurchaseCost == "1")
+                {
+                    <td align="right" style="white-space: nowrap">@row.PurchaseCost</td>
+                }
+                    
+                @if (Model.Settings.InRecipientWaybillAccountingPrice == "1")
+                {
+                    <td align="right" style="white-space: nowrap">@row.RecipientWaybillAccountingPrice</td>
+                }
+                    
+                @if (Model.Settings.InCurrentAccountingPrice == "1")
+                {
+                    <td align="right" style="white-space: nowrap">@row.CurrentAccountingPrice</td>
+                }
+                    
+                @if (Model.Settings.CalculateMarkup == "1")
+                {
+                    <td align="right" style="white-space: nowrap">@row.Markup</td>
+                }
+                    
+                @if (Model.Settings.ShowManufacturer == "1")
+                {
+                    <td>@row.Manufacturer</td>
+                }
+                    
+                @if (Model.Settings.ShowCountryOfProduction == "1")
+                {
+                        <td>@row.CountryOfProduction</td>
+                }
+                            
+                @if (Model.Settings.ShowCustomsDeclarationNumber == "1")
+                {
+                    <td>@row.CustomsDeclarationNumber</td>
+                }
+            </tr>
+        }
+    }
+    @if (!Model.Rows.Any())
+    {
+        <tr class="green_row">
+            <td colspan="13" style="text-align:center;">Нет данных</td>
+        </tr>
+    }
+</table>

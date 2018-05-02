@@ -1,0 +1,370 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0001.Report0001ViewModel
+
+@using ERP.Utils;
+
+@{ 
+    string purchaseCostTotalSum = Math.Round(Model.Report0001_1Items.Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money);
+
+    string availableInStorageAccountingPriceTotalSum = Math.Round(Model.Report0001_1Items.Sum(x => (x.AccountingPrice ?? 0) * x.AvailableInStorageCount), 2).ForDisplay(ValueDisplayType.Money);
+    string pendingAccountingPriceTotalSum = Math.Round(Model.Report0001_1Items.Sum(x => (x.AccountingPrice ?? 0) * x.PendingCount), 2).ForDisplay(ValueDisplayType.Money);
+    string reservedAccountingPriceTotalSum = Math.Round(Model.Report0001_1Items.Sum(x => (x.AccountingPrice ?? 0) * x.ReservedCount), 2).ForDisplay(ValueDisplayType.Money);
+    string availableToReserveAccountingPriceTotalSum = Math.Round(Model.Report0001_1Items.Sum(x => (x.AccountingPrice ?? 0) * x.AvailableToReserveCount), 2).ForDisplay(ValueDisplayType.Money);
+
+    int detailsTableColumns=4;
+    if (Model.Settings.ShowPurchaseCosts == "1")
+    {
+        detailsTableColumns += 3;
+    }
+    if (Model.Settings.ShowExtendedAvailability == "1")
+    {
+        detailsTableColumns += 3;
+    }
+    if (Model.Settings.ShowAveragePurchaseCost == "1")
+    {
+        detailsTableColumns++;
+    }
+    if (Model.Settings.ShowAverageAccountingPrice == "1")
+    {
+        detailsTableColumns++;
+    }
+    if (Model.Settings.ShowAccountingPrices == "1")
+    {
+        detailsTableColumns += 2;
+        if (Model.Settings.ShowExtendedAvailability == "1")
+        {
+            detailsTableColumns += 3;
+        }
+    }
+}
+
+@helper GetAccountingPriceSumCells(IEnumerable<ERP.Wholesale.UI.ViewModels.Report.Report0001.Report0001_1ItemViewModel> itemList)
+{     
+    <td align="right" style="white-space:nowrap"><b>@Math.Round(itemList.Sum(x => (x.AccountingPrice ?? 0) * x.AvailableInStorageCount), 2).ForDisplay(ValueDisplayType.Money)</b></td>
+    if (Model.Settings.ShowExtendedAvailability == "1")
+    {
+        <td align="right" style="white-space:nowrap"><b>@Math.Round(itemList.Sum(x => (x.AccountingPrice ?? 0) * x.PendingCount), 2).ForDisplay(ValueDisplayType.Money)</b></td>
+        <td align="right" style="white-space:nowrap"><b>@Math.Round(itemList.Sum(x => (x.AccountingPrice ?? 0) * x.ReservedCount), 2).ForDisplay(ValueDisplayType.Money)</b></td>
+        <td align="right" style="white-space:nowrap"><b>@Math.Round(itemList.Sum(x => (x.AccountingPrice ?? 0) * x.AvailableToReserveCount), 2).ForDisplay(ValueDisplayType.Money)</b></td>
+    }
+}
+
+<div class="floatleft">        
+    @if (Model.Settings.ShowStorageTable == "1") 
+    {
+        Html.RenderPartial("~/Views/Report/Report0001/Report0001_1SummaryTable.cshtml", Model.StorageSummary);
+    }
+    <br /><br />
+     @if (Model.Settings.ShowAccountOrganizationTable == "1")
+     { 
+         Html.RenderPartial("~/Views/Report/Report0001/Report0001_1SummaryTable.cshtml", Model.AccountOrganizationSummary); 
+     }    
+     <br /><br />
+    @if (Model.Settings.ShowArticleGroupTable == "1")
+    {
+        Html.RenderPartial("~/Views/Report/Report0001/Report0001_1SummaryTable.cshtml", Model.ArticleGroupSummary);
+    }  
+</div>
+<div class="clear"></div>
+<br /><br />
+@if (Model.Settings.ShowDetailsTable == "1" || Model.Settings.ShowShortDetailsTable == "1")
+{
+    <div class="table_title">Развернутая информация:</div>
+    <table class="report_table">
+    <tr>
+        <th colspan="3">Товар</th>
+        @if (Model.Settings.ShowPurchaseCosts == "1")
+        { <th rowspan="2">Партия</th> }
+        <th rowspan="2">Кол-во (на&nbsp;складе)</th>
+        @if (Model.Settings.ShowExtendedAvailability == "1")
+        {
+            <th rowspan="2">Кол-во (ожид.)</th> 
+            <th rowspan="2">Кол-во (резерв)</th> 
+            <th rowspan="2">Кол-во (дост.)</th> 
+        }
+        @if (Model.Settings.ShowAveragePurchaseCost == "1")
+        { <th rowspan="2">Средняя ЗЦ</th> }
+        @if (Model.Settings.ShowPurchaseCosts == "1")
+        { <th rowspan="2">Закупочная цена</th> }
+        @if (Model.Settings.ShowPurchaseCosts == "1")
+        { <th rowspan="2">Сумма в ЗЦ</th> }
+                    
+        @if (Model.Settings.ShowAverageAccountingPrice == "1")
+        { <th rowspan="2">Средняя УЦ</th> }
+        @if (Model.Settings.ShowAccountingPrices == "1")
+        { <th rowspan="2">Учетная цена</th> }
+        @if (Model.Settings.ShowAccountingPrices == "1")
+        { 
+            <th rowspan="2">Сумма в УЦ (на&nbsp;складе)</th> 
+            if (Model.Settings.ShowExtendedAvailability == "1")
+            {
+                <th rowspan="2">Сумма в УЦ (ожид.)</th> 
+                <th rowspan="2">Сумма в УЦ (резерв)</th> 
+                <th rowspan="2">Сумма в УЦ (дост.)</th> 
+            }
+        }
+                                                                                       
+    </tr>
+    <tr>
+        <th>Код</th>
+        <th>Артикул</th>
+        <th>Наименование</th>
+    </tr>
+
+    @{        
+        int prevStorageId = 0, prevAccountOrganizationId = 0, prevArticleGroupId = 0;
+     }
+        
+     @foreach (var item in Model.Report0001_1Items)
+     {
+         if (Model.Settings.DevideByStorages == "1")
+         {
+             if (prevStorageId != item.StorageId)
+             {
+                 var rowsBy_Storage = Model.Report0001_1Items.Where(x => x.StorageName == item.StorageName);
+
+                 prevStorageId = item.StorageId; prevAccountOrganizationId = 0; prevArticleGroupId = 0;             
+            
+                <tr class="blue_row">
+                    <td colspan="3" style="padding-left: 10px;"><b>@item.StorageName </b></td>
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    { <td></td> }
+                    <td></td>
+                    @if (Model.Settings.ShowExtendedAvailability == "1")
+                    {
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    }
+                    @if (Model.Settings.ShowAveragePurchaseCost == "1")
+                    { <td></td> }
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    { <td></td> }
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    { 
+                        <td  align="right" style="white-space:nowrap"><b> @Math.Round(rowsBy_Storage.Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money) </b></td> 
+                    }
+                                    
+                    @if (Model.Settings.ShowAverageAccountingPrice == "1")
+                    { <td></td>}
+                    @if (Model.Settings.ShowAccountingPrices == "1")
+                    {
+                        <td></td>
+                        @GetAccountingPriceSumCells(rowsBy_Storage);
+                    }
+                </tr>
+             }
+         }
+
+         if (Model.Settings.DevideByAccountOrganizations == "1")
+         {
+             if (prevAccountOrganizationId != item.AccountOrganizationId)
+             {
+                 var rowsBy_Organization = Model.Report0001_1Items.Where(x => x.AccountOrganizationName == item.AccountOrganizationName);
+                 var rowsBy_Organization_Storage = rowsBy_Organization.Where(x => x.StorageName == item.StorageName);
+
+                 prevAccountOrganizationId = item.AccountOrganizationId; prevArticleGroupId = 0;
+                <tr class="green_row">
+                    <td colspan="3" style="padding-left: 25px;"><b>@item.AccountOrganizationName </b></td>
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    { <td></td> }
+                    <td></td>  
+                    @if (Model.Settings.ShowExtendedAvailability == "1")
+                    {
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    }
+                    @if (Model.Settings.ShowAveragePurchaseCost == "1")
+                    { <td></td>}
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    { <td></td>}
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    { 
+                        <td align="right" style="white-space:nowrap">
+                        @if (Model.Settings.DevideByStorages == "1")
+                        {
+                            <b> @Math.Round(rowsBy_Organization_Storage.Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money) </b>
+                        }
+                        else
+                        {
+                            <b> @Math.Round(rowsBy_Organization.Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money) </b>
+                        }
+                        </td>
+                    }
+                    @if (Model.Settings.ShowAverageAccountingPrice == "1")
+                    { <td></td>}
+                    @if (Model.Settings.ShowAccountingPrices == "1")
+                    { <td></td>}
+                    @if (Model.Settings.ShowAccountingPrices == "1")
+                    {
+                        if (Model.Settings.DevideByStorages == "1")
+                        {
+                            @GetAccountingPriceSumCells(rowsBy_Organization_Storage);
+                        }
+                        else
+                        {
+                            @GetAccountingPriceSumCells(rowsBy_Organization);
+                        }
+                    }                                    
+                </tr>
+             }
+         }
+
+         if (prevArticleGroupId != item.ArticleGroupId)
+         {
+             var rowsBy_ArticleGroup = Model.Report0001_1Items.Where(x => x.ArticleGroupName == item.ArticleGroupName);
+             var rowsBy_Storage_ArticleGroup = rowsBy_ArticleGroup.Where(x => x.StorageName == item.StorageName);
+             var rowsBy_Organization_ArticleGroup = rowsBy_ArticleGroup.Where(x => x.AccountOrganizationName == item.AccountOrganizationName);
+             var rowsBy_Storage_Organization_ArticleGroup = rowsBy_Storage_ArticleGroup.Intersect(rowsBy_Organization_ArticleGroup);
+
+             prevArticleGroupId = item.ArticleGroupId;         
+
+            <tr class="orange_row">
+                <td colspan="3" style="padding-left: 40px;"><b> @item.ArticleGroupName </b></td>
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <td></td> }
+                <td></td>
+                @if (Model.Settings.ShowExtendedAvailability == "1")
+                {
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                }
+                @if (Model.Settings.ShowAveragePurchaseCost == "1")
+                { <td></td>}
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <td></td>}
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { 
+                    <td align="right" style="white-space:nowrap"><b>            
+                    @if (Model.Settings.DevideByStorages == "1" && Model.Settings.DevideByAccountOrganizations == "1")
+                    {  
+                        @Math.Round(rowsBy_Storage_Organization_ArticleGroup.Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money)
+                    }
+                    else if (Model.Settings.DevideByStorages == "0" && Model.Settings.DevideByAccountOrganizations == "0")
+                    {
+                        @Math.Round(rowsBy_ArticleGroup.Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money)
+                    }
+                    else if (Model.Settings.DevideByStorages == "1" && Model.Settings.DevideByAccountOrganizations == "0")
+                    {
+                        @Math.Round(Model.Report0001_1Items.Where(x => x.StorageName == item.StorageName && x.ArticleGroupName == item.ArticleGroupName).Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money)
+                    }
+                    else
+                    {
+                        @Math.Round(Model.Report0001_1Items.Where(x => x.AccountOrganizationName == item.AccountOrganizationName && x.ArticleGroupName == item.ArticleGroupName).Sum(x => x.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? x.AvailableToReserveCount : x.AvailableInStorageCount)), 2).ForDisplay(ValueDisplayType.Money)
+                    }
+                    </b></td>
+                }
+            
+                @if (Model.Settings.ShowAverageAccountingPrice == "1")
+                { <td></td>}
+                @if (Model.Settings.ShowAccountingPrices == "1")
+                { <td></td>}
+                @if (Model.Settings.ShowAccountingPrices == "1")
+                {
+                    if (Model.Settings.DevideByStorages == "1" && Model.Settings.DevideByAccountOrganizations == "1")
+                    {
+                        @GetAccountingPriceSumCells(rowsBy_Storage_Organization_ArticleGroup);
+                    }
+                    else if (Model.Settings.DevideByStorages == "0" && Model.Settings.DevideByAccountOrganizations == "0")
+                    {
+                        @GetAccountingPriceSumCells(rowsBy_ArticleGroup);
+                    }
+                    else if (Model.Settings.DevideByStorages == "1" && Model.Settings.DevideByAccountOrganizations == "0")
+                    {
+                        @GetAccountingPriceSumCells(rowsBy_Storage_ArticleGroup);
+                    }
+                    else
+                    {
+                        @GetAccountingPriceSumCells(rowsBy_Organization_ArticleGroup);
+                    }
+                }
+            </tr>
+         }                
+         if (Model.Settings.ShowDetailsTable == "1")
+         {
+            <tr>                
+                <td style="white-space:nowrap"> @item.ArticleId </td>
+                <td style="white-space:nowrap"> @item.ArticleNumber </td>
+                <td> @item.ArticleName </td>
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <td style="white-space:nowrap"> @item.ArticleBatchName </td> }
+                <td align="right" style="white-space:nowrap"> @item.AvailableInStorageCount.ForDisplay() </td>
+                @if (Model.Settings.ShowExtendedAvailability == "1")
+                {
+                    <td align="right" style="white-space:nowrap"> @item.PendingCount.ForDisplay() </td>
+                    <td align="right" style="white-space:nowrap"> @item.ReservedCount.ForDisplay() </td>
+                    <td align="right" style="white-space:nowrap"> @item.AvailableToReserveCount.ForDisplay() </td> 
+                }
+                @if (Model.Settings.ShowAveragePurchaseCost == "1")
+                { <td align="right" style="white-space:nowrap"> @Model.AverageArticlePurchaseCosts.Where(x => x.Key == item.ArticleId).First().Value.ForDisplay(ValueDisplayType.Money) </td>}
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <td align="right" style="white-space:nowrap"> @item.PurchaseCost.ForDisplay(ValueDisplayType.Money) </td>}
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <td align="right" style="white-space:nowrap"> @Math.Round(item.PurchaseCost * (Model.Settings.ShowExtendedAvailability == "1" ? item.AvailableToReserveCount : item.AvailableInStorageCount), 2).ForDisplay(ValueDisplayType.Money) </td>}
+
+                @if (Model.Settings.ShowAverageAccountingPrice == "1")
+                { <td align="right" style="white-space:nowrap"> @Model.AverageArticleAccountingPrices[item.ArticleId].ForDisplay(ValueDisplayType.Money) </td> }
+                @if (Model.Settings.ShowAccountingPrices == "1")
+                { 
+                    <td align="right" style="white-space:nowrap"> @item.AccountingPrice.ForDisplay(ValueDisplayType.Money) </td> 
+                    <td align="right" style="white-space:nowrap"> @(item.AccountingPrice == null ? "---" : Math.Round(item.AccountingPrice.Value * item.AvailableInStorageCount, 2).ForDisplay(ValueDisplayType.Money)) </td> 
+                                                              if (Model.Settings.ShowExtendedAvailability == "1")
+                                                              {
+                        <td align="right" style="white-space:nowrap"> @(item.AccountingPrice == null ? "---" : Math.Round(item.AccountingPrice.Value * item.PendingCount, 2).ForDisplay(ValueDisplayType.Money)) </td>     
+                        <td align="right" style="white-space:nowrap"> @(item.AccountingPrice == null ? "---" : Math.Round(item.AccountingPrice.Value * item.ReservedCount, 2).ForDisplay(ValueDisplayType.Money)) </td> 
+                        <td align="right" style="white-space:nowrap"> @(item.AccountingPrice == null ? "---" : Math.Round(item.AccountingPrice.Value * item.AvailableToReserveCount, 2).ForDisplay(ValueDisplayType.Money)) </td> 
+                                                              }
+                }
+            </tr>
+         }
+     }
+     
+     @if (Model.Report0001_1Items.Count == 0)
+     { 
+         <tr class="green_row" >
+            <td colspan="@detailsTableColumns" align="center" style="white-space:nowrap"> Нет данных </td> 
+         </tr>
+     }
+
+     @if (Model.Settings.ShowPurchaseCosts == "1" || Model.Settings.ShowAccountingPrices == "1")
+     {
+         var colspan = 3;
+         if (Model.Settings.ShowPurchaseCosts == "1")
+         {
+             colspan++;
+         }
+        <tr>
+            <th align="right" colspan=" @colspan ">Итого:</th>
+            <th></th>
+            @if (Model.Settings.ShowExtendedAvailability == "1")
+            {
+                <th></th>
+                <th></th>
+                <th></th>    
+            }
+            @if (Model.Settings.ShowAveragePurchaseCost == "1")
+            { <th></th> }
+            @if (Model.Settings.ShowPurchaseCosts == "1")
+            { <th></th> }
+            @if (Model.Settings.ShowPurchaseCosts == "1")
+            { <th align="right" style="white-space:nowrap"> @purchaseCostTotalSum </th> }
+
+            @if (Model.Settings.ShowAverageAccountingPrice == "1")
+            { <th></th> }
+            @if (Model.Settings.ShowAccountingPrices == "1")
+            { <th></th> }
+            @if (Model.Settings.ShowAccountingPrices == "1")
+            { 
+                <th align="right" style="white-space:nowrap"> @availableInStorageAccountingPriceTotalSum </th> 
+                                                         if (Model.Settings.ShowExtendedAvailability == "1")
+                                                         {
+                    <th align="right" style="white-space:nowrap"> @pendingAccountingPriceTotalSum </th> 
+                    <th align="right" style="white-space:nowrap"> @reservedAccountingPriceTotalSum </th> 
+                    <th align="right" style="white-space:nowrap"> @availableToReserveAccountingPriceTotalSum </th> 
+                                                         }
+            }
+        </tr>
+     }
+    </table>
+}

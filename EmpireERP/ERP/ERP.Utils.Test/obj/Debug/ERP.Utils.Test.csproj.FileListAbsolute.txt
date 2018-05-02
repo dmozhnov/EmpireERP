@@ -1,0 +1,9 @@
+D:\Projects\ERP\ERP.Utils.Test\bin\Debug\ERP.Utils.Test.dll
+D:\Projects\ERP\ERP.Utils.Test\bin\Debug\ERP.Utils.Test.pdb
+D:\Projects\ERP\ERP.Utils.Test\bin\Debug\ERP.Utils.dll
+D:\Projects\ERP\ERP.Utils.Test\bin\Debug\EPPlus.dll
+D:\Projects\ERP\ERP.Utils.Test\bin\Debug\ERP.Utils.pdb
+D:\Projects\ERP\ERP.Utils.Test\bin\Debug\EPPlus.xml
+D:\Projects\ERP\ERP.Utils.Test\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.Utils.Test\obj\Debug\ERP.Utils.Test.dll
+D:\Projects\ERP\ERP.Utils.Test\obj\Debug\ERP.Utils.Test.pdb

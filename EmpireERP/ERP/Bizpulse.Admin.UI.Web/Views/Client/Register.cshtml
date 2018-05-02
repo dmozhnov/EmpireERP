@@ -1,0 +1,284 @@
+﻿@model Bizpulse.Admin.UI.ViewModels.Client.BaseClientRegistrationViewModel
+
+@using ERP.Utils.Mvc;
+@using ERP.UI.Web.HtmlHelpers;
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Регистрация в Bizpulse</title>
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+    <link href="../../Content/Style/Site.css" rel="stylesheet" type="text/css" />
+    <link href="../../Content/Style/Register.css" rel="stylesheet" type="text/css" />
+
+    <script src="../../Scripts/jquery-1.7.2.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.unobtrusive-ajax.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.min.js" type="text/javascript"></script>
+    <script src="../../Scripts/jquery.validate.unobtrusive.min.js" type="text/javascript"></script>
+    
+    <script src="../../Scripts/Common.js" type="text/javascript"></script>
+    <script src="../../Scripts/Register.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        Register.Init();
+    </script>
+
+    <script type="text/javascript">
+        var _gaq = _gaq || [];
+        _gaq.push(['_setAccount', 'UA-30866066-1']);
+        _gaq.push(['_setDomainName', '.bizpulse.ru']);
+        _gaq.push(['_trackPageview']);
+
+        (function () {
+            var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+            ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+            var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+        })();
+    
+    </script>
+</head>
+<body>
+    <div style="display: none">
+        <!--LiveInternet counter--><script type="text/javascript"><!--
+        document.write("<a href='http://www.liveinternet.ru/click' " +
+        "target=_blank><img src='//counter.yadro.ru/hit?t44.1;r" +
+        escape(document.referrer) + ((typeof (screen) == "undefined") ? "" :
+        ";s" + screen.width + "*" + screen.height + "*" + (screen.colorDepth ?
+        screen.colorDepth : screen.pixelDepth)) + ";u" + escape(document.URL) +
+        ";" + Math.random() +
+        "' alt='' title='LiveInternet' " +
+        "border='0' width='31' height='31'><\/a>")
+        //--></script><!--/LiveInternet-->
+    </div>
+    
+    <div id="register_content">
+        @Html.Partial("RegistrationHeader")
+        
+        <h1>Анкета-заявка на пользование Электронным менеджером Bizpulse</h1>
+
+        <h2>
+            Для того, чтобы мы могли формировать для Вас первичные документы (счета на оплату, акты выполненных работ),
+            Вам необходимо оставить реквизиты своей компании, заполнив анкету-заявку.
+            Электронным менеджером Bizpulse могут пользоваться только юридические лица или индивидуальные предприниматели, 
+            имеющие расчетный счет в любом российском банке.
+        </h2>
+
+        <h3>30 дней - бесплатный пробный период</h3>
+
+        <div id="client_organization_type_selection" class="registration_step_container">
+            <div class="title" style="text-align: center;">
+                Укажите форму Вашей организации
+            </div>
+
+            <div id="btn_juridical_person">
+                Юридическое лицо
+                <p>(ООО, ОАО, ЗАО и т.д.)</p>
+            </div>
+
+            <div id="btn_physical_person">
+                Физическое лицо
+                <p>(ИП)</p>
+            </div>
+        </div>
+        
+        <div id="registration_steps_wrapper" style="display: none">
+                
+            <ul id="registration_steps">
+                <li class="selected">
+                    Шаг 1: Администратор аккаунта
+                </li>
+                <li>
+                    Шаг 2: Информация о компании
+                </li>
+                <li>
+                    Шаг 3: Конфигурация Bizpulse
+                </li>
+            </ul>
+
+            <div class="clear"></div>
+
+            <div id="registration_steps_form_wrapper">
+                    
+                <div id="registration_steps_form_container">
+        
+                    <div id="adminInfo" class="registration_step_container">
+                        <div class="title">
+                            Информация об администраторе аккаунта Bizpulse. Данная информация будет использована для создания первого пользователя, обладающего правами администратора.
+                        </div>
+
+                        @using (Ajax.BeginForm("", "", new AjaxOptions() { }, new { id = "adminInfo_form", autocomplete = "off" }))
+                        {
+                            <span class="label_wrapper">@Html.LabelFor(model => model.AdminLastName)*:</span>
+                            @Html.TextBoxFor(model => model.AdminLastName, new { maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.AdminLastName)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.AdminFirstName)*:</span>
+                            @Html.TextBoxFor(model => model.AdminFirstName, new { maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.AdminFirstName)
+
+                            <span class="label_wrapper_optional">@Html.LabelFor(model => model.AdminPatronymic):</span>
+                            @Html.TextBoxFor(model => model.AdminPatronymic, new { maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.AdminPatronymic)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.AdminEmail)*:</span>
+                            @Html.TextBoxFor(model => model.AdminEmail, new { maxlength = "100" })
+                            @Html.ValidationMessageFor(model => model.AdminEmail)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.AdminLogin)*:</span>
+                            @Html.TextBoxFor(model => model.AdminLogin, new { maxlength = "30" })
+                            @Html.ValidationMessageFor(model => model.AdminLogin)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.AdminPassword)*:</span>
+                            @Html.PasswordFor(model => model.AdminPassword, new { maxlength = "20" })
+                            @Html.ValidationMessageFor(model => model.AdminPassword)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.AdminPasswordConfirmation)*:</span>
+                            @Html.PasswordFor(model => model.AdminPasswordConfirmation, new { maxlength = "20" })
+                            @Html.ValidationMessageFor(model => model.AdminPasswordConfirmation)
+                        }
+
+                        <a id="adminInfo_next" href="#" onclick="return false;" style="margin-left: 615px;">На следующий шаг →</a>
+
+                    </div>
+
+                    <div id="juridicalPersonInfo" class="registration_step_container" style="display: none">
+                        <div class="title">
+                            Информация о Вашей компании. Данная информация будет использоваться в выставляемых счетах и актах оказанных услуг, 
+                            а также для почтовой пересылки оригиналов документов.
+                        </div>
+                            
+                        @using (Ajax.BeginForm("", "", new AjaxOptions() { }, new { id = "juridicalPersonInfo_form", autocomplete = "off" }))
+                        {                    
+                                
+                            @Html.Partial("RegisterJuridicalPerson")
+                        }
+
+                        <a id="juridicalPersonInfo_prev" href="#" onclick="return false;" style="width: 160px;">← Вернуться</a>
+                        <a id="juridicalPersonInfo_next" href="#" onclick="return false;" style="margin-left: 615px; float: left; margin-top: -37px;">На следующий шаг →</a>
+                            
+                        <div class="clear"></div>
+                    </div>
+
+                    <div id="physicalPersonInfo" class="registration_step_container" style="display: none">
+                        <div class="title">
+                            Информация о Вашей компании. Данная информация будет использоваться в выставляемых счетах и актах оказанных услуг, 
+                            а также для почтовой пересылки оригиналов документов.
+                        </div>
+                            
+                        @using (Ajax.BeginForm("", "", new AjaxOptions() { }, new { id = "physicalPersonInfo_form", autocomplete = "off" }))
+                        {                    
+                                
+                            @Html.Partial("RegisterPhysicalPerson")
+                        }
+
+                        <a id="physicalPersonInfo_prev" href="#" onclick="return false;" style="width: 160px;">← Вернуться</a>
+                        <a id="physicalPersonInfo_next" href="#" onclick="return false;" style="margin-left: 615px; float: left; margin-top: -37px;">На следующий шаг →</a>
+                            
+                        <div class="clear"></div>
+                    </div>
+
+                    <div id="configurationInfo" class="registration_step_container">
+                        <div class="title">
+                            Информация о конфигурации Bizpulse. Необходимо указать параметры Вашего аккаунта Bizpulse из доступных в данный момент вариантов.
+                        </div>
+
+                        @using (Ajax.BeginForm("", "", new AjaxOptions() { }, new { id = "configurationInfo_form", autocomplete = "off" }))
+                        {
+                            <span class="label_wrapper">@Html.LabelFor(model => model.RateId)*:</span>
+                            <div style="margin-left: 15px; margin-top: 8px; float: left">
+                                @ParamDropDownListHelper.ParamDropDownList("", (IEnumerable<ParamDropDownListItem>)ViewBag.RateList, new { id = "RateId", name = "RateId", style = "width: 380px" }, "") 
+                            </div>
+                            <div id="BaseCostPerMonth" class="tip" style="top: 15px;">= <span></span> руб./месяц</div>
+                            <div class="clear"></div>
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.ExtraUserCount)*:</span>
+                            <div id="ActiveUserCountLimit" style="float: left; font-size: 21px; position: relative; top: 17px; margin-left: 32px;"><span></span> + &nbsp;</div>
+                            @Html.TextBoxFor(model => model.ExtraUserCount, new { maxlength = "4", style = "width: 80px; float: left; margin-left: 0" })
+                            <div id="userCountTip" class="tip"></div>
+                            <div class="clear"></div>
+                            <div class="example">Максимальное кол-во пользователей в Вашем аккаунте</div>
+                            @Html.ValidationMessageFor(model => model.ExtraUserCount)
+                                                                                        
+                            <span class="label_wrapper">@Html.LabelFor(model => model.ExtraStorageCount)*:</span>
+                            <div id="StorageCountLimit" style="float: left; font-size: 21px; position: relative; top: 17px; margin-left: 32px;"><span></span> + &nbsp;</div>
+                            @Html.TextBoxFor(model => model.ExtraStorageCount, new { maxlength = "4", style = "width: 80px; float: left; margin-left: 0" })
+                            <div id="storageCountTip" class="tip"></div>
+                            <div class="clear"></div>
+                            <div class="example">Максимальное кол-во мест хранений, которые Вы используете в работе</div>
+                            @Html.ValidationMessageFor(model => model.ExtraStorageCount)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.ExtraAccountOrganizationCount)*:</span>
+                            <div id="AccountOrganizationCountLimit" style="float: left; font-size: 21px; position: relative; top: 17px; margin-left: 32px;"><span></span> + &nbsp;</div>
+                            @Html.TextBoxFor(model => model.ExtraAccountOrganizationCount, new { maxlength = "4", style = "width: 80px; float: left; margin-left: 0" })
+                            <div id="accountOrganizationCountTip" class="tip"></div>
+                            <div class="clear"></div>
+                            <div class="example">Максимальное кол-во собственных организаций, которые Вы используете в работе</div>
+                            @Html.ValidationMessageFor(model => model.ExtraAccountOrganizationCount)
+
+                            <span class="label_wrapper">@Html.LabelFor(model => model.ExtraTeamCount)*:</span>
+                            <div id="TeamCountLimit" style="float: left; font-size: 21px; position: relative; top: 17px; margin-left: 32px;"><span></span> + &nbsp;</div>
+                            @Html.TextBoxFor(model => model.ExtraTeamCount, new { maxlength = "4", style = "width: 80px; float: left; margin-left: 0" })
+                            <div id="teamCountTip" class="tip"></div>
+                            <div class="clear"></div>
+                            <div class="example">Максимальное кол-во команд в Вашем аккаунте</div>
+                            @Html.ValidationMessageFor(model => model.ExtraTeamCount)
+                            
+                            <span class="label_wrapper">@Html.LabelFor(model => model.ExtraGigabyteCount)*:</span>
+                            <div id="GigabyteCountLimit" style="float: left; font-size: 21px; position: relative; top: 17px; margin-left: 32px;"><span></span> + &nbsp;</div>
+                            @Html.TextBoxFor(model => model.ExtraGigabyteCount, new { maxlength = "4", style = "width: 80px; float: left; margin-left: 0" })
+                            <div id="gigabyteCountTip" class="tip"></div>
+                            <div class="clear"></div>
+                            <div class="example">Максимальный объем данных, который Вам потребуется для работы</div>
+                            @Html.ValidationMessageFor(model => model.ExtraGigabyteCount)
+                                
+                            <span class="label_wrapper_optional">@Html.LabelFor(model => model.PromoCode):</span>
+                            @Html.TextBoxFor(model => model.PromoCode, new { maxlength = "10", style = "width: 380px" })
+                            @Html.ValidationMessageFor(model => model.PromoCode)
+                                
+                            <div id="total_cost">Итоговая стоимость: руб./месяц</div>
+                            
+                            <div style="margin-left: 60px; margin-top: 30px">
+                                <input type="checkbox" id="clientAgree" name="clientAgree" />
+                                <span class="label_wrapper" style="display: inline; padding-left: 10px; font-size: 16px;">
+                                    <label for="clientAgree">Я полностью ознакомлен и принимаю предмет и условия &nbsp;<a target="_blank" style="display:inline; font-size: 17px; margin: 0" href="../../Content/Agreement_Bizpulse.pdf">Договора-оферты</a></label>
+                                </span>
+                            </div>
+                                
+                            <div style="width: 800px; margin: 30px 0; text-align: center;">
+                                <div id="submitErrorMessage" class="field-validation-error" style="padding-left: 0px"></div>
+                            </div>
+                                
+                            <div style="width: 800px; margin: 40px auto 20px; text-align: center; height: 50px; overflow: hidden">
+                                <input id="btnRegister" type="button" value="Завершить регистрацию и войти" class="disabled" disabled="disabled"/>
+                            </div>
+                                
+                            <a id="configurationInfo_prev" href="#" onclick="return false;" style="margin-left: -20px; width: 160px;">← Вернуться</a>
+                        }
+                            
+                        @* Форма для автоматического залогинивания *@
+                        <form action="@Bizpulse.Admin.UI.Web.AppSettings.AppURL/User/TryLogin?mode=welcome" method="post" id="loginForm" autocomplete="off">
+                            <input id="AccountNumber" name="AccountNumber" type="hidden" value="" />
+                            <input id="Login" name="Login" type="hidden" value="" />
+                            <input id="Password" name="Password" type="hidden" value="" />
+                        </form>
+                    </div>
+
+                    <div class="clear"></div>
+                </div>
+            </div>
+        </div>
+
+        <div id="top_links">            
+            <a href="/Client/RegisterEasy">Быстрая регистрация на пробный период</a>
+            <a href="@Bizpulse.Admin.UI.Web.AppSettings.FrontSiteURL">Вернуться на сайт Bizpulse</a>
+        </div>
+    </div>
+    
+</body>
+</html>

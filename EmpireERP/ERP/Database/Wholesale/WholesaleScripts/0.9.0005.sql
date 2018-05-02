@@ -1,0 +1,161 @@
+/*---------------------------------------------------------------------------------------
+  Скрипт для обновления базы до версии 0.9.5
+
+  Что нового:
+	* обновление индексов	
+	
+---------------------------------------------------------------------------------------*/
+--SET NOEXEC OFF	-- выполнить данную команду в случае неуспешного обновления
+SET DATEFORMAT DMY
+SET NOCOUNT ON
+SET ARITHABORT ON
+SET XACT_ABORT ON
+SET TRANSACTION ISOLATION LEVEL SERIALIZABLE
+GO
+
+DECLARE @PreviousVersion varchar(15),	-- номер предыдущей версии
+		@CurrentVersion varchar(15),	-- номер текущей версии базы данных
+		@NewVersion varchar(15),		-- номер новой версии
+		@DataBaseName varchar(256),		-- текущая база данных
+		@CurrentDate nvarchar(10),		-- текущая дата
+		@CurrentTime nvarchar(10),		-- текущее время
+		@BackupTarget nvarchar(100)		-- куда делать бэкап базы данных
+
+SET @PreviousVersion = '0.9.4' 			-- номер ПРЕДЫДУЩЕЙ версии
+SET @NewVersion     = '0.9.5'			-- номер новой версии
+
+SELECT @CurrentVersion = DataBaseVersion FROM Setting
+IF @@ERROR <> 0
+BEGIN
+	PRINT 'Неверная база данных'
+END
+ELSE
+BEGIN
+	-- СОЗДАЕМ БЭКАП БАЗЫ ДАННЫХ
+	-- Получаем текущую дату
+	SET @CurrentDate = CONVERT(nvarchar(20), GETDATE(), 104)	--	dd.mm.yyyy
+	SET @CurrentTime = REPLACE(CONVERT(nvarchar(20), GETDATE(), 108) , ':', '.') --	hh:mm:ss
+	SET @DataBaseName = DB_NAME()
+
+	SET @BackupTarget = N'D:\Bizpulse\Backup\Update\' + @DataBaseName + '(' + CAST(@CurrentVersion as nvarchar(20)) + ') ' + 
+		@CurrentDate + ' ' + @CurrentTime + N'.bak'
+
+	BACKUP DATABASE @DataBaseName TO DISK = @BackupTarget WITH  INIT,  NOUNLOAD,  NAME = N'wholesale', NOSKIP, DESCRIPTION = 
+		N'Обновление версии', NOFORMAT
+
+	IF @@ERROR <> 0
+	BEGIN
+		PRINT 'Ошибка создания backup''а. Продолжение выполнения невозможно.'
+	END
+	ELSE
+		BEGIN
+
+		IF (@CurrentVersion <> @PreviousVersion)
+		BEGIN
+			PRINT 'Обновить базу данных ' + @DataBaseName + ' до версии ' + @NewVersion + 
+				' можно только из версии  ' + @PreviousVersion +
+				'. Текущая версия: ' + @CurrentVersion
+		END
+		ELSE
+		BEGIN
+			--Начинаем транзакцию
+			BEGIN TRAN
+
+			--Обновляем версию базы данных
+			UPDATE Setting 
+			SET DataBaseVersion = @NewVersion		
+		END
+	END
+END
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг установки версии окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+--*** ReceiptWaybillRow *********************************************************************************
+IF EXISTS(SELECT * FROM sys.sysindexes WHERE name = 'IX_ReceiptWaybillRow_DeletionDate_ReceiptWaybillId')
+DROP INDEX [IX_ReceiptWaybillRow_DeletionDate_ReceiptWaybillId] ON [dbo].[ReceiptWaybillRow] 
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+CREATE INDEX [IX_ReceiptWaybillRow_DeletionDate_ReceiptWaybillId] ON [ReceiptWaybillRow] ([DeletionDate], [ReceiptWaybillId]) 
+INCLUDE ([Id], [ArticleMeasureUnitScale], [PendingCount], [PendingSum], [ReceiptedCount], [ProviderCount], [ApprovedCount], [ApprovedSum], [PurchaseCost], [CustomsDeclarationNumber], [CreationDate], [FinallyMovementDate], [ReservedCount], [AcceptedCount], [ShippedCount], [FinallyMovedCount], [RecipientArticleAccountingPriceId], [ArticleId], [PendingValueAddedTaxId], [ApprovedValueAddedTaxId], [CountryId], [ManufacturerId], [InitialPurchaseCost], [ProviderSum], [ApprovedPurchaseCost])
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+--*** ArticleAccountingPriceIndicator *******************************************************************************
+IF EXISTS(SELECT * FROM sys.sysindexes WHERE name = 'IX_ArticleAccountingPriceIndicator_StorageId_StartDate_EndDate')
+DROP INDEX [IX_ArticleAccountingPriceIndicator_StorageId_StartDate_EndDate] ON [dbo].[ArticleAccountingPriceIndicator]
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+CREATE INDEX [IX_ArticleAccountingPriceIndicator_StorageId_StartDate_EndDate] ON [ArticleAccountingPriceIndicator] ([StorageId], [StartDate], [EndDate]) 
+INCLUDE ([Id], [ArticleId], [AccountingPrice], [AccountingPriceListId])
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+--*** ArticleAccountingPrice ***********************************************************************************************
+IF EXISTS(SELECT * FROM sys.sysindexes WHERE name = 'IX_ArticleAccountingPrice_DeletionDate_AccountingPriceListId_ArticleId')
+DROP INDEX [IX_ArticleAccountingPrice_DeletionDate_AccountingPriceListId_ArticleId] ON [dbo].[ArticleAccountingPrice]
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+CREATE INDEX [IX_ArticleAccountingPrice_DeletionDate_AccountingPriceListId_ArticleId] ON [ArticleAccountingPrice] ([DeletionDate], [AccountingPriceListId], [ArticleId]) 
+INCLUDE ([Id], [AccountingPrice], [CreationDate], [UsedDefaultAccountingPriceCalcRule], [UsedDefaultLastDigitRule], [OrdinalNumber])
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+--***  ExactArticleAvailabilityIndicator ****************************************************************************************************
+IF EXISTS(SELECT * FROM sys.sysindexes WHERE name = 'IX_ExactArticleAvailabilityIndicator_StorageId_AccountOrganizationId_ArticleId_BatchId')
+DROP INDEX [IX_ExactArticleAvailabilityIndicator_StorageId_AccountOrganizationId_ArticleId_BatchId] ON [dbo].[ExactArticleAvailabilityIndicator]
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+
+CREATE INDEX [IX_ExactArticleAvailabilityIndicator_StorageId_AccountOrganizationId_ArticleId_BatchId] ON [ExactArticleAvailabilityIndicator] ([StorageId], [AccountOrganizationId], [ArticleId], [BatchId])
+
+GO
+IF @@ERROR <> 0 AND @@TRANCOUNT > 0 BEGIN PRINT 'Шаг окончен неуспешно.' ROLLBACK TRAN END
+GO
+IF @@TRANCOUNT = 0 BEGIN PRINT 'Дальше выполнять ничего не будем' SET NOEXEC ON END
+GO
+
+-- В САМОМ КОНЦЕ
+IF @@TRANCOUNT > 0 BEGIN COMMIT TRAN PRINT 'Обновление выполнено успешно' END
+GO
+

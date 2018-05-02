@@ -1,0 +1,54 @@
+.tree_table {    
+    border-left: solid 1px #E1E1E1; border-right: solid 1px #E1E1E1; border-top: solid 1px #E1E1E1; 
+}
+.tree_header_row {
+    background: url('/Content/Img/gradient_header_grid.png') repeat-x;
+    height: 18px;
+    font-weight: bold;
+    font-size: 12px;
+    padding: 7px 6px 2px 6px;    
+}
+.tree_table .no_data_row {
+    text-align: center; 
+    padding: 7px 0;
+    font-size: 12px;
+    color: #4D7285;
+    background: #ffffff;
+    border-bottom: solid 1px #E1E1E1;
+}
+
+.tree_node {
+    height: 20px;
+    padding: 7px 0px 0px;
+    color: #4D7285;
+    border-bottom: solid 1px #E1E1E1;
+    background-color: White;
+}
+.tree_node:hover {
+    background-color: #DCF7F2;
+}
+.tree_node.selected {
+    background-color: #B5E1EE;
+}
+.tree_node_expander {    
+    font-size: 12px;
+    margin-right: 10px;
+    cursor: pointer;    
+}
+.tree_node_title {
+    cursor: pointer;
+    text-decoration: underline;
+}
+.tree_node_title:hover {
+    text-decoration: none;
+}
+
+.tree_node_childs {
+    background-color: White;
+}
+
+
+
+
+
+

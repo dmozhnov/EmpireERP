@@ -1,0 +1,76 @@
+﻿@model ERP.Wholesale.UI.ViewModels.TaskExecutionsViewModel
+
+@* Подключение JavaScript осуществляется на форме деталей задачи. Т.к. иначе обработчики кнопок срабатывают многократно. *@
+
+@{bool isFirstItem = Model.NeedDelimFirstItem;}
+@if (Model.History.Count > 0)
+{
+    foreach (var item in Model.History)
+    {
+        <div>
+            @if (isFirstItem)
+            { 
+                <div class="h_delim"></div>
+            }
+            @{isFirstItem = true;}
+            <div id="messageTaskExecutionEdit"></div>
+            <div class="taskExecutionDetails">
+                @Html.HiddenFor(model => item.TaskExecutionId)
+                <br />
+                <table>
+                    <tr>
+                        <td style="padding-left: 45px; white-space:nowrap;">
+                            @if (item.AllowToViewCreatedBy)
+                            { 
+                                <b><i><a id="CreatedByName">@item.CreatedByName</a></i></b>
+                                <input type="hidden" id="CreatedById" value="@item.CreatedById"/>
+                            }
+                            else
+                            {
+                                @item.CreatedByName
+                            }
+                        </td>
+                        <td style="padding-left: 15px; white-space: nowrap; font-size: 8pt;">
+                            <b>@item.Date</b>
+                        </td>
+                        <td style="width:100%"></td>
+                        <td style="padding-left: 15px;">
+                            @if (item.AllowToEditTaskExecution)
+                            {
+                                <span class="link EditTaskExecution">Редактировать</span>
+                            }
+                        </td>
+                        <td style="padding: 0 15px;">
+                            @if (item.AllowToDeleteTaskExecution)
+                            {
+                                <span class="link DeleteTaskExecution">Удалить</span>
+                            }
+                        </td>
+                    </tr>
+                </table>
+                     
+                <div style="padding: 5px 15px; line-height: 15px">
+                    <p><b>@Html.LabelFor(model => item.ExecutionStateName):</b> <i>@item.ExecutionStateName</i></p>
+                    <p><b>@Html.LabelFor(model => item.CompletionPercentage):</b> <i>@item.CompletionPercentage%</i></p>
+                    <p><b>@Html.LabelFor(model => item.SpentTime):</b> <i>@item.SpentTime</i></p>
+                    @if (!String.IsNullOrEmpty(item.ResultDescription))
+                    {
+                        <p><b>Достигнутые результаты:</b></p>
+                    }
+                </div>  
+            
+                @if (!String.IsNullOrEmpty(item.ResultDescription))
+                {
+                    <div style="padding: 0 15px 10px 15px;">
+                        @Html.Raw(item.ResultDescription)
+                    </div>
+                }
+            </div>
+            <div class="taskExecutionEdit"></div>
+        </div>
+    }
+}
+else
+{
+    <div id="TaskExecutionNoDataMessage" style="text-align: center">Нет исполнений</div>
+}

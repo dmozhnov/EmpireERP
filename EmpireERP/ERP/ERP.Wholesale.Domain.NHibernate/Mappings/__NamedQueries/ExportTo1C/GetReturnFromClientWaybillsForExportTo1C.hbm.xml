@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<hibernate-mapping xmlns="urn:nhibernate-mapping-2.2">
+  <sql-query name="GetReturnFromClientWaybillsForExportTo1C">
+    exec GetReturnFromClientWaybillsForExportTo1C @StartDate =:StartDate, @EndDate =:EndDate, @UserId =:UserId, @IdSenderAccountOrganizationList =:IdSenderAccountOrganizationList,
+    @AllSenderAccountOrganizations =:AllSenderAccountOrganizations, @IdRecipientAccountOrganizationList =:IdRecipientAccountOrganizationList,
+    @AllRecipientAccountOrganizations =:AllRecipientAccountOrganizations, @ShowReturnsFromCommissionaires = :ShowReturnsFromCommissionaires,
+    @IdRecipientCommissionaireOrganizationList =:IdRecipientCommissionaireOrganizationList, @AllRecipientCommissionaireOrganizations  =:AllRecipientCommissionaireOrganizations,
+    @ShowReturnsAcceptedByCommissionaires = :ShowReturnsAcceptedByCommissionaires
+  </sql-query>
+</hibernate-mapping>

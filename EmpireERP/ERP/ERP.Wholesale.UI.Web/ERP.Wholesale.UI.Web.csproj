@@ -1,0 +1,1874 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{A8E0497B-18D2-48BA-BA30-43B73C9353FD}</ProjectGuid>
+    <ProjectTypeGuids>{e53f8fea-eae0-44a6-8774-ffd645390401};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.UI.Web</RootNamespace>
+    <AssemblyName>ERP.Wholesale.UI.Web</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>false</UseIISExpress>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <RunCodeAnalysis>false</RunCodeAnalysis>
+    <PackageAsSingleFile>false</PackageAsSingleFile>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Excel">
+      <HintPath>..\lib\Excel\Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentNHibernate, Version=1.1.0.685, Culture=neutral, PublicKeyToken=8aa435e3cb308880, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\FluentNHibernate\FluentNHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="HibernatingRhinos.Profiler.Appender.v4.0, Version=1.0.0.0, Culture=neutral, PublicKeyToken=0774796e73ebf640, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\HibernatingRhinos\HibernatingRhinos.Profiler.Appender.v4.0.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib">
+      <HintPath>..\lib\Excel\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="LinFu.Core, Version=2.2.0.19938, Culture=neutral, PublicKeyToken=a4c63a184389506f, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\LinFu\LinFu.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="NHibernate, Version=2.1.2.4000, Culture=neutral, PublicKeyToken=aa95f207798dfdb4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\lib\NHibernate\NHibernate.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.ByteCode.Castle">
+      <HintPath>..\lib\NHibernate\NHibernate.ByteCode.Castle.dll</HintPath>
+    </Reference>
+    <Reference Include="NHibernate.Caches.SysCache2">
+      <HintPath>..\lib\NHibernateCache\NHibernate.Caches.SysCache2\NHibernate.Caches.SysCache2.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Core">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions">
+      <RequiredTargetFramework>3.5</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Web.WebPages" />
+    <Reference Include="System.Web.Helpers" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Controllers\AccountingPriceListController.cs" />
+    <Compile Include="Controllers\AccountOrganizationController.cs" />
+    <Compile Include="Controllers\ArticleCertificateController.cs" />
+    <Compile Include="Controllers\ArticleController.cs" />
+    <Compile Include="Controllers\ArticleGroupController.cs" />
+    <Compile Include="Controllers\BankController.cs" />
+    <Compile Include="Controllers\BaseWaybillController.cs" />
+    <Compile Include="Controllers\ChangeOwnerWaybillController.cs" />
+    <Compile Include="Controllers\ClientController.cs" />
+    <Compile Include="Controllers\ClientOrganizationController.cs" />
+    <Compile Include="Controllers\ClientRegionController.cs" />
+    <Compile Include="Controllers\ClientTypeController.cs" />
+    <Compile Include="Controllers\ContractorController.cs" />
+    <Compile Include="Controllers\ContractorOrganizationController.cs" />
+    <Compile Include="Controllers\DealInitialBalanceCorrectionController.cs" />
+    <Compile Include="Controllers\DealPaymentController.cs" />
+    <Compile Include="Controllers\ClientContractController.cs" />
+    <Compile Include="Controllers\DealPaymentDocumentController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
+    <Compile Include="Controllers\ExportTo1CController.cs" />
+    <Compile Include="Controllers\HelpController.cs" />
+    <Compile Include="Controllers\LegalFormController.cs" />
+    <Compile Include="Controllers\DealQuotaController.cs" />
+    <Compile Include="Controllers\OutgoingWaybillRowController.cs" />
+    <Compile Include="Controllers\ProductionOrderCustomsDeclarationController.cs" />
+    <Compile Include="Controllers\ProductionOrderExtraExpensesSheetController.cs" />
+    <Compile Include="Controllers\ProductionOrderTransportSheetController.cs" />
+    <Compile Include="Controllers\CurrencyController.cs" />
+    <Compile Include="Controllers\ProductionOrderMaterialsPackageController.cs" />
+    <Compile Include="Controllers\ProductionOrderBatchLifeCycleTemplateController.cs" />
+    <Compile Include="Controllers\ProductionOrderPaymentController.cs" />
+    <Compile Include="Controllers\ReturnFromClientReasonController.cs" />
+    <Compile Include="Controllers\EmployeePostController.cs" />
+    <Compile Include="Controllers\ProducerController.cs" />
+    <Compile Include="Controllers\ProductionOrderController.cs" />
+    <Compile Include="Controllers\ReportController.cs" />
+    <Compile Include="Controllers\ReturnFromClientWaybillController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
+    <Compile Include="Controllers\CountryController.cs" />
+    <Compile Include="Controllers\EconomicAgentController.cs" />
+    <Compile Include="Controllers\DealController.cs" />
+    <Compile Include="Controllers\ExpenditureWaybillController.cs" />
+    <Compile Include="Controllers\ManufacturerController.cs" />
+    <Compile Include="Controllers\MeasureUnitController.cs" />
+    <Compile Include="Controllers\MovementWaybillController.cs" />
+    <Compile Include="Controllers\OrganizationController.cs" />
+    <Compile Include="Controllers\ProviderController.cs" />
+    <Compile Include="Controllers\ProviderOrganizationController.cs" />
+    <Compile Include="Controllers\ProviderTypeController.cs" />
+    <Compile Include="Controllers\ReceiptWaybillController.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Controllers\ClientServiceProgramController.cs" />
+    <Compile Include="Controllers\SettingController.cs" />
+    <Compile Include="Controllers\StorageController.cs" />
+    <Compile Include="Controllers\TaskController.cs" />
+    <Compile Include="Controllers\TeamController.cs" />
+    <Compile Include="Controllers\TestController.cs" />
+    <Compile Include="Controllers\TrademarkController.cs" />
+    <Compile Include="Controllers\WriteoffReasonController.cs" />
+    <Compile Include="Controllers\WriteoffWaybillController.cs" />
+    <Compile Include="Controllers\ValueAddedTaxController.cs" />
+    <Compile Include="HtmlHelpers\PageBoxHelper.cs" />
+    <Compile Include="HtmlHelpers\PageTitleHelper.cs" />
+    <Compile Include="HtmlHelpers\PermissionDistributionHelper.cs" />
+    <Compile Include="HtmlHelpers\PermissionHelper.cs" />
+    <Compile Include="Infrastructure\AuthenticationFilterAttribute.cs" />
+    <Compile Include="Infrastructure\FluentInitializer.cs" />
+    <Compile Include="Infrastructure\UserSession.cs" />
+    <Compile Include="Infrastructure\WholesaleController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="HtmlHelpers\BoxTop.cs" />
+    <Compile Include="HtmlHelpers\BoxBottom.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Content Include="Help\AccountingPriceList\Edit\Main.htm" />
+    <Content Include="Help\AccountingPriceList\Edit\Reason.htm" />
+    <Content Include="Help\AccountingPriceList\Edit\StartDate.htm" />
+    <Content Include="Help\AccountingPriceList\Edit\Number.htm" />
+    <Content Include="Help\AccountingPriceList\Edit\EndDate.htm" />
+    <Content Include="Help\AccountOrganization\Details\StorageGrid.htm" />
+    <Content Include="Help\AccountOrganization\Details\Main.htm" />
+    <Content Include="Help\AccountOrganization\List\Main.htm" />
+    <Content Include="Help\AccountOrganization\List\AccountOrganizationGrid.htm" />
+    <Content Include="Help\AccountOrganization\Details\StorageSelectList.htm" />
+    <Content Include="Help\AccountOrganization\Select\Main.htm" />
+    <Content Include="Help\AccountOrganization\Select\AccountOrganizationSelectGrid.htm" />
+    <Content Include="Help\ArticleCertificate\Edit\ArticleCertificate.htm" />
+    <Content Include="Help\ArticleCertificate\List\ArticleCertificateGrid.htm" />
+    <Content Include="Help\ArticleCertificate\List\Main.htm" />
+    <Content Include="Help\ArticleCertificate\Select\Main.htm" />
+    <Content Include="Help\ArticleCertificate\Select\ArticleCertificateGrid.htm" />
+    <Content Include="Help\ArticleGroup\Details\ArticleGroup.htm" />
+    <Content Include="Help\ArticleGroup\Edit\ArticleGroup.htm" />
+    <Content Include="Help\ArticleGroup\Edit\NameFor1C.htm" />
+    <Content Include="Help\ArticleGroup\List\Main.htm" />
+    <Content Include="Help\ArticleGroup\List\ArticleGroupTree.htm" />
+    <Content Include="Help\Article\Edit\SalaryPercent.htm" />
+    <Content Include="Help\Article\Edit\Certificate.htm" />
+    <Content Include="Help\Article\Edit\PackVolume.htm" />
+    <Content Include="Help\Article\Edit\PackLength.htm" />
+    <Content Include="Help\Article\Edit\PackWeight.htm" />
+    <Content Include="Help\Article\Edit\PackSize.htm" />
+    <Content Include="Help\Article\Edit\MarkupPercent.htm" />
+    <Content Include="Help\Article\Edit\MeasureUnit.htm" />
+    <Content Include="Help\Article\Edit\ProductionCountry.htm" />
+    <Content Include="Help\Article\Edit\Manufacturer.htm" />
+    <Content Include="Help\Article\Edit\TrademarkName.htm" />
+    <Content Include="Help\Article\Edit\ManufacturerNumber.htm" />
+    <Content Include="Help\Article\Edit\ArticleGroupName.htm" />
+    <Content Include="Help\Article\Edit\ShortName.htm" />
+    <Content Include="Help\Article\Edit\FullArticleName.htm" />
+    <Content Include="Help\Article\Edit\Number.htm" />
+    <Content Include="Help\Article\Edit\Main.htm" />
+    <Content Include="Help\Article\Edit\IsObsolete.htm" />
+    <Content Include="Help\Article\List\ActualArticleGrid.htm" />
+    <Content Include="Help\Article\List\ObsoleteArticleGrid.htm" />
+    <Content Include="Help\Article\List\Main.htm" />
+    <Content Include="Help\Article\Select\ArticleSelectGrid.htm" />
+    <Content Include="Help\Bank\Edit\ForeignBank.htm" />
+    <Content Include="Help\Bank\Edit\RussianBank.htm" />
+    <Content Include="Help\Bank\List\Main.htm" />
+    <Content Include="Help\Bank\List\ForeignBankGrid.htm" />
+    <Content Include="Help\Bank\List\RussianBankGrid.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Curator.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Date.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Main.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Number.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Recipient.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Sender.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\Storage.htm" />
+    <Content Include="Help\ChangeOwnerWaybill\Edit\ValueAddedTax.htm" />
+    <Content Include="Help\ClientContract\Edit\Date.htm" />
+    <Content Include="Help\ClientContract\Edit\Main.htm" />
+    <Content Include="Help\ClientContract\Edit\Name.htm" />
+    <Content Include="Help\ClientContract\Edit\Number.htm" />
+    <Content Include="Help\ClientOrganization\Details\Main.htm" />
+    <Content Include="Help\ClientOrganization\Details\MainDetails\SaleSum.htm" />
+    <Content Include="Help\ClientOrganization\Details\MainDetails\ShippingPendingSaleSum.htm" />
+    <Content Include="Help\ClientOrganization\Details\MainDetails\PaymentSum.htm" />
+    <Content Include="Help\ClientOrganization\Details\MainDetails\TotalReservedByReturnSum.htm" />
+    <Content Include="Help\ClientOrganization\Details\ClientOrganizationSalesGrid.htm" />
+    <Content Include="Help\ClientOrganization\Details\ClientOrganizationClientContractGrid.htm" />
+    <Content Include="Help\ClientOrganization\Details\ClientOrganizationPaymentGrid.htm" />
+    <Content Include="Help\ClientOrganization\Details\ClientOrganizationDealInitialBalanceCorrectionGrid.htm" />
+    <Content Include="Help\Client\Select\ClientSelectGrid.htm" />
+    <Content Include="Help\Client\Select\Main.htm" />
+    <Content Include="Help\ContractorOrganization\Edit\Main.htm" />
+    <Content Include="Help\ContractorOrganization\Edit\ContractorOrganizationSelectGrid.htm" />
+    <Content Include="Help\ContractorOrganization\List\Main.htm" />
+    <Content Include="Help\ContractorOrganization\List\ContractorOrganizationGrid.htm" />
+    <Content Include="Help\Country\Edit\Country.htm" />
+    <Content Include="Help\Country\List\CountryGrid.htm" />
+    <Content Include="Help\Country\List\Main.htm" />
+    <Content Include="Help\Currency\Edit\CurrencyRateGrid.htm" />
+    <Content Include="Help\Currency\Edit\Currency.htm" />
+    <Content Include="Help\Currency\Edit\CurrencyRate.htm" />
+    <Content Include="Help\Currency\List\CurrencyGrid.htm" />
+    <Content Include="Help\Currency\List\Main.htm" />
+    <Content Include="Help\Currency\Select\Main.htm" />
+    <Content Include="Help\Currency\Select\CurrencyRateSelectGrid.htm" />
+    <Content Include="Help\DealDebitInitialBalanceCorrection\Details\Main.htm" />
+    <Content Include="Help\DealPaymentFromClient\SelectDestinationDocuments\DestinationDocumentSelectorForDealPaymentFromClientDistribution.htm" />
+    <Content Include="Help\Deal\Select\Main.htm" />
+    <Content Include="Help\Deal\Select\DealSelectGrid.htm" />
+    <Content Include="Help\EconomicAgentType\Edit\PhysicalPerson.htm" />
+    <Content Include="Help\EconomicAgentType\Edit\JuridicalPerson.htm" />
+    <Content Include="Help\EmployeePost\Edit\Main.htm" />
+    <Content Include="Help\EmployeePost\List\Main.htm" />
+    <Content Include="Help\EmployeePost\List\EmployeePostGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderExecutionGraphs.htm" />
+    <Content Include="Help\ProductionOrder\Select\ProductionOrderSelectGrid.htm" />
+    <Content Include="Help\ProductionOrder\Select\Main.htm" />
+    <Content Include="Help\Role\Details\Main.htm" />
+    <Content Include="Help\Role\Details\UsersGrid.htm" />
+    <Content Include="Help\Role\Edit\Main.htm" />
+    <Content Include="Help\Role\Edit\CreationDate.htm" />
+    <Content Include="Help\Role\Edit\Name.htm" />
+    <Content Include="Help\Role\List\Main.htm" />
+    <Content Include="Help\Role\List\RolesGrid.htm" />
+    <Content Include="Help\Role\Select\Main.htm" />
+    <Content Include="Help\Role\Select\RoleSelectGrid.htm" />
+    <Content Include="Help\Team\Edit\CreationDate.htm" />
+    <Content Include="Help\Team\Edit\Main.htm" />
+    <Content Include="Help\Team\Edit\Name.htm" />
+    <Content Include="Help\User\Edit\Team.htm" />
+    <Content Include="Help\_Template.htm" />
+    <Content Include="Help\ExpenditureWaybill\AddRowsByList\Main.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\MarkupSum.htm" />
+    <Content Include="Help\ExpenditureWaybill\RowEdit\Main.htm" />
+    <Content Include="Help\LegalForm\Edit\LegalForm.htm" />
+    <Content Include="Help\LegalForm\List\LegalFormGrid.htm" />
+    <Content Include="Help\LegalForm\List\Main.htm" />
+    <Content Include="Help\OutgoingWaybill\List\ArticlesForWaybillRowsAdditionByListGrid.htm" />
+    <Content Include="Help\ProductionOrderBatchLifeCycleTemplate\Details\Main.htm" />
+    <Content Include="Help\ProductionOrderBatchLifeCycleTemplate\Details\ProductionOrderBatchLifeCycleTemplateStageGrid.htm" />
+    <Content Include="Help\ProductionOrderBatchLifeCycleTemplate\Edit\Main.htm" />
+    <Content Include="Help\ProductionOrderBatchLifeCycleTemplate\Edit\ProductionOrderBatchLifeCycleTemplateStage.htm" />
+    <Content Include="Help\ProductionOrderBatchLifeCycleTemplate\List\Main.htm" />
+    <Content Include="Help\ProductionOrderBatchLifeCycleTemplate\List\ProductionOrderBatchLifeCycleTemplateGrid.htm" />
+    <Content Include="Help\ProductionOrderCustomsDeclaration\List\Main.htm" />
+    <Content Include="Help\ProductionOrderCustomsDeclaration\List\ProductionOrderCustomsDeclarationGrid.htm" />
+    <Content Include="Help\ProductionOrderExtraExpensesSheet\List\ProductionOrderExtraExpensesSheetGrid.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Details\MainDetails\CreationDate.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Details\MainDetails\LastChangeDate.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Details\MainDetails\ProductionOrder.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Details\Main.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Details\ProductionOrderMaterialsPackageDocumentGrid.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\ProductionOrder.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\CreationDate.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\Name.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\LastChangeDate.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\Description.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\Main.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\ProductionOrderMaterialsPackageDocumentEdit.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\Edit\ProductionOrderMaterialsPackageDocumentCreate.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\List\ProductionOrderMaterialsPackageGrid.htm" />
+    <Content Include="Help\ProductionOrderMaterialsPackage\List\Main.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderAddBatch.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderBatchChangeStage.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderContract.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderTransportSheet.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderExtraExpensesSheet.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderCustomsDeclaration.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderPayment.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderPaymentDocumentGrid.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderPlannedPayment.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderPlannedExpenses.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderArticlePrimeCostSettingsForm.htm" />
+    <Content Include="Help\ProductionOrder\Select\ProductionOrderCurrencyDeterminationType.htm" />
+    <Content Include="Help\ProductionOrder\Select\ProductionOrderPaymentType.htm" />
+    <Content Include="Help\ProductionOrder\Select\ProductionOrderPaymentDocument.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderEditPlannedPayment.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ProductionOrderPlannedPaymentGrid.htm" />
+    <Content Include="Help\Team\Select\Main.htm" />
+    <Content Include="Help\Team\Select\TeamSelectGrid.htm" />
+    <Content Include="Help\Manufacturer\Edit\Manufacturer.htm" />
+    <Content Include="Help\Manufacturer\List\ManufacturerGrid.htm" />
+    <Content Include="Help\Manufacturer\List\Main.htm" />
+    <Content Include="Help\Manufacturer\Select\Main.htm" />
+    <Content Include="Help\Manufacturer\Select\ManufacturerGrid.htm" />
+    <Content Include="Help\MeasureUnit\Edit\MeasureUnit.htm" />
+    <Content Include="Help\MeasureUnit\List\MeasureUnitGrid.htm" />
+    <Content Include="Help\MeasureUnit\List\Main.htm" />
+    <Content Include="Help\MeasureUnit\Select\Main.htm" />
+    <Content Include="Help\MeasureUnit\Select\MeasureUnitGrid.htm" />
+    <Content Include="Help\Organization\Edit\RussianBankAccount.htm" />
+    <Content Include="Help\Organization\Edit\ForeignBankAccount.htm" />
+    <Content Include="Help\Organization\List\RussianBankAccountGrid.htm" />
+    <Content Include="Help\Organization\List\ForeignBankAccountGrid.htm" />
+    <Content Include="Help\Producer\Details\Main.htm" />
+    <Content Include="Help\Producer\Details\MainDetails\OrganizationName.htm" />
+    <Content Include="Help\Producer\Details\MainDetails\OrderSum.htm" />
+    <Content Include="Help\Producer\Details\MainDetails\ProductionSum.htm" />
+    <Content Include="Help\Producer\Details\MainDetails\PaymentSum.htm" />
+    <Content Include="Help\Producer\Details\MainDetails\OpenOrderSum.htm" />
+    <Content Include="Help\Producer\Details\ProductionOrdersGrid.htm" />
+    <Content Include="Help\Producer\Details\ProducerPaymentsGrid.htm" />
+    <Content Include="Help\Producer\Details\ProducerManufacturerGrid.htm" />
+    <Content Include="Help\Producer\Details\TaskGrid.htm" />
+    <Content Include="Help\Producer\Edit\Main.htm" />
+    <Content Include="Help\Producer\Edit\Curator.htm" />
+    <Content Include="Help\Producer\Edit\Name.htm" />
+    <Content Include="Help\Producer\Edit\OrganizationName.htm" />
+    <Content Include="Help\Producer\Edit\Address.htm" />
+    <Content Include="Help\Producer\Edit\VATNo.htm" />
+    <Content Include="Help\Producer\Edit\DirectorName.htm" />
+    <Content Include="Help\Producer\Edit\ManagerName.htm" />
+    <Content Include="Help\Producer\Edit\Contacts.htm" />
+    <Content Include="Help\Producer\Edit\IsManufacturer.htm" />
+    <Content Include="Help\Producer\Edit\Rating.htm" />
+    <Content Include="Help\Producer\List\Main.htm" />
+    <Content Include="Help\Producer\List\ProducerGrid.htm" />
+    <Content Include="Help\ProductionOrderPayment\List\Main.htm" />
+    <Content Include="Help\ProductionOrderPayment\List\ProductionOrderPaymentGrid.htm" />
+    <Content Include="Help\ProductionOrderTransportSheet\List\Main.htm" />
+    <Content Include="Help\ProductionOrderTransportSheet\List\ProductionOrderTransportSheetGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\Main.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\CurrentStageName.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\CurrentStageActualStartDate.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\CurrentStageExpectedEndDate.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\MinOrderBatchStageName.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\MaxOrderBatchStageName.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\ContractName.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\AccountOrganizationName.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\CurrencyLiteralCode.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\StorageName.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\ArticleTransportingPrimeCostCalculationType.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\DeliveryPendingDate.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\State.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\DivergenceFromPlan.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\PlannedExpensesSumInCurrency.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\ActualCostSumInCurrency.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\PaymentSumInCurrency.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\AccountingPriceSum.htm" />
+    <Content Include="Help\ProductionOrder\Details\MainDetails\MarkupPendingSum.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderBatchGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderTransportSheetGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderExtraExpensesSheetGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderCustomsDeclarationGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderPaymentGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderDocumentPackageGrid.htm" />
+    <Content Include="Help\ProductionOrder\Details\ProductionOrderExecutionGraphs.htm" />
+    <Content Include="Help\ProductionOrder\Details\TaskGrid.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Main.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Name.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Curator.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Producer.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Date.htm" />
+    <Content Include="Help\ProductionOrder\Edit\CurrentStageName.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Currency.htm" />
+    <Content Include="Help\ProductionOrder\Edit\Storage.htm" />
+    <Content Include="Help\ProductionOrder\Edit\ArticleTransportingPrimeCostCalculationType.htm" />
+    <Content Include="Help\ProductionOrder\Edit\SystemStagePlannedDuration.htm" />
+    <Content Include="Help\ProductionOrder\Edit\SystemStagePlannedEndDate.htm" />
+    <Content Include="Help\ProductionOrder\Edit\MondayIsWorkDay.htm" />
+    <Content Include="Help\ProductionOrder\List\Main.htm" />
+    <Content Include="Help\ProductionOrder\List\ActiveProductionOrderGrid.htm" />
+    <Content Include="Help\ProductionOrder\List\ClosedProductionOrderGrid.htm" />
+    <Content Include="Help\ProviderContract\Edit\Main.htm" />
+    <Content Include="Help\ClientRegion\Edit\Main.htm" />
+    <Content Include="Help\ClientRegion\List\ClientRegionGrid.htm" />
+    <Content Include="Help\ClientRegion\List\Main.htm" />
+    <Content Include="Help\ClientServiceProgram\Edit\Main.htm" />
+    <Content Include="Help\ClientServiceProgram\List\ClientServiceProgramGrid.htm" />
+    <Content Include="Help\ClientServiceProgram\List\Main.htm" />
+    <Content Include="Help\ClientType\Edit\Main.htm" />
+    <Content Include="Help\ClientType\List\Main.htm" />
+    <Content Include="Help\ClientType\List\ClientTypeGrid.htm" />
+    <Content Include="Help\Client\Details\TaskGrid.htm" />
+    <Content Include="Help\Client\Edit\Main.htm" />
+    <Content Include="Help\Client\Edit\Name.htm" />
+    <Content Include="Help\Client\Edit\FactualAddress.htm" />
+    <Content Include="Help\Client\Edit\ContactPhone.htm" />
+    <Content Include="Help\Client\Edit\Region.htm" />
+    <Content Include="Help\Client\Edit\ServiceProgram.htm" />
+    <Content Include="Help\Client\Edit\Rating.htm" />
+    <Content Include="Help\Client\Edit\Loyalty.htm" />
+    <Content Include="Help\Client\Edit\Type.htm" />
+    <Content Include="Help\Deal\Details\TaskGrid.htm" />
+    <Content Include="Help\Deal\Edit\Main.htm" />
+    <Content Include="Help\Deal\Edit\Name.htm" />
+    <Content Include="Help\Deal\Edit\ClientName.htm" />
+    <Content Include="Help\Deal\Edit\ExpectedBudget.htm" />
+    <Content Include="Help\Deal\Edit\StageName.htm" />
+    <Content Include="Help\Deal\Edit\CuratorName.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Client.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Curator.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Date.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Deal.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\DealQuota.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Main.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Number.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\CustomDeliveryAddress.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\SenderStorage.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\Team.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\IsPrepayment.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\RoundSalePrice.htm" />
+    <Content Include="Help\ExpenditureWaybill\Edit\ValueAddedTax.htm" />
+    <Content Include="Help\ExpenditureWaybill\List\ExpenditureWaybillArticleGroupGrid.htm" />
+    <Content Include="Help\MovementWaybill\Edit\Main.htm" />
+    <Content Include="Help\MovementWaybill\Edit\Number.htm" />
+    <Content Include="Help\MovementWaybill\Edit\Date.htm" />
+    <Content Include="Help\MovementWaybill\Edit\SenderStorage.htm" />
+    <Content Include="Help\MovementWaybill\Edit\RecipientStorage.htm" />
+    <Content Include="Help\MovementWaybill\Edit\Sender.htm" />
+    <Content Include="Help\MovementWaybill\Edit\Recipient.htm" />
+    <Content Include="Help\MovementWaybill\Edit\ValueAddedTax.htm" />
+    <Content Include="Help\MovementWaybill\Edit\Curator.htm" />
+    <Content Include="Help\ProviderContract\Edit\Number.htm" />
+    <Content Include="Help\ProviderContract\Edit\Date.htm" />
+    <Content Include="Help\ProviderOrganization\Details\ProviderOrganizationReceiptWaybillGrid.htm" />
+    <Content Include="Help\ProviderOrganization\Details\ProviderOrganizationProviderContractGrid.htm" />
+    <Content Include="Help\ProviderOrganization\Details\Main.htm" />
+    <Content Include="Help\ProviderOrganization\Details\MainDetails\PurchaseSum.htm" />
+    <Content Include="Help\ProviderOrganization\Details\MainDetails\DeliveryPendingSum.htm" />
+    <Content Include="Help\ProviderType\Edit\Main.htm" />
+    <Content Include="Help\ProviderType\List\Main.htm" />
+    <Content Include="Help\ProviderType\List\ProviderTypeGrid.htm" />
+    <Content Include="Help\Provider\Details\Main.htm" />
+    <Content Include="Help\Provider\Details\MainDetails\PurchaseCostSum.htm" />
+    <Content Include="Help\Provider\Details\MainDetails\PendingPurchaseCostSum.htm" />
+    <Content Include="Help\Provider\Details\TaskGrid.htm" />
+    <Content Include="Help\Provider\Details\ReceiptWaybillGrid.htm" />
+    <Content Include="Help\Provider\Details\ProviderOrganizationGrid.htm" />
+    <Content Include="Help\Provider\Details\ProviderContractGrid.htm" />
+    <Content Include="Help\Provider\Edit\Main.htm" />
+    <Content Include="Help\Provider\Edit\Name.htm" />
+    <Content Include="Help\Provider\Edit\Type.htm" />
+    <Content Include="Help\Provider\Edit\Reliability.htm" />
+    <Content Include="Help\Provider\Edit\Rating.htm" />
+    <Content Include="Help\Provider\List\Main.htm" />
+    <Content Include="Help\Provider\List\ProviderGrid.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\Main.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ProducerName.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\Provider.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\Contract.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ProductionOrderName.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ReceiptStorage.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\AccountOrganization.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\Curator.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\Number.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ProviderNumber.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ProviderInvoiceNumber.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\Date.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ProviderDate.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\ProviderInvoiceDate.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\PendingSum.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\PendingValueAddedTax.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\DiscountPercent.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\DiscountSum.htm" />
+    <Content Include="Help\Report\Report0006\Main.htm" />
+    <Content Include="Help\ReturnFromClientReason\Edit\Main.htm" />
+    <Content Include="Help\ReturnFromClientReason\List\ReturnFromClientReasonGrid.htm" />
+    <Content Include="Help\ReturnFromClientReason\List\Main.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\Main.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\MainDetails\State.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\MainDetails\RecipientName.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\MainDetails\PurchaseCostSum.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\MainDetails\SalePriceSum.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\MainDetails\AccountingPriceSum.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\MainDetails\RowCount.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\ReturnFromClientWaybillDocumentGrid.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Details\ReturnFromClientWaybillRowGrid.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\AccountOrganization.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\Curator.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\ReceiptStorage.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\ReturnFromClientReason.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\Team.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\List\ReturnFromClientWaybillArticleGroupGrid.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\RowEdit\Main.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\Main.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\Number.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\ClientName.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\Date.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\Edit\DealName.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\List\Main.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\List\NewAndAcceptedExpenditureWaybillGrid.htm" />
+    <Content Include="Help\ReturnFromClientWaybill\List\ReceiptedReturnFromClientWaybillGrid.htm" />
+    <Content Include="Help\Storage\Details\StorageSectionGrid.htm" />
+    <Content Include="Help\Storage\Details\StorageAccountOrganizationGrid.htm" />
+    <Content Include="Help\Storage\Details\Main.htm" />
+    <Content Include="Help\Storage\Edit\Main.htm" />
+    <Content Include="Help\Storage\Edit\AccountOrganizationSelectList.htm" />
+    <Content Include="Help\Storage\Edit\StorageSection.htm" />
+    <Content Include="Help\Storage\List\Main.htm" />
+    <Content Include="Help\Storage\List\StorageGrid.htm" />
+    <Content Include="Help\Task\Edit\Contractor.htm" />
+    <Content Include="Help\Task\Edit\Deal.htm" />
+    <Content Include="Help\Task\Edit\ExecuteBy.htm" />
+    <Content Include="Help\Task\Edit\Main.htm" />
+    <Content Include="Help\Task\Edit\ProductionOrder.htm" />
+    <Content Include="Help\Task\Edit\TaskExecutionState.htm" />
+    <Content Include="Help\Task\Edit\CreatedBy.htm" />
+    <Content Include="Help\Task\Edit\TaskPriority.htm" />
+    <Content Include="Help\Task\Edit\CreationDate.htm" />
+    <Content Include="Help\Task\Edit\DeadLineDate.htm" />
+    <Content Include="Help\Task\Edit\TaskType.htm" />
+    <Content Include="Help\Task\Edit\Topic.htm" />
+    <Content Include="Help\Task\List\Main.htm" />
+    <Content Include="Help\Task\List\NewTaskGrid.htm" />
+    <Content Include="Help\Task\List\ExecutingTaskGrid.htm" />
+    <Content Include="Help\Task\List\CompletedTaskGrid.htm" />
+    <Content Include="Help\Task\MainDetails\Main.htm" />
+    <Content Include="Help\Team\Details\Main.htm" />
+    <Content Include="Help\Team\Details\UsersGrid.htm" />
+    <Content Include="Help\Team\Details\DealsGrid.htm" />
+    <Content Include="Help\Team\Details\StoragesGrid.htm" />
+    <Content Include="Help\Team\Details\ProductionOrdersGrid.htm" />
+    <Content Include="Help\Team\List\Main.htm" />
+    <Content Include="Help\Team\List\TeamsGrid.htm" />
+    <Content Include="Help\Team\Select\StorageSelectList.htm" />
+    <Content Include="Help\Trademark\Edit\Trademark.htm" />
+    <Content Include="Help\Trademark\List\Main.htm" />
+    <Content Include="Help\Trademark\List\TrademarkGrid.htm" />
+    <Content Include="Help\Trademark\Select\Main.htm" />
+    <Content Include="Help\Trademark\Select\TrademarkGrid.htm" />
+    <Content Include="Help\User\Details\NewTaskGrid.htm" />
+    <Content Include="Help\User\Details\ExecutingTaskGrid.htm" />
+    <Content Include="Help\User\Details\CompletedTaskGrid.htm" />
+    <Content Include="Help\User\Details\Main.htm" />
+    <Content Include="Help\User\Details\UserRolesGrid.htm" />
+    <Content Include="Help\User\Details\UserTeamsGrid.htm" />
+    <Content Include="Help\User\Edit\Main.htm" />
+    <Content Include="Help\User\Edit\LastName.htm" />
+    <Content Include="Help\User\Edit\CreateBy.htm" />
+    <Content Include="Help\User\Edit\FirstName.htm" />
+    <Content Include="Help\User\Edit\CreationDate.htm" />
+    <Content Include="Help\User\Edit\Patronymic.htm" />
+    <Content Include="Help\User\Edit\DisplayName.htm" />
+    <Content Include="Help\User\Edit\EmployeePost.htm" />
+    <Content Include="Help\User\Edit\Login.htm" />
+    <Content Include="Help\User\Edit\Password.htm" />
+    <Content Include="Help\User\Edit\PasswordConfirmation.htm" />
+    <Content Include="Help\User\Home\UserAsCreatorGrid.htm" />
+    <Content Include="Help\User\Home\UserAsExecutorGrid.htm" />
+    <Content Include="Help\User\List\Main.htm" />
+    <Content Include="Help\User\List\ActiveUsersGrid.htm" />
+    <Content Include="Help\User\List\BlockedUsersGrid.htm" />
+    <Content Include="Help\User\Select\Main.htm" />
+    <Content Include="Help\User\Select\UserSelectGrid.htm" />
+    <Content Include="Help\ValueAddedTax\Edit\ValueAddedTax.htm" />
+    <Content Include="Help\ValueAddedTax\List\Main.htm" />
+    <Content Include="Help\ValueAddedTax\List\ValueAddedTaxGrid.htm" />
+    <Content Include="Help\WriteoffReason\Edit\Main.htm" />
+    <Content Include="Help\WriteoffReason\List\Main.htm" />
+    <Content Include="Help\WriteoffReason\List\WriteoffReasonGrid.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\Curator.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\Date.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\Main.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\Number.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\Sender.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\SenderStorage.htm" />
+    <Content Include="Help\WriteoffWaybill\Edit\WriteoffReason.htm" />
+    <Content Include="Help\ProviderContract\Edit\Name.htm" />
+    <Content Include="Help\ProductionOrderExtraExpensesSheet\List\Main.htm" />
+    <Content Include="Scripts\FileDownload.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.AddArticleAccountingPriceSet.js" />
+    <Content Include="Scripts\Modules\Export\ExportTo1C.Settings.js" />
+    <Content Include="Scripts\Modules\PrintingForm\PrintingForm.SplitOnPages.js" />
+    <Content Include="Scripts\Modules\PrintingForm\PrintingForm.T1PrintingForm.js" />
+    <Content Include="Scripts\Modules\PrintingForm\PrintingForm.T1PrintingFormSettings.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.ProductionOrderBatchAdd.js" />
+    <Content Include="Content\Img\Back.png" />
+    <Content Include="Content\Img\blue_line.jpg" />
+    <Content Include="Content\Img\checkbox.png" />
+    <Content Include="Content\Img\e-mail.png" />
+    <Content Include="Content\Img\phone.png" />
+    <Content Include="Content\Img\skype.png" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelectForClientOrganizationPaymentFromClientDistribution.js" />
+    <Content Include="Scripts\Modules\Report\Report0010.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0007.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0008.Settings.js" />
+    <Content Include="Content\Img\PageTitleImg\Setting.jpg" />
+    <Content Include="Scripts\Modules\Report\Report0009.Settings.js" />
+    <Content Include="Scripts\Modules\Setting\Setting.List.js" />
+    <Content Include="Scripts\Modules\Task\Task.CompletedTaskGrid.js" />
+    <Content Include="Scripts\Modules\Task\Task.ExecutingTaskGrid.js" />
+    <Content Include="Scripts\Modules\Task\Task.TaskExecutionCreate.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\ERP.Wholesale.Domain.dll" />
+    <Content Include="bin\ERP.Wholesale.Domain.NHibernate.dll" />
+    <Content Include="bin\ERP.Wholesale.Domain.NHibernate.pdb" />
+    <Content Include="bin\ERP.Wholesale.Domain.pdb" />
+    <Content Include="bin\FluentNHibernate.dll" />
+    <Content Include="bin\LinFu.Core.dll" />
+    <Content Include="bin\NHibernate.dll" />
+    <Content Include="Content\Img\button_loading.gif" />
+    <Content Include="Content\Img\close_help.gif" />
+    <Content Include="Content\Img\datePicker\calendar.gif" />
+    <Content Include="Content\Img\datePicker\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_flat_10_000000_40x100.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <Content Include="Content\Img\datePicker\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <Content Include="Content\Img\datePicker\ui-icons_222222_256x240.png" />
+    <Content Include="Content\Img\datePicker\ui-icons_228ef1_256x240.png" />
+    <Content Include="Content\Img\datePicker\ui-icons_ef8c08_256x240.png" />
+    <Content Include="Content\Img\datePicker\ui-icons_ffd27a_256x240.png" />
+    <Content Include="Content\Img\datePicker\ui-icons_ffffff_256x240.png" />
+    <Content Include="Content\Img\favicon.ico" />
+    <Content Include="Content\Img\gradient_header_grid.png" />
+    <Content Include="Content\Img\link_loading.gif" />
+    <Content Include="Content\Img\Logo_truncated.png" />
+    <Content Include="Content\Img\menu_tabs.png" />
+    <Content Include="Content\Img\nav_pointer.png" />
+    <Content Include="Content\Img\PageTitleImg\AccountingPriceList.jpg" />
+    <Content Include="Content\Img\PageTitleImg\AccountOrganization.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Article.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ArticleCertificate.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ArticleGroup.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Bank.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ChangeOwnerWaybill.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Client.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ClientOrganization.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ClientRegion.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ClientServiceProgram.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ClientType.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Country.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Currency.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Dashboard.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Deal.jpg" />
+    <Content Include="Content\Img\PageTitleImg\DealInitialBalanceCorrection.jpg" />
+    <Content Include="Content\Img\PageTitleImg\DealPayment.jpg" />
+    <Content Include="Content\Img\PageTitleImg\DealQuota.jpg" />
+    <Content Include="Content\Img\PageTitleImg\EmployeePost.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ExpenditureWaybill.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Factory.jpg" />
+    <Content Include="Content\Img\PageTitleImg\FactoryOrder.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Freightage.jpg" />
+    <Content Include="Content\Img\PageTitleImg\LegalForm.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Manufacturer.jpg" />
+    <Content Include="Content\Img\PageTitleImg\MeasureUnit.jpg" />
+    <Content Include="Content\Img\PageTitleImg\MovementWaybill.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Organization.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Producer.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProductionOrder.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProductionOrderCustomsDeclaration.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProductionOrderExtraExpensesSheet.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProductionOrderMaterialsPackage.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProductionOrderPayment.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProductionOrderTransportSheet.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Provider.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProviderOrganization.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ProviderType.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ReceiptWaybill.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Report.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ReturnFromClientReason.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ReturnFromClientWaybill.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Role.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Storage.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Task.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Team.jpg" />
+    <Content Include="Content\Img\PageTitleImg\Trademark.jpg" />
+    <Content Include="Content\Img\PageTitleImg\User.jpg" />
+    <Content Include="Content\Img\PageTitleImg\ValueAddedTax.jpg" />
+    <Content Include="Content\Img\PageTitleImg\WriteoffReason.jpg" />
+    <Content Include="Content\Img\PageTitleImg\WriteoffWaybill.jpg" />
+    <Content Include="Content\Img\permission_distribution.png" />
+    <Content Include="Content\Img\question.png" />
+    <Content Include="Content\Img\top_gradient.png" />
+    <Content Include="Content\Img\Logo.png" />
+    <Content Include="Content\Style\ExecutionGraph.css" />
+    <Content Include="Content\Style\Grid.css" />
+    <Content Include="Content\Style\DatePicker.css" />
+    <Content Include="Content\Style\Login.css" />
+    <Content Include="Content\Style\PrintingForm.css" />
+    <Content Include="Content\Style\Report.css" />
+    <Content Include="Content\Style\RoundedCorners.css" />
+    <Content Include="Content\Style\Site.css" />
+    <Content Include="Content\Style\Torg12PrintingForm.css" />
+    <Content Include="Content\Style\Treeview.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Help\Client\Details\Main.htm" />
+    <Content Include="Help\Client\Details\MainDetails\Balance.htm" />
+    <Content Include="Help\Client\Details\MainDetails\ReturnSum.htm" />
+    <Content Include="Help\Client\Details\MainDetails\PaymentDelay.htm" />
+    <Content Include="Help\Client\Details\MainDetails\InitialBalance.htm" />
+    <Content Include="Help\Client\Details\MainDetails\PaymentSum.htm" />
+    <Content Include="Help\Client\Details\MainDetails\ShippingPendingSaleSum.htm" />
+    <Content Include="Help\Client\Details\MainDetails\SaleSum.htm" />
+    <Content Include="Help\Client\Details\DealGrid.htm" />
+    <Content Include="Help\Client\Details\SalesGrid.htm" />
+    <Content Include="Help\Client\Details\ReturnFromClientGrid.htm" />
+    <Content Include="Help\Client\Details\PaymentGrid.htm" />
+    <Content Include="Help\Client\Details\DealInitialBalanceCorrectionGrid.htm" />
+    <Content Include="Help\Client\List\ClientGrid.htm" />
+    <Content Include="Help\Client\List\Main.htm" />
+    <Content Include="Help\Client\Details\ClientOrganizationGrid.htm" />
+    <Content Include="Help\Common\Comment.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\Details\DistributedSum.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\Details\Main.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\Details\CorrectionSum.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\Details\PaymentToClientSum.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\Details\UndistributedSum.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\Edit\Main.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\SelectDestinationDocuments\Main.htm" />
+    <Content Include="Help\DealDebitInitialBalanceCorrection\Edit\Main.htm" />
+    <Content Include="Help\DealInitialBalanceCorrection\List\Main.htm" />
+    <Content Include="Help\DealInitialBalanceCorrection\List\DealInitialBalanceCorrectionGrid.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\PaymentToClientSum.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\DistributedSum.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\SaleWaybillGrid.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\DealDebitInitialBalanceCorrectionGrid.htm" />
+    <Content Include="Help\DealPaymentFromClient\Edit\Main.htm" />
+    <Content Include="Help\DealPaymentFromClient\SelectDestinationDocuments\Main.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\SelectDestinationDocuments\CorrectionSum.htm" />
+    <Content Include="Help\DealPaymentFromClient\SelectDestinationDocuments\PaymentSum.htm" />
+    <Content Include="Help\DealPaymentFromClient\SelectDestinationDocuments\SaleWaybillSelectGrid.htm" />
+    <Content Include="Help\DealPaymentFromClient\SelectDestinationDocuments\DealDebitInitialBalanceCorrectionSelectGrid.htm" />
+    <Content Include="Help\DealCreditInitialBalanceCorrection\SelectDestinationDocuments\UndistributedCorrectionSum.htm" />
+    <Content Include="Help\DealPaymentFromClient\SelectDestinationDocuments\UndistributedPaymentSum.htm" />
+    <Content Include="Help\DealPaymentToClient\Edit\Main.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\Main.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\PaymentSum.htm" />
+    <Content Include="Help\DealPayment\List\Main.htm" />
+    <Content Include="Help\DealPayment\List\DealPaymentGrid.htm" />
+    <Content Include="Help\DealQuota\Edit\Main.htm" />
+    <Content Include="Help\DealQuota\List\Main.htm" />
+    <Content Include="Help\DealQuota\List\ActiveDealQuotaGrid.htm" />
+    <Content Include="Help\DealQuota\List\InactiveDealQuotaGrid.htm" />
+    <Content Include="Help\DealQuota\Select\Main.htm" />
+    <Content Include="Help\DealQuota\Select\DealQuotaSelectGrid.htm" />
+    <Content Include="Help\EconomicAgentType\Select\Main.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\Main.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\State.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\DealQuota.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\AccountOrganization.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\PurchaseCostSum.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\SenderAccountingAndSalePriceSum.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\ValueAddedTax.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\TotalDiscount.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\PaymentSum.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\ReturnSum.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\ReturnLostProfitSum.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\MainDetails\RowCount.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\ExpenditureWaybillRowGrid.htm" />
+    <Content Include="Help\ExpenditureWaybill\Details\ExpenditureWaybillDocumentGrid.htm" />
+    <Content Include="Help\ExpenditureWaybill\List\Main.htm" />
+    <Content Include="Help\ExpenditureWaybill\List\NewAndAcceptedExpenditureWaybillGrid.htm" />
+    <Content Include="Help\ExpenditureWaybill\List\ShippedExpenditureWaybillGrid.htm" />
+    <Content Include="Help\DealPaymentFromClient\Details\UndistributedSum.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\Balance.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\ClientContract.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\InitialBalance.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\MaxPaymentDelayDuration.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\PaymentSum.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\ReturnSum.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\SaleSum.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\ShippingPendingSaleSum.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\Stage.htm" />
+    <Content Include="Help\Deal\Details\MainDetails\StageStartDate.htm" />
+    <Content Include="Help\Deal\Details\QuotaGrid.htm" />
+    <Content Include="Help\Deal\Details\InitialBalanceCorrectionGrid.htm" />
+    <Content Include="Help\Deal\Details\PaymentGrid.htm" />
+    <Content Include="Help\Deal\Details\ReturnFromClientGrid.htm" />
+    <Content Include="Help\Deal\Details\SalesGrid.htm" />
+    <Content Include="Help\Deal\List\ActiveDealGrid.htm" />
+    <Content Include="Help\Deal\List\ClosedDealGrid.htm" />
+    <Content Include="Help\Deal\List\Main.htm" />
+    <Content Include="Help\ReceiptWaybill\Edit\CustomsDeclarationNumber.htm" />
+    <Content Include="Scripts\ajaxupload.3.5.js" />
+    <Content Include="Scripts\jquery-1.5.2.js" />
+    <Content Include="Scripts\jquery-1.5.2.min.js" />
+    <Content Include="Scripts\jquery-ui-1.8.20.custom.min.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.List.AcceptedGrid.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.AddStorage.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.ArticlesGrid.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.Details.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.List.NewGrid.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.MainDetails.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.PriceEdit.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.Shared.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.StoragesGrid.js" />
+    <Content Include="Scripts\Modules\AccountOrganization\AccountOrganization.Details.js" />
+    <Content Include="Scripts\Modules\AccountOrganization\AccountOrganization.List.AccountOrganizationGrid.js" />
+    <Content Include="Scripts\Modules\AccountOrganization\AccountOrganization.List.js" />
+    <Content Include="Scripts\Modules\AccountOrganization\AccountOrganization.SelectGrid.js" />
+    <Content Include="Scripts\Modules\AccountOrganization\AccountOrganization.StorageGrid.js" />
+    <Content Include="Scripts\Modules\AccountOrganization\AccountOrganization.StorageSelectList.js" />
+    <Content Include="Scripts\Modules\ArticleCertificate\ArticleCertificate.ArticleCertificateGrid.js" />
+    <Content Include="Scripts\Modules\ArticleCertificate\ArticleCertificate.ArticleCertificateSelector.js" />
+    <Content Include="Scripts\Modules\ArticleCertificate\ArticleCertificate.Edit.js" />
+    <Content Include="Scripts\Modules\ArticleCertificate\ArticleCertificate.List.js" />
+    <Content Include="Scripts\Modules\ArticleGroup\ArticleGroup.List.js" />
+    <Content Include="Scripts\Modules\ArticleGroup\ArticleGroup.DetailsForEdit.js" />
+    <Content Include="Scripts\Modules\ArticleGroup\ArticleGroup.Selector.js" />
+    <Content Include="Scripts\Modules\Article\Article.Edit.js" />
+    <Content Include="Scripts\Modules\Article\Article.Selector.js" />
+    <Content Include="Scripts\Modules\Article\Article.AddRowsByList.js" />
+    <Content Include="Scripts\Modules\Bank\Bank.List.ForeignBankGrid.js" />
+    <Content Include="Scripts\Modules\Bank\Bank.List.RussianBankGrid.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.Details.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.Details.RowGrid.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.Edit.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.List.AcceptedGrid.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.List.NewGrid.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.MainDetails.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.RowForEdit.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.Shared.js" />
+    <Content Include="Scripts\Modules\ChangeOwnerWaybill\ChangeOwnerWaybill.AddRowsByList.js" />
+    <Content Include="Scripts\Modules\ClientContract\ClientContract.SelectGrid.js" />
+    <Content Include="Scripts\Modules\ClientContract\ClientContract.Selector.js" />
+    <Content Include="Scripts\Modules\ClientOrganization\ClientOrganization.Details.DealPaymentGrid.js" />
+    <Content Include="Scripts\Modules\ClientOrganization\ClientOrganization.Details.SalesGrid.js" />
+    <Content Include="Scripts\Modules\ClientOrganization\ClientOrganization.Details.js" />
+    <Content Include="Scripts\Modules\ClientOrganization\ClientOrganization.Details.DealInitialBalanceCorrectionGrid.js" />
+    <Content Include="Scripts\Modules\ClientOrganization\ClientOrganization.Details.ClientContractGrid.js" />
+    <Content Include="Scripts\Modules\ClientRegion\ClientRegion.Edit.js" />
+    <Content Include="Scripts\Modules\ClientRegion\ClientRegion.List.js" />
+    <Content Include="Scripts\Modules\ClientRegion\ClientRegion.ClientRegionGrid.js" />
+    <Content Include="Scripts\Modules\ClientServiceProgram\ClientServiceProgram.Edit.js" />
+    <Content Include="Scripts\Modules\ClientServiceProgram\ClientServiceProgram.List.js" />
+    <Content Include="Scripts\Modules\ClientServiceProgram\ClientServiceProgram.ClientServiceProgramGrid.js" />
+    <Content Include="Scripts\Modules\ClientType\ClientType.Edit.js" />
+    <Content Include="Scripts\Modules\ClientType\ClientType.List.js" />
+    <Content Include="Scripts\Modules\ClientType\ClientType.ClientTypeGrid.js" />
+    <Content Include="Scripts\Modules\Client\Client.ClientSalesGrid.js" />
+    <Content Include="Scripts\Modules\Client\Client.Details.DealPaymentGrid.js" />
+    <Content Include="Scripts\Modules\Client\Client.Details.js" />
+    <Content Include="Scripts\Modules\Client\Client.Edit.js" />
+    <Content Include="Scripts\Modules\Client\Client.ReturnFromClientGrid.js" />
+    <Content Include="Scripts\Modules\Client\Client.DealGrid.js" />
+    <Content Include="Scripts\Modules\Client\Client.ClientOrganizationGrid.js" />
+    <Content Include="Scripts\Modules\Client\Client.Details.DealInitialBalanceCorrectionGrid.js" />
+    <Content Include="Scripts\Modules\ContractorOrganization\ContractorOrganization.SelectGrid.js" />
+    <Content Include="Scripts\Modules\ContractorOrganization\ContractorOrganizaton.Selector.js" />
+    <Content Include="Scripts\Modules\ContractorOrganization\ContractorOrganization.Grid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\Deal.PaymentEdit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.ClientOrganizationPaymentFromClientEdit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealCreditInitialBalanceCorrection.Edit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealCreditInitialBalanceCorrectionDetails.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealDebitInitialBalanceCorrection.Edit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealDebitInitialBalanceCorrectionDetails.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealInitialBalanceCorrection.DealInitialBalanceCorrectionGrid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealInitialBalanceCorrection.Edit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealInitialBalanceCorrection.Grid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealInitialBalanceCorrection.List.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealPayment.DealPaymentGrid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealPayment.List.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealPaymentFromClientDetails.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealPaymentFromClientEdit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealPaymentToClientDetails.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DealPaymentToClientEdit.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelector.DealDebitInitialBalanceCorrectionSelectGrid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelector.SaleWaybillSelectGrid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelector.SelectGrid.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelectorForClientOrganizationPaymentFromClientDistribution.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelectorForDealCreditInitialBalanceCorrectionDistribution.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.DestinationDocumentSelectorForDealPaymentFromClientDistribution.js" />
+    <Content Include="Scripts\Modules\DealPaymentDocument\DealPaymentDocument.Details.SaleWaybillGrid.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Details.DealInitialBalanceCorrectionGrid.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Details.DealPaymentGrid.js" />
+    <Content Include="Scripts\Modules\LegalForm\LegalForm.Edit.js" />
+    <Content Include="Scripts\Modules\LegalForm\LegalForm.List.js" />
+    <Content Include="Scripts\Modules\LegalForm\LegalForm.LegalFormGrid.js" />
+    <Content Include="Scripts\Modules\Country\Country.Edit.js" />
+    <Content Include="Scripts\Modules\Country\Country.List.js" />
+    <Content Include="Scripts\Modules\Country\Country.CountryGrid.js" />
+    <Content Include="Scripts\Modules\DealQuota\DealQuota.List.js" />
+    <Content Include="Scripts\Modules\DealQuota\DealQuota.Edit.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.ReturnFromClientGrid.js" />
+    <Content Include="Scripts\Modules\EmployeePost\EmployeePost.Edit.js" />
+    <Content Include="Scripts\Modules\EmployeePost\EmployeePost.List.js" />
+    <Content Include="Scripts\Modules\EmployeePost\EmployeePost.EmployeePostGrid.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.RowGrid.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.AddRowsByList.js" />
+    <Content Include="Scripts\Modules\Manufacturer\Manufacturer.Edit.js" />
+    <Content Include="Scripts\Modules\Manufacturer\Manufacturer.List.js" />
+    <Content Include="Scripts\Modules\Manufacturer\Manufacturer.ManufacturerGrid.js" />
+    <Content Include="Scripts\Modules\Manufacturer\Manufacturer.ManufacturerSelector.js" />
+    <Content Include="Scripts\Modules\MeasureUnit\MeasureUnit.MeasureUnitSelector.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.RowGrid.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.AddRowsByList.js" />
+    <Content Include="Scripts\Modules\OutgoingWaybillRow\OutgoingWaybillRow.IncomingWaybillRow.js" />
+    <Content Include="Scripts\Modules\OutgoingWaybillRow\OutgoingWaybillRow.IncomingWaybillRowGrid.js" />
+    <Content Include="Scripts\Modules\PrintingForm\PrintingForm.TORG12PrintingForm.js" />
+    <Content Include="Scripts\Modules\PrintingForm\PrintingForm.InvoicePrintingForm.js" />
+    <Content Include="Scripts\Modules\ProductionOrderCustomsDeclaration\ProductionOrderCustomsDeclaration.ProductionOrderCustomsDeclarationGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderExtraExpensesSheet\ProductionOrderExtraExpensesSheet.ProductionOrderExtraExpensesSheetGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderPayment\ProductionOrderPayment.List.js" />
+    <Content Include="Scripts\Modules\ProductionOrderTransportSheet\ProductionOrderTransportSheet.ProductionOrderTransportSheetGrid.js" />
+    <Content Include="Scripts\Modules\Currency\Currency.Edit.js" />
+    <Content Include="Scripts\Modules\Currency\Currency.ListGrid.js" />
+    <Content Include="Scripts\Modules\Currency\CurrencyRate.Edit.js" />
+    <Content Include="Scripts\Modules\Currency\CurrencyRate.Grid.js" />
+    <Content Include="Scripts\Modules\Currency\CurrencyRate.Selector.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Details.QuotaGrid.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Details.MainDetails.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Details.SalesGrid.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.List.ActiveDealGrid.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.List.ClosedDealGrid.js" />
+    <Content Include="Scripts\Modules\EconomicAgent\EconomicAgent.PhysicalPersonEdit.js" />
+    <Content Include="Scripts\ExecutionGraph.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.Details.MainDetails.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.NewAndAcceptedGrid.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.Details.MainDetails.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.List.ReceiptedGrid.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.List.ShippedGrid.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.List.ShippingPendingGrid.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.RowEdit.js" />
+    <Content Include="Scripts\Modules\Organization\Organization.ForeignBankAccountEdit.js" />
+    <Content Include="Scripts\Modules\Organization\Organization.RussianBankAccountEdit.js" />
+    <Content Include="Scripts\Modules\Producer\Producer.Details.js" />
+    <Content Include="Scripts\Modules\Producer\Producer.Details.MainDetails.js" />
+    <Content Include="Scripts\Modules\Producer\Producer.Edit.js" />
+    <Content Include="Scripts\Modules\Producer\Producer.ProducerPaymentsGrid.js" />
+    <Content Include="Scripts\Modules\Producer\Producer.ProducersGrid.js" />
+    <Content Include="Scripts\Modules\Producer\Producer.SelectGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplate.Details.js" />
+    <Content Include="Scripts\Modules\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplate.List.js" />
+    <Content Include="Scripts\Modules\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplate.ProductionOrderBatchLifeCycleTemplateGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplate.SelectGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackage.Details.js" />
+    <Content Include="Scripts\Modules\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackage.Edit.js" />
+    <Content Include="Scripts\Modules\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackage.MaterialsPackageDocumentCreate.js" />
+    <Content Include="Scripts\Modules\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackage.MaterialsPackageDocumentGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackage.MaterialsPackageGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrderPayment\ProductionOrderPayment.ProductionOrderPaymentGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.BatchRowEdit.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.Details.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.Details.ProductionOrderBatchGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.Edit.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.List.ActiveProductionOrderGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.List.ClosedProductionOrderGrid.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.List.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.ProducerContractEdit.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.ProductionOrderBatchDetails.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.ProductionOrderBatchEditStages.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.ProductionOrderBatchSplit.js" />
+    <Content Include="Scripts\Modules\ProductionOrder\ProductionOrder.ProductionOrderPaymentEdit.js" />
+    <Content Include="Scripts\Modules\ProviderOrganization\ProviderOrganization.Details.ProviderContractsGrid.js" />
+    <Content Include="Scripts\Modules\ProviderOrganization\ProviderOrganization.Details.ReceiptWaybillGrid.js" />
+    <Content Include="Scripts\Modules\ProviderType\ProviderType.ProviderTypeGrid.js" />
+    <Content Include="Scripts\Modules\ProviderType\ProviderType.Edit.js" />
+    <Content Include="Scripts\Modules\ProviderType\ProviderType.List.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.ChangeStage.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.ClientContractEdit.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Edit.js" />
+    <Content Include="Scripts\Modules\EconomicAgent\EconomicAgent.JuridicalPersonEdit.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.ShippedGrid.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.Edit.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.RowEdit.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.Details.js" />
+    <Content Include="Scripts\Common.js" />
+    <Content Include="Scripts\modules.debug.js" />
+    <Content Include="Scripts\modules.min.js" />
+    <Content Include="Scripts\Modules\AccountingPriceList\AccountingPriceList.Edit.js" />
+    <Content Include="Scripts\Modules\Deal\Deal.Details.js" />
+    <Content Include="Scripts\Modules\ExpenditureWaybill\ExpenditureWaybill.Shared.js" />
+    <Content Include="Scripts\Modules\MeasureUnit\MeasureUnit.MeasureUnitGrid.js" />
+    <Content Include="Scripts\Modules\MeasureUnit\MeasureUnit.Edit.js" />
+    <Content Include="Scripts\Modules\MeasureUnit\MeasureUnit.List.js" />
+    <Content Include="Scripts\DatePicker.js" />
+    <Content Include="Scripts\Grid.js" />
+    <Content Include="Scripts\DatePicker.min.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.Details.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.Edit.js" />
+    <Content Include="Scripts\Modules\MovementWaybill\MovementWaybill.Shared.js" />
+    <Content Include="Scripts\Modules\ProviderOrganization\ProviderOrganization.Details.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.ContractEdit.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.ContractGrid.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.Details.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.Edit.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.List.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.List.ProviderGrid.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.OrganizationGrid.js" />
+    <Content Include="Scripts\Modules\Provider\Provider.ReceiptWaybillGrid.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.Approve.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.List.ApprovedWaybillGrid.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.ReceiptedArticlesGrid.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.MainDetails.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.List.DeliveryPendingGrid.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.List.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.AddWaybillRowFromReceipt.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.Details.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.Edit.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.Receipt.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.RowForEdit.js" />
+    <Content Include="Scripts\Modules\ReceiptWaybill\ReceiptWaybill.List.DivergenceWaybillGrid.js" />
+    <Content Include="Scripts\Modules\Report\Report0003.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0001.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report.ReportsGrid.js" />
+    <Content Include="Scripts\Modules\Report\Report0002.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0004.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0005.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0006.Settings.js" />
+    <Content Include="Scripts\Modules\Report\Report0006PrintingForm.Settings.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientReason\ReturnFromClientReason.Edit.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientReason\ReturnFromClientReason.List.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientReason\ReturnFromClientReason.ReturnFromClientReasonGrid.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.RowGrid.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.Details.MainDetails.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.Shared.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.RowEdit.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.Details.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.ReceiptedGrid.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.NewAndAcceptedGrid.js" />
+    <Content Include="Scripts\Modules\ReturnFromClientWaybill\ReturnFromClientWaybill.Edit.js" />
+    <Content Include="Scripts\Modules\Role\Role.UsersGrid.js" />
+    <Content Include="Scripts\Modules\Role\Role.RolesGrid.js" />
+    <Content Include="Scripts\Modules\Role\Role.Details.js" />
+    <Content Include="Scripts\Modules\Storage\Storage.AccountOrganizationSelectList.js" />
+    <Content Include="Scripts\Modules\Storage\Storage.Details.js" />
+    <Content Include="Scripts\Modules\Storage\Storage.Grid.js" />
+    <Content Include="Scripts\Modules\Storage\Storage.List.js" />
+    <Content Include="Scripts\Modules\Task\Task.Details.js" />
+    <Content Include="Scripts\Modules\Task\Task.Edit.js" />
+    <Content Include="Scripts\Modules\Task\Task.Executions.js" />
+    <Content Include="Scripts\Modules\Task\Task.MainDetails.js" />
+    <Content Include="Scripts\Modules\Task\Task.NewTaskGrid.js" />
+    <Content Include="Scripts\Modules\Task\Task.TaskExecutionEdit.js" />
+    <Content Include="Scripts\Modules\Task\Task.TaskHistory.js" />
+    <Content Include="Scripts\Modules\Team\Team.ProductionOrdersGrid.js" />
+    <Content Include="Scripts\Modules\Team\Team.StoragesGrid.js" />
+    <Content Include="Scripts\Modules\Team\Team.DealsGrid.js" />
+    <Content Include="Scripts\Modules\Team\Team.Details.js" />
+    <Content Include="Scripts\Modules\Team\Team.MainDetails.js" />
+    <Content Include="Scripts\Modules\Team\Team.StorageSelectList.js" />
+    <Content Include="Scripts\Modules\Team\Team.UsersGrid.js" />
+    <Content Include="Scripts\Modules\Team\Team.Edit.js" />
+    <Content Include="Scripts\Modules\Team\Team.TeamsGrid.js" />
+    <Content Include="Scripts\Modules\Trademark\Trademark.TrademarkSelector.js" />
+    <Content Include="Scripts\Modules\Trademark\Trademark.Edit.js" />
+    <Content Include="Scripts\Modules\Trademark\Trademark.List.js" />
+    <Content Include="Scripts\Modules\Trademark\Trademark.TrademarkGrid.js" />
+    <Content Include="Scripts\Modules\User\User.ResetPassword.js" />
+    <Content Include="Scripts\Modules\User\User.ChangePassword.js" />
+    <Content Include="Scripts\Modules\User\User.Details.js" />
+    <Content Include="Scripts\Modules\User\User.UserSelector.js" />
+    <Content Include="Scripts\Modules\User\User.UserTeamsGrid.js" />
+    <Content Include="Scripts\Modules\User\User.UserRolesGrid.js" />
+    <Content Include="Scripts\Modules\User\User.MainDetails.js" />
+    <Content Include="Scripts\Modules\User\User.Edit.js" />
+    <Content Include="Scripts\Modules\User\User.BlockedUsersGrid.js" />
+    <Content Include="Scripts\Modules\User\User.ActiveUsersGrid.js" />
+    <Content Include="Scripts\Modules\ValueAddedTax\ValueAddedTax.Edit.js" />
+    <Content Include="Scripts\Modules\ValueAddedTax\ValueAddedTax.List.js" />
+    <Content Include="Scripts\Modules\ValueAddedTax\ValueAddedTax.ValueAddedTaxGrid.js" />
+    <Content Include="Scripts\Modules\Waybill\Waybill.Details.js" />
+    <Content Include="Scripts\Modules\Waybill\Waybill.Edit.js" />
+    <Content Include="Scripts\Modules\Waybill\Waybill.ForWaybillRowsAdditionByListGrid.js" />
+    <Content Include="Scripts\Modules\WriteoffReason\WriteoffReason.Edit.js" />
+    <Content Include="Scripts\Modules\WriteoffReason\WriteoffReason.List.js" />
+    <Content Include="Scripts\Modules\WriteoffReason\WriteoffReason.WriteoffReasonGrid.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.AddRowsByList.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.RowGrid.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.MainDetails.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.Details.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.Edit.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.List.WriteoffPendingGrid.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.List.WrittenoffWaybillGrid.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.RowEdit.js" />
+    <Content Include="Scripts\Modules\WriteoffWaybill\WriteoffWaybill.Shared.js" />
+    <Content Include="Scripts\MultipleSelector.js" />
+    <Content Include="Scripts\Timeparse.js" />
+    <Content Include="Views\AccountingPriceList\AccountingPriceArticlesGrid.ascx" />
+    <Content Include="Views\AccountingPriceList\AccountingPriceListAcceptedGrid.ascx" />
+    <Content Include="Views\AccountingPriceList\AccountingPriceListMainDetails.ascx" />
+    <Content Include="Views\AccountingPriceList\AccountingPriceListNewGrid.ascx" />
+    <Content Include="Views\AccountingPriceList\AccountingPriceStoragesGrid.ascx" />
+    <Content Include="Views\AccountingPriceList\ArticleAccountingPriceEdit.ascx" />
+    <Content Include="Views\AccountingPriceList\AddArticleAccountingPriceSet.aspx" />
+    <Content Include="Views\AccountingPriceList\Details.aspx" />
+    <Content Include="Views\AccountingPriceList\Edit.aspx" />
+    <Content Include="Views\AccountingPriceList\List.aspx" />
+    <Content Include="Views\AccountingPriceList\AccountingPriceListAddStorage.ascx" />
+    <Content Include="Views\AccountOrganization\AccountOrganizationMainDetails.ascx" />
+    <Content Include="Views\AccountOrganization\AccountOrganizationSelectGrid.ascx" />
+    <Content Include="Views\AccountOrganization\AccountOrganizationSelector.ascx" />
+    <Content Include="Views\AccountOrganization\StorageGrid.ascx" />
+    <Content Include="Views\AccountOrganization\Details.aspx" />
+    <Content Include="Views\AccountOrganization\AccountOrganizationGrid.ascx" />
+    <Content Include="Views\AccountOrganization\List.aspx" />
+    <Content Include="Views\AccountOrganization\StorageSelectList.ascx" />
+    <Content Include="Views\ArticleCertificate\ArticleCertificateEdit.ascx" />
+    <Content Include="Views\ArticleCertificate\ArticleCertificateGrid.ascx" />
+    <Content Include="Views\ArticleCertificate\ArticleCertificateSelectGrid.ascx" />
+    <Content Include="Views\ArticleCertificate\ArticleCertificateSelector.ascx" />
+    <Content Include="Views\ArticleCertificate\List.aspx" />
+    <Content Include="Views\ArticleGroup\ArticleGroupSelector.ascx" />
+    <Content Include="Views\ArticleGroup\ArticleGroupSelectTree.ascx" />
+    <Content Include="Views\ArticleGroup\ArticleGroupDetails.ascx" />
+    <Content Include="Views\ArticleGroup\List.aspx" />
+    <Content Include="Views\ArticleGroup\ArticleGroupDetailsForEdit.ascx" />
+    <Content Include="Views\Article\ActualArticleGrid.ascx" />
+    <Content Include="Views\Article\ArticleBatchGrid.ascx" />
+    <Content Include="Views\Article\ArticleBatchSelector.ascx" />
+    <Content Include="Views\Article\ArticleEdit.ascx" />
+    <Content Include="Views\Article\ArticleSelectGrid.ascx" />
+    <Content Include="Views\Article\ArticleSelector.ascx" />
+    <Content Include="Views\Article\ArticleBatchByStorageSelector.ascx" />
+    <Content Include="Views\Article\ArticleSaleGrid.ascx" />
+    <Content Include="Views\Article\ArticleSaleSelector.ascx" />
+    <Content Include="Views\Article\List.aspx" />
+    <Content Include="Views\Article\ObsoleteArticleGrid.ascx" />
+    <Content Include="Views\Bank\ForeignBankEdit.ascx" />
+    <Content Include="Views\Bank\ForeignBankGrid.ascx" />
+    <Content Include="Views\Bank\List.aspx" />
+    <Content Include="Views\Bank\RussianBankEdit.ascx" />
+    <Content Include="Views\Bank\RussianBankGrid.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\AddRowsByList.aspx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillAcceptedGrid.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillChangeRecipient.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillDocsGrid.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillMainDetails.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillNewGrid.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillRowForEdit.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillRowGrid.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillSelectGrid.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillSelector.ascx" />
+    <Content Include="Views\ChangeOwnerWaybill\Details.aspx" />
+    <Content Include="Views\ChangeOwnerWaybill\Edit.aspx" />
+    <Content Include="Views\ChangeOwnerWaybill\List.aspx" />
+    <Content Include="Views\ClientContract\ClientContractEdit.ascx" />
+    <Content Include="Views\ClientContract\ClientContractSelectGrid.ascx" />
+    <Content Include="Views\ClientContract\ClientContractSelector.ascx" />
+    <Content Include="Views\ClientOrganization\ClientOrganizationMainDetails.ascx" />
+    <Content Include="Views\ClientOrganization\ClientOrganizationPaymentGrid.ascx" />
+    <Content Include="Views\ClientOrganization\ClientOrganizationSalesGrid.ascx" />
+    <Content Include="Views\ClientOrganization\ClientOrganizationDealInitialBalanceCorrectionGrid.ascx" />
+    <Content Include="Views\ClientOrganization\ClientOrganizationClientContractGrid.ascx" />
+    <Content Include="Views\ClientOrganization\Details.aspx" />
+    <Content Include="Views\ClientRegion\List.aspx" />
+    <Content Include="Views\ClientRegion\ClientRegionEdit.ascx" />
+    <Content Include="Views\ClientRegion\ClientRegionGrid.ascx" />
+    <Content Include="Views\ClientServiceProgram\List.aspx" />
+    <Content Include="Views\ClientServiceProgram\ClientServiceProgramEdit.ascx" />
+    <Content Include="Views\ClientServiceProgram\ClientServiceProgramGrid.ascx" />
+    <Content Include="Views\ClientType\List.aspx" />
+    <Content Include="Views\ClientType\ClientTypeEdit.ascx" />
+    <Content Include="Views\ClientType\ClientTypeGrid.ascx" />
+    <Content Include="Views\Client\ClientGrid.ascx" />
+    <Content Include="Views\Client\ClientDealGrid.ascx" />
+    <Content Include="Views\Client\ClientMainDetails.ascx" />
+    <Content Include="Views\Client\ClientDealInitialBalanceCorrectionGrid.ascx" />
+    <Content Include="Views\Client\ClientOrganizationGrid.ascx" />
+    <Content Include="Views\Client\ClientPaymentGrid.ascx" />
+    <Content Include="Views\Client\ClientSalesGrid.ascx" />
+    <Content Include="Views\Client\Details.aspx" />
+    <Content Include="Views\Client\Edit.aspx" />
+    <Content Include="Views\Client\List.aspx" />
+    <Content Include="Views\Client\ClientSelectGrid.ascx" />
+    <Content Include="Views\Client\ClientSelector.ascx" />
+    <Content Include="Views\Client\ReturnFromClientGrid.ascx" />
+    <Content Include="Views\ContractorOrganization\ContractorOrganizationGrid.ascx" />
+    <Content Include="Views\ContractorOrganization\ContractorOrganizationSelectGrid.ascx" />
+    <Content Include="Views\ContractorOrganization\ContractorOrganizationSelector.ascx" />
+    <Content Include="Views\ContractorOrganization\List.aspx" />
+    <Content Include="Views\Contractor\ContractorSelectGrid.ascx" />
+    <Content Include="Views\Contractor\ContractorSelector.ascx" />
+    <Content Include="Views\Country\List.aspx" />
+    <Content Include="Views\Country\CountryEdit.ascx" />
+    <Content Include="Views\Country\CountryGrid.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealDebitInitialBalanceCorrectionGrid.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealInitialBalanceCorrection\DealCreditInitialBalanceCorrectionDetails.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealInitialBalanceCorrection\DealDebitInitialBalanceCorrectionDetails.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealInitialBalanceCorrection\DealCreditInitialBalanceCorrectionEdit.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealInitialBalanceCorrection\DealDebitInitialBalanceCorrectionEdit.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealInitialBalanceCorrection\DealInitialBalanceCorrectionGrid.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealInitialBalanceCorrection\List.aspx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\ClientOrganizationPaymentFromClientEdit.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\DealPaymentFromClientDetails.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\DealPaymentFromClientEdit.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\DealPaymentGrid.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\DealPaymentToClientDetails.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\DealPaymentToClientEdit.ascx" />
+    <Content Include="Views\DealPaymentDocument\DealPayment\List.aspx" />
+    <Content Include="Views\DealPaymentDocument\DestinationDocumentSelector\DealDebitInitialBalanceCorrectionSelectGrid.ascx" />
+    <Content Include="Views\DealPaymentDocument\DestinationDocumentSelector\DestinationDocumentSelectorForClientOrganizationPaymentFromClientDistribution.ascx" />
+    <Content Include="Views\DealPaymentDocument\DestinationDocumentSelector\DestinationDocumentSelectorForDealCreditInitialBalanceCorrectionDistribution.ascx" />
+    <Content Include="Views\DealPaymentDocument\DestinationDocumentSelector\DestinationDocumentSelectorForDealPaymentFromClientDistribution.ascx" />
+    <Content Include="Views\DealPaymentDocument\DestinationDocumentSelector\SaleWaybillSelectGrid.ascx" />
+    <Content Include="Views\DealPaymentDocument\SaleWaybillGrid.ascx" />
+    <Content Include="Views\DealQuota\ActiveDealQuotaGrid.ascx" />
+    <Content Include="Views\DealQuota\DealQuotaSelectGrid.ascx" />
+    <Content Include="Views\DealQuota\DealQuotaSelector.ascx" />
+    <Content Include="Views\DealQuota\DealQuotaEdit.ascx" />
+    <Content Include="Views\DealQuota\InactiveDealQuotaGrid.ascx" />
+    <Content Include="Views\DealQuota\List.aspx" />
+    <Content Include="Views\Deal\DealInitialBalanceCorrectionGrid.ascx" />
+    <Content Include="Views\Deal\DealReturnFromClientGrid.ascx" />
+    <Content Include="Help\Deal\Details\Main.htm" />
+    <Content Include="Views\EmployeePost\List.aspx" />
+    <Content Include="Views\EmployeePost\EmployeePostEdit.ascx" />
+    <Content Include="Views\EmployeePost\EmployeePostGrid.ascx" />
+    <Content Include="Views\ExpenditureWaybill\AddRowsByList.aspx" />
+    <Content Include="Views\Export\1C\ExportTo1CSettings.aspx" />
+    <Content Include="Views\LegalForm\List.aspx" />
+    <Content Include="Views\LegalForm\LegalFormEdit.ascx" />
+    <Content Include="Views\LegalForm\LegalFormGrid.ascx" />
+    <Content Include="Views\Manufacturer\List.aspx" />
+    <Content Include="Views\Manufacturer\ManufacturerGrid.ascx" />
+    <Content Include="Views\MeasureUnit\MeasureUnitSelector.ascx" />
+    <Content Include="Views\MeasureUnit\MeasureUnitSelectGrid.ascx" />
+    <Content Include="Views\MovementWaybill\AddRowsByList.aspx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillSelectGrid.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillSelector.ascx" />
+    <Content Include="Views\OutgoingWaybillRow\IncomingWaybillRow.ascx" />
+    <Content Include="Views\OutgoingWaybillRow\IncomingWaybillRowGrid.ascx" />
+    <Content Include="Views\OutgoingWaybill\ArticlesForWaybillRowsAdditionByListGrid.ascx" />
+    <Content Include="Views\PrintingForm\Common\CashMemo\CashMemoPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\Common\CashMemo\CashMemoPrintingFormSettings.ascx" />
+    <Content Include="Views\PrintingForm\Common\Invoice\InvoicePrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\Common\Invoice\InvoicePrintingFormSettings.ascx" />
+    <Content Include="Views\PrintingForm\Common\PaymentInvoice\PaymentInvoicePrintingFormSettings.ascx" />
+    <Content Include="Views\PrintingForm\Common\TORG12\TORG12PrintingFormSettings.ascx" />
+    <Content Include="Views\PrintingForm\ExpenditureWaybill\ExpenditureWaybillPrintingFormSettings.ascx" />
+    <Content Include="Views\ProductionOrderTransportSheet\List.aspx" />
+    <Content Include="Views\ProductionOrderTransportSheet\ProductionOrderTransportSheetGrid.ascx" />
+    <Content Include="Views\ProductionOrderExtraExpensesSheet\List.aspx" />
+    <Content Include="Views\ProductionOrderExtraExpensesSheet\ProductionOrderExtraExpensesSheetGrid.ascx" />
+    <Content Include="Views\ProductionOrderCustomsDeclaration\List.aspx" />
+    <Content Include="Views\ProductionOrderCustomsDeclaration\ProductionOrderCustomsDeclarationGrid.ascx" />
+    <Content Include="Views\Currency\CurrencyEdit.ascx" />
+    <Content Include="Views\Currency\CurrencyGrid.ascx" />
+    <Content Include="Views\Currency\CurrencyRateEdit.ascx" />
+    <Content Include="Views\Currency\CurrencyRateGrid.ascx" />
+    <Content Include="Views\Currency\CurrencyRateSelectGrid.ascx" />
+    <Content Include="Views\Currency\CurrencyRateSelector.ascx" />
+    <Content Include="Views\Currency\List.aspx" />
+    <Content Include="Views\Deal\ActiveDealGrid.ascx" />
+    <Content Include="Views\Deal\ClosedDealGrid.ascx" />
+    <Content Include="Views\Deal\DealChangeStage.ascx" />
+    <Content Include="Views\Deal\DealPaymentGrid.ascx" />
+    <Content Include="Views\Deal\DealQuotaGrid.ascx" />
+    <Content Include="Views\Deal\DealMainDetails.ascx" />
+    <Content Include="Views\Deal\DealSalesGrid.ascx" />
+    <Content Include="Views\Deal\DealSelectGrid.ascx" />
+    <Content Include="Views\Deal\DealSelector.ascx" />
+    <Content Include="Views\EconomicAgent\EconomicAgentTypeSelector.ascx" />
+    <Content Include="Views\EconomicAgent\JuridicalPersonEdit.ascx" />
+    <Content Include="Views\Deal\Details.aspx" />
+    <Content Include="Views\Deal\Edit.aspx" />
+    <Content Include="Views\Deal\List.aspx" />
+    <Content Include="Views\EconomicAgent\PhysicalPersonEdit.ascx" />
+    <Content Include="Views\ExpenditureWaybill\Details.aspx" />
+    <Content Include="Views\ExpenditureWaybill\Edit.aspx" />
+    <Content Include="Views\ExpenditureWaybill\ExpenditureWaybillRowEdit.ascx" />
+    <Content Include="Views\ExpenditureWaybill\ExpenditureWaybillMainDetails.ascx" />
+    <Content Include="Views\ExpenditureWaybill\NewAndAcceptedExpenditureWaybillGrid.ascx" />
+    <Content Include="Views\ExpenditureWaybill\ShippedExpenditureWaybillGrid.ascx" />
+    <Content Include="Views\ExpenditureWaybill\List.aspx" />
+    <Content Include="Views\ExpenditureWaybill\ExpenditureWaybillRowGrid.ascx" />
+    <Content Include="Views\ExpenditureWaybill\ExpenditureWaybillDocumentGrid.ascx" />
+    <Content Include="Views\Manufacturer\Edit.ascx" />
+    <Content Include="Views\Manufacturer\ManufacturerSelector.ascx" />
+    <Content Include="Views\Manufacturer\ManufacturerSelectorGrid.ascx" />
+    <Content Include="Views\MeasureUnit\List.aspx" />
+    <Content Include="Views\MeasureUnit\MeasureUnitEdit.ascx" />
+    <Content Include="Views\MeasureUnit\MeasureUnitGrid.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillReceiptedGrid.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillRowEdit.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillShippedGrid.ascx" />
+    <Content Include="Views\MovementWaybill\Details.aspx" />
+    <Content Include="Views\MovementWaybill\Edit.aspx" />
+    <Content Include="Views\MovementWaybill\List.aspx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillMainDetails.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillShippingPendingGrid.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillRowGrid.ascx" />
+    <Content Include="Views\MovementWaybill\MovementWaybillDocGrid.ascx" />
+    <Content Include="Views\Organization\ForeignBankAccountEdit.ascx" />
+    <Content Include="Views\Organization\ForeignBankAccountGrid.ascx" />
+    <Content Include="Views\Organization\RussianBankAccountEdit.ascx" />
+    <Content Include="Views\Organization\RussianBankAccountGrid.ascx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\Details.aspx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\Edit.aspx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\List.aspx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageDocumentCreate.ascx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageDocumentEdit.ascx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageDocumentGrid.ascx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageGrid.ascx" />
+    <Content Include="Views\ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageMainDetails.ascx" />
+    <Content Include="Views\PrintingForm\AccountingPriceList\AccountingPriceListPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\ChangeOwnerWaybill\ChangeOwnerWaybillPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\ChangeOwnerWaybill\ChangeOwnerWaybillPrintingFormSettings.ascx" />
+    <Content Include="Views\PrintingForm\Common\TORG12\TORG12PrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\ExpenditureWaybill\ExpenditureWaybillPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\Common\PaymentInvoice\PaymentInvoicePrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\MovementWaybill\MovementWaybillPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\MovementWaybill\MovementWaybillPrintingFormSettings.ascx" />
+    <Content Include="Views\PrintingForm\ReceiptWaybill\DivergenceAct\DivergenceActPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\ReceiptWaybill\ReceiptWaybillPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\ReceiptWaybill\ReceiptWaybillPrintingFormSettings.ascx" />
+    <Content Include="Views\Producer\ProducerManufacturerGrid.ascx" />
+    <Content Include="Views\Producer\ProducerPaymentsGrid.ascx" />
+    <Content Include="Views\Producer\ProducerSelectGrid.ascx" />
+    <Content Include="Views\Producer\ProducerSelector.ascx" />
+    <Content Include="Views\Producer\ProductionOrdersGrid.ascx" />
+    <Content Include="Views\Producer\Details.aspx" />
+    <Content Include="Views\Producer\Edit.aspx" />
+    <Content Include="Views\Producer\List.aspx" />
+    <Content Include="Views\Producer\ProducersGrid.ascx" />
+    <Content Include="Views\Producer\ProducerMainDetails.ascx" />
+    <Content Include="Views\PrintingForm\WriteoffWaybill\WriteoffWaybillPrintingForm.aspx" />
+    <Content Include="Views\PrintingForm\WriteoffWaybill\WriteoffWaybillPrintingFormSettings.ascx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\Details.aspx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\Edit.ascx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\List.aspx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateGrid.ascx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateSelectGrid.ascx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateSelector.ascx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateStageEdit.ascx" />
+    <Content Include="Views\ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateStageGrid.ascx" />
+    <Content Include="Views\ProductionOrderPayment\List.aspx" />
+    <Content Include="Views\ProductionOrderPayment\ProductionOrderPaymentGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ActiveProductionOrderGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ClosedProductionOrderGrid.ascx" />
+    <Content Include="Views\ProductionOrder\Details.aspx" />
+    <Content Include="Views\ProductionOrder\Edit.aspx" />
+    <Content Include="Views\ProductionOrder\List.aspx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderArticlePrimeCostSettingsForm.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchChangeStage.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchDetails.aspx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchEditStages.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchMainDetails.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchRowEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchRowGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchSplit.aspx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchSplitRowGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchStageEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderBatchStageGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderContractEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderCurrencyDeterminationTypeSelector.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderCustomsDeclarationEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderCustomsDeclarationGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderDocumentPackageGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderEditPlannedPayments.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderExtraExpensesSheetEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderExtraExpensesSheetGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderMainDetails.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPaymentDocumentGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPaymentDocumentSelector.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPaymentEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPaymentGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPaymentTypeSelector.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPlannedExpensesEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPlannedPaymentEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPlannedPaymentGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPlannedPaymentSelectGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderPlannedPaymentSelector.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderTransportSheetEdit.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderTransportSheetGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderSelectGrid.ascx" />
+    <Content Include="Views\ProductionOrder\ProductionOrderSelector.ascx" />
+    <Content Include="Views\ProviderOrganization\Details.aspx" />
+    <Content Include="Views\ProviderOrganization\ProviderOrganizationMainDetails.ascx" />
+    <Content Include="Views\ProviderOrganization\ProviderOrganizationProviderContractGrid.ascx" />
+    <Content Include="Views\ProviderOrganization\ProviderOrganizationReceiptWaybillGrid.ascx" />
+    <Content Include="Views\ProviderType\ProviderTypeEdit.ascx" />
+    <Content Include="Views\ProviderType\ProviderTypeGrid.ascx" />
+    <Content Include="Views\ProviderType\List.aspx" />
+    <Content Include="Views\Provider\Details.aspx" />
+    <Content Include="Views\Provider\Edit.aspx" />
+    <Content Include="Views\Provider\List.aspx" />
+    <Content Include="Views\Provider\ProviderContractEdit.ascx" />
+    <Content Include="Views\Provider\ProviderContractGrid.ascx" />
+    <Content Include="Views\Provider\ProviderGrid.ascx" />
+    <Content Include="Views\Provider\ProviderMainDetails.ascx" />
+    <Content Include="Views\Provider\ProviderOrganizationGrid.ascx" />
+    <Content Include="Views\Provider\ProviderReceiptWaybillGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\AddWaybillRowFromReceipt.ascx" />
+    <Content Include="Views\ReceiptWaybill\Approve.aspx" />
+    <Content Include="Views\ReceiptWaybill\ApprovedWaybillGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\Details.aspx" />
+    <Content Include="Views\ReceiptWaybill\DeliveryPendingGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\DivergenceWaybillGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\Edit.aspx" />
+    <Content Include="Views\ReceiptWaybill\List.aspx" />
+    <Content Include="Views\ReceiptWaybill\Receipt.aspx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptedArticlesGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillApprovementArticlesGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillApprovementDetailsGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillDocumentsGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillMainDetails.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillRowForEdit.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillRowGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillSelectGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillSelector.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillWithDifDetailsAddedRowGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillWithDifDetailsDifRowGrid.ascx" />
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillWithDifDetailsMatchRowGrid.ascx" />
+    <Content Include="Views\Report\ArticlesAndPricesList.aspx" />
+    <Content Include="Views\Report\Report0001\Report0001Settings.aspx" />
+    <Content Include="Views\Report\Report0002\Report0002Settings.aspx" />
+    <Content Include="Views\Report\Report0002\Report0002StorageSelector.ascx" />
+    <Content Include="Views\Report\Report0003\Report0003Settings.aspx" />
+    <Content Include="Views\Report\Report0004\Report0004Settings.aspx" />
+    <Content Include="Views\Report\Report0005\Report0005Settings.aspx" />
+    <Content Include="Views\Report\Report0006\Report0006PrintingForm.aspx" />
+    <Content Include="Views\Report\Report0006\Report0006PrintingFormSettings.ascx" />
+    <Content Include="Views\Report\Report0006\Report0006Settings.aspx" />
+    <Content Include="Views\Report\Report0007\Report0007Settings.aspx" />
+    <Content Include="Views\Report\Report0008\Report0008Settings.aspx" />
+    <Content Include="Views\Report\Report0009\Report0009Settings.aspx" />
+    <Content Include="Views\Report\Report0010\Report0010Settings.aspx" />
+    <Content Include="Views\Report\ReportsGrid.ascx" />
+    <Content Include="Views\ReturnFromClientReason\List.aspx" />
+    <Content Include="Views\ReturnFromClientReason\ReturnFromClientReasonEdit.ascx" />
+    <Content Include="Views\ReturnFromClientReason\ReturnFromClientReasonGrid.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\Details.aspx" />
+    <Content Include="Views\ReturnFromClientWaybill\Edit.aspx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillRowEdit.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillDocumentGrid.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillMainDetails.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillRowGrid.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\List.aspx" />
+    <Content Include="Views\ReturnFromClientWaybill\NewAndAcceptedReturnFromClientWaybillGrid.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReceiptedReturnFromClientWaybillGrid.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillSelectGrid.ascx" />
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillSelector.ascx" />
+    <Content Include="Views\Role\ArticleDistributionPermissions.ascx" />
+    <Content Include="Views\Role\CommonPermissions.ascx" />
+    <Content Include="Views\Role\ReportsPermissions.ascx" />
+    <Content Include="Views\Role\ProductionPermissions.ascx" />
+    <Content Include="Views\Role\TaskDistributionPermissions.ascx" />
+    <Content Include="Views\Role\UsersPermissions.ascx" />
+    <Content Include="Views\Role\DirectoriesPermissions.ascx" />
+    <Content Include="Views\Role\SalesPermissions.ascx" />
+    <Content Include="Views\Role\RoleSelectGrid.ascx" />
+    <Content Include="Views\Role\Details.aspx" />
+    <Content Include="Views\Role\Edit.aspx" />
+    <Content Include="Views\Role\List.aspx" />
+    <Content Include="Views\Role\RoleSelector.ascx" />
+    <Content Include="Views\Role\RolesGrid.ascx" />
+    <Content Include="Views\Role\RoleMainDetails.ascx" />
+    <Content Include="Views\Role\UsersGrid.ascx" />
+    <Content Include="Views\Setting\List.aspx" />
+    <Content Include="Views\Shared\Error.aspx" />
+    <Content Include="Views\Shared\HttpError404.aspx" />
+    <Content Include="Views\Storage\AccountOrganizationSelectList.ascx" />
+    <Content Include="Views\Storage\Details.aspx" />
+    <Content Include="Views\Storage\List.aspx" />
+    <Content Include="Views\Storage\StorageEdit.ascx" />
+    <Content Include="Views\Storage\StorageGrid.ascx" />
+    <Content Include="Views\Storage\StorageMainDetails.ascx" />
+    <Content Include="Views\Storage\StorageAccountOrganizationGrid.ascx" />
+    <Content Include="Views\Storage\StorageSectionEdit.ascx" />
+    <Content Include="Views\Storage\StorageSectionGrid.ascx" />
+    <Content Include="Views\Task\CompletedTaskGrid.ascx" />
+    <Content Include="Views\Task\Details.aspx" />
+    <Content Include="Views\Task\Edit.aspx" />
+    <Content Include="Views\Task\ExecutingTaskGrid.ascx" />
+    <Content Include="Views\Task\List.aspx" />
+    <Content Include="Views\Task\NewTaskGrid.ascx" />
+    <Content Include="Views\Task\TaskExecutionCreate.ascx" />
+    <Content Include="Views\Task\MainDetails.cshtml" />
+    <Content Include="Views\Task\TaskExecutions.cshtml" />
+    <Content Include="Views\Task\TaskHistory.cshtml" />
+    <Content Include="Views\Team\ProductionOrdersGrid.ascx" />
+    <Content Include="Views\Team\StorageSelectList.ascx" />
+    <Content Include="Views\Team\TeamSelectGrid.ascx" />
+    <Content Include="Views\Team\TeamSelector.ascx" />
+    <Content Include="Views\Team\StoragesGrid.ascx" />
+    <Content Include="Views\Team\DealsGrid.ascx" />
+    <Content Include="Views\Team\UsersGrid.ascx" />
+    <Content Include="Views\Team\Details.aspx" />
+    <Content Include="Views\Team\Edit.aspx" />
+    <Content Include="Views\Team\TeamMainDetails.ascx" />
+    <Content Include="Views\Team\TeamsGrid.ascx" />
+    <Content Include="Views\Team\List.aspx" />
+    <Content Include="Views\Test\List.aspx" />
+    <Content Include="Views\Trademark\List.aspx" />
+    <Content Include="Views\Trademark\TrademarkSelectGrid.ascx" />
+    <Content Include="Views\Trademark\TrademarkSelector.ascx" />
+    <Content Include="Views\Trademark\TrademarkEdit.ascx" />
+    <Content Include="Views\Trademark\TrademarkGrid.ascx" />
+    <Content Include="Views\User\Authenticate.aspx" />
+    <Content Include="Views\User\ActiveUsersGrid.ascx" />
+    <Content Include="Views\User\BlockedUsersGrid.ascx" />
+    <Content Include="Views\User\ChangePassword.ascx" />
+    <Content Include="Views\User\ResetPassword.ascx" />
+    <Content Include="Views\User\Edit.aspx" />
+    <Content Include="Views\User\Home.aspx" />
+    <Content Include="Views\User\Login.aspx" />
+    <Content Include="Views\User\UserSelectGrid.ascx" />
+    <Content Include="Views\User\UserSelector.ascx" />
+    <Content Include="Views\User\UserTeamsGrid.ascx" />
+    <Content Include="Views\User\Details.aspx" />
+    <Content Include="Views\User\List.aspx" />
+    <Content Include="Views\User\UserMainDetails.ascx" />
+    <Content Include="Views\User\UserRolesGrid.ascx" />
+    <Content Include="Views\ValueAddedTax\List.aspx" />
+    <Content Include="Views\ValueAddedTax\ValueAddedTaxEdit.ascx" />
+    <Content Include="Views\ValueAddedTax\ValueAddedTaxGrid.ascx" />
+    <Content Include="Views\WriteoffReason\List.aspx" />
+    <Content Include="Views\WriteoffReason\WriteoffReasonEdit.ascx" />
+    <Content Include="Views\WriteoffReason\WriteoffReasonGrid.ascx" />
+    <Content Include="Views\WriteoffWaybill\AddRowsByList.aspx" />
+    <Content Include="Views\WriteoffWaybill\Details.aspx" />
+    <Content Include="Views\WriteoffWaybill\Edit.aspx" />
+    <Content Include="Views\WriteoffWaybill\WriteoffPendingGrid.ascx" />
+    <Content Include="Views\WriteoffWaybill\WriteoffWaybillDocumentGrid.ascx" />
+    <Content Include="Views\WriteoffWaybill\WriteoffWaybillMainDetails.ascx" />
+    <Content Include="Views\WriteoffWaybill\WriteoffWaybillRowEdit.ascx" />
+    <Content Include="Views\WriteoffWaybill\WriteoffWaybillRowGrid.ascx" />
+    <Content Include="Views\WriteoffWaybill\WrittenoffWaybillGrid.ascx" />
+    <Content Include="Views\WriteoffWaybill\List.aspx" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\MicrosoftAjax.js" />
+    <Content Include="Scripts\MicrosoftAjax.debug.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.js" />
+    <Content Include="Scripts\MicrosoftMvcAjax.debug.js" />
+    <Content Include="Views\Web.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="Scripts\jquery-1.4.4-vsdoc.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Bizpulse.Infrastructure.FluentNHibernate\Bizpulse.Infrastructure.FluentNHibernate.csproj">
+      <Project>{41591E79-7DDA-4E4E-B274-445917CE78A7}</Project>
+      <Name>Bizpulse.Infrastructure.FluentNHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Bizpulse.Infrastructure.Mvc\Bizpulse.Infrastructure.Mvc.csproj">
+      <Project>{E31C84A0-EE4E-4B33-B017-C0C55C54DC96}</Project>
+      <Name>Bizpulse.Infrastructure.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.IoC\ERP.Infrastructure.IoC.csproj">
+      <Project>{026EDA6D-FB5B-4E0E-A36B-93A252577997}</Project>
+      <Name>ERP.Infrastructure.IoC</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.NHibernate\ERP.Infrastructure.NHibernate.csproj">
+      <Project>{FF00E2B4-05D8-4102-A340-D49BC1D1E42C}</Project>
+      <Name>ERP.Infrastructure.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure.Security\ERP.Infrastructure.Security.csproj">
+      <Project>{A4B6BD97-0064-49B9-BC1C-118D5D04AFF7}</Project>
+      <Name>ERP.Infrastructure.Security</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI.Web\ERP.UI.Web.csproj">
+      <Project>{C1F3EBA7-9F63-42F0-9848-FB9C8ED4FFB4}</Project>
+      <Name>ERP.UI.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI\ERP.UI.csproj">
+      <Project>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</Project>
+      <Name>ERP.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils.Mvc\ERP.Utils.Mvc.csproj">
+      <Project>{FFF5CA82-3858-4A55-A777-525F0B0460CD}</Project>
+      <Name>ERP.Utils.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.AbstractApplicationServices\ERP.Wholesale.AbstractApplicationServices.csproj">
+      <Project>{F368CDA4-B31E-4F19-B38F-C1CE95530A67}</Project>
+      <Name>ERP.Wholesale.AbstractApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.ApplicationServices\ERP.Wholesale.ApplicationServices.csproj">
+      <Project>{E5A612EA-1814-4EA1-BD7F-5D825BE6084C}</Project>
+      <Name>ERP.Wholesale.ApplicationServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain.NHibernate\ERP.Wholesale.Domain.NHibernate.csproj">
+      <Project>{D3BBFCC8-531C-44CA-B14D-367AB6A0B4AC}</Project>
+      <Name>ERP.Wholesale.Domain.NHibernate</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Settings\ERP.Wholesale.Settings.csproj">
+      <Project>{3E4BD22D-B4AC-4E09-9C8C-090AA5BD9C85}</Project>
+      <Name>ERP.Wholesale.Settings</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.UI.AbstractPresenters\ERP.Wholesale.UI.AbstractPresenters.csproj">
+      <Project>{A136C814-A005-477D-85E1-4D27C3A5D2D1}</Project>
+      <Name>ERP.Wholesale.UI.AbstractPresenters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.UI.LocalPresenters\ERP.Wholesale.UI.LocalPresenters.csproj">
+      <Project>{28815537-7C0A-4E41-B560-1B9DA06A01CE}</Project>
+      <Name>ERP.Wholesale.UI.LocalPresenters</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.UI.ViewModels\ERP.Wholesale.UI.ViewModels.csproj">
+      <Project>{D0C1EA99-AA5E-47B5-A099-77B092472BA1}</Project>
+      <Name>ERP.Wholesale.UI.ViewModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Shared\Site.Master" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Modules\Client\Client.List.ClientGrid.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Modules\Article\Article.List.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0001\Report0001.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0001\Report0001_1.cshtml" />
+    <Content Include="Views\Report\Report0001\Report0001_2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0003\Report0003.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProductionOrder\ProductionOrderArticlePrimeCostForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0004\Report0004.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0005\Report0005.cshtml" />
+    <Content Include="Views\Report\Report0005\Report0005Item.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0006\Report0006.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\Modules\Task\Task.List.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Modules\Contractor\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Task\TaskExecutionEdit.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0007\Report0007.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_ClientSelector.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_ReceiptWaybill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_MovementWaybill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_ChangeOwnerWaybill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_WriteoffWaybill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_ExpenditureWaybill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_ReturnFromClientWaybill.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProductionOrder\ProductionOrderAddBatch.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ProductionOrder\ProductionOrderExecutionGraphs.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillApprovementArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillWithDifDetailsAddedArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillWithDifDetailsDifArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ReceiptWaybill\ReceiptWaybillWithDifDetailsMatchArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\MovementWaybill\MovementWaybillArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ChangeOwnerWaybill\ChangeOwnerWaybillArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\WriteoffWaybill\WriteoffWaybillArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ExpenditureWaybill\ExpenditureWaybillArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\ReturnFromClientWaybill\ReturnFromClientWaybillArticleGroupGrid.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0009\Report0009.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0009\Report0009_DetailsTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0009\Report0009_SummaryTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0010\Report0010.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\ReportLayout.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\User\UserByComboboxSelector.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0010\Report0010SummaryTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0010\Report0010DetailsTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Common\DateTimeSelector.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0008\Report0008_ProviderSelector.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0001\Report0001_1SummaryTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0007\Report0007SummaryTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0007\Report0007SummaryTableWithExtendFields.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0004\Report0004QuantityTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrintingForm\Common\T1\T1PrintingFormSettings.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\PrintingForm\Common\T1\T1ProductSectionPrintingForm.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0002\Report0002.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0002\Report0002_1.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0002\Report0002SummaryTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0002\Report0002DetailsTable.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Report\Report0002\Report0002_2.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Views\Export\1C\ExportTo1CSettingsSelector.cshtml" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target> -->
+  <Target Name="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(ProjectDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>False</AutoAssignPort>
+          <DevelopmentServerPort>1000</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>
+          </IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <PropertyGroup>
+    <PostBuildEvent>cd "$(ProjectDir)Scripts\"
+mkdir tmp
+cd "$(ProjectDir)Scripts\Modules\"
+for /R %25%25f in (*.js) do copy /y %25%25f ".\..\tmp\"
+copy /b /y "$(ProjectDir)Scripts\tmp\*.js" "$(ProjectDir)Scripts\modules.debug.js"
+type "$(ProjectDir)Scripts\modules.debug.js" | "$(ProjectDir)..\tools\jsmin\jsmin" &gt; "$(ProjectDir)Scripts\modules.min.js"
+rmdir /S /Q ".\..\tmp"</PostBuildEvent>
+  </PropertyGroup>
+</Project>

@@ -1,0 +1,151 @@
+﻿@{
+    ViewBag.Title = "Сколько стоит Bizpulse?";
+}
+
+@Html.Partial("ContentTopLine")
+
+<div id="prices_content">
+    <h1>
+        Тарифные планы Электронного менеджера Bizpulse
+    </h1>
+    
+    <table>
+        <tr>
+            <th style="width: 300px;">Стандарт</th>
+            <th style="width: 300px;">Бизнес</th>
+            <th style="width: 300px;">Корпорация</th>
+        </tr>
+        <tr>
+            <td>
+                <h2>Тарифный план включает:</h2>
+                <ul class="rate_content">
+                    <li><b>3</b> пользователя</li>                    
+                    <li><b>1</b> место хранения</li>
+                    <li><b>1</b> собственная организация</li>
+                    <li><b>1</b> команда</li>
+                    <li><b>1</b> гигабайт данных</li>
+                </ul>
+            </td>
+            <td>
+                <h2>Тарифный план включает:</h2>
+                <ul class="rate_content">
+                    <li><b>10</b> пользователей</li>                    
+                    <li><b class="infin">&infin;</b> кол-во мест хранения</li>
+                    <li><b class="infin">&infin;</b> кол-во собственных организаций</li>
+                    <li><b>3</b> команды</li>
+                    <li><b>3</b> гигабайта данных</li>
+                </ul>
+            </td>
+            <td>
+                <h2>Тарифный план включает:</h2>
+                <ul class="rate_content">
+                    <li><b>250</b> пользователей</li>                    
+                    <li><b class="infin">&infin;</b> кол-во мест хранения</li>
+                    <li><b class="infin">&infin;</b> кол-во собственных организаций</li>
+                    <li><b class="infin">&infin;</b> кол-во команд</li>
+                    <li><b>50</b> гигабайт данных</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td class="price_row">
+                <b class="price">990 руб.</b>
+                <b class="per_month">в месяц</b>
+            </td>
+            <td class="price_row">
+                <b class="price">10 990 руб.</b>
+                <b class="per_month">в месяц</b>
+            </td>
+            <td class="price_row">
+                <b class="price">34 990 руб.</b>
+                <b class="per_month">в месяц</b>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="thirty_days_free">30 дней бесплатно</div>
+            </td>
+            <td>
+                <div class="thirty_days_free">30 дней бесплатно</div>
+            </td>
+            <td>
+                <div class="thirty_days_free">30 дней бесплатно</div>
+            </td>
+        </tr>
+        <tr>
+            <td><h3>Конфигурация включает:</h3></td>
+            <td><h3>Конфигурация включает:</h3></td>
+            <td><h3>Конфигурация включает:</h3></td>
+        </tr>
+        <tr>
+            <td style="vertical-align: top">
+                <ul class="configuration_content">
+                    <li>Все функциональные возможности Электронного менеджера</li>                    
+                </ul>
+            </td>
+            <td style="vertical-align: top">
+                <ul class="configuration_content">
+                    <li>Все функциональные возможности Электронного менеджера</li>
+                    <li>Неограниченное количество мест хранения и собственных организаций</li>
+                </ul>
+            </td>
+            <td style="vertical-align: top">
+                <ul class="configuration_content">
+                    <li>Все функциональные возможности Электронного менеджера</li>
+                    <li>Неограниченное количество мест хранения, собственных организаций и команд</li>
+                    <li>Персональный менеджер-консультант</li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <a href="@ERP.FrontSite.UI.Web.AppSettings.AdminAppURL/Client/RegisterEasy" class="buy_button">Купить</a>
+            </td>
+            <td>
+                <a href="@ERP.FrontSite.UI.Web.AppSettings.AdminAppURL/Client/RegisterEasy" class="buy_button">Купить</a>
+            </td>
+            <td>
+                <a href="@ERP.FrontSite.UI.Web.AppSettings.AdminAppURL/Client/RegisterEasy" class="buy_button">Купить</a>
+            </td>
+        </tr>
+    </table>
+
+    <div id="most_popular_rate_top">
+        самая популярная конфигурация         
+    </div>
+    <div id="most_popular_rate_middle"></div>
+    <div id="most_popular_rate_bottom"></div>
+
+    <div id="options_action_container">
+        <div id="options_container">
+            <div class="main_title">Опции тарифных планов</div>
+
+            <div class="option_description">+1 пользователь = +570 руб. в месяц</div>
+            <div class="option_availability">Опция доступна для тарифных планов «Стандарт», «Бизнес» и «Корпорация»</div>
+
+            <div class="option_description">+1 место хранения = +315 руб. в месяц</div>
+            <div class="option_availability">Опция доступна только для тарифного плана «Стандарт»</div>
+
+            <div class="option_description">+1 собственная организация = +315 руб. в месяц</div>
+            <div class="option_availability">Опция доступна только для тарифного плана «Стандарт»</div>
+
+            <div class="option_description">+1 команда = +1200 руб. в месяц</div>
+            <div class="option_availability">Опция доступна для тарифных планов «Стандарт» и «Бизнес»</div>
+
+            <div class="option_description">+1 Гб данных = +300 руб. в месяц</div>
+            <div class="option_availability">Опция доступна для тарифных планов «Стандарт», «Бизнес» и «Корпорация»</div>
+        </div>
+    
+        <div id="action_container">
+            <div class="main_title">Действующие акции и скидки</div>
+            <br />
+            <div style="font-size: 14px;">При оплате более 12 месяцев - 10% скидка</div>            
+        </div>
+
+        <div class="clear"></div>
+    </div>
+
+    
+
+</div>
+

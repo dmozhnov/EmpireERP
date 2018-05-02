@@ -1,0 +1,436 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{D0C1EA99-AA5E-47B5-A099-77B092472BA1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.Wholesale.UI.ViewModels</RootNamespace>
+    <AssemblyName>ERP.Wholesale.UI.ViewModels</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AccountingPriceList\AccountingPriceListAddStorageViewModel.cs" />
+    <Compile Include="AccountingPriceList\AccountingPriceListDetailsViewModel.cs" />
+    <Compile Include="AccountingPriceList\AccountingPriceListEditViewModel.cs" />
+    <Compile Include="AccountingPriceList\AccountingPriceListMainDetailsViewModel.cs" />
+    <Compile Include="AccountingPriceList\AccountingPriceListViewModel.cs" />
+    <Compile Include="AccountingPriceList\ArticleAccountingPriceEditViewModel.cs" />
+    <Compile Include="AccountingPriceList\ArticleAccountingPriceSetAddViewModel.cs" />
+    <Compile Include="AccountOrganization\AccountOrganizationDetailsViewModel.cs" />
+    <Compile Include="AccountOrganization\AccountOrganizationListViewModel.cs" />
+    <Compile Include="AccountOrganization\AccountOrganizationMainDetailsViewModel.cs" />
+    <Compile Include="AccountOrganization\AccountOrganizationSelectGridViewModel.cs" />
+    <Compile Include="AccountOrganization\AccountOrganizationSelectViewModel.cs" />
+    <Compile Include="AccountOrganization\LinkedStorageListViewModel.cs" />
+    <Compile Include="ArticleCertificate\ArticleCertificateEditViewModel.cs" />
+    <Compile Include="ArticleCertificate\ArticleCertificateListViewModel.cs" />
+    <Compile Include="ArticleCertificate\ArticleCertificateSelectViewModel.cs" />
+    <Compile Include="ArticleGroup\ArticleGroupDetailsViewModel.cs" />
+    <Compile Include="ArticleGroup\ArticleGroupEditViewModel.cs" />
+    <Compile Include="ArticleGroup\ArticleGroupListViewModel.cs" />
+    <Compile Include="Article\ArticleBatchSelectViewModel.cs" />
+    <Compile Include="Article\ArticleEditViewModel.cs" />
+    <Compile Include="Article\ArticleListViewModel.cs" />
+    <Compile Include="Article\ArticleSelectViewModel.cs" />
+    <Compile Include="Bank\BankListViewModel.cs" />
+    <Compile Include="Article\ArticleSaleSelectViewModel.cs" />
+    <Compile Include="Bank\ForeignBankEditViewModel.cs" />
+    <Compile Include="Bank\RussianBankEditViewModel.cs" />
+    <Compile Include="BaseWaybill\BaseWaybillEditViewModel.cs" />
+    <Compile Include="BaseWaybill\BaseWaybillMainDetailsViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillChangeRecipientViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillDetailsViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillEditViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillListViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillMainDetailsViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillRowEditViewModel.cs" />
+    <Compile Include="ChangeOwnerWaybill\ChangeOwnerWaybillSelectViewModel.cs" />
+    <Compile Include="ClientContract\ClientContractSelectViewModel.cs" />
+    <Compile Include="ClientOrganization\ClientOrganizationDetailsViewModel.cs" />
+    <Compile Include="ClientOrganization\ClientOrganizationMainDetailsViewModel.cs" />
+    <Compile Include="Client\ClientDetailsViewModel.cs" />
+    <Compile Include="Client\ClientEditViewModel.cs" />
+    <Compile Include="Client\ClientListViewModel.cs" />
+    <Compile Include="Client\ClientMainDetailsViewModel.cs" />
+    <Compile Include="Client\ClientSelectViewModel.cs" />
+    <Compile Include="BaseDictionary\BaseDictionaryEditViewModel.cs" />
+    <Compile Include="BaseDictionary\BaseDictionaryListViewModel.cs" />
+    <Compile Include="BaseDictionary\BaseDictionarySelectViewModel.cs" />
+    <Compile Include="ContractorOrganization\ContractorOrganizationListViewModel.cs" />
+    <Compile Include="ContractorOrganization\ContractorOrganizationSelectViewModel.cs" />
+    <Compile Include="Contractor\ContractorSelectViewModel.cs" />
+    <Compile Include="Country\CountryEditViewModel.cs" />
+    <Compile Include="Currency\CurrencyEditViewModel.cs" />
+    <Compile Include="Currency\CurrencyListViewModel.cs" />
+    <Compile Include="Currency\CurrencyRateEditViewModel.cs" />
+    <Compile Include="Currency\SelectCurrencyRateViewModel.cs" />
+    <Compile Include="Common\DateTimeSelectViewModel.cs" />
+    <Compile Include="DealPaymentDocument\BaseDealPaymentDocumentEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\BaseDealInitialBalanceCorrectionEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\BaseDealInitialBalanceCorrectionDetailsViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\DealCreditInitialBalanceCorrection\DealCreditInitialBalanceCorrectionDetailsViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\DealCreditInitialBalanceCorrection\DealCreditInitialBalanceCorrectionEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\DealDebitInitialBalanceCorrection\DealDebitInitialBalanceCorrectionDetailsViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\DealDebitInitialBalanceCorrection\DealDebitInitialBalanceCorrectionEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealInitialBalanceCorrection\DealInitialBalanceCorrectionListViewModel.cs" />
+    <Compile Include="Export\1C\ExportTo1CSettingsSelectorViewModel.cs" />
+    <Compile Include="Export\1C\ExportTo1CSettingsViewModel.cs" />
+    <Compile Include="Export\1C\OperationTypeForExportTo1C.cs" />
+    <Compile Include="LogItem\LogItemEditViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Т1\T1PrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Т1\T1ProductSectionPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Т1\T1ProductSectionPrintingFormRowsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Т1\T1ProductSectionPrintingFormViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001_1SummaryTableViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002StorageSelectorViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002ViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002_DetailsTableItemViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002_DetailsTableViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002_SeparationDetailsTableRowByStoragesViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002_StorageInfoItem.cs" />
+    <Compile Include="Report\Report0002\Report0002_SummaryTableViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002_SummaryTableItemViewModel.cs" />
+    <Compile Include="Report\Report0004\Report0004QuantityTableViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007SummaryTableViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007SummaryTableWithExtendFieldsViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_ProviderSelectorViewModel.cs" />
+    <Compile Include="PrintingForm\Common\ConsiderReturnsPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\PriceTypeAndConsiderReturnsPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\PriceTypePrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\ExpenditureWaybillPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\PaymentInvoice\PaymentInvoicePrintingFormSettingsViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_BaseWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_WaybillItemViewModel.cs" />
+    <Compile Include="Report\Report0010\Report0010DetailsTableRowViewModel.cs" />
+    <Compile Include="Report\Report0010\Report0010DetailsTableViewModel.cs" />
+    <Compile Include="Report\Report0010\Report0010SummaryTableRowViewModel.cs" />
+    <Compile Include="Report\Report0010\Report0010SummaryTableViewModel.cs" />
+    <Compile Include="User\UserByComboboxSelectorViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealPayment\DealPaymentFromClient\ClientOrganizationPaymentFromClientEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealPayment\DealPaymentFromClient\DealPaymentFromClientDetailsViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealPayment\DealPaymentFromClient\DealPaymentFromClientEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealPayment\DealPaymentListViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealPayment\DealPaymentToClient\DealPaymentToClientDetailsViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DealPayment\DealPaymentToClient\DealPaymentToClientEditViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DestinationDocumentSelector\BaseDestinationDocumentSelectViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DestinationDocumentSelector\DestinationDocumentSelectForClientOrganizationPaymentFromClientDistributionViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DestinationDocumentSelector\DestinationDocumentSelectForDealCreditInitialBalanceCorrectionDistributionViewModel.cs" />
+    <Compile Include="DealPaymentDocument\DestinationDocumentSelector\DestinationDocumentSelectForDealPaymentFromClientDistributionViewModel.cs" />
+    <Compile Include="DealQuota\DealQuotaEditViewModel.cs" />
+    <Compile Include="DealQuota\DealQuotaListViewModel.cs" />
+    <Compile Include="DealQuota\DealQuotaSelectViewModel.cs" />
+    <Compile Include="Deal\ClientContractEditViewModel.cs" />
+    <Compile Include="Deal\DealChangeStageViewModel.cs" />
+    <Compile Include="Deal\DealDetailsViewModel.cs" />
+    <Compile Include="Deal\DealEditViewModel.cs" />
+    <Compile Include="Deal\DealListViewModel.cs" />
+    <Compile Include="Deal\DealMainDetailsViewModel.cs" />
+    <Compile Include="Deal\DealSelectViewModel.cs" />
+    <Compile Include="EconomicAgent\EconomicAgentTypeSelectorViewModel.cs" />
+    <Compile Include="EconomicAgent\JuridicalPersonEditViewModel.cs" />
+    <Compile Include="EconomicAgent\PhysicalPersonEditViewModel.cs" />
+    <Compile Include="EmployeePost\EmployeePostEditViewModel.cs" />
+    <Compile Include="LegalForm\LegalFormEditViewModel.cs" />
+    <Compile Include="OutgoingWaybill\OutgoingWaybillAddRowsByListViewModel.cs" />
+    <Compile Include="ExpenditureWaybill\ExpenditureWaybillDetailsViewModel.cs" />
+    <Compile Include="ExpenditureWaybill\ExpenditureWaybillEditViewModel.cs" />
+    <Compile Include="ExpenditureWaybill\ExpenditureWaybillListViewModel.cs" />
+    <Compile Include="ExpenditureWaybill\ExpenditureWaybillMainDetailsViewModel.cs" />
+    <Compile Include="ExpenditureWaybill\ExpenditureWaybillRowEditViewModel.cs" />
+    <Compile Include="Manufacturer\ManufacturerEditViewModel.cs" />
+    <Compile Include="Manufacturer\ManufacturerSelectorViewModel.cs" />
+    <Compile Include="MeasureUnit\MeasureUnitEditViewModel.cs" />
+    <Compile Include="MeasureUnit\MeasureUnitListViewModel.cs" />
+    <Compile Include="MeasureUnit\MeasureUnitSelectViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillChangeRecipientStorageViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillDetailsViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillEditViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillListViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillMainDetailsViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillRowEditViewModel.cs" />
+    <Compile Include="MovementWaybill\MovementWaybillSelectViewModel.cs" />
+    <Compile Include="Organization\ForeignBankAccountEditViewModel.cs" />
+    <Compile Include="Organization\RussianBankAccountEditViewModel.cs" />
+    <Compile Include="OutgoingWaybillRow\OutgoingWaybillRowViewModel.cs" />
+    <Compile Include="PrintingForm\Common\BasePrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\CashMemo\CashMemoPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\Common\CashMemo\CashMemoPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\CashMemo\CashMemoPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Invoice\InvoicePrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Invoice\InvoicePrintingFormRowsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Invoice\InvoicePrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\Invoice\InvoicePrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\Common\PrintingFormPriceType.cs" />
+    <Compile Include="PrintingForm\Common\TORG12\TORG12PrintingFormRowsViewModel.cs" />
+    <Compile Include="PrintingForm\Common\TORG12\TORG12PrintingFormSettingsViewModel.cs" />
+    <Compile Include="ProductionOrderCustomsDeclarationSheet\ProductionOrderCustomsDeclarationListViewModel.cs" />
+    <Compile Include="ProductionOrderExecutionGraph\ProductionOrderBatchExecutionGraphData.cs" />
+    <Compile Include="ProductionOrderExecutionGraph\ProductionOrderExecutionGraphDataItem.cs" />
+    <Compile Include="ProductionOrderExecutionGraph\ProductionOrderStageState.cs" />
+    <Compile Include="ProductionOrderExtraExpensesSheet\ProductionOrderExtraExpensesSheetListViewModel.cs" />
+    <Compile Include="ProductionOrderMaterialsPackage\DownloadProductionOrderMaterialsPackageDocumentViewModel.cs" />
+    <Compile Include="ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageDocumentEditViewModel.cs" />
+    <Compile Include="ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageEditViewModel.cs" />
+    <Compile Include="ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageListViewModel.cs" />
+    <Compile Include="ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageDetailsViewModel.cs" />
+    <Compile Include="ProductionOrderMaterialsPackage\ProductionOrderMaterialsPackageMainDetailsViewModel.cs" />
+    <Compile Include="PrintingForm\AccountingPriceList\AccountingPriceListPrintingFormArticleViewModel.cs" />
+    <Compile Include="PrintingForm\AccountingPriceList\AccountingPriceListPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\AccountingPriceList\AccountingPriceListPrintingFormStorageViewModel.cs" />
+    <Compile Include="PrintingForm\AccountingPriceList\AccountingPriceListPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\ChangeOwnerWaybill\ChangeOwnerWaybillPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\ChangeOwnerWaybill\ChangeOwnerWaybillPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\ChangeOwnerWaybill\ChangeOwnerWaybillPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\Common\TORG12\TORG12PrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\Common\TORG12\TORG12PrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\ExpenditureWaybill\ExpenditureWaybillPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\ExpenditureWaybill\ExpenditureWaybillPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\ExpenditureWaybill\PaymentInvoicePrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\ExpenditureWaybill\PaymentInvoicePrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\MovementWaybill\MovementWaybillPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\MovementWaybill\MovementWaybillPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\MovementWaybill\MovementWaybillPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\ReceiptWaybill\DivergenceAct\DivergenceActPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\ReceiptWaybill\DivergenceAct\DivergenceActPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\ReceiptWaybill\ReceiptWaybillPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\ReceiptWaybill\ReceiptWaybillPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\ReceiptWaybill\ReceiptWaybillPrintingFormViewModel.cs" />
+    <Compile Include="PrintingForm\WriteoffWaybill\WriteoffWaybillPrintingFormItemViewModel.cs" />
+    <Compile Include="PrintingForm\WriteoffWaybill\WriteoffWaybillPrintingFormSettingsViewModel.cs" />
+    <Compile Include="PrintingForm\WriteoffWaybill\WriteoffWaybillPrintingFormViewModel.cs" />
+    <Compile Include="Producer\ProducerDetailsViewModel.cs" />
+    <Compile Include="Producer\ProducerEditViewModel.cs" />
+    <Compile Include="Producer\ProducerListViewModel.cs" />
+    <Compile Include="Producer\ProducerMainDetailsViewModel.cs" />
+    <Compile Include="Producer\ProducerSelectViewModel.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateEditViewModel.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateListViewModel.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateSelectViewModel.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateStageEditViewModel.cs" />
+    <Compile Include="ProductionOrderBatchLifeCycleTemplate\ProductionOrderBatchLifeCycleTemplateDetailsViewModel.cs" />
+    <Compile Include="ProductionOrderPayment\ProductionOrderPaymentListViewModel.cs" />
+    <Compile Include="ProductionOrderTransportSheet\ProductionOrderTransportSheetListViewModel.cs" />
+    <Compile Include="ProductionOrder\ProducerContractEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderArticlePrimeCostSettingsViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderArticlePrimeCostValueViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderArticlePrimeCostViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchAddViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchChangeStageViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchDetailsViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchGridRowViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchGridViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchMainDetailsViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchRowArticlePrimeCostViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchRowEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchSplitViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchStageEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchStageListItemViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchStageListViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderBatchStagesEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderCurrencyDeterminationTypeSelectorViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderCustomsDeclarationEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderDetailsViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderExecutionGraphViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderExtraExpensesSheetEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderListViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderMainDetailsViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPaymentDocumentSelectorViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPaymentEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPaymentTypeSelectorViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPlannedExpensesEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPlannedPaymentEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPlannedPaymentsEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderPlannedPaymentSelectViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderTransportSheetEditViewModel.cs" />
+    <Compile Include="ProductionOrder\ProductionOrderSelectorViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProviderOrganization\ProviderOrganizationDetailsViewModel.cs" />
+    <Compile Include="ProviderOrganization\ProviderOrganizationMainDetailsViewModel.cs" />
+    <Compile Include="Provider\ProviderContractEditViewModel.cs" />
+    <Compile Include="Provider\ProviderDetailsViewModel.cs" />
+    <Compile Include="Provider\ProviderEditViewModel.cs" />
+    <Compile Include="Provider\ProviderListViewModel.cs" />
+    <Compile Include="Provider\ProviderMainDetailsViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ApprovementViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptRowAddViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptWaybillDetailsViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptWaybillEditViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptWaybillListViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptWaybillMainDetailsViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptWaybillRowEditViewModel.cs" />
+    <Compile Include="ReceiptWaybill\ReceiptWaybillSelectViewModel.cs" />
+    <Compile Include="Report\ArticlesAndPricesListViewModel.cs" />
+    <Compile Include="Report\BaseReportViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001_2ItemViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001_1SummaryTableItemViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001SettingsViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001ViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001_1ItemViewModel.cs" />
+    <Compile Include="Report\Report0001\Report0001_2SubitemViewModel.cs" />
+    <Compile Include="Report\Report0002\Report0002SettingsViewModel.cs" />
+    <Compile Include="Report\Report0003\Report0003ItemViewModel.cs" />
+    <Compile Include="Report\Report0003\Report0003SettingsViewModel.cs" />
+    <Compile Include="Report\Report0003\Report0003ViewModel.cs" />
+    <Compile Include="Report\Report0004\Report0004ItemViewModel.cs" />
+    <Compile Include="Report\Report0004\Report0004QuantityTableItemViewModel.cs" />
+    <Compile Include="Report\Report0004\Report0004SettingsViewModel.cs" />
+    <Compile Include="Report\Report0004\Report0004ViewModel.cs" />
+    <Compile Include="Report\Report0005\Report0005ItemViewModel.cs" />
+    <Compile Include="Report\Report0005\Report0005Permissions.cs" />
+    <Compile Include="Report\Report0005\Report0005SettingsViewModel.cs" />
+    <Compile Include="Report\Report0005\Report0005ViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006BalanceByPeriodItemViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006BalanceItemViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006ContractItemViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006PrintingFormListViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006PrintingFormSettingsViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006PrintingFormViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006SettingsViewModel.cs" />
+    <Compile Include="Report\Report0006\Report0006ViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007SummaryTableItemViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007SummaryTableItemWithExtendFieldsViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007ExpenditureWaybillItemViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007SettingsViewModel.cs" />
+    <Compile Include="Report\Report0007\Report0007ViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008SettingsViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008ViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_ChangeOwnerWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_ClientSelector.cs" />
+    <Compile Include="Report\Report0008\Report0008_ExpenditureWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_MovementWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_ReceiptWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_ReturnFromClientWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0008\Report0008_WriteoffWaybillTableViewModel.cs" />
+    <Compile Include="Report\Report0009\Report0009DetailTableViewModel.cs" />
+    <Compile Include="Report\Report0009\Report0009DetailTableItemViewModel.cs" />
+    <Compile Include="Report\Report0009\Report0009SettingsViewModel.cs" />
+    <Compile Include="Report\Report0009\Report0009SummaryTableItemViewModel.cs" />
+    <Compile Include="Report\Report0009\Report0009SummaryTableViewModel.cs" />
+    <Compile Include="Report\Report0009\Report0009ViewModel.cs" />
+    <Compile Include="Report\Report0010\Report0010SettingsViewModel.cs" />
+    <Compile Include="Report\Report0010\Report0010ViewModel.cs" />
+    <Compile Include="ReturnFromClientWaybill\ReturnFromClientWaybillRowEditViewModel.cs" />
+    <Compile Include="ReturnFromClientWaybill\ReturnFromClientWaybillDetailsViewModel.cs" />
+    <Compile Include="ReturnFromClientWaybill\ReturnFromClientWaybillMainDetailsViewModel.cs" />
+    <Compile Include="ReturnFromClientWaybill\ReturnFromClientWaybillListViewModel.cs" />
+    <Compile Include="ReturnFromClientWaybill\ReturnFromClientWaybillEditViewModel.cs" />
+    <Compile Include="ReturnFromClientWaybill\ReturnFromClientWaybillSelectViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\ArticleDistributionPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\CommonPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\ProductionPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\ReportsPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\TaskDistributionPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\UsersPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\DirectoriesPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionGroup\SalesPermissionsViewModel.cs" />
+    <Compile Include="Role\PermissionViewModel.cs" />
+    <Compile Include="Role\RoleDetailsViewModel.cs" />
+    <Compile Include="Role\RoleEditViewModel.cs" />
+    <Compile Include="Role\RoleListViewModel.cs" />
+    <Compile Include="Role\RoleMainDetailsViewModel.cs" />
+    <Compile Include="Role\RoleSelectViewModel.cs" />
+    <Compile Include="Settings\SettingViewModel.cs" />
+    <Compile Include="Storage\AccountOrganizationSelectList.cs" />
+    <Compile Include="Storage\StorageDetailsViewModel.cs" />
+    <Compile Include="Storage\StorageEditViewModel.cs" />
+    <Compile Include="Storage\StorageListViewModel.cs" />
+    <Compile Include="Storage\StorageMainDetailsViewModel.cs" />
+    <Compile Include="Storage\StorageSectionEditViewModel.cs" />
+    <Compile Include="Task\TaskDetailsViewModel.cs" />
+    <Compile Include="Task\TaskEditViewModel.cs" />
+    <Compile Include="Task\TaskExecutionEditViewModel.cs" />
+    <Compile Include="Task\TaskExecutionsItemViewModel.cs" />
+    <Compile Include="Task\TaskExecutionsViewModel.cs" />
+    <Compile Include="Task\TaskHistoryItemViewModel.cs" />
+    <Compile Include="Task\TaskHistoryViewModel.cs" />
+    <Compile Include="Task\TaskListViewModel.cs" />
+    <Compile Include="Task\TaskMainDetailsViewModel.cs" />
+    <Compile Include="Team\LinkedStorageListViewModel.cs" />
+    <Compile Include="User\ChangePasswordViewModel.cs" />
+    <Compile Include="User\ResetPasswordViewModel.cs" />
+    <Compile Include="User\LoginViewModel.cs" />
+    <Compile Include="User\UserHomeViewModel.cs" />
+    <Compile Include="User\UserSelectViewModel.cs" />
+    <Compile Include="Team\TeamSelectViewModel.cs" />
+    <Compile Include="Team\TeamEditViewModel.cs" />
+    <Compile Include="Team\TeamListViewModel.cs" />
+    <Compile Include="Team\TeamDetailsViewModel.cs" />
+    <Compile Include="Team\TeamMainDetailsViewModel.cs" />
+    <Compile Include="User\UserDetailsViewModel.cs" />
+    <Compile Include="User\UserEditViewModel.cs" />
+    <Compile Include="User\UserListViewModel.cs" />
+    <Compile Include="User\UserMainDetailsViewModel.cs" />
+    <Compile Include="ValueAddedTax\ValueAddedTaxEditViewModel.cs" />
+    <Compile Include="WriteoffWaybill\WriteoffWaybillDetailsViewModel.cs" />
+    <Compile Include="WriteoffWaybill\WriteoffWaybillEditViewModel.cs" />
+    <Compile Include="WriteoffWaybill\WriteoffWaybillListViewModel.cs" />
+    <Compile Include="WriteoffWaybill\WriteoffWaybillMainDetailsViewModel.cs" />
+    <Compile Include="WriteoffWaybill\WriteoffWaybillRowEditViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Infrastructure\ERP.Infrastructure.csproj">
+      <Project>{61F42119-E2F1-49C8-9FE3-5BADA24EBA5F}</Project>
+      <Name>ERP.Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.UI\ERP.UI.csproj">
+      <Project>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</Project>
+      <Name>ERP.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils.Mvc\ERP.Utils.Mvc.csproj">
+      <Project>{FFF5CA82-3858-4A55-A777-525F0B0460CD}</Project>
+      <Name>ERP.Utils.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Wholesale.Domain\ERP.Wholesale.Domain.csproj">
+      <Project>{22FDCDA4-38AA-4263-84FD-08DF3ADBD969}</Project>
+      <Name>ERP.Wholesale.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

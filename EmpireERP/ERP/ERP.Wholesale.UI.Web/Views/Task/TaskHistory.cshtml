@@ -1,0 +1,272 @@
+﻿@model ERP.Wholesale.UI.ViewModels.TaskHistoryViewModel
+
+<script type="text/javascript">
+    Task_TaskHistory.Init();
+</script>
+
+@{bool isFirstItem = Model.NeedDelimFirstItem;}
+@if (Model.History.Count > 0)
+{
+    foreach (var item in Model.History)
+    {
+        if (isFirstItem)
+        { 
+            <div class="h_delim"></div>
+        }
+        isFirstItem = true;
+
+        <div class="taskHistoryItem">
+            <br />
+            @if (item.IsContractorChange || item.IsDeadLineChange || item.IsDealChange || item.IsDeletionDateChange || item.IsDescriptionChange ||
+                item.IsExecutedByChange || item.IsFactualCompletionDateChange || item.IsFactualSpentTimeChange || item.IsPriorityChange ||
+                item.IsProductionOrderChange || item.IsStartDateChange || item.IsStateChange || item.IsTopicChange || item.IsTypeChange)
+            {
+                <table>
+                    <tr>
+                        <td style="padding-left: 45px;">
+                            @if (item.AllowToViewCreatedBy)
+                            {
+                                <text>Редактирование параметров задачи, </text><i><b><a id="CreatedByName">@item.CreatedByName</a></b></i>
+                                <input type="hidden" id="CreatedById" value="@item.CreatedById"/>
+                            }
+                            else
+                            { 
+                                @item.CreatedByName
+                            }
+                        </td>
+                        <td style="padding-left: 15px; font-size: 8pt;">
+                            <b>@item.CreationDate</b>
+                        </td>
+                    </tr>
+                </table>
+            
+                <div style="padding: 10px 15px; line-height: 15px">
+                    @if (item.IsContractorChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.ContractorNameNew)»</i></b> измененился с
+                        @if (item.AllowToViewContractorOld)
+                        {
+                            <b><i><a id="ContractorNameOld">«@item.ContractorNameOld»</a></i></b>
+                            <input type="hidden" id="ContractorOldId" value="@item.ContractorOldId" />
+                            <input type="hidden" id="ContractorTypeOld" value="item.ContractorTypeOld" />
+                        }
+                        else
+                        {
+                            <b><i>«@item.ContractorNameOld»</i></b>
+                        } на
+                        @if (item.AllowToViewContractorNew)
+                        {
+                            <b><i><a id="ContractorNameNew">«@item.ContractorNameNew»</a></i></b>
+                            <input type="hidden" id="ContractorNewId" value="@item.ContractorNewId" />
+                            <input type="hidden" id="ContractorTypeNew" value="@item.ContractorTypeNew" />
+                        }
+                        else
+                        {
+                            <b><i>«@item.ContractorNameNew»</i></b>
+                        }</p>
+                    }
+                    @if (item.IsDeadLineChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.DeadLineNew)»</i></b> измененился с <b><i>«@item.DeadLineOld»</i></b> на <b><i>«@item.DeadLineNew»</i></b></p>
+                    }
+                    @if (item.IsDealChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.DealNameNew)»</i></b> измененился с
+                        @if (item.AllowToViewDealOld)
+                        { 
+                            <b><i><a id="DealNameOld">«@item.DealNameOld»</a></i></b>
+                            <input type="hidden" id="DealOldId" value="@item.DealOldId" />
+                        }
+                        else
+                        {
+                            <b><i>«@item.DealNameOld»</i></b>
+                        } на
+                        @if (item.AllowToViewDealNew)
+                        { 
+                            <b><i><a id="DealNameNew">«@item.DealNameNew»</a></i></b>
+                            <input type="hidden" id="DealNewId" value="@item.DealNewId" />
+                        }
+                        else
+                        {
+                            <b><i>«@item.DealNameNew»</i></b>
+                        }</p>
+                    }
+                    @if (item.IsDeletionDateChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.DeletionDateNew)»</i></b> измененился с <b><i>«@item.DeletionDateOld»</i></b> на <b><i>«@item.DeletionDateNew»</i></b></p>
+                    }
+                    @if (item.IsDescriptionChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.IsDescriptionChange)»</i></b> измененился.</p>
+                    }
+                    @if (item.IsExecutedByChange)
+                    {
+                            <p>Параметр <b><i>«@Html.LabelFor(x => item.ExecutedByNameNew)»</i></b> измененился с
+                            @if (item.AllowToViewExecutedByOld)
+                            { 
+                                <b><i><a id="ExecutedByNameOld">«@item.ExecutedByNameOld»</a></i></b>
+                                <input type="hidden" id="ExecutedByOldId" value="@item.ExecutedByOldId" />
+                            }
+                            else
+                            {
+                                <b><i>«@item.ExecutedByNameOld»</i></b>
+                            } на
+                            @if (item.AllowToViewExecutedByNew)
+                            {
+                                <b><i><a id="ExecutedByNameNew">«@item.ExecutedByNameNew»</a></i></b>
+                                <input type="hidden" id="ExecutedByNewId" value="@item.ExecutedByNewId" />
+                            }
+                            else
+                            {
+                                <b><i>«@item.ExecutedByNameNew»</i></b>
+                            }</p>
+                    }
+                    @if (item.IsFactualCompletionDateChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.FactualCompletionDateNew)»</i></b> измененился с <b><i>«@item.FactualCompletionDateOld»</i></b> на <b><i>«@item.FactualCompletionDateNew»</i></b></p>
+                    }
+                    @if (item.IsFactualSpentTimeChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.FactualSpentTimeNew)»</i></b> измененился с <b><i>«@item.FactualSpentTimeOld»</i></b> на <b><i>«@item.FactualSpentTimeNew»</i></b></p>
+                    }
+                    @if (item.IsPriorityChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.PriorityNameNew)»</i></b> измененился с <b><i>«@item.PriorityNameOld»</i></b> на <b><i>«@item.PriorityNameNew»</i></b></p>
+                    }
+                    @if (item.IsProductionOrderChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.ProductionOrderNameNew)»</i></b> измененился с
+                        @if (item.AllowToViewProductionOrderOld)
+                        {
+                            <b><i><a id="ProductionOrderNameOld">«@item.ProductionOrderNameOld»</a></i></b>
+                            <input type="hidden" id="ProductionOrderOldId" value="@item.ProductionOrderOldId" />
+                        }
+                        else
+                        {
+                            <b><i>«@item.ProductionOrderNameOld»</i></b>
+                        } на
+                        @if (item.AllowToViewProductionOrderNew)
+                        {
+                            <b><i><a id="ProductionOrderNameNew">«@item.ProductionOrderNameNew»</a></i></b>
+                            <input type="hidden" id="ProductionOrderNewId" value="@item.ProductionOrderNewId" />
+                        }
+                        else
+                        {
+                            <b><i>«@item.ProductionOrderNameNew»</i></b>
+                        }</p>
+                    }
+                    @if (item.IsStartDateChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.StartDateNew)»</i></b> измененился с <b><i>«@item.StartDateOld»</i></b> на <b><i>«@item.StartDateNew»</i></b></p>
+                    }
+                    @if (item.IsStateChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.StateNameNew)»</i></b> измененился с <b><i>«@item.StateNameOld»</i></b> на <b><i>«@item.StateNameNew»</i></b></p>
+                    }
+                    @if (item.IsTopicChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.TopicNew)»</i></b> измененился с <b><i>«@item.TopicOld»</i></b> на <b><i>«@item.TopicNew»</i></b></p>
+                    }
+                    @if (item.IsTypeChange)
+                    {
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.TypeNameNew)»</i></b> измененился с <b><i>«@item.TypeNameOld»</i></b> на <b><i>«@item.TypeNameNew»</i></b></p>
+                    }
+                </div>
+            }
+            
+            
+            @if (item.IsTaskExecutionDateChange || item.IsTaskExecutionDeletionDateChange || item.IsTaskExecutionResultDescriptionChange ||
+                item.IsTaskExecutionSpentTimeChange || item.IsTaskExecutionStateChange || item.IsCompletionPercentageChange)
+            {
+                /*-- Исполнение задачи --*/
+                <div style="padding: 0 0 7px 45px">
+                    Исполнение пользователя
+                    @if (item.AllowToViewTaskExecutionCreaetdBy)
+                    {
+                        <b><i><a id="TaskExecutionCreatedByName">«@item.TaskExecutionCreatedByName»</a></i></b>
+                        <input type="hidden" id="TaskExecutionCreatedById" value="@item.TaskExecutionCreatedById" />
+                    }
+                    else
+                    { @item.TaskExecutionCreatedByName} 
+                    от <b style="font-size: 8pt;">@item.TaskExecutionCurrentDate</b>
+                </div>
+             
+                <div style="padding: 10px 15px; line-height: 15px">
+                    @if (item.IsTaskExecutionDateChange)
+                    { 
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.TaskExecutionDateNew)»</i></b> 
+                        @if (item.IsTaskExecutionAdded)
+                        { 
+                            @:установлен в
+                        }
+                        else
+                        { 
+                            @:измененился с <b><i>«@item.TaskExecutionDateOld»</i></b> на
+                        } 
+                        <b><i>«@item.TaskExecutionDateNew»</i></b></p>
+                    } 
+                    @if (item.IsTaskExecutionDeletionDateChange)
+                    { 
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.TaskExecutionDeletionDateNew)»</i></b> 
+                        @if (item.IsTaskExecutionAdded)
+                        { 
+                            @:установлен в
+                        }
+                        else
+                        { 
+                            @:измененился с <b><i>«@item.TaskExecutionDeletionDateOld»</i></b> на
+                        } 
+                        <b><i>«@item.TaskExecutionDeletionDateNew»</i></b></p>
+                    } 
+                    @if (item.IsTaskExecutionResultDescriptionChange)
+                    { 
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.IsTaskExecutionResultDescriptionChange)»</i></b> изменен.</p>
+                    } 
+                    @if (item.IsTaskExecutionSpentTimeChange)
+                    { 
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.TaskExecutionSpentTimeNew)»</i></b>
+                        @if (item.IsTaskExecutionAdded)
+                        { 
+                           @:установлен в
+                        }
+                        else
+                        { 
+                            @:измененился с <b><i>«@item.TaskExecutionSpentTimeOld»</i></b> на
+                        } 
+                        <b><i>«@item.TaskExecutionSpentTimeNew»</i></b></p>
+                    }
+                    @if (item.IsTaskExecutionStateChange)
+                    { 
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.TaskExecutionStateNameNew)»</i></b>
+                        @if (item.IsTaskExecutionAdded)
+                        { 
+                            @:установлен в
+                        }
+                        else
+                        { 
+                            @:измененился с <b><i>«@item.TaskExecutionStateNameOld»</i></b> на
+                        } 
+                        <b><i>«@item.TaskExecutionStateNameNew»</i></b></p>
+                    } 
+                    @if (item.IsCompletionPercentageChange)
+                    { 
+                        <p>Параметр <b><i>«@Html.LabelFor(x => item.CompletionPercentageNew)»</i></b>
+                        @if (item.IsTaskExecutionAdded)
+                        { 
+                            @:установлен в
+                        }
+                        else
+                        { 
+                            @:измененился с <b><i>«@item.CompletionPercentageOld%»</i></b> на
+                        } 
+                        <b><i>«@item.CompletionPercentageNew%»</i></b></p>
+                    }
+                </div>
+            }
+        </div>
+    }
+}
+else
+{
+    <div id="TaskHistoryNoDataMessage" style="text-align: center">Нет данных</div>
+}

@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{30082F7A-194F-4C7E-8DD8-3F9FBBC44F6D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ERP.UI</RootNamespace>
+    <AssemblyName>ERP.UI</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\GridUtils.cs" />
+    <Compile Include="ViewModels\DatePickerData.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterYesNoToggle.cs" />
+    <Compile Include="ViewModels\Grid\GridButton.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridActionCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridCellStyle.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridCheckBoxCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridComboBoxCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridHiddenCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridLabelCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridLinkCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridParamComboBoxCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridPseudoLinkCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\GridTextEditorCell.cs" />
+    <Compile Include="ViewModels\Grid\GridCell\IGridCell.cs" />
+    <Compile Include="ViewModels\Grid\GridColumn\GridColumn.cs" />
+    <Compile Include="ViewModels\Grid\GridColumn\GridColumnAlign.cs" />
+    <Compile Include="ViewModels\Grid\GridData.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterComboBox.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterData.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterDateRangePicker.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterHyperlink.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterItem.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterItemType.cs" />
+    <Compile Include="ViewModels\GridFilter\FilterTextEditor.cs" />
+    <Compile Include="ViewModels\Grid\GridRow\GridRow.cs" />
+    <Compile Include="ViewModels\Grid\GridRow\GridRowStyle.cs" />
+    <Compile Include="ViewModels\Grid\GridRow\IGridRow.cs" />
+    <Compile Include="ViewModels\Grid\GridState.cs" />
+    <Compile Include="ViewModels\TreeView\TreeData.cs" />
+    <Compile Include="ViewModels\TreeView\TreeNode.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ERP.Utils.Mvc\ERP.Utils.Mvc.csproj">
+      <Project>{FFF5CA82-3858-4A55-A777-525F0B0460CD}</Project>
+      <Name>ERP.Utils.Mvc</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ERP.Utils\ERP.Utils.csproj">
+      <Project>{0BDDAC2C-1F42-421D-99CF-1C95AE94268B}</Project>
+      <Name>ERP.Utils</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

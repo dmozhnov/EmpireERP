@@ -1,0 +1,45 @@
+﻿#client_details_wrapper {
+    min-width: 960px;
+}
+#client_details {
+    width: 940px;
+    margin: 10px auto 0;
+}
+#client_details #logo {
+    height: 84px; width: 184px;
+    float: left;    
+}
+#client_details #title {    
+    padding-top: 5px;    
+    font-size: 31px;
+    text-align: center;
+    color: #4D7285;
+}
+#client_details #client_name {
+    padding-top: 5px;    
+    font-size: 31px;
+    text-align: center;
+    color: #F47E26;
+}
+#client_details  #back_link {
+    margin-top: 5px; margin-left: 780px; margin-bottom: 15px;
+    display: block;
+    font-size: 15px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

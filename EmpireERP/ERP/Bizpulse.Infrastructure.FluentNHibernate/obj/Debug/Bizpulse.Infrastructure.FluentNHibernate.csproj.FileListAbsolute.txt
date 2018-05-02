@@ -1,0 +1,8 @@
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\bin\Debug\Bizpulse.Infrastructure.FluentNHibernate.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\bin\Debug\Bizpulse.Infrastructure.FluentNHibernate.pdb
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\bin\Debug\FluentNHibernate.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\bin\Debug\NHibernate.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\bin\Debug\Iesi.Collections.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\obj\Debug\Bizpulse.Infrastructure.FluentNHibernate.dll
+D:\Projects\ERP\Bizpulse.Infrastructure.FluentNHibernate\obj\Debug\Bizpulse.Infrastructure.FluentNHibernate.pdb

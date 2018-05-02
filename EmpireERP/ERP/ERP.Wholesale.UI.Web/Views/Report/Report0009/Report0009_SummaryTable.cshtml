@@ -1,0 +1,118 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0009.Report0009SummaryTableViewModel
+@functions{
+    bool flag = true;
+
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "";
+    }
+}
+@{
+    int columns = 1;
+    if (Model.InPurchaseCost)
+    {
+        columns++;
+    }
+    if (Model.InRecipientWaybillAccountingPrice)
+    {
+        columns++;
+    }
+    if (Model.InCurrentAccountingPrice)
+    {
+         columns++;
+    }
+    if (Model.ShowMarkup)
+    {
+          columns++;
+    }
+}
+<br />
+<br />
+<div class="table_title">@Model.TableTitle:</div>
+<table class="report_table" style="min-width:790px">
+    
+    <tr>
+        <th style="min-width:200px">@Model.NameColumnTitle</th>
+        
+        @if (Model.InPurchaseCost)
+        {
+            <th style="min-width:94px">@Html.LabelFor(model => model.Rows.First().PurchaseCostSum)</th>
+        }
+
+        @if (Model.InRecipientWaybillAccountingPrice)
+        {
+            <th style="min-width:94px">@Html.LabelFor(model => model.Rows.First().RecipientWaybillAccountingPriceSum)</th>
+        }
+        
+        @if (Model.InCurrentAccountingPrice)
+        {
+            <th style="min-width:94px">@Html.LabelFor(model => model.Rows.First().CurrentAccountingPriceSum)</th>
+        }
+        
+        @if (Model.ShowMarkup)
+        {
+            <th style="min-width:94px">@Html.LabelFor(model => model.Rows.First().MarkupSum)</th>
+        }
+    </tr>
+
+    @foreach (var row in Model.Rows)
+    {
+        <tr class="@GetRowClass()">
+            <td>@row.Name</td>
+            
+            @if (Model.InPurchaseCost)
+            {
+                <td align="right" style="white-space: nowrap">@row.PurchaseCostSum</td>
+            }
+            @if (Model.InRecipientWaybillAccountingPrice)
+            {            
+                <td align="right" style="white-space: nowrap">@row.RecipientWaybillAccountingPriceSum</td>
+            }
+            @if (Model.InCurrentAccountingPrice)
+            {
+                <td align="right" style="white-space: nowrap">@row.CurrentAccountingPriceSum</td>
+            }
+             
+             @if (Model.ShowMarkup)
+             {
+                <td align="right" style="white-space: nowrap">@row.MarkupSum</td>
+             }
+        </tr>
+    }
+
+    @if (Model.Rows.Count() == 0)
+    {
+        <tr class="green_row">
+            <td colspan="@columns" style="text-align:center;">Нет данных</td>
+        </tr>
+    }
+    else
+    {
+        <tr>
+            <th align="right">Итого по столбцу:</th>
+        
+            @if (Model.InPurchaseCost)
+            {
+                <th align="right">@Model.PurchaseCostSumTotal</th>
+            }
+            @if (Model.InRecipientWaybillAccountingPrice)
+            {
+                <th align="right">@Model.RecipientWaybillAccountingPriceSumTotal</th>
+            }
+            @if (Model.InCurrentAccountingPrice)
+            {
+                <th align="right">@Model.CurrentAccountingPriceSumTotal</th>
+            }
+            @if (Model.ShowMarkup)
+            {
+                <th align="right">@Model.MarkupSumTotal</th>
+            }
+        </tr>
+    }
+</table>

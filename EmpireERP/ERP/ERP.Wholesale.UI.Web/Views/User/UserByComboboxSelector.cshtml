@@ -1,0 +1,30 @@
+﻿@model ERP.Wholesale.UI.ViewModels.User.UserByComboboxSelectorViewModel
+
+@using ERP.UI.Web.HtmlHelpers;
+
+<div class="modal_title">@Model.Title</div>
+<div class="h_delim"></div>       
+
+@using (Ajax.BeginForm("", "", new AjaxOptions(), new { id = "userSelectByComboboxForm" }))
+{ 
+    <div style="padding: 10px 20px 5px; max-width:500px;">
+        <div id="messageUserSelectByCombobox"></div>
+
+        <table class='editor_table'>
+            <tr>
+                <td class="row_title">
+                    @Html.LabelFor(model => model.UserId):
+                </td>
+                <td style="min-width: 70px;">
+                    @Html.DropDownListFor(model => model.UserId, Model.Users)                                         
+                    @Html.ValidationMessageFor(model => model.UserId)
+                </td>
+            </tr>
+        </table>    
+
+        <div class="button_set">
+            @Html.SubmitButton("btnSelectUser", "Сохранить")
+            <input type="button" value="Закрыть" onclick="HideModal()" />
+        </div>    
+    </div>
+}

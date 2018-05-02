@@ -1,0 +1,145 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0007.Report0007ViewModel
+@using ERP.Utils;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Взаиморасчеты по реализациям</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />    
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body>
+     <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">Отчет «Взаиморасчеты по реализациям»<br />на дату @Model.Date
+                </td>
+                <td class="report_info">Форма: Report0007<br />Автор: @Model.CreatedBy<br />Составлен: @Model.CreationData
+                </td>
+            </tr>
+        </table>
+        <br />
+        <br />         
+        @functions{
+            bool flag = true;
+
+            /// <summary>
+            /// Получение очередного класса css для строки таблицы
+            /// </summary>
+            /// <returns>Название класса css</returns>
+            string GetRowClass()
+            {
+                flag = !flag;
+
+                return flag ? "green_row" : "";
+            }
+        }
+        @* ---------- Места хранения -----------------*@
+        @if (Model.ShowStorageTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTable.cshtml", Model.Storages);
+        }
+
+        @* ---------- Собственные организации -----------------*@
+        @if (Model.ShowAccountOrganizationTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTable.cshtml", Model.AccountOrganizations);
+        }
+
+        @* ---------- Клиенты -----------------*@
+        @if (Model.ShowClientTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTableWithExtendFields.cshtml", Model.Clients);
+        }        
+
+        @* ---------- Организации клиентов -----------------*@
+        @if (Model.ShowClientOrganizationTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTableWithExtendFields.cshtml", Model.ClientOrganizations);
+        }
+
+        @* ---------- Сделки -----------------*@
+        @if (Model.ShowDealTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTableWithExtendFields.cshtml", Model.Deals);
+        }       
+        
+        @* ---------- Команды -----------------*@
+        @if (Model.ShowTeamTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTable.cshtml", Model.Teams);
+        }
+
+        @* ---------- Пользователи -----------------*@
+        @if (Model.ShowUserTable)
+        {
+            Html.RenderPartial("~/Views/Report/Report0007/Report0007SummaryTable.cshtml", Model.Users);
+        }        
+
+        @* ---------- Развернутая таблица по реализациям -----------------*@
+        @if (Model.ShowExpenditureWaybillTable)
+        {
+            flag = true;
+            <div class="table_title">Развернутая таблица по реализациям:</div>
+            <table class="report_table" style="min-width:790px">
+                <tr>
+                    <th style="min-width:60px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().Date)</th>
+                    <th style="min-width:142px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().Number)</th>
+                    <th style="min-width:94px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().SaleSum)</th>
+                    <th style="min-width:94px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().DebtSum)</th>
+                    <th style="min-width:60px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().AcceptanceDate)</th>
+                    <th style="min-width:60px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().ShippingDate)</th>
+                    <th style="min-width:60px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().PaymentDate)</th>
+                    <th style="min-width:60px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().PostPaymentDays)</th>
+                    <th style="min-width:60px">@Html.LabelFor(model => model.ExpenditureWaybillTable.First().DelayPaymentDays)</th>
+                </tr>
+                @foreach (var row in Model.ExpenditureWaybillTable)
+                {
+                    if (row.IsGroup)
+                    {
+                        flag = true;
+                        var paddingSize = System.Web.UI.WebControls.Unit.Pixel(row.GroupLevel * 15);  // определяем смещение заголовка
+                        
+                        <tr class="blue_row">
+                            <td colspan="9"  style="padding-left: @paddingSize.ToString()">
+                                <b>@row.GroupTitle</b>
+                            </td>
+                        </tr>
+                    }
+                    else
+                    {
+                        <tr class="@GetRowClass()">
+                            <td align="center" style="white-space: nowrap">@row.Date</td>
+                            <td>@row.Number</td>
+                            <td align="right" style="white-space: nowrap">@row.SaleSum.ForDisplay(ValueDisplayType.Money)</td>
+                            <td align="right" style="white-space: nowrap">@row.DebtSum.ForDisplay(ValueDisplayType.Money)</td>
+                            <td align="center" style="white-space: nowrap">@row.AcceptanceDate</td>
+                            <td align="center" style="white-space: nowrap">@row.ShippingDate</td>
+                            <td align="center" style="white-space: nowrap">@row.PaymentDate</td>
+                            <td align="right" style="white-space: nowrap">@row.PostPaymentDays</td>
+                            <td align="right" style="white-space: nowrap">@row.DelayPaymentDays</td>
+                        </tr>
+                    }
+                }
+                @if (Model.ExpenditureWaybillTable.Count == 0)
+                {
+                    <tr class="green_row">
+                        <td colspan="9" style="text-align:center;">Нет данных</td>
+                    </tr>
+                }
+                <tr>
+                    <th colspan = "2" align="right" style="white-space: nowrap">Итого:</th>
+                    <th align="right" style="white-space: nowrap">@Model.SaleSumTotal.ForDisplay(ValueDisplayType.Money)</th>
+                    <th align="right" style="white-space: nowrap">@Model.DebtSumTotal.ForDisplay(ValueDisplayType.Money)</th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                    <th></th>
+                </tr>
+            </table>
+        }
+    </div>
+</body>
+</html>

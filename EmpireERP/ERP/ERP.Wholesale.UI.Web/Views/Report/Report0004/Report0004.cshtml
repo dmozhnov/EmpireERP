@@ -1,0 +1,483 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0004.Report0004ViewModel
+
+@using ERP.Utils;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report0004</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body style="padding:20px;">
+    <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">Движение товара<br />
+                    <b style="text-decoration:underline">@Model.ArticleName</b><br />
+                    за период с @Model.Settings.StartDate по @Model.Settings.EndDate </td>
+                <td class="report_info">Форма: Report0004<br />
+                    Автор: @Model.CreatedBy
+                    <br />
+                    Составлен: @DateTime.Now.ToString()
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+    <br />
+    <div class="floatleft" style="width:250px">
+        @if (Model.Settings.ShowStartQuantityByStorage == "1")
+        {
+            <div class="table_title">Кол-во на @Model.Settings.StartDate по местам хранения:</div>
+            Html.RenderPartial("~/Views/Report/Report0004/Report0004QuantityTable.cshtml", Model.StartQuantityGroupByStorage);
+        <br /><br />
+        }
+
+        @if (Model.Settings.ShowStartQuantityByOrganization == "1")
+        {
+            <div class="table_title">Кол-во на @Model.Settings.StartDate по организациям:</div>
+            Html.RenderPartial("~/Views/Report/Report0004/Report0004QuantityTable.cshtml", Model.StartQuantityGroupByOrganization);
+        }
+    </div>
+
+    <div class="floatleft" style="padding-left: 40px;width:250px">
+        @if (Model.Settings.ShowEndQuantityByStorage == "1")
+        {
+            <div class="table_title">Кол-во на @Model.Settings.EndDate по местам хранения:</div>
+            Html.RenderPartial("~/Views/Report/Report0004/Report0004QuantityTable.cshtml", Model.EndQuantityGroupByStorage);
+        <br /><br />
+        }
+
+        @if (Model.Settings.ShowEndQuantityByOrganization == "1")
+        {
+            <div class="table_title">Кол-во на @Model.Settings.EndDate по организациям:</div>
+            Html.RenderPartial("~/Views/Report/Report0004/Report0004QuantityTable.cshtml", Model.EndQuantityGroupByOrganization);
+        }
+    </div>
+
+    <div class="clear"></div>
+
+    <br /><br />
+    <div class="table_title">Приходы:</div>
+    <table class="report_table">
+        <tr>
+            <th>№ накладной</th>
+            <th>Дата накладной</th>
+            <th>Статус накладной</th>
+            <th>Кол-во</th>
+            <th>Место хранения-приемщик</th>
+            <th>Организация-приемщик</th>
+            @if (Model.AllowToViewContractors)
+            { <th>Поставщик / Производитель</th>}
+            @if (Model.Settings.ShowPurchaseCosts == "1")
+            { <th>ЗЦ</th>}
+            @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+            { <th>УЦ приемки</th>}
+
+        </tr>
+        @if (Model.ReceiptWaybillRows.Any())
+        {
+            foreach (var item in Model.ReceiptWaybillRows)
+            {               
+                <tr>                    
+                    <td>@item.Number </td>
+                    <td align="center">@item.Date.ToShortDateString() </td>
+                    <td align="center">@item.StateName</td>
+                    <td align="right" style="white-space: nowrap">@item.Count.ForDisplay()</td>
+                    <td>@item.RecipientStorage</td>
+                    <td>@item.Recipient</td>
+                    @if (Model.AllowToViewContractors)
+                    { 
+                        <td>@item.Contractor</td>
+                    }
+                    @if (Model.Settings.ShowPurchaseCosts == "1")
+                    {
+                        <td align="right" style="white-space: nowrap">@item.PurchaseCost.ForDisplay(ValueDisplayType.Money)</td>                       
+                    }
+                    @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+                    {
+                        <td align="right" style="white-space: nowrap">@item.RecipientAccountingPrice.ForDisplay(ValueDisplayType.Money)</td>                         
+                    }
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" style="text-align:center">нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right"  style="white-space:nowrap">Итого:</th>
+            <th></th>
+            <th></th>
+            <th align="right" style="white-space: nowrap">@Model.ReceiptWaybillRows.Sum(x => x.Count).ForDisplay()</th>
+            <th></th>
+            <th></th>
+            @if (Model.AllowToViewContractors)
+            { 
+                <th></th>                        
+            }
+            @if (Model.Settings.ShowPurchaseCosts == "1")
+            {
+                <th></th>                       
+            }
+            @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+            {
+                <th></th> 
+            }
+        </tr>
+    </table>
+
+
+    <br /><br />
+    <div class="table_title">Внутренние перемещения и смены собственника:</div>
+    <table class="report_table">
+        <tr>
+            <th>№ накладной</th>
+            <th>Дата накладной</th>
+            <th>Статус накладной</th>
+            <th>Кол-во</th>
+            <th>Место хранения-отправитель</th>
+            <th>Организация-отправитель</th>
+            <th>Место хранения-приемщик</th>
+            <th>Организация-приемщик</th>
+            @if (Model.Settings.ShowBatches == "1")
+            {<th>Партия</th>}
+            @if (Model.Settings.ShowSenderAccountingPrices == "1")
+            {<th>УЦ отправки</th>}
+            @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+            { <th>УЦ приемки</th>}
+        </tr>
+        @if (Model.MovementAndChangeOwnerWaybillRows.Any())
+        {
+            foreach (var item in Model.MovementAndChangeOwnerWaybillRows)
+            {
+                 <tr>
+                    <td>@item.Number </td>
+                    <td align="center">@item.Date.ToShortDateString() </td>
+                    <td align="center">@item.StateName</td>
+                    <td align="right" style="white-space: nowrap">@item.Count.ForDisplay()</td>
+                    <td>@item.SenderStorage</td>
+                    <td>@item.Sender</td>
+                    <td>@item.RecipientStorage</td>
+                    <td>@item.Recipient</td>
+
+                    @if (Model.Settings.ShowBatches == "1")
+                    {<td style="white-space:nowrap">@item.BatchName</td>}
+
+                    @if (Model.Settings.ShowSenderAccountingPrices == "1")
+                    {<td align="right" style="white-space: nowrap">@item.SenderAccountingPrice.ForDisplay(ValueDisplayType.Money)</td>}
+
+                    @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+                    {<td align="right" style="white-space: nowrap">@item.RecipientAccountingPrice.ForDisplay(ValueDisplayType.Money)</td>}
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" style="text-align:center">нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right"  style="white-space:nowrap">Итого:</th>
+            <th></th>
+            <th></th>
+            <th align="right" style="white-space: nowrap">@Model.MovementAndChangeOwnerWaybillRows.Sum(x => x.Count).ForDisplay()</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th></th>
+            @if (Model.Settings.ShowBatches == "1")
+            { 
+                <th></th>                        
+            }
+            @if (Model.Settings.ShowSenderAccountingPrices == "1")
+            {
+                <th></th>                       
+            }
+            @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+            {
+                <th></th> 
+            }
+        </tr>
+    </table>
+
+    <br /><br />
+    <div class="table_title">Реализация товаров:</div>
+    <table class="report_table">
+        <tr>
+            <th>№ накладной</th>
+            <th>Дата накладной</th>
+            <th>Статус накладной</th>
+            <th>Кол-во</th>
+            <th>Отпускная цена</th>
+            <th>Место хранения-отправитель</th>
+            <th>Организация-отправитель</th>
+            @if (Model.AllowToViewClients)
+            {<th>Клиент</th>}
+            @if (Model.Settings.ShowBatches == "1")
+            {<th>Партия</th>}
+            @if (Model.Settings.ShowSenderAccountingPrices == "1")
+            {<th>УЦ отправки</th>}
+        </tr>
+        @if (Model.ExpenditureWaybillRows.Any())
+        {
+            foreach (var item in Model.ExpenditureWaybillRows)
+            {
+                <tr>
+                    <td>@item.Number </td>
+                    <td align="center">@item.Date.ToShortDateString() </td>
+                    <td align="center">@item.StateName</td>
+                    <td align="right" style="white-space: nowrap">@item.Count.ForDisplay()</td>
+                    <td align="right" style="white-space: nowrap">@item.SalePrice.ForDisplay(ValueDisplayType.Money)</td>
+                    <td>@item.SenderStorage</td>
+                    <td>@item.Sender</td>
+                    @if (Model.AllowToViewClients)
+                    { <td>@item.ClientName</td> }
+                    @if (Model.Settings.ShowBatches == "1")
+                    { <td style="white-space:nowrap">@item.BatchName</td> }
+                    @if (Model.Settings.ShowSenderAccountingPrices == "1")
+                    { <td align="right" style="white-space: nowrap">@item.SenderAccountingPrice.ForDisplay(ValueDisplayType.Money)</td> }
+
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" style="text-align:center">нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right"  style="white-space:nowrap">Итого:</th>
+            <th></th>
+            <th></th>
+            <th align="right" style="white-space: nowrap">@Model.ExpenditureWaybillRows.Sum(x => x.Count).ForDisplay()</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            @if (Model.AllowToViewClients)
+            { 
+                <th></th>                        
+            }
+            @if (Model.Settings.ShowBatches == "1")
+            {
+                <th></th>                       
+            }
+            @if (Model.Settings.ShowSenderAccountingPrices == "1")
+            {
+                <th></th> 
+            }
+        </tr>
+    </table>
+
+
+    <br /><br />
+    <div class="table_title">Списания:</div>
+    <table class="report_table">
+        <tr>
+            <th>№ накладной</th>
+            <th>Дата накладной</th>
+            <th>Статус накладной</th>
+            <th>Кол-во</th>
+            <th>Место хранения-отправитель</th>
+            <th>Организация-отправитель</th>
+            <th>Основание</th>
+            @if (Model.Settings.ShowBatches == "1")
+            {<th>Партия</th>}
+            @if (Model.Settings.ShowSenderAccountingPrices == "1")
+            {<th>УЦ отправки</th>}
+        </tr>
+        @if (Model.WriteoffWaybillRows.Any())
+        {
+            foreach (var item in Model.WriteoffWaybillRows)
+            {
+                <tr>
+                    <td>@item.Number </td>
+                    <td align="center">@item.Date.ToShortDateString() </td>
+                    <td align="center">@item.StateName</td>
+                    <td align="right" style="white-space: nowrap">@item.Count.ForDisplay()</td>
+                    <td>@item.SenderStorage</td>
+                    <td>@item.Sender</td>
+                    <td>@item.Reason</td>
+                    @if (Model.Settings.ShowBatches == "1")
+                    {<td style="white-space:nowrap">@item.BatchName</td>}
+                    @if (Model.Settings.ShowSenderAccountingPrices == "1")
+                    {<td align="right" style="white-space: nowrap">@item.SenderAccountingPrice.ForDisplay(ValueDisplayType.Money)</td>}
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" style="text-align:center">нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right"  style="white-space:nowrap">Итого:</th>
+            <th></th>
+            <th></th>
+            <th align="right" style="white-space: nowrap">@Model.WriteoffWaybillRows.Sum(x => x.Count).ForDisplay()</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            @if (Model.Settings.ShowBatches == "1")
+            {
+                <th></th>                       
+            }
+            @if (Model.Settings.ShowSenderAccountingPrices == "1")
+            {
+                <th></th> 
+            }
+        </tr>
+    </table>
+
+
+    <br /><br />
+    <div class="table_title">Возвраты:</div>
+    <table class="report_table">
+        <tr>
+            <th>№ накладной</th>
+            <th>Дата накладной</th>
+            <th>Статус накладной</th>
+            <th>Кол-во</th>
+            <th>Место хранения-приемщик</th>
+            <th>Организация-приемщик</th>
+            @if (Model.AllowToViewClients)
+            {<th>Клиент</th>}
+            <th>Основание</th>
+            @if (Model.Settings.ShowBatches == "1")
+            {<th>Партия</th>}
+            @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+            { <th>УЦ приемки</th>}
+
+        </tr>
+        @if (Model.ReturnFromClientWaybillRows.Any())
+        {
+            foreach (var item in Model.ReturnFromClientWaybillRows)
+            {
+                <tr>
+                    <td>@item.Number </td>
+                    <td align="center">@item.Date.ToShortDateString() </td>
+                    <td align="center">@item.StateName</td>
+                    <td align="right" style="white-space: nowrap">@item.Count.ForDisplay()</td>
+                    <td>@item.RecipientStorage</td>
+                    <td>@item.Recipient</td>
+                    @if (Model.AllowToViewClients)
+                    {<td>@item.ClientName</td>}
+                    <td>@item.Reason</td>
+                    @if (Model.Settings.ShowBatches == "1")
+                    {<td style="white-space:nowrap">@item.BatchName</td>}
+                    @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+                    {<td align="right" style="white-space: nowrap">@item.RecipientAccountingPrice.ForDisplay(ValueDisplayType.Money)</td>}
+                </tr>
+            }
+        }
+        else
+        {
+            <tr>
+                <td colspan="10" style="text-align:center">нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right"  style="white-space:nowrap">Итого:</th>
+            <th></th>
+            <th></th>
+            <th align="right" style="white-space: nowrap">@Model.ReturnFromClientWaybillRows.Sum(x => x.Count).ForDisplay()</th>
+            <th></th>
+            <th></th>
+            @if (Model.AllowToViewClients)
+            {
+                <th></th>                       
+            }
+            <th></th>
+            @if (Model.Settings.ShowBatches == "1")
+            {
+                <th></th>                       
+            }
+            @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+            {
+                <th></th> 
+            }
+        </tr>
+    </table>
+
+    @if (Model.ReceiptDivergences.Any())
+    {
+        <br /><br />
+        <div class="table_title">Расхождения при приходе:</div>
+        <table class="report_table">
+            <tr>
+                <th>№ накладной</th>
+                <th>Дата накладной</th>
+                <th>Статус накладной</th>
+                <th>Кол-во расхождений</th>
+                <th>Место хранения-приемщик</th>
+                <th>Организация-приемщик</th>
+                @if (Model.AllowToViewProviders)
+                { <th>Поставщик</th>}
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                { <th>ЗЦ</th>}
+                @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+                { <th>УЦ приемки</th>}
+
+            </tr>
+            @if (Model.ReceiptDivergences.Any())
+            {
+                foreach (var item in Model.ReceiptDivergences)
+                {
+                    <tr>
+                        <td>@item.Number </td>
+                        <td align="center">@item.Date.ToShortDateString() </td>
+                        <td align="center">@item.StateName</td>
+                        <td align="right" style="white-space: nowrap">@item.Count.ForDisplay()</td>
+                        <td>@item.RecipientStorage</td>
+                        <td>@item.Recipient</td>
+                        @if (Model.AllowToViewProviders)
+                        { <td>@item.Contractor</td> }
+                        @if (Model.Settings.ShowPurchaseCosts == "1")
+                        { <td align="right" style="white-space: nowrap">@item.PurchaseCost.ForDisplay(ValueDisplayType.Money)</td> }
+                        @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+                        { <td align="right" style="white-space: nowrap">@item.RecipientAccountingPrice.ForDisplay(ValueDisplayType.Money)</td> }
+                    </tr>
+                }
+            }
+            else
+            {
+                <tr>
+                    <td colspan="9" style="text-align:center">нет данных</td>
+                </tr>
+            }
+            <tr>
+                <th align="right"  style="white-space:nowrap">Итого:</th>
+                <th></th>
+                <th></th>
+                <th align="right" style="white-space: nowrap">@Model.ReceiptDivergences.Sum(x => x.Count).ForDisplay()</th>
+                <th></th>
+                <th></th>
+                @if (Model.AllowToViewProviders)
+                {
+                    <th></th>                       
+                }
+                <th></th>
+                @if (Model.Settings.ShowPurchaseCosts == "1")
+                {
+                    <th></th>                       
+                }
+                @if (Model.Settings.ShowRecipientAccountingPrices == "1")
+                {
+                    <th></th> 
+                }
+            </tr>
+        </table>
+    }
+
+</body>
+</html>

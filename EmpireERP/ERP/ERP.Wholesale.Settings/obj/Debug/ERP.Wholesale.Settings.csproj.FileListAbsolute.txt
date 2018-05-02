@@ -1,0 +1,5 @@
+D:\Projects\ERP\ERP.Wholesale.Settings\bin\Debug\ERP.Wholesale.Settings.dll
+D:\Projects\ERP\ERP.Wholesale.Settings\bin\Debug\ERP.Wholesale.Settings.pdb
+D:\Projects\ERP\ERP.Wholesale.Settings\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.Wholesale.Settings\obj\Debug\ERP.Wholesale.Settings.dll
+D:\Projects\ERP\ERP.Wholesale.Settings\obj\Debug\ERP.Wholesale.Settings.pdb

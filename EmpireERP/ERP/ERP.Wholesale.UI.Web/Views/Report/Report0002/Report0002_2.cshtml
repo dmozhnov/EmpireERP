@@ -1,0 +1,470 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0002.Report0002_DetailsTableViewModel
+           
+@using ERP.Utils;
+
+
+@{
+      var baseColspan = 3;
+      int detailsTableColumnsCount = 4;
+      if (Model.IsDevideByBatch)
+      {
+          detailsTableColumnsCount++;
+      }
+      if (Model.CalculateAveragePrice)
+      {
+          if (Model.InPurchaseCost)
+          {
+              detailsTableColumnsCount++;
+          }
+          if (Model.InSalePrice)
+          {
+              detailsTableColumnsCount++;
+          }
+      }
+      if (Model.InPurchaseCost) {detailsTableColumnsCount++;}
+      if (Model.InAccountingPrice) {detailsTableColumnsCount++;}
+      if (Model.InSalePrice) {detailsTableColumnsCount++;}
+      if (Model.UseReturns) 
+      {
+          detailsTableColumnsCount++;
+          if (Model.InPurchaseCost)
+          {
+              detailsTableColumnsCount++;
+          }
+          if (Model.InAccountingPrice)
+          {
+              detailsTableColumnsCount++;
+          }
+          if (Model.InSalePrice)
+          {
+              detailsTableColumnsCount += 2;
+          }
+      }
+      if (Model.CalculateMarkup) {detailsTableColumnsCount += 2;}
+      if (Model.ShowAdditionColumns)
+      {
+          detailsTableColumnsCount++;
+          if (Model.IsDevideByBatch)
+          {
+              detailsTableColumnsCount += 2;
+          }
+      }
+  }
+
+<table class="report_table">
+    <tr>
+        <th colspan="3">Товар</th>
+        @if (Model.IsDevideByBatch)
+        {
+            baseColspan++;
+            <th rowspan="3">Партия</th>
+        }
+        <th rowspan="3">Кол-во</th>
+        @if (Model.CalculateAveragePrice)
+        {
+            if (Model.InPurchaseCost)
+            {
+                <th rowspan="3">Средняя ЗЦ</th>
+            }
+            if (Model.InSalePrice)
+            {
+                <th rowspan="3">Средняя ОЦ</th>
+            }
+        }
+        @if (Model.InPurchaseCost)
+        {
+            <th rowspan="3">Сумма ЗЦ</th>
+        }
+        @if (Model.InAccountingPrice)
+        {
+            <th rowspan="3">Сумма УЦ</th>
+        }
+        @if (Model.InSalePrice)
+        {
+            <th rowspan="3">Сумма ОЦ</th>
+        }
+        @if (Model.ShowAdditionColumns)
+        {
+            <th rowspan="3">Кол-во<br /> в упаковке</th>
+            if (Model.IsDevideByBatch)
+            {
+                <th rowspan="3">Страна производства</th>
+                <th rowspan="3">ГТД</th>
+            }
+        }
+        @if (Model.UseReturns)
+        {
+            int count = 1; //Выводим количество товаров
+            if (Model.InPurchaseCost) { count++; }
+            if (Model.InAccountingPrice) { count++; }
+            if (Model.InSalePrice) { count+=2; }
+            
+            <th colspan="@count">Возвраты</th>
+        }
+        @if (Model.CalculateMarkup)
+        {
+            <th colspan="2">Наценка</th>
+        }
+        @{ 
+            var colspanS = "colspan=" + baseColspan;}
+        @foreach(var storageName in Model.Storages)
+        {
+            int count = 2; //Количество выводим и для реализации, и для остатка
+            if (Model.InSalePrice) { count++; }
+            if (Model.InPurchaseCost) { count++; }
+            if (Model.InAccountingPrice) { count+=2; }
+            
+            <th colspan="@count">@storageName.Name</th>
+        }
+    </tr>
+    <tr>
+        <th rowspan="2">Код</th>
+        <th rowspan="2">Артикул</th>
+        <th rowspan="2">Наименование</th>
+
+        @if (Model.UseReturns)
+        {
+            <th rowspan="2">Кол-во</th>
+            if (Model.InPurchaseCost)
+            {
+                <th rowspan="2">Сумма ЗЦ</th>
+            }
+            if (Model.InAccountingPrice)
+            {
+                <th rowspan="2">Сумма УЦ</th>
+            }
+            if (Model.InSalePrice)
+            {
+                <th rowspan="2">Сумма ОЦ</th>
+                <th rowspan="2">Сумма реализации<br />с учетом<br />возвратов</th>
+            }
+        }
+        @if (Model.CalculateMarkup)
+        {
+            <th rowspan="2">%</th>
+            <th rowspan="2">Сумма</th>
+        }
+        @for (int i = 0; i < Model.Storages.Count; ++i)
+        {
+            int count = 1; //Выводим количество для реализации
+            if (Model.InSalePrice) { count++; }
+            if (Model.InPurchaseCost) { count++; }
+            <th colspan="@count">Реализация</th>  
+            
+            count = 1; //Выводим количество для остатка
+            if (Model.InAccountingPrice) { count += 2; }  
+            <th colspan="@count">Остаток</th>
+        }
+    </tr>
+    <tr>
+        @for (int i = 0; i < Model.Storages.Count; ++i)
+        {
+            <th>Кол-во</th>
+            if (Model.InSalePrice)
+            {
+                <th>Сумма ОЦ</th>
+            }
+            if (Model.InPurchaseCost)
+            {
+                <th>Сумма ЗЦ</th>
+            }
+            <th>Кол-во</th>
+            if (Model.InAccountingPrice)
+            {
+                <th>УЦ</th>
+                <th>Сумма УЦ</th>
+            }
+        }
+    </tr>
+    @foreach (var row in Model.Items)
+    {
+        if (!@row.IsHeaderGroup)
+        {
+        <tr>
+            <td style="white-space: nowrap">@row.ArticleId</td>
+            <td style="white-space: nowrap">@row.ArticleNumber</td>
+            <td>@row.ArticleName</td>
+            @if (Model.IsDevideByBatch)
+            {
+                <td>@row.BatchName</td>
+            }
+            <td align="right" style="white-space: nowrap">@row.SoldCount</td>
+            @if (Model.CalculateAveragePrice)
+            {
+                if (Model.InPurchaseCost)
+                {
+                    <td align="right" style="white-space: nowrap">@row.AvgPurchaseCostSum</td>
+                }
+                if (Model.InSalePrice)
+                {
+                    <td align="right" style="white-space: nowrap">@row.AvgSalePriceSum</td>
+                }
+            }
+            @if (Model.InPurchaseCost)
+            {
+                <td align="right" style="white-space: nowrap">@row.PurchaseCostSum</td>
+            }
+            @if (Model.InAccountingPrice)
+            {
+                <td align="right" style="white-space: nowrap">@row.AccountingPriceSum</td>
+            }
+            @if (Model.InSalePrice)
+            {
+                <td align="right" style="white-space: nowrap">@row.SalePriceSum</td>
+            }
+            @if (Model.ShowAdditionColumns)
+            {
+                <td align="right" style="white-space: nowrap">@row.PackSize</td>
+                if (Model.IsDevideByBatch)
+                {
+                    <td style="white-space: nowrap">@row.ProductionCountryName</td>
+                    <td style="white-space: nowrap">@row.CustomsDeclarationNumber</td>
+                }
+            }
+            @if (Model.UseReturns)
+            {
+                <td align="right" style="white-space: nowrap">@row.ReturnedCount</td>
+                if (Model.InPurchaseCost)
+                {
+                    <td align="right" style="white-space: nowrap">@row.ReturnPurchaseCostSum</td>
+                }
+                if (Model.InAccountingPrice)
+                {
+                    <td align="right" style="white-space: nowrap">@row.ReturnAccountingPriceSum</td>
+                }
+                if (Model.InSalePrice)
+                {
+                    <td align="right" style="white-space: nowrap">@row.ReturnSalePriceSum</td>
+                    <td align="right" style="white-space: nowrap">@row.ResultSalePriceSum</td>
+                }
+            }
+            @if (Model.CalculateMarkup)
+            {
+                <td align="right" style="white-space: nowrap">@row.MarkupPercent</td>
+                <td align="right" style="white-space: nowrap">@row.MarkupSum</td>
+            }
+            @{ string className = "green_cell";
+               int i = 0;}
+            @foreach(var storage in Model.Storages)
+            {
+                className = (i % 2 == 0 ? "green_cell" : "pink_cell");
+                if (row.SeparationByStorages.ContainsKey(storage.Id))
+                {
+                    var subitem = row.SeparationByStorages[storage.Id];
+                    
+                    <td class="@className" align="right" style="white-space:nowrap">@subitem.SoldCount</td>
+                    if (Model.InSalePrice)
+                    {
+                        <td class="@className" align="right" style="white-space:nowrap">@subitem.SalePriceSum</td>
+                    }
+                    if (Model.InPurchaseCost)
+                    {
+                        <td class="@className" align="right" style="white-space:nowrap">@subitem.PurchaseCostSum</td>
+                    }
+                    <td class="@className" align="right" style="white-space:nowrap">@subitem.AvailableArticleCount</td>
+                    if (Model.InAccountingPrice)
+                    {
+                        <td class="@className" align="right" style="white-space:nowrap">@subitem.StoredAccountingPrice</td>
+                        <td class="@className" align="right" style="white-space:nowrap">@subitem.StoredAccountingPriceSum</td>
+                    }
+                }
+                else
+                {
+                    <td class="@className" align="right"></td>
+                    if (Model.InSalePrice)
+                    {
+                        <td class="@className" align="right"></td>
+                    }
+                    if (Model.InPurchaseCost)
+                    {
+                        <td class="@className" align="right"></td>
+                    }
+                    <td class="@className" align="right"></td>
+                    if (Model.InAccountingPrice)
+                    {
+                        <td class="@className" align="right"></td>
+                        <td class="@className" align="right"></td>
+                    }
+                }
+                i++;
+            }
+        </tr>
+        }
+        else
+        {
+            var style = "";
+            var offset = String.Format("style=\"padding-left: {0}px;\"", (row.HeaderOffset + 1) * 15);
+            if (row.HeaderOffset >= 0)
+            {
+                style = "class=blue_row";
+            }
+            if (row.HeaderOffset == Model.GroupCount - 1)
+            {
+                style = "class=orange_row";
+            }
+            
+        <tr @style >
+            <td  @Html.Raw(offset) @colspanS><b>@row.HeaderName:
+                @row.HeaderValue</b></td>
+            <td style="white-space: nowrap" align="right"><b>@row.HeaderSoldCount</b></td>
+            @if (Model.CalculateAveragePrice)
+            {
+                if (Model.InPurchaseCost)
+                {
+                    <td></td>
+                }
+                if (Model.InSalePrice)
+                {
+                    <td></td>
+                }
+            }        
+            @if (Model.InPurchaseCost)
+            {
+                <td style="white-space: nowrap"><b>@row.HeaderPurchaseSum</b></td>
+            }
+            @if (Model.InAccountingPrice)
+            {
+                <td style="white-space: nowrap"><b>@row.HeaderAccountingSum</b></td>
+            }
+            @if (Model.InSalePrice)
+            {
+                <td style="white-space: nowrap"><b>@row.HeaderSaleSum</b></td>
+            }
+            @if (Model.ShowAdditionColumns)
+            {
+                <td></td>
+                if (Model.IsDevideByBatch)
+                {
+                    <td></td>
+                    <td></td>
+                }
+            }
+            @if (Model.UseReturns)
+            {
+                <td style="white-space: nowrap"><b>@row.HeaderReturnedCount</b></td>
+                if (Model.InPurchaseCost)
+                {
+                    <td style="white-space: nowrap"><b>@row.HeaderReturnPurchaseSum</b></td>
+                }
+                if (Model.InAccountingPrice)
+                {
+                    <td style="white-space: nowrap"><b>@row.HeaderReturnAccountingSum</b></td>
+                }
+                if (Model.InSalePrice)
+                {
+                    <td style="white-space: nowrap"><b>@row.HeaderReturnSaleSum</b></td>
+                    <td style="white-space: nowrap"><b>@row.HeaderSaleWithoutReturnSum</b></td>
+                }
+            }
+            @if (Model.CalculateMarkup)
+            {
+                <td></td>
+                <td style="white-space: nowrap"><b>@row.HeaderMarkupSum</b></td>
+            }
+            @foreach (var storage in Model.Storages)
+            {
+                var subitem = row.SeparationByStorages[storage.Id];
+                    
+                    <td align="left"><b>@subitem.SoldCount</b></td>
+                    if (Model.InSalePrice)
+                    {
+                        <td style="white-space: nowrap" align="left"><b>@subitem.SalePriceSum</b></td>
+                    }
+                    if (Model.InPurchaseCost)
+                    {
+                        <td style="white-space: nowrap" align="left"><b>@subitem.PurchaseCostSum</b></td>
+                    }
+                    <td style="white-space: nowrap" align="left"><b>@subitem.AvailableArticleCount</b></td>
+                    if (Model.InAccountingPrice)
+                    {
+                        <td align="left"></td>
+                        <td style="white-space: nowrap" align="left"><b>@subitem.StoredAccountingPriceSum</b></td>
+                    }
+            }
+        </tr>
+        }
+    }
+    @if (Model.Items.Count == 0)
+    { 
+        <tr class="green_row" >
+            <td colspan="@detailsTableColumnsCount" align="center" style="white-space:nowrap"> Нет данных </td> 
+        </tr>
+    }
+    <tr>
+        <th  @colspanS align="right">Итого:</th>
+        <th align="left" style="white-space: nowrap">@Model.TotalSoldCount</th>
+        @if (Model.CalculateAveragePrice)
+        {
+            if (Model.InPurchaseCost)
+            {
+                <th></th>
+            }
+            if (Model.InSalePrice)
+            {
+                <th></th>
+            }
+        }
+        @if (Model.InPurchaseCost)
+        {
+            <th align="left" style="white-space: nowrap">@Model.ExpenditureTotalSumInPurchasePriceSum</th>
+        }
+        @if (Model.InAccountingPrice)
+        {
+            <th align="left" style="white-space: nowrap">@Model.ExpenditureTotalSumInAccountPriceSum</th>
+        }
+        @if (Model.InSalePrice)
+        {
+            <th align="left" style="white-space: nowrap">@Model.ExpenditureTotalSumInSalePriceSum</th>
+        }
+        @if (Model.ShowAdditionColumns)
+        {
+            <th></th>
+            if (Model.IsDevideByBatch)
+            {
+                <th></th>
+                <th></th>
+            }
+        }
+        @if (Model.UseReturns)
+        {
+            <th align="right" style="white-space: nowrap">@Model.TotalReturnedCount</th>
+            if (Model.InPurchaseCost)
+            {
+                <th align="right" style="white-space: nowrap">@Model.ReturnsTotalSumInPurchasePriceSum</th>
+            }
+            if (Model.InAccountingPrice)
+            {
+                <th align="left" style="white-space: nowrap">@Model.ReturnsTotalSumInAccountPriceSum</th>
+            }
+            if (Model.InSalePrice)
+            {
+                <th align="left" style="white-space: nowrap">@Model.ReturnsTotalSumInSalePriceSum</th>
+                <th align="left" style="white-space: nowrap">@Model.ResultTotalSumInSalePriceSum</th>
+            }
+        }
+        @if (Model.CalculateMarkup)
+        {
+            <th></th>
+            <th align="left" style="white-space: nowrap">@Model.TotalMarkup</th>
+        }
+        @foreach (var storage in Model.Storages)
+        {
+            var subitem = Model.SeparationByStorages[storage.Id];
+            <th align="left" style="white-space: nowrap">@subitem.SoldCount</th>
+            if (Model.InSalePrice)
+            {
+                <th align="left" style="white-space: nowrap">@subitem.SalePriceSum</th>
+            }
+            if (Model.InPurchaseCost)
+            {
+                <th align="left" style="white-space: nowrap">@subitem.PurchaseCostSum</th>
+            }
+            <th align="left" style="white-space: nowrap">@subitem.AvailableArticleCount</th>
+            if (Model.InAccountingPrice)
+            {
+                <th align="left"></th>
+                <th align="left" style="white-space: nowrap">@subitem.StoredAccountingPriceSum</th>
+            }
+        }
+    </tr>
+</table>

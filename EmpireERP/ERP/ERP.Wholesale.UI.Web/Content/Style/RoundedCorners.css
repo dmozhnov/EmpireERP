@@ -1,0 +1,49 @@
+﻿/* элементы закругления */
+.round { background: transparent; }
+.rtop, .rbottom { display: block; background: transparent;}
+
+
+.rg1, .rg2, .rg3, .rg4 {display: block; overflow: hidden;}
+.rg1, .rg2, .rg3 {height: 1px;}
+.rg2, .rg3, .rg4 {background: #fff; border-left: 1px solid #fff; border-right: 1px solid #fff;}
+.rg1 {margin: 0 5px; background: #fff;}
+.rg2 {margin: 0 3px; border-width: 0 2px;}
+.rg3 {margin: 0 2px;}
+.rg4 {height: 2px; margin:0 1px;}
+.rgbox {display: block; background: #fff; border: 0 solid #fff; border-width: 0 1px;}
+
+.rgo1, .rgo2, .rgo3, .rgo4 {display: block; overflow: hidden;}
+.rgo1, .rgo2, .rgo3 {height: 1px;}
+.rgo2, .rgo3, .rgo4 {background: #FFB38F; border-left: 1px solid #e0e0e0; border-right: 1px solid #e0e0e0;}
+.rgo1 {margin: 0 5px; background: #e0e0e0;}
+.rgo2 {margin: 0 3px; border-width: 0 2px;}
+.rgo3 {margin: 0 2px;}
+.rgo4 {height: 2px; margin:0 1px;}
+.rgobox {display: block; background: #FFB38F; border: 0 solid #e0e0e0; border-width: 0 1px;}
+
+.rgg1, .rgg2, .rgg3, .rgg4 {display: block; overflow: hidden;}
+.rgg1, .rgg2, .rgg3 {height: 1px;}
+.rgg2, .rgg3, .rgg4 {background: #E5ECEB; border-left: 1px solid #E5ECEB; border-right: 1px solid #E5ECEB;}
+.rgg1 {margin: 0 5px; background: #E5ECEB;}
+.rgg2 {margin: 0 3px; border-width: 0 2px;}
+.rgg3 {margin: 0 2px;}
+.rgg4 {height: 2px; margin:0 1px;}
+.rggbox {display: block; background: #E5ECEB; border: 0 solid #E5ECEB; border-width: 0 1px;}
+
+.rnn1, .rnn2, .rnn3, .rnn4 {display: block; overflow: hidden;}
+.rnn1, .rnn2, .rnn3 {height: 1px;}
+.rnn2, .rnn3, .rnn4 {background: #95BFCF; border-left: 1px solid #95BFCF; border-right: 1px solid #95BFCF;}
+.rnn1 {margin: 0 5px; background: #95BFCF;}
+.rnn2 {margin: 0 3px; border-width: 0 2px;}
+.rnn3 {margin: 0 2px;}
+.rnn4 {height: 2px; margin:0 1px;}
+.rnnbox {display: block; background: #95BFCF; border: 0 solid #95BFCF; border-width: 0 1px;}
+
+.rb1, .rb2, .rb3, .rb4 {display: block; overflow: hidden;}
+.rb1, .rb2, .rb3 {height: 1px;}
+.rb2, .rb3, .rb4 {background: #4D7285; border-left: 1px solid #4D7285; border-right: 1px solid #4D7285;}
+.rb1 {margin: 0 5px; background: #4D7285;}
+.rb2 {margin: 0 3px; border-width: 0 2px;}
+.rb3 {margin: 0 2px;}
+.rb4 {height: 2px; margin:0 1px;}
+.rbbox {display: block; background: #4D7285; border: 0 solid #4D7285; border-width: 0 1px;}

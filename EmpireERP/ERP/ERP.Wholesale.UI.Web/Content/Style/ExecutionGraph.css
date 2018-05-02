@@ -1,0 +1,123 @@
+﻿.plannedStage
+{
+    background-color: #6DA3BD;
+}
+
+.successStage
+{
+    background-color: #8CC341;
+}
+
+.failStage
+{
+    background-color: #FE5200;
+}
+
+.successCurrentStage
+{
+    background-color: #DCECC5;
+}
+
+.failCurrentStage
+{
+    background-color: #F69B80;
+}
+
+.futureStage
+{
+    background-color: #FFFFFF;
+}
+
+.scheduleGraph
+{
+    font-size: 7pt;
+    padding: 5px 0px;
+}
+
+.scheduleGraph .completed_part
+{
+    border-right: 0 none;
+}
+
+.scheduleGraph td
+{
+    height: 12px;
+    text-align: center;
+    white-space: nowrap;
+    padding: 0px;
+    border-collapse: collapse;
+    border-top: 1px solid #77C7DF;
+    border-bottom: 1px solid #77C7DF;
+    border-right: 1px solid;
+    border-left: 0 none;
+}
+
+.scheduleGraph td:last-child
+{
+    border-right: 0 none;
+}
+
+.scheduleGraph .chart
+{
+    padding: 3px 0px;
+    border-left: 3px solid #72C4E1;
+    border-right: 3px solid #72C4E1;
+}
+
+.scheduleGraph .dates
+{
+    height: 20px;
+    border-left: 3px solid white;
+    border-right: 3px solid white;
+    position: relative;
+}
+
+.scheduleGraph table
+{
+    border: 0 none;
+}
+
+.dates :last-child
+{
+    position: absolute;
+}
+
+.dates_container
+{
+    position: absolute;
+    float: left;
+    width: 50px;
+}
+
+.dates_item
+{
+    cursor: default;
+    position: absolute;
+    width: 35px;
+    left: -38%;
+    text-align: center;
+    height: 20px;
+}
+
+.arrow_pointer
+{
+    font-size: 7pt;
+    width: 10px;
+    margin-left: 14px;
+    color: #4D7285;
+}
+
+.arrow_pointer.up
+{
+    top: 0;
+}
+
+.arrow_pointer.down
+{
+    bottom: 0;
+}
+
+.date
+{
+    position:absolute;
+}

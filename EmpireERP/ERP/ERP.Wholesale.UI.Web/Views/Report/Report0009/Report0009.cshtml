@@ -1,0 +1,81 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0009.Report0009ViewModel
+@using ERP.Utils;
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Поставки</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />    
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body>
+     <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">
+                   <b style="text-decoration: underline">Отчет «Поставки»</b><br />
+                    за период с @Model.Settings.StartDate по @Model.Settings.EndDate</td>
+                </td>
+                <td class="report_info">Форма: Report0009<br />Автор: @Model.CreatedBy<br />Составлен: @Model.CreationDate
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" class="report_info" style="padding-top: 15px;">
+                    В диапазон попадает: <b>@Model.DateTypeName</b>.
+                </td>
+            </tr>
+        </table>  
+        
+        @* ---------- Сводная таблица по местам хранения -----------------*@
+        @if (Model.Settings.ShowStorageTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_SummaryTable.cshtml", Model.StorageSummaryTable);
+        }
+        
+        @* ---------- Сводная таблица по организациям -----------------*@
+        @if (Model.Settings.ShowOrganizationTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_SummaryTable.cshtml", Model.AccountOrganizationSummaryTable);
+        }
+       
+        
+        @* ---------- Сводная таблица по  группам товаров-----------------*@
+        @if (Model.Settings.ShowArticleGroupTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_SummaryTable.cshtml", Model.ArticleGroupSummaryTable);
+        }
+        
+        @* ---------- Сводная таблица по поставщикам -----------------*@
+        @if (Model.Settings.ShowProviderTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_SummaryTable.cshtml", Model.ProviderSummaryTable);
+        }
+        
+        @* ---------- Сводная таблица по организациям поставщиков -----------------*@
+        @if (Model.Settings.ShowProviderOrganizationTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_SummaryTable.cshtml", Model.ProviderOrganizationSummaryTable);
+        }
+        
+        @* ---------- Сводная таблица по куратором накладной -----------------*@
+        @if (Model.Settings.ShowUserTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_SummaryTable.cshtml", Model.UserSummaryTable);
+        }
+
+        @* ---------- Развернутая таблица по приходам -----------------*@
+        @if (Model.Settings.ShowDetailsTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_DetailsTable.cshtml", Model.ReceiptWaybillRowDetailTable);
+        } 
+        
+        
+        @* ---------- Развернутая таблица по приходам c расхождениями -----------------*@
+        @if (Model.Settings.ShowDetailReceiptWaybillRowsWithDivergencesTable == "1")
+        {
+            Html.RenderPartial("~/Views/Report/Report0009/Report0009_DetailsTable.cshtml", Model.ReceiptWaybillRowWithDivergencesAfterReceiptDetailTable);
+        } 
+    </div>
+</body>
+</html>

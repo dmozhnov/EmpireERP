@@ -1,0 +1,58 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0010.Report0010SummaryTableViewModel
+
+@functions
+{
+    bool flag = true;
+
+    /// <summary>
+    /// Получение очередного класса css для строки таблицы
+    /// </summary>
+    /// <returns>Название класса css</returns>
+    string GetRowClass()
+    {
+        flag = !flag;
+
+        return flag ? "green_row" : "";
+    }
+}
+
+<table class="report_table">
+    <tr>
+        <th>@Html.LabelFor(model => model.Rows.First().Name)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().DealPaymentFromClientSumString)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().DealPaymentFromClientCashSumString)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().DealPaymentFromClientCashlessSumString)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().DealPaymentToClientSumString)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().DealPaymentToClientCashSumString)</th>
+        <th>@Html.LabelFor(model => model.Rows.First().DealPaymentToClientCashlessSumString)</th>
+    </tr>
+    @foreach (var row in Model.Rows)
+    {
+        <tr class="@GetRowClass()" style="text-align: right">
+            <td style="text-align: left">@row.Name</td>
+            <td style="white-space: nowrap">@row.DealPaymentFromClientSumString</td>
+            <td style="white-space: nowrap">@row.DealPaymentFromClientCashSumString</td>
+            <td style="white-space: nowrap">@row.DealPaymentFromClientCashlessSumString</td>
+            <td style="white-space: nowrap">@row.DealPaymentToClientSumString</td>
+            <td style="white-space: nowrap">@row.DealPaymentToClientCashSumString</td>
+            <td style="white-space: nowrap">@row.DealPaymentToClientCashlessSumString</td>
+        </tr>
+    }
+    @if (Model.Rows.Count() == 0)
+    {
+        <tr class="green_row">
+            <td colspan="7" style="text-align:center;">Нет данных</td>
+        </tr>
+    }
+    <tr>
+        <th style="text-align: right">Итого:</th>
+        <th style="text-align: right">@Model.TotalDealPaymentFromClientSumString</th>
+        <th style="text-align: right">@Model.TotalDealPaymentFromClientCashSumString</th>
+        <th style="text-align: right">@Model.TotalDealPaymentFromClientCashlessSumString</th>
+        <th style="text-align: right">@Model.TotalDealPaymentToClientSumString</th>
+        <th style="text-align: right">@Model.TotalDealPaymentToClientCashSumString</th>
+        <th style="text-align: right">@Model.TotalDealPaymentToClientCashlessSumString</th>
+    </tr>
+</table>
+<br />
+<br />

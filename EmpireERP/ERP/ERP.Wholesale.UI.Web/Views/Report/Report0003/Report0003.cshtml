@@ -1,0 +1,224 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0003.Report0003ViewModel
+
+@using ERP.Utils;
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report0003</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body style="padding:20px;">
+    <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">Финансовый отчет<br />
+                    за период с @Model.Settings.StartDate по @Model.Settings.EndDate </td>
+                <td class="report_info">Форма: Report0003.1<br />
+                    Автор: @Model.CreatedBy
+                    <br />
+                    Составлен: @DateTime.Now.ToString()
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+    <p style="line-height:1.8;font-size: 10pt;">
+        <b>@Html.LabelFor(model => model.StorageNames)</b>: @Model.StorageNames</p>
+    <br />
+    <table class="report_table">
+        <tr>
+            <th rowspan='2'>Операция</th>
+            <th rowspan='2'>Сумма в ЗЦ</th>
+            <th colspan='3'>УЦ</th>
+            <th colspan='3'>ОЦ</th>
+        </tr>
+        <tr>
+            <th>% наценки</th>
+            <th>Наценка</th>
+            <th>Сумма</th>
+            <th>% наценки</th>
+            <th>Наценка</th>
+            <th>Сумма</th>
+        </tr>
+        <tr class="blue_row">
+            <td><b>Сальдо на начало периода</b></td>
+            <td align="right">@if (Model.AllowToViewPurchaseCosts)
+                              { @Model.StartBalance.PurchaseCostSum.ForDisplay(ValueDisplayType.Money) }
+                              else
+                              { @( "---") }</td>
+            <td></td>
+            <td></td>
+            <td align="right">@Model.StartBalance.AccountingPriceSum.ForDisplay(ValueDisplayType.Money)</td>
+            <td></td>
+            <td></td>
+            <td align="right"></td>
+        </tr>
+        <tr>
+            <td colspan="8" class="green_cell" style="padding-left: 20px;"><b>Приходные документы</b></td>
+        </tr>
+        @foreach (var row in Model.IncomingItems)
+        {
+            <tr>
+                <td>@row.IndicatorName</td>
+                <td align="right">@if (Model.AllowToViewPurchaseCosts)
+                                  { 
+                                      @row.PurchaseCostSum.ForDisplay(ValueDisplayType.Money) 
+                                  }
+                                  else
+                                  { 
+                                      @( "---") 
+                                  }</td>
+                <td align="right">@row.AccountingPriceMarkupPercent.ForDisplay(ValueDisplayType.Percent)@(row.AccountingPriceMarkupPercent.HasValue ? " %" : "")</td>
+                <td align="right">@row.AccountingPriceMarkupSum.ForDisplay(ValueDisplayType.Money)</td>
+                <td align="right">@row.AccountingPriceSum.ForDisplay(ValueDisplayType.Money)</td>
+                <td></td>
+                <td></td>
+                <td align="right">@(row.SalePriceSum.HasValue ? row.SalePriceSum.ForDisplay(ValueDisplayType.Money) : "")</td>
+            </tr>
+        }
+        @if (Model.IncomingItems.Count == 0)
+        { 
+            <tr class="green_row">
+                <td colspan="8" style="text-align:center;">Нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right">Итого по приходным документам:</th>
+            <th align="right">@if (Model.AllowToViewPurchaseCosts)
+                              {
+                                   @Model.IncomingItems.Sum(x => x.PurchaseCostSum).ForDisplay(ValueDisplayType.Money) 
+                              }
+                              else
+                              { 
+                                  @( "---") 
+                              }</th>
+            <th></th>
+            <th></th>
+            <th align="right">@Model.IncomingItems.Sum(x => x.AccountingPriceSum).ForDisplay(ValueDisplayType.Money)</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td colspan="8" class="green_cell" style="padding-left: 20px;"><b>Реестры цен</b></td>
+        </tr>
+        @foreach (var row in Model.ArticleAccountingPriceChangeItems)
+        {            
+            <tr>
+                <td>@row.IndicatorName</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td align="right">@row.AccountingPriceSum.ForDisplay(ValueDisplayType.Money)</td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        }
+        @if (Model.ArticleAccountingPriceChangeItems.Count == 0)
+        { 
+            <tr class="green_row">
+                <td colspan="8" style="text-align:center;">Нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right">Итого по изменению цен:</th>
+            <th></th>
+            <th></th>
+            <th></th>
+            <th align="right">@Model.ArticleAccountingPriceChangeItems.Sum(x => x.AccountingPriceSum).ForDisplay(ValueDisplayType.Money)</th>
+            <th></th>
+            <th></th>
+            <th></th>
+        </tr>
+        <tr>
+            <td colspan="8" class="green_cell" style="padding-left: 20px;"><b>Расходные документы</b></td>
+        </tr>
+        @foreach (var row in Model.OutgoingItems)
+        {
+            <tr>
+                <td>@row.IndicatorName</td>
+                <td align="right">@if (Model.AllowToViewPurchaseCosts)
+                                  { 
+                                      @row.PurchaseCostSum.ForDisplay(ValueDisplayType.Money) 
+                                  }
+                                  else
+                                  { 
+                                      @( "---") 
+                                  }</td>
+                <td align="right">@row.AccountingPriceMarkupPercent.ForDisplay(ValueDisplayType.Percent)@(row.AccountingPriceMarkupPercent.HasValue ? " %" : "")</td>
+                <td align="right">@row.AccountingPriceMarkupSum.ForDisplay(ValueDisplayType.Money)</td>
+                <td align="right">@row.AccountingPriceSum.ForDisplay(ValueDisplayType.Money)</td>
+                <td align="right">@if (row.SalePriceSum.HasValue)
+                                  {
+                                      @(row.SalePriceMarkupPercent.HasValue ? row.SalePriceMarkupPercent.ForDisplay(ValueDisplayType.Percent) + " %" : "---")
+                                  }
+                                  else
+                                  {
+                                      @( "") 
+                                  }</td>
+                <td align="right">@if (row.SalePriceSum.HasValue)
+                                  {
+                                      @(row.SalePriceMarkupSum.HasValue ? row.SalePriceMarkupSum.ForDisplay(ValueDisplayType.Money) : "---")
+                                  }
+                                  else
+                                  {
+                                      @( "") 
+                                  }</td>
+                <td align="right">@(row.SalePriceSum.HasValue ? row.SalePriceSum.Value.ForDisplay(ValueDisplayType.Money) : "")</td>
+            </tr>
+        }
+        @if (Model.OutgoingItems.Count == 0)
+        { 
+            <tr class="green_row">
+                <td colspan="8" style="text-align:center;">Нет данных</td>
+            </tr>
+        }
+        <tr>
+            <th align="right">Итого по расходным документам:</th>
+            <th align="right">@if (Model.AllowToViewPurchaseCosts)
+                              { 
+                                  @Model.OutgoingItems.Sum(x => x.PurchaseCostSum).ForDisplay(ValueDisplayType.Money) 
+                              }
+                              else
+                              { 
+                                  @( "---") 
+                              }</th>
+            <th></th>
+            <th></th>
+            <th align="right">@Model.OutgoingItems.Sum(x => x.AccountingPriceSum).ForDisplay(ValueDisplayType.Money)</th>
+            <th></th>
+            <th></th>
+            <th align="right">@Model.OutgoingItems.Sum(x => x.SalePriceSum).ForDisplay(ValueDisplayType.Money)</th>
+        </tr>
+        <tr class="blue_row">
+            <td><b>Сальдо на конец периода</b></td>
+            <td align="right">@if (Model.AllowToViewPurchaseCosts)
+                              {
+                                   @Model.EndBalance.PurchaseCostSum.ForDisplay(ValueDisplayType.Money)
+                              }
+                              else
+                              {
+                                   @( "---") 
+                              }</td>
+            <td></td>
+            <td></td>
+            <td align="right">@Model.EndBalance.AccountingPriceSum.ForDisplay(ValueDisplayType.Money)</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>
+    </table>
+    <br />
+    <b>Всего документов прихода : @Model.IncomingDocumentCount.ForDisplay()</b>
+    <br />
+    <br />
+    <b>Всего документов расхода : @Model.OutgoingDocumentCount.ForDisplay()</b>
+</body>
+</html>

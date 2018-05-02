@@ -1,0 +1,7 @@
+D:\Projects\ERP\ERP.Infrastructure.IoC\bin\Debug\ERP.Infrastructure.IoC.dll
+D:\Projects\ERP\ERP.Infrastructure.IoC\bin\Debug\ERP.Infrastructure.IoC.pdb
+D:\Projects\ERP\ERP.Infrastructure.IoC\bin\Debug\LinFu.Core.dll
+D:\Projects\ERP\ERP.Infrastructure.IoC\bin\Debug\LinFu.Core.xml
+D:\Projects\ERP\ERP.Infrastructure.IoC\obj\Debug\ResolveAssemblyReference.cache
+D:\Projects\ERP\ERP.Infrastructure.IoC\obj\Debug\ERP.Infrastructure.IoC.dll
+D:\Projects\ERP\ERP.Infrastructure.IoC\obj\Debug\ERP.Infrastructure.IoC.pdb

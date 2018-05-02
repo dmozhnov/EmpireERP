@@ -1,0 +1,57 @@
+﻿@model ERP.Wholesale.UI.ViewModels.Report.Report0005.Report0005ViewModel
+@using ERP.Utils;
+@using ERP.Wholesale.UI.ViewModels.Report.Report0005;
+@using ERP.Wholesale.Domain.Entities;
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report0005.1</title>
+    <link href="/Content/Style/Report.css" rel="stylesheet" type="text/css" />
+    <link rel="shortcut icon" href="/Content/Img/favicon.ico" />
+    <meta name="SKYPE_TOOLBAR" content="SKYPE_TOOLBAR_PARSER_COMPATIBLE" />
+</head>
+<body style="padding: 20px;">
+    <div class="report_page">
+        <table>
+            <tr>
+                <td class="report_title">Карта движения товара<br />
+                    <b style="text-decoration: underline">@Model.ArticleName</b><br />
+                    @Model.ReportName</td>
+                <td class="report_info">Форма: Report0005.1<br />
+                    Автор: @Model.CreatedBy
+                    <br />
+                    Составлен: @DateTime.Now.ToString()
+                </td>
+            </tr>
+        </table>
+        <br />
+    </div>
+    <div class="report0005_item"> 
+        <span style="position: relative; top: 7px; font-size: 30px; color: Red;">*</span>
+        <span style="position: relative; bottom: 7px;"> - накладная повторяется в отчете;</span>
+        <span style="font-size: 30px; color: Green;">&bull;&bull;&bull;</span>
+        <span style="position: relative; bottom: 7px;"> - приход со склада, не выбранного при составлении отчета.</span>
+    </div>
+                            
+    @foreach (var currentItem in Model.Items)
+    {
+        if (!currentItem.HiddenWaybill)
+        {
+            for (int i = 0; i < currentItem.ItemLevel; ++i)
+            {
+                <div style="width: 30px; float: left; font-size: 35px; padding: 55px 0 0 13px;">&bull;</div>
+            }
+            Html.RenderPartial("~/Views/Report/Report0005/Report0005Item.cshtml", currentItem);
+        <div style="clear: both"></div>
+        }
+    }
+
+    @if (Model.Items.Count == 0)
+    {
+        <div>Нет данных.</div>
+    }
+</body>
+</html>
